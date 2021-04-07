@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <!-- agGrid community link -->
+    <!-- <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script> -->
+
+    <!-- agGrid  -->
+    <script src="https://unpkg.com/ag-grid-enterprise/dist/ag-grid-enterprise.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
+  </head>
+  <body>
+    <h1>Hello from ag-grid!</h1>
+
+    <button onclick="getSelectedRows()">Get Selected Rows</button>
+
+    <!-- adds the grid element to the page -->
+    <div id="myGrid" class="ag-theme-alpine" style="height: 600px; width:700px;"></div>
+
+    
+    <script type="text/javascript" charset="utf-8">
+        // specify the columns
+        // An array of object literals
+        // each column object in the array can have a number of properties in addition
+        // to the vanilla field label, eg sortable or filter
+      
+        //demo to allow grouping
+        const columnDefs = [
+          { field: "make", rowGroup: true },
+          { field: "price" }
+        ];
+
+        const autoGroupColumnDef = {
+          headerName: "Model",
+          field: "model",
+          cellRenderer:'agGroupCellRenderer',
+          cellRendererParams: {
+            checkbox: true
+          }
+        }
+    
+        // specify the data
+        // note this is an array of object literals
+        const rowData = [
+          { make: "Toyota", model: "Celica", price: 35000 },
+          { make: "Ford", model: "Mondeo", price: 32000 },
+          { make: "Porsche", model: "Boxter", price: 72000 }
+        ];
+    
+        // let the grid know which columns and what data to use
+    // let the grid know which columns and what data to use
+    const gridOptions = {
+        columnDefs: columnDefs,
+        autoGroupColumnDef: autoGroupColumnDef,
+        groupSelectsChildren: true,
+        rowSelection: 'multiple'
+    };
+    
+      // lookup the container we want the Grid to use
+      const eGridDiv = document.querySelector('#myGrid');
+    
+      // create the grid passing in the div to use together with the columns & data we want to use
+      new agGrid.Grid(eGridDiv, gridOptions);
+
+        //an alternative to setting the rowData as a static set of information at the
+        // gridOptions phase is using an async call via Fetech and then
+        // setting the gridOptions using the syntax below
+    agGrid.simpleHttpRequest({url: 'https://www.ag-grid.com/example-assets/row-data.json'}).then(data => {
+        gridOptions.api.setRowData(data);
+    });
+
+    const getSelectedRows = () => {
+        const selectedNodes = gridOptions.api.getSelectedNodes()
+        const selectedData = selectedNodes.map( node => node.data )
+        const selectedDataStringPresentation = selectedData.map( node => `${node.make} ${node.model}`).join(', ')
+        alert(`Selected nodes: ${selectedDataStringPresentation}`);
+    }
+    
+      </script>
+  </body>
+</html>
