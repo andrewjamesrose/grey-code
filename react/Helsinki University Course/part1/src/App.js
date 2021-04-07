@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Note from './components/Note'
 
-const App = (props) => {
+const App = () => {
 
     //useState syntax of:
     // const [myVariable, myUpdate function] = initialState of myVariable
-    const [notes, setNotes] = useState(props.notes)
+    const [notes, setNotes] = useState([])
 
     //add new state for new Notes:
     //this syntax is the definition of both:
@@ -19,6 +20,21 @@ const App = (props) => {
       ) 
 
     const [showAll, setShowAll] = useState(true)
+    
+    const hook = () => {
+      console.log('effect')
+      axios
+        .get('http://localhost:3001/notes')
+        .then(response => {
+          console.log('promise fulfilled')
+          setNotes(response.data)
+        })
+    }
+
+    useEffect(hook, [])
+
+    
+    console.log('render', notes.length, 'notes')
     
     const addNote = (event) => {
         event.preventDefault()
