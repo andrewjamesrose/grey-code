@@ -74,3 +74,37 @@ let add: AddFn
 // add = (n1: number, n2: number) {
 //     return "hello"
 // }
+
+// Intersection
+//  It is possible to merge interfaces via intersection of Types 
+//  or by sy
+interface Colorful {
+    color: string;
+}
+
+interface Circle {
+    radius: number;
+}
+
+interface LineWeight {
+    thickness: number;
+}
+
+//interface intersection by extension:
+//  With no new properties:
+interface WeightedColorfulCircle extends Colorful, Circle, LineWeight {}
+
+//interface intersection by extension:
+//  With new properties:
+interface WeightedColorfulCircleExtra extends Colorful, Circle, LineWeight {
+    myNewProperty: string;
+    someOtherPropety: number;
+}
+
+// Combination by intersection of objects:
+type MyCombinedType = Colorful & Circle & LineWeight
+let combinedTest: MyCombinedType = {
+    color: "red",
+    radius: 50,
+    thickness: 2
+}
