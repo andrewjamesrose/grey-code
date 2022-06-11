@@ -28,4 +28,8 @@ export class ButtonPanelComponent implements OnInit {
     this.appData.regenerateItems()
   }
 
+  newGraphData(): void{
+    this.appData.newGraphData()
+  }
+
 }
