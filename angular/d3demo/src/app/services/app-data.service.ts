@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { DemoData } from '../interfaces/interfaces';
 
 @Injectable({
@@ -9,8 +10,13 @@ export class AppDataService {
   constructor() { }
 
   // Events
-  listChanged = new EventEmitter<number[]>();
-  graphDataChanged = new EventEmitter<DemoData[]>()
+  // listChanged = new EventEmitter<number[]>();
+  // graphDataChanged = new EventEmitter<DemoData[]>()
+
+
+  //Subject version using rxjs for communication
+  listChanged = new Subject<number[]>();
+  graphDataChanged = new Subject<DemoData[]>()
 
   listOfNumbers: number[] = []
   graphData: DemoData[] = []
@@ -18,27 +24,31 @@ export class AppDataService {
   addItem(){
     console.log("adding a new item")
     this.listOfNumbers.push(generateRandomInteger(0, 20))
-    this.listChanged.emit(this.listOfNumbers.slice())
+    // this.listChanged.emit(this.listOfNumbers.slice())
+    this.listChanged.next(this.listOfNumbers.slice())
     this.printItems()
   }
 
   deleteItem(){
     console.log("deleting last item")
     this.listOfNumbers.splice(-1)
-    this.listChanged.emit(this.listOfNumbers.slice())
+    // this.listChanged.emit(this.listOfNumbers.slice())
+    this.listChanged.next(this.listOfNumbers.slice())
     this.printItems()
   }
 
   regenerateItems(){
     console.log("generating new data")
     this.listOfNumbers = Array.from({ length: 20 }, ()=> generateRandomInteger(0,20))
-    this.listChanged.emit(this.listOfNumbers.slice())
+    // this.listChanged.emit(this.listOfNumbers.slice())
+    this.listChanged.next(this.listOfNumbers.slice())
     this.printItems()
   }
 
   newGraphData(){
     this.graphData = this.getGraphData()
-    this.graphDataChanged.emit(this.graphData.slice())
+    // this.graphDataChanged.emit(this.graphData.slice())
+    this.graphDataChanged.next(this.graphData.slice())
     // console.log(this.graphData)
   }
 
@@ -90,7 +100,7 @@ function makeid(length: number):string {
   var charactersLength = characters.length;
   for ( var i = 0; i < length; i++ ) {
     result += characters.charAt(Math.floor(Math.random() *
-charactersLength));
+              charactersLength));
  }
  return result;
 }

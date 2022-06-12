@@ -3,6 +3,7 @@ import { DemoData } from 'src/app/interfaces/interfaces';
 import { AppDataService } from 'src/app/services/app-data.service';
 import * as d3 from 'd3';
 import { maxStars } from 'src/app/support-functions/support-functions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-display-graph',
@@ -11,25 +12,27 @@ import { maxStars } from 'src/app/support-functions/support-functions';
 })
 export class DisplayGraphComponent implements OnInit {
 
+  private numberSubscription: Subscription = new Subscription;
+  private graphSubscription: Subscription = new Subscription;
+
   displayedNumbers: number[] = []
   graphData: DemoData[] = []
 
   constructor(private appData: AppDataService) {
-
   }
 
   ngOnInit(): void {
     this.displayedNumbers = this.appData.getItems()
 
     //subscribe to changes on the Data service
-    this.appData.listChanged.subscribe(
+    this.numberSubscription = this.appData.listChanged.subscribe(
       (inboundList: number[]) => {
         this.displayedNumbers = inboundList
       }
     )
 
     this.graphData = this.appData.getGraphData()
-    this.appData.graphDataChanged.subscribe(
+    this.numberSubscription = this.appData.graphDataChanged.subscribe(
       (inboundGraphData: DemoData[]) => {
         this.graphData = inboundGraphData
         console.log(this.graphData)
