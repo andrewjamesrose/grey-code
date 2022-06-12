@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DemoData } from 'src/app/interfaces/interfaces';
 import { AppDataService } from 'src/app/services/app-data.service';
 import * as d3 from 'd3';
+import { maxStars } from 'src/app/support-functions/support-functions';
 
 @Component({
   selector: 'app-display-graph',
@@ -70,7 +71,7 @@ export class DisplayGraphComponent implements OnInit {
     "top.px": 0
   }
 
-  drawBars(data: any[]): void {
+  drawBars(data: DemoData[]): void {
     // Add X axis
     const x = d3.scaleBand()
                 .range([0, this.width])
@@ -85,8 +86,9 @@ export class DisplayGraphComponent implements OnInit {
             .style("text-anchor", "end");
 
     // Add Y axis
+    let upperStars: number = maxStars(data)
     const y = d3.scaleLinear()
-                .domain([0, 20])
+                .domain([0, upperStars])
                 .range([this.height, 0]);
 
     this.svg.append("g")
@@ -114,11 +116,9 @@ export class DisplayGraphComponent implements OnInit {
             .attr("y", (d: DemoData ) => y(d.Stars))
             .attr("width", x.bandwidth())
             .attr("height", (d: DemoData ) => this.height - y(d.Stars))
-            .attr("fill", "#d04a35")
+            .attr("fill", "#00AEAE")
             .on("mouseover", tipMouseOver)
             .on("mouseout", tipMouseOut);
   }
-
-
 
 }

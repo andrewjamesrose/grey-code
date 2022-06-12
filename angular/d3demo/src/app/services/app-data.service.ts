@@ -49,13 +49,17 @@ export class AppDataService {
 
 
   getGraphData(): DemoData[] {
-    let data: DemoData[] = [
-      {"Framework": "Vue", "Stars": generateRandomInteger(0,20), "Release": 2014},
-      {"Framework": "React", "Stars": generateRandomInteger(0,20), "Release": 2013},
-      {"Framework": "Angular", "Stars": generateRandomInteger(0,20), "Release": 2016},
-      {"Framework": "Backbone", "Stars": generateRandomInteger(0,20), "Release": 2010},
-      {"Framework": "Ember", "Stars": generateRandomInteger(0,20), "Release": 2011},
-    ];
+    let initCols: number = generateRandomInteger(0,12)
+
+    let data: DemoData[] = Array.from({ length: initCols}, ()=> generateDemoItem())
+
+    // let data: DemoData[] = [
+    //   {"Framework": "Vue", "Stars": generateRandomInteger(0,100), "Release": 2014},
+    //   {"Framework": "React", "Stars": generateRandomInteger(0,100), "Release": 2013},
+    //   {"Framework": "Angular", "Stars": generateRandomInteger(0,100), "Release": 2016},
+    //   {"Framework": "Backbone", "Stars": generateRandomInteger(0,100), "Release": 2010},
+    //   {"Framework": "Ember", "Stars": generateRandomInteger(0,100), "Release": 2011},
+    // ];
 
     return data
   }
@@ -66,7 +70,27 @@ export class AppDataService {
 
 }
 
-
 function generateRandomInteger(min: number, max: number) {
   return Math.floor(min + Math.random()*(max - min + 1))
+}
+
+function generateDemoItem(): DemoData {
+    return {
+      "Framework": makeid(6),
+      "Stars" : generateRandomInteger(0,100),
+      "Release": generateRandomInteger(2000,2022)
+    }
+
+}
+
+
+function makeid(length: number):string {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() *
+charactersLength));
+ }
+ return result;
 }
