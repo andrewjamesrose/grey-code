@@ -7,17 +7,21 @@ import { TableComponentComponent } from './components/table-component/table-comp
 import { DisplayGraphComponent } from './components/display-graph/display-graph.component';
 import { ButtonPanelComponent } from './components/button-panel/button-panel.component';
 import { AppDataService } from './services/app-data.service';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponentComponent,
     DisplayGraphComponent,
-    ButtonPanelComponent
+    ButtonPanelComponent,
+    ReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [AppDataService],
   bootstrap: [AppComponent]
