@@ -1,16 +1,26 @@
 {
-  "teams": [
+  "resource_1": [
+      {
+        "id": 1,
+        "name": "Tapas",
+        "country": "Spain"
+      },
+      {
+        "id": 2,
+        "name": "Pizza",
+        "country": "Italy"
+      }
+    ],
+  "another_resource": [
     {
       "id": 1,
-      "name": "FC Barcelona",
-      "coach": "Ernesto Valverde",
-      "description": "The best football team in the world!"
+      "shape": "triangle",
+      "sides": 3
     },
     {
       "id": 2,
-      "name": "Real Madrid",
-      "coach": "Zinedine Zidane",
-      "description": "The worst football team in the world!"
+      "shape": "septagon",
+      "sides": 7
     }
   ]
 }

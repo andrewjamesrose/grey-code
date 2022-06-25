@@ -9,6 +9,11 @@ import { ButtonPanelComponent } from './components/button-panel/button-panel.com
 import { AppDataService } from './services/app-data.service';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BackendHttpTestComponent } from './components/backend-http-test/backend-http-test.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -17,11 +22,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     DisplayGraphComponent,
     ButtonPanelComponent,
     ReactiveFormComponent,
+    BackendHttpTestComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatTabsModule
   ],
   providers: [AppDataService],
   bootstrap: [AppComponent]

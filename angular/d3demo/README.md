@@ -1,8 +1,62 @@
-# Notes on the backend:
-The backend is based on [JSON-server](https://www.npmjs.com/package/json-server)
+Angular Testbed
+
+## Notes on the backend:
+The backend is based on [JSON-server](https://github.com/typicode/json-server)
 Angular-specific tutorial: [here](https://blog.angulartraining.com/fake-your-angular-backend-until-you-make-it-8d145f713e14)
 Steps to add the backend:
-  1) 
+  0) Set up a .json file somewhere on the disk to hold the database eg ../backend/test_json.db
+    a) Populate it with dummy data. Resources on the API have the form:
+      each resource API can then be hit via: 
+        .../myapi/resource_1 and .../myapi/resource_2
+    b) ..and specific ids can be reached at resource_1/2 etc
+
+  1) Add any new routes required in a routes.json file (see notes below)
+  2) Add a new line to the scripts list in package.json:
+          "backend": "json-server api/db.json --routes api/routes.json --no-cors=true"
+
+          i.e. targetting a specific db.json and a specific routes file
+          --no-cors=true is optional for the cross origin stuff
+  3) The server should now be launchable via `npm run backend`
+
+    {
+    "resource_1": [
+        {
+          "id": 1,
+          "name": "Tapas",
+          "country": "Spain"
+        },
+        {
+          "id": 2,
+          "name": "Pizza",
+          "country": "Italy"
+        }
+      ],
+    "another_resource": [
+      {
+        "id": 1,
+        "shape": "triangle",
+        "sides": 3
+      },
+      {
+        "id": 2,
+        "shape": "septagon",
+        "sides": 7
+      }
+    ]
+  }
+
+
+
+  Note:
+  a) By default, the API is able return specific elements of the database based on their ids
+    eg .../api/x  will return object x from the API
+  b) /api/ will return the whole array of objects
+  
+  Routes:
+    Using a routes.json file and launching the backend with that referenced in the arguments it is possible to allow the database to execute rudimentary queries and perform simple tasks such as pagination
+
+  Requests:
+    Requests of all types should be supported: GET, POST, PATCH, DELETE
 
 Some other useful JSON backend tools:
   [JSON PlaceHolder](https://jsonplaceholder.typicode.com/)

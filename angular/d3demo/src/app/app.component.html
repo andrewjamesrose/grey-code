@@ -1,4 +1,16 @@
-<app-display-graph></app-display-graph>
-<app-table-component></app-table-component>
-<app-button-panel></app-button-panel>
-<app-reactive-form></app-reactive-form>
+
+<mat-tab-group>
+  <mat-tab label="Graph">
+      <app-display-graph></app-display-graph>
+      <app-table-component></app-table-component>
+      <app-button-panel></app-button-panel>
+  </mat-tab>
+  <mat-tab label="Form">
+      <app-reactive-form></app-reactive-form>
+  </mat-tab>
+  <mat-tab label="Backend Testing">
+    <app-backend-http-test></app-backend-http-test>
+  </mat-tab>
+
+
+</mat-tab-group>
