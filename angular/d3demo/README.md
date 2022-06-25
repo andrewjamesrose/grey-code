@@ -1,3 +1,24 @@
+# Notes on the backend:
+The backend is based on [JSON-server](https://www.npmjs.com/package/json-server)
+Angular-specific tutorial: [here](https://blog.angulartraining.com/fake-your-angular-backend-until-you-make-it-8d145f713e14)
+Steps to add the backend:
+  1) 
+
+Some other useful JSON backend tools:
+  [JSON PlaceHolder](https://jsonplaceholder.typicode.com/)
+    Web-based JSON placeholder
+
+  [Casual](https://github.com/boo1ean/casual)
+  JS Library for generating dummy JSON data eg `casual.address1`
+
+  [Chance JS](https://chancejs.com/)
+  Another JS Library for random dummy JSON data: eg `chance.currency_pair`
+  Seems to have better generators relating to finance
+
+  [JSON Generator](https://json-generator.com/)
+  A web-based JSON generator tool with JS syntax for the generators
+
+
 # D3demo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
