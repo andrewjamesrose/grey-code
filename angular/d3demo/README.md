@@ -17,6 +17,7 @@ Steps to add the backend:
           i.e. targetting a specific db.json and a specific routes file
           --no-cors=true is optional for the cross origin stuff
   3) The server should now be launchable via `npm run backend`
+  4) Due to CORS blocking in Angular it is necessary to add a proxy to allow calls from the Angular application to the JSON API hosted on another port (despite both services being on localhost, the different ports are also blocked). The topmost tutorial has the solution to this.
 
     {
     "resource_1": [

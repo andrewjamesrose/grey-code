@@ -11,8 +11,9 @@ import { ReactiveFormComponent } from './components/reactive-form/reactive-form.
 import { ReactiveFormsModule } from '@angular/forms';
 import { BackendHttpTestComponent } from './components/backend-http-test/backend-http-test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpViaServiceComponent } from './components/http-via-service/http-via-service.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     ButtonPanelComponent,
     ReactiveFormComponent,
     BackendHttpTestComponent,
+    HttpViaServiceComponent,
   ],
   imports: [
     BrowserModule,
