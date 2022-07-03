@@ -1,5 +1,13 @@
 <h2>Test</h2>
-<div *ngFor="let food of foods$ | async">
+<!-- <button (click)="clicketyClick()" >Clickety Click</button> -->
+<button mat-flat-button color ="accent" (click)="getFruitsFromService()">Refresh Service Subscription</button>
+<button mat-flat-button color="primary" (click)="resetLocal()" >Reset</button>
+<div *ngFor="let food of foods">
   <h3>{{food.name}}</h3>
   <p>{{food.country}}</p>
 </div>
+
+<div>List length is {{foods.length}}</div>
+
+<button mat-flat-button color ="warn" (click)="decrementCount()">Remove</button>
+<button mat-flat-button color ="accent" (click)="incrementCount()">Add</button>

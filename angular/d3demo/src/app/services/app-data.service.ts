@@ -7,7 +7,9 @@ import { DemoData } from '../interfaces/interfaces';
 })
 export class AppDataService {
 
-  constructor() { }
+  constructor() {
+    this.basketCount = generateRandomInteger(1, 20)
+  }
 
   // Events
   // listChanged = new EventEmitter<number[]>();
@@ -76,6 +78,35 @@ export class AppDataService {
 
   printItems(){
     console.log(this.listOfNumbers)
+  }
+
+
+  //  ###################################################################
+  //  ####################                           ####################
+  //  ####################  Shopping List Test Code  ####################
+  //  ####################                           ####################
+  //  ###################################################################
+
+  // Initial value set above in the constructor
+  basketCount: number
+
+  // Subject for use in broadcasting the data changes
+  basketCountSub = new Subject<number>();
+
+  // Set local value on the service then push the new value down the subject pipe using the "next" method on the subject
+  increaseBasket() {
+    this.basketCount = this.basketCount + 1
+    this.basketCountSub.next(this.basketCount)
+  }
+
+  reduceBasket() {
+    if (this.basketCount > 0 ) {
+      this.basketCount = this.basketCount - 1
+    } else {
+      this.basketCount = 0
+    }
+
+    this.basketCountSub.next(this.basketCount)
   }
 
 }

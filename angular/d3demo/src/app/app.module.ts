@@ -12,8 +12,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BackendHttpTestComponent } from './components/backend-http-test/backend-http-test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge'
+
 import { HttpClientModule } from '@angular/common/http';
 import { HttpViaServiceComponent } from './components/http-via-service/http-via-service.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 
 @NgModule({
@@ -25,6 +31,7 @@ import { HttpViaServiceComponent } from './components/http-via-service/http-via-
     ReactiveFormComponent,
     BackendHttpTestComponent,
     HttpViaServiceComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,12 @@ import { HttpViaServiceComponent } from './components/http-via-service/http-via-
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatTabsModule
+
+    MatTabsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatBadgeModule
   ],
   providers: [AppDataService],
   bootstrap: [AppComponent]
