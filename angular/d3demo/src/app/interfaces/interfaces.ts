@@ -9,3 +9,18 @@ export interface Fruit {
   name: string;
   country: string;
 }
+
+
+export interface IPerson {
+  firstName: string;
+  lastName: string;
+  city: string;
+  birthday: Date;
+  guid: string,
+}
+
+
+enum Direction {
+  Sell = "SELL",
+  Buy = "BUY"
+}

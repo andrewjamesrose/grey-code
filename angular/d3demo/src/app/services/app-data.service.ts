@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Person } from '../classes/person';
 import { DemoData } from '../interfaces/interfaces';
 
 @Injectable({
@@ -9,6 +10,7 @@ export class AppDataService {
 
   constructor() {
     this.basketCount = generateRandomInteger(1, 20)
+    this.peopleList = []
   }
 
   // Events
@@ -108,6 +110,41 @@ export class AppDataService {
 
     this.basketCountSub.next(this.basketCount)
   }
+
+
+
+  //  ###################################################################
+  //  ####################                           ####################
+  //  ####################        Person Test        ####################
+  //  ####################                           ####################
+  //  ###################################################################
+
+  peopleList: Person[]
+  peopleListChanged = new Subject<Person[]>();
+
+
+  addPerson() {
+    this.peopleList.push(new Person())
+    this.peopleListChanged.next(this.peopleList.slice())
+    console.log(this.peopleList.slice())
+  }
+
+  removePerson(id: string) {
+    console.log("deleting person: " + id)
+    let tempArray: Person[] = this.peopleList.filter(function( person ) {
+      return person.guid !== id;
+    });
+
+    this.peopleList = tempArray.slice()
+    this.peopleListChanged.next(this.peopleList.slice())
+
+  }
+
+  resetPeople(){
+    this.peopleList = []
+    this.peopleListChanged.next(this.peopleList.slice())
+  }
+
 
 }
 

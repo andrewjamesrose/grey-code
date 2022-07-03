@@ -11,3 +11,21 @@
 
 <button mat-flat-button color ="warn" (click)="decrementCount()">Remove</button>
 <button mat-flat-button color ="accent" (click)="incrementCount()">Add</button>
+
+
+
+<mat-divider></mat-divider>
+<h2>Testing Person Logic:</h2>
+<button mat-flat-button color ="accent" (click)="addPerson()">Add</button>
+<button mat-flat-button color="primary" (click)="clearPeople()" >Reset</button>
+
+
+<div *ngFor="let person of _people">
+  <mat-divider></mat-divider>
+  <h3>{{person.firstName }} {{person.lastName}}
+  {{person.city}}
+    <button mat-stroked-button color="warn" (click)="deletePersonById(person.guid)">Remove</button>
+  </h3>
+</div>
+
+

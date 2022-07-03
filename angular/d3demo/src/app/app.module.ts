@@ -16,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge'
+import { MatDividerModule } from '@angular/material/divider';
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpViaServiceComponent } from './components/http-via-service/http-via-service.component';
@@ -44,7 +46,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDividerModule
   ],
   providers: [AppDataService],
   bootstrap: [AppComponent]

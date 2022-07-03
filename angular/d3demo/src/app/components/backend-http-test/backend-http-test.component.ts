@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BackendTestServiceService } from 'src/app/services/backend-test-service.service';
 import { Fruit } from 'src/app/interfaces/interfaces';
 import { AppDataService } from 'src/app/services/app-data.service';
+import { Person } from 'src/app/classes/person';
 
 @Component({
   selector: 'app-backend-http-test',
@@ -14,17 +15,25 @@ export class BackendHttpTestComponent implements OnInit {
 
   foods: Fruit[] = []
 
+  _people: Person[]
+
   // constructor(private httpInstance: HttpClient) { }
 
   constructor(private backendService: BackendTestServiceService, private appDataService: AppDataService) {
+    this._people = []
   }
 
 
   ngOnInit(): void {
     //set up subscriptions to the backend services
     this.foods = this.backendService.subFruitList
-    this.backendService.subListChange.subscribe((updatedList: Fruit[]) =>{
+    this.backendService.subListChange.subscribe((updatedList: Fruit[]) => {
       this.foods = updatedList
+    })
+
+    this._people = this.appDataService.peopleList
+    this.appDataService.peopleListChanged.subscribe((newList: Person[]) => {
+      this._people = newList
     })
   }
 
@@ -53,6 +62,20 @@ export class BackendHttpTestComponent implements OnInit {
 
   decrementCount(){
     this.appDataService.reduceBasket()
+  }
+
+
+  addPerson() {
+    this.appDataService.addPerson()
+
+  }
+
+  deletePersonById(id: string) {
+    this.appDataService.removePerson(id)
+  }
+
+  clearPeople() {
+    this.appDataService.resetPeople()
   }
 
 }
