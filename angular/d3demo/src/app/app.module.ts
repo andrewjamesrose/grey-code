@@ -19,9 +19,14 @@ import { MatBadgeModule } from '@angular/material/badge'
 import { MatDividerModule } from '@angular/material/divider';
 
 
+
 import { HttpClientModule } from '@angular/common/http';
 import { HttpViaServiceComponent } from './components/http-via-service/http-via-service.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { AgGridModule } from 'ag-grid-angular';
+import 'ag-grid-enterprise'
+import { GridTestComponent } from './components/grid-test/grid-test.component';
+import { ClipboardIoComponent } from './components/clipboard-io/clipboard-io.component';
 
 
 @NgModule({
@@ -34,6 +39,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     BackendHttpTestComponent,
     HttpViaServiceComponent,
     ToolbarComponent,
+    GridTestComponent,
+    ClipboardIoComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,13 +48,16 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AgGridModule,
 
     MatTabsModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatBadgeModule,
-    MatDividerModule
+    MatDividerModule,
+
+
   ],
   providers: [AppDataService],
   bootstrap: [AppComponent]

@@ -11,6 +11,10 @@ export class BackendTestServiceService {
   subFruitList: Fruit[] = [];
   subListChange: Subject<Fruit[]> = new Subject<Fruit[]>()
 
+  fruitList!: Observable <Fruit[]>
+
+  anotherFruitList: Fruit[] = []
+
   constructor(private http: HttpClient) {
     //set up subscription. New values are passed to the subscription infrastructure
 
@@ -22,9 +26,6 @@ export class BackendTestServiceService {
     })
    }
 
-  fruitList!: Observable <Fruit[]>
-
-  anotherFruitList: Fruit[] = []
 
 
   // returns an observable
