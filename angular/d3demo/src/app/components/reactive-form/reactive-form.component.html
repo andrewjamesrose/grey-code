@@ -1,8 +1,25 @@
-<label for="name">Name: </label>
-<input id="name"
-    type="text"
-    [formControl]="displayedValue"
-    (focus)="onFocusTest()"
-    (blur)="onBlurTest()"
-    >
-<p>Value: {{ displayedValue.value }}</p>
+<form [formGroup]="controlGroup">
+
+  <div><label for="name">Name: </label>
+  <input id="name"
+      type="text"
+      formControlName="displayedValue"
+      (focus)="onFocusTest()"
+      (blur)="onBlurTest()"
+      >
+    </div>
+
+    <div>
+      <select formControlName="selectedColor">
+        <option *ngFor="let color of colorList" [value]="color">
+          {{color}}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <p>Value: {{ controlGroup.value | json}}</p>
+    </div>
+
+
+</form>

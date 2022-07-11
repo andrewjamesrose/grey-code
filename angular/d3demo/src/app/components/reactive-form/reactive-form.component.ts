@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -16,12 +16,18 @@ export class ReactiveFormComponent implements OnInit {
 
 
 
-  displayedValue = new FormControl('', [Validators.pattern(regexNumberShorthand)]);
 
+
+  controlGroup = new FormGroup({
+    displayedValue: new FormControl('', [Validators.pattern(regexNumberShorthand)]),
+    selectedColor: new FormControl('')
+  })
 
   ngOnInit(): void {
 
   }
+
+  colorList = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 
 
 
@@ -30,12 +36,12 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   onBlurTest(): void {
-    let localString = this.displayedValue.value
+    let localString = this.controlGroup.controls['displayedValue'].value
     const regex = /m/g;
     let count = (localString.match(regex)||[]).length
 
     // console.log(this.displayedValue.valid)
-    console.log(regexNumberShorthand.test(this.displayedValue.value))
+    console.log(regexNumberShorthand.test(this.controlGroup.controls['displayedValue'].value))
 
     console.log(count)
 
