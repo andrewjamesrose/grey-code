@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GetContextMenuItemsParams, GridReadyEvent, MenuItemDef } from 'ag-grid-community';
 import { Observable } from 'rxjs';
+import { DemoRow } from 'src/app/classes/rowDataTests';
 
 @Component({
   selector: 'app-grid-test',
@@ -12,13 +13,20 @@ import { Observable } from 'rxjs';
 export class GridTestComponent implements OnInit {
 
   ngOnInit(): void {
+
   }
 
    // Each Column Definition results in one Column.
  public columnDefs: ColDef[] = [
-  { field: 'make'},
-  { field: 'model'},
-  { field: 'price' }
+  { field: 'label'},
+  { field: 'val1'},
+  { field: 'val2' },
+  { field: 'val3' },
+  { field: 'val4' },
+  { field: 'val5' },
+  { field: 'val6' },
+  { field: 'val7' },
+  { field: 'val8' }
 ];
 
 // DefaultColDef sets props common to all Columns
@@ -33,13 +41,35 @@ public rowData$!: Observable<any[]>;
 // For accessing the Grid's API
 @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
-constructor(private http: HttpClient) {}
+constructor(private http: HttpClient) {
+    this.rowDataLocal=[]
+}
 
-// Example load data from sever
+// Example load data from server
 onGridReady(params: GridReadyEvent) {
   this.rowData$ = this.http
     .get<any[]>('https://www.ag-grid.com/example-assets/row-data.json');
+
+    
 }
+
+rowDataLocal: DemoRow[]
+
+printRowData(): void {
+    this.rowData$.subscribe({
+            next: data => console.log(data),
+        }
+    )
+}
+
+regenerateRowData(): void {
+    let localList: DemoRow[] = Array.from({length: 10}, () => new DemoRow())
+    this.rowDataLocal = localList
+}
+
+
+
+
 
 // Example of consuming Grid Event
 onCellClicked( e: CellClickedEvent): void {
@@ -205,4 +235,5 @@ function createFlagImg(flag: string) {
     '.png"/>'
   );
 }
+
 
