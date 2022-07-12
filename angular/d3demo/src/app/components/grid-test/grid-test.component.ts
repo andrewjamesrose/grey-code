@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GetContextMenuItemsParams, GridReadyEvent, MenuItemDef } from 'ag-grid-community';
 import { Observable } from 'rxjs';
-import { DemoRow } from 'src/app/classes/rowDataTests';
+import { DemoRow, generateRandomIntegerBetween } from 'src/app/classes/rowDataTests';
 
 @Component({
   selector: 'app-grid-test',
@@ -56,14 +56,15 @@ onGridReady(params: GridReadyEvent) {
 rowDataLocal: DemoRow[]
 
 printRowData(): void {
-    this.rowData$.subscribe({
-            next: data => console.log(data),
-        }
-    )
+    // this.rowData$.subscribe({
+    //         next: data => console.log(data),
+    //     }
+    // )
+    console.log(this.rowDataLocal)
 }
 
 regenerateRowData(): void {
-    let localList: DemoRow[] = Array.from({length: 10}, () => new DemoRow())
+    let localList: DemoRow[] = Array.from({length: 10}, () => new DemoRow(undefined, generateRandomIntegerBetween(0,7), generateRandomIntegerBetween(0,7)))
     this.rowDataLocal = localList
 }
 
