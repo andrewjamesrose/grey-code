@@ -27,6 +27,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import 'ag-grid-enterprise'
 import { GridTestComponent } from './components/grid-test/grid-test.component';
 import { ClipboardIoComponent } from './components/clipboard-io/clipboard-io.component';
+import { XlsxComponent } from './components/xlsx/xlsx.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ClipboardIoComponent } from './components/clipboard-io/clipboard-io.com
     ToolbarComponent,
     GridTestComponent,
     ClipboardIoComponent,
+    XlsxComponent,
   ],
   imports: [
     BrowserModule,
