@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as cytoscape from 'cytoscape';
 import { Core } from 'cytoscape';
+import { DEMO_GRAPH } from './first-test.demo-graph-elements';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class FirstTestComponent implements OnInit {
 
     cy: Core | undefined
 
+    _lastNode: string | undefined
+
   ngOnInit(): void {
   }
 
@@ -28,51 +31,8 @@ export class FirstTestComponent implements OnInit {
         this.cy = cytoscape({
             container:  this.MyDOMElement.nativeElement,
             // layout: { name: "breadthfirst" },
-            elements: [
-                // nodes
-                { data: { id: 'a' } },
-                { data: { id: 'b' } },
-                { data: { id: 'c' } },
-                { data: { id: 'd' } },
-                { data: { id: 'e' } },
-                { data: { id: 'f' } },
-                // edges
-                {
-                  data: {
-                    id: 'ab',
-                    source: 'a',
-                    target: 'b'
-                  }
-                },
-                {
-                  data: {
-                    id: 'cd',
-                    source: 'c',
-                    target: 'd'
-                  }
-                },
-                {
-                  data: {
-                    id: 'ef',
-                    source: 'e',
-                    target: 'f'
-                  }
-                },
-                {
-                  data: {
-                    id: 'ac',
-                    source: 'a',
-                    target: 'c'
-                  }
-                },
-                {
-                  data: {
-                    id: 'be',
-                    source: 'b',
-                    target: 'e'
-                  }
-                }
-              ],
+            elements: DEMO_GRAPH
+                ,
               style: [
                 // the stylesheet for the graph
                 {
@@ -82,20 +42,23 @@ export class FirstTestComponent implements OnInit {
                     width: 230,
                     height: 80,
                     // "border-radius": "8px",
-                    "background-color": "#3a3d4b",
+                    "background-color": "#3B3B3B",
                     //label: "data(id)",
                     // "border-bottom": "1px solid blue",
-                    color: "black",
-                    "text-valign": "center"
-                  }
+                    color: "#121212",
+                    "text-valign": "center",
+                    "label": "data(id)",
+                    // "label": this.position()
+                  },
+
                 },
             
                 {
                   selector: "edge",
                   style: {
                     width: 3,
-                    "line-color": "rgb(0, 111, 255)",
-                    "target-arrow-color": "rgb(0, 111, 255)",
+                    "line-color": "#69F0AE",
+                    "target-arrow-color": "#69F0AE",
                     "target-arrow-shape": "circle",
                     // "curve-style": "taxi"
             
@@ -104,15 +67,23 @@ export class FirstTestComponent implements OnInit {
                     // "source-endpoint": [115, 0],
                     "curve-style": "unbundled-bezier",
                     "control-point-distances": [100, -80],
-                    "control-point-weights": [0.1, 0.75]
+                    "control-point-weights": [0.1, 0.75],
+                  
                   }
                 }
               ]
           })
+
+        this.cy.on('click', 'node', (evt) => {
+          this._lastNode = evt.target.id()
+          // console.log( evt.target.id() )
         
+        })
+
     }
-
   }
-
-
+  
+  reArrangeGraph(): void {
+      console.log("hello")
+  }
 }

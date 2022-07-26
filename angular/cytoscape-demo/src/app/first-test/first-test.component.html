@@ -1,3 +1,10 @@
-<p>first-test works!</p>
-<div id="cy"></div>
+
+<div class ="initial-label" *ngIf="_lastNode">Last Node Was: {{_lastNode}}</div>
+<div class ="initial-label" *ngIf="!_lastNode">Select a node</div>
+<button mat-flat-button color="primary">Print Active Node</button>
+<button mat-stroked-button color="primary">Rearrange Graph</button>
+
 <div id="graph-selector" #myDOMElement></div>
+
+
+
