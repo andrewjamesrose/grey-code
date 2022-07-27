@@ -1,0 +1,33 @@
+<!-- <select [(ngModel)]="_selectedCountry"> -->
+<select [(ngModel)]="_selectedCountryA"  (change)="onSelectChange()">
+    <option *ngFor="let country of _countryList" [ngValue]="country">
+      {{country["Country"]}}
+    </option>
+</select>
+
+<select [(ngModel)]="_selectedCountryB"  (change)="onSelectChange()">
+        <option *ngFor="let country of _countryList" [ngValue]="country">
+          {{country["Country"]}}
+        </option>
+</select>
+
+
+<div *ngIf="_resultAvailable">
+    <div>The distance between:</div>
+    <div>{{_selectedCountryA['Country']}}'s capital city {{_selectedCountryA['Capital']}}</div>
+    <div>and</div>
+    <div>{{_selectedCountryB['Country']}}'s capital city {{_selectedCountryB['Capital']}}</div>
+    <div>is</div>
+    <div>{{_capitalSeparation | number }}km</div>
+</div>
+
+<div></div>
+
+<div *ngIf="_resultAvailable">
+        <div>The inter-centroid distance between:</div>
+        <div>{{_selectedCountryA['Country']}}</div>
+        <div>and</div>
+        <div>{{_selectedCountryB['Country']}}</div>
+        <div>is</div>
+        <div>{{_centroidSeparation | number }}km</div>
+    </div>
