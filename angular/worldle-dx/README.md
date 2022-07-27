@@ -1,5 +1,20 @@
 # WorldleDx
 
+Some resources:
+Country names, codes and centroid lat-longs (used)
+https://developers.google.com/public-data/docs/canonical/countries_csv
+
+
+Alternative lat-longs for centroids (not used here)
+https://gist.github.com/tadast/8827699
+
+
+List of lat-longs by capital:
+https://www.jasom.net/list-of-capital-cities-with-latitude-and-longitude/
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
 ## Development server
