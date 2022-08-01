@@ -1,33 +1,91 @@
-<!-- <select [(ngModel)]="_selectedCountry"> -->
-<select [(ngModel)]="_selectedCountryA"  (change)="onSelectChange()">
-    <option *ngFor="let country of _countryList" [ngValue]="country">
-      {{country["Country"]}}
-    </option>
-</select>
+<img width="400px" src="assets/flags/png1000px/{{targetCountry.code| lowercase }}.png"/>
 
-<select [(ngModel)]="_selectedCountryB"  (change)="onSelectChange()">
+<br>
+
+<select [(ngModel)]="_selectedCountry"  
+    (change)="onGuess()"
+    [disabled]="!uiActive"
+    >
         <option *ngFor="let country of _countryList" [ngValue]="country">
-          {{country["Country"]}}
+          {{country.name}}
         </option>
 </select>
 
 
-<div *ngIf="_resultAvailable">
-    <div>The distance between:</div>
-    <div>{{_selectedCountryA['Country']}}'s capital city {{_selectedCountryA['Capital']}}</div>
-    <div>and</div>
-    <div>{{_selectedCountryB['Country']}}'s capital city {{_selectedCountryB['Capital']}}</div>
-    <div>is</div>
-    <div>{{_capitalSeparation | number }}km</div>
+<div *ngIf="_selectedCountry">
+    
+    <div *ngIf="remainingGuesses>0 && gameState ==='ACTIVE'" >
+        <div>Your guess was {{_centroidSeparation | number }}km away from the centroid of the target</div>
+        <div>You have {{ remainingGuesses| number }} guesses remaining </div>
+    </div>
+    <div *ngIf="gameState==='GAMEOVER'">GAME OVER</div>
+    <div *ngIf="gameState==='CORRECT'">A winner is you</div>
+    <div *ngIf="gameState==='GAMEOVER'||gameState==='CORRECT'"><button (click)="resetGame()">Click here to play again</button></div>
 </div>
 
-<div></div>
+<div *ngIf="gameState!=='ACTIVE'">
+    <div >The Correct Answer Was:</div>
+    <div>{{targetCountry.name}}</div>
+    <div><br/></div>
 
-<div *ngIf="_resultAvailable">
-        <div>The inter-centroid distance between:</div>
-        <div>{{_selectedCountryA['Country']}}</div>
-        <div>and</div>
-        <div>{{_selectedCountryB['Country']}}</div>
-        <div>is</div>
-        <div>{{_centroidSeparation | number }}km</div>
+    <div>Your guesses were:</div>
+    <table>
+        <tr>
+            <th>Guess</th>
+            <th>Country</th>
+            <th>Miss Distance</th>
+            <th>Miss Direction</th>
+        </tr>
+        <tr></tr>
+        <tr *ngFor="let guess of _guessList; index as i">
+            <td>
+                {{i+1}}
+            </td>
+            <td>{{guess}}</td>
+            <td>{{getMissDistance(guess) | number}}</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <div *ngIf="_guessList.length>1">
+        <div>The Route Was:</div>
+        <table>
+            <tr>
+                <th>Jump</th>
+                <th>Start</th>
+                <th>Code</th>
+                <th>(Lat, Long)</th>
+                <th>End</th>
+                <th>Code</th>
+                <th>(Lat, Long)</th>            
+                <th>Distance (km)</th>
+                <th>Co-planar Angle (Rad.)</th>
+            </tr>
+            <tr></tr>
+            <tr *ngFor="let jump of jumpList; index as i">
+                <td>
+                    {{i+1}}
+                </td>
+                <td>{{jump.start.name}}</td>
+                <td>{{jump.start.code}}</td>
+                <td>({{jump.start.latlong.latitude}}, {{jump.start.latlong.longitude}})</td>
+                <td>{{jump.end.name}}</td>      
+                <td>{{jump.end.code}}</td>
+                <td>({{jump.end.latlong.latitude}}, {{jump.end.latlong.longitude}})</td>
+                <td>{{jump.getDistance() | number}}</td>      
+                <td>{{jump.getAngle() | number}}</td>      
+            </tr>
+        </table>
     </div>
+
+    <div *ngIf="_guessList.length===1">Perfect score!</div>
+
+</div>
+
+
+
+
+
+
+  

@@ -1,2708 +1,3694 @@
-export const  COUNTRY_DATA = [
-    {
-      "Country": "Afghanistan",
-      "Capital": "Kabul",
-      "Capital Latitude": 34.575503,
-      "Capital Longitude": 69.240073,
-      "Two Letter Code": "AF",
-      "Three Letter Code": "AFG",
-      "Centroid Lat": 33.93911,
-      "Centroid Long": 67.709953,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Åland Islands",
-      "Capital": "Mariehamn",
-      "Capital Latitude": 60.1,
-      "Capital Longitude": 19.933333,
-      "Two Letter Code": "AX",
-      "Three Letter Code": "ALA",
-      "Centroid Lat": 60.1,
-      "Centroid Long": 19.933333,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Albania",
-      "Capital": "Tirana",
-      "Capital Latitude": 41.327546,
-      "Capital Longitude": 19.818698,
-      "Two Letter Code": "AL",
-      "Three Letter Code": "ALB",
-      "Centroid Lat": 41.153332,
-      "Centroid Long": 20.168331,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Algeria",
-      "Capital": "Algiers",
-      "Capital Latitude": 36.752887,
-      "Capital Longitude": 3.042048,
-      "Two Letter Code": "DZ",
-      "Three Letter Code": "DZA",
-      "Centroid Lat": 28.033886,
-      "Centroid Long": 1.659626,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "American Samoa",
-      "Capital": "Pago Pago",
-      "Capital Latitude": -14.275632,
-      "Capital Longitude": -170.702036,
-      "Two Letter Code": "AS",
-      "Three Letter Code": "ASM",
-      "Centroid Lat": -14.270972,
-      "Centroid Long": -170.132217,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Andorra",
-      "Capital": "Andorra la Vella",
-      "Capital Latitude": 42.506317,
-      "Capital Longitude": 1.521835,
-      "Two Letter Code": "AD",
-      "Three Letter Code": "AND",
-      "Centroid Lat": 42.546245,
-      "Centroid Long": 1.601554,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Angola",
-      "Capital": "Luanda",
-      "Capital Latitude": -8.839988,
-      "Capital Longitude": 13.289437,
-      "Two Letter Code": "AO",
-      "Three Letter Code": "AGO",
-      "Centroid Lat": -11.202692,
-      "Centroid Long": 17.873887,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Anguilla",
-      "Capital": "The Valley",
-      "Capital Latitude": 18.214813,
-      "Capital Longitude": -63.057441,
-      "Two Letter Code": "AI",
-      "Three Letter Code": "AIA",
-      "Centroid Lat": 18.220554,
-      "Centroid Long": -63.068615,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Antarctica",
-      "Capital": "South Pole",
-      "Capital Latitude": -90,
-      "Capital Longitude": 0,
-      "Two Letter Code": "AQ",
-      "Three Letter Code": "ATA",
-      "Centroid Lat": -75.250973,
-      "Centroid Long": -0.071389,
-      "Continent": "Antarctica"
-    },
-    {
-      "Country": "Antigua and Barbuda",
-      "Capital": "St. John's",
-      "Capital Latitude": 17.12741,
-      "Capital Longitude": -61.846772,
-      "Two Letter Code": "AG",
-      "Three Letter Code": "ATG",
-      "Centroid Lat": 17.060816,
-      "Centroid Long": -61.796428,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Argentina",
-      "Capital": "Buenos Aires",
-      "Capital Latitude": -34.603684,
-      "Capital Longitude": -58.381559,
-      "Two Letter Code": "AR",
-      "Three Letter Code": "ARG",
-      "Centroid Lat": -38.416097,
-      "Centroid Long": -63.616672,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Armenia",
-      "Capital": "Yerevan",
-      "Capital Latitude": 40.179186,
-      "Capital Longitude": 44.499103,
-      "Two Letter Code": "AM",
-      "Three Letter Code": "ARM",
-      "Centroid Lat": 40.069099,
-      "Centroid Long": 45.038189,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Aruba",
-      "Capital": "Oranjestad",
-      "Capital Latitude": 12.509204,
-      "Capital Longitude": -70.008631,
-      "Two Letter Code": "AW",
-      "Three Letter Code": "ABW",
-      "Centroid Lat": 12.52111,
-      "Centroid Long": -69.968338,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Australia",
-      "Capital": "Canberra",
-      "Capital Latitude": -35.282,
-      "Capital Longitude": 149.128684,
-      "Two Letter Code": "AU",
-      "Three Letter Code": "AUS",
-      "Centroid Lat": -25.274398,
-      "Centroid Long": 133.775136,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Austria",
-      "Capital": "Vienna",
-      "Capital Latitude": 48.208174,
-      "Capital Longitude": 16.373819,
-      "Two Letter Code": "AT",
-      "Three Letter Code": "AUT",
-      "Centroid Lat": 47.516231,
-      "Centroid Long": 14.550072,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Azerbaijan",
-      "Capital": "Baku",
-      "Capital Latitude": 40.409262,
-      "Capital Longitude": 49.867092,
-      "Two Letter Code": "AZ",
-      "Three Letter Code": "AZE",
-      "Centroid Lat": 40.143105,
-      "Centroid Long": 47.576927,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Bahamas",
-      "Capital": "Nassau",
-      "Capital Latitude": 25.047984,
-      "Capital Longitude": -77.355413,
-      "Two Letter Code": "BS",
-      "Three Letter Code": "BHS",
-      "Centroid Lat": 25.03428,
-      "Centroid Long": -77.39628,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Bahrain",
-      "Capital": "Manama",
-      "Capital Latitude": 26.228516,
-      "Capital Longitude": 50.58605,
-      "Two Letter Code": "BH",
-      "Three Letter Code": "BHR",
-      "Centroid Lat": 25.930414,
-      "Centroid Long": 50.637772,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Bangladesh",
-      "Capital": "Dhaka",
-      "Capital Latitude": 23.810332,
-      "Capital Longitude": 90.412518,
-      "Two Letter Code": "BD",
-      "Three Letter Code": "BGD",
-      "Centroid Lat": 23.684994,
-      "Centroid Long": 90.356331,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Barbados",
-      "Capital": "Bridgetown",
-      "Capital Latitude": 13.113222,
-      "Capital Longitude": -59.598809,
-      "Two Letter Code": "BB",
-      "Three Letter Code": "BRB",
-      "Centroid Lat": 13.193887,
-      "Centroid Long": -59.543198,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Belarus",
-      "Capital": "Minsk",
-      "Capital Latitude": 53.90454,
-      "Capital Longitude": 27.561524,
-      "Two Letter Code": "BY",
-      "Three Letter Code": "BLR",
-      "Centroid Lat": 53.709807,
-      "Centroid Long": 27.953389,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Belgium",
-      "Capital": "Brussels",
-      "Capital Latitude": 50.85034,
-      "Capital Longitude": 4.35171,
-      "Two Letter Code": "BE",
-      "Three Letter Code": "BEL",
-      "Centroid Lat": 50.503887,
-      "Centroid Long": 4.469936,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Belize",
-      "Capital": "Belmopan",
-      "Capital Latitude": 17.251011,
-      "Capital Longitude": -88.75902,
-      "Two Letter Code": "BZ",
-      "Three Letter Code": "BLZ",
-      "Centroid Lat": 17.189877,
-      "Centroid Long": -88.49765,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Benin",
-      "Capital": "Porto-Novo",
-      "Capital Latitude": 6.496857,
-      "Capital Longitude": 2.628852,
-      "Two Letter Code": "BJ",
-      "Three Letter Code": "BEN",
-      "Centroid Lat": 9.30769,
-      "Centroid Long": 2.315834,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Bermuda",
-      "Capital": "Hamilton",
-      "Capital Latitude": 32.294816,
-      "Capital Longitude": -64.781375,
-      "Two Letter Code": "BM",
-      "Three Letter Code": "BMU",
-      "Centroid Lat": 32.321384,
-      "Centroid Long": -64.75737,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Bhutan",
-      "Capital": "Thimphu",
-      "Capital Latitude": 27.472792,
-      "Capital Longitude": 89.639286,
-      "Two Letter Code": "BT",
-      "Three Letter Code": "BTN",
-      "Centroid Lat": 27.514162,
-      "Centroid Long": 90.433601,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Bolivia",
-      "Capital": "La Paz",
-      "Capital Latitude": -16.489689,
-      "Capital Longitude": -68.119294,
-      "Two Letter Code": "BO",
-      "Three Letter Code": "BOL",
-      "Centroid Lat": -16.290154,
-      "Centroid Long": -63.588653,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Bosnia and Herzegovina",
-      "Capital": "Sarajevo",
-      "Capital Latitude": 43.856259,
-      "Capital Longitude": 18.413076,
-      "Two Letter Code": "BA",
-      "Three Letter Code": "BIH",
-      "Centroid Lat": 43.915886,
-      "Centroid Long": 17.679076,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Botswana",
-      "Capital": "Gaborone",
-      "Capital Latitude": -24.628208,
-      "Capital Longitude": 25.923147,
-      "Two Letter Code": "BW",
-      "Three Letter Code": "BWA",
-      "Centroid Lat": -22.328474,
-      "Centroid Long": 24.684866,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Bouvet Island",
-      "Capital": "Bouvet Island",
-      "Capital Latitude": -54.43,
-      "Capital Longitude": 3.38,
-      "Two Letter Code": "BV",
-      "Three Letter Code": "BVT",
-      "Centroid Lat": -54.423199,
-      "Centroid Long": 3.413194,
-      "Continent": "Atlantic Ocean"
-    },
-    {
-      "Country": "Brazil",
-      "Capital": "Brasília",
-      "Capital Latitude": -15.794229,
-      "Capital Longitude": -47.882166,
-      "Two Letter Code": "BR",
-      "Three Letter Code": "BRA",
-      "Centroid Lat": -14.235004,
-      "Centroid Long": -51.92528,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "British Indian Ocean Territory",
-      "Capital": "Camp Justice",
-      "Capital Latitude": 21.3419,
-      "Capital Longitude": 55.4778,
-      "Two Letter Code": "IO",
-      "Three Letter Code": "IOT",
-      "Centroid Lat": -6.343194,
-      "Centroid Long": 71.876519,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "British Virgin Islands",
-      "Capital": "Road Town",
-      "Capital Latitude": 18.428612,
-      "Capital Longitude": -64.618466,
-      "Two Letter Code": "VG",
-      "Three Letter Code": "VGB",
-      "Centroid Lat": 18.420695,
-      "Centroid Long": -64.639968,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Brunei",
-      "Capital": "Bandar Seri Begawan",
-      "Capital Latitude": 4.903052,
-      "Capital Longitude": 114.939821,
-      "Two Letter Code": "BN",
-      "Three Letter Code": "BRN",
-      "Centroid Lat": 4.535277,
-      "Centroid Long": 114.727669,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Bulgaria",
-      "Capital": "Sofia",
-      "Capital Latitude": 42.697708,
-      "Capital Longitude": 23.321868,
-      "Two Letter Code": "BG",
-      "Three Letter Code": "BGR",
-      "Centroid Lat": 42.733883,
-      "Centroid Long": 25.48583,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Burkina Faso",
-      "Capital": "Ouagadougou",
-      "Capital Latitude": 12.371428,
-      "Capital Longitude": -1.51966,
-      "Two Letter Code": "BF",
-      "Three Letter Code": "BFA",
-      "Centroid Lat": 12.238333,
-      "Centroid Long": -1.561593,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Burundi",
-      "Capital": "Bujumbura",
-      "Capital Latitude": -3.361378,
-      "Capital Longitude": 29.359878,
-      "Two Letter Code": "BI",
-      "Three Letter Code": "BDI",
-      "Centroid Lat": -3.373056,
-      "Centroid Long": 29.918886,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Cambodia",
-      "Capital": "Phnom Penh",
-      "Capital Latitude": 11.544873,
-      "Capital Longitude": 104.892167,
-      "Two Letter Code": "KH",
-      "Three Letter Code": "KHM",
-      "Centroid Lat": 12.565679,
-      "Centroid Long": 104.990963,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Cameroon",
-      "Capital": "Yaoundé",
-      "Capital Latitude": 3.848033,
-      "Capital Longitude": 11.502075,
-      "Two Letter Code": "CM",
-      "Three Letter Code": "CMR",
-      "Centroid Lat": 7.369722,
-      "Centroid Long": 12.354722,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Canada",
-      "Capital": "Ottawa",
-      "Capital Latitude": 45.42153,
-      "Capital Longitude": -75.697193,
-      "Two Letter Code": "CA",
-      "Three Letter Code": "CAN",
-      "Centroid Lat": 56.130366,
-      "Centroid Long": -106.346771,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Cape Verde",
-      "Capital": "Praia",
-      "Capital Latitude": 14.93305,
-      "Capital Longitude": -23.513327,
-      "Two Letter Code": "CV",
-      "Three Letter Code": "CPV",
-      "Centroid Lat": 16.002082,
-      "Centroid Long": -24.013197,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Cayman Islands",
-      "Capital": "George Town",
-      "Capital Latitude": 19.286932,
-      "Capital Longitude": -81.367439,
-      "Two Letter Code": "KY",
-      "Three Letter Code": "CYM",
-      "Centroid Lat": 19.513469,
-      "Centroid Long": -80.566956,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Central African Republic",
-      "Capital": "Bangui",
-      "Capital Latitude": 4.394674,
-      "Capital Longitude": 18.55819,
-      "Two Letter Code": "CF",
-      "Three Letter Code": "CAF",
-      "Centroid Lat": 6.611111,
-      "Centroid Long": 20.939444,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Chad",
-      "Capital": "N'Djamena",
-      "Capital Latitude": 12.134846,
-      "Capital Longitude": 15.055742,
-      "Two Letter Code": "TD",
-      "Three Letter Code": "TCD",
-      "Centroid Lat": 15.454166,
-      "Centroid Long": 18.732207,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Chile",
-      "Capital": "Santiago",
-      "Capital Latitude": -33.44889,
-      "Capital Longitude": -70.669265,
-      "Two Letter Code": "CL",
-      "Three Letter Code": "CHL",
-      "Centroid Lat": -35.675147,
-      "Centroid Long": -71.542969,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "China",
-      "Capital": "Beijing",
-      "Capital Latitude": 39.904211,
-      "Capital Longitude": 116.407395,
-      "Two Letter Code": "CN",
-      "Three Letter Code": "CHN",
-      "Centroid Lat": 35.86166,
-      "Centroid Long": 104.195397,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Christmas Island",
-      "Capital": "Flying Fish Cove",
-      "Capital Latitude": -10.420686,
-      "Capital Longitude": 105.679379,
-      "Two Letter Code": "CX",
-      "Three Letter Code": "CXR",
-      "Centroid Lat": -10.447525,
-      "Centroid Long": 105.690449,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Cocos (Keeling) Islands",
-      "Capital": "West Island",
-      "Capital Latitude": -12.188834,
-      "Capital Longitude": 96.829316,
-      "Two Letter Code": "CC",
-      "Three Letter Code": "CCK",
-      "Centroid Lat": -12.164165,
-      "Centroid Long": 96.870956,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Colombia",
-      "Capital": "Bogotá",
-      "Capital Latitude": 4.710989,
-      "Capital Longitude": -74.072092,
-      "Two Letter Code": "CO",
-      "Three Letter Code": "COL",
-      "Centroid Lat": 4.570868,
-      "Centroid Long": -74.297333,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Comoros",
-      "Capital": "Moroni",
-      "Capital Latitude": -11.717216,
-      "Capital Longitude": 43.247315,
-      "Two Letter Code": "KM",
-      "Three Letter Code": "COM",
-      "Centroid Lat": -11.875001,
-      "Centroid Long": 43.872219,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Congo (DRC)",
-      "Capital": "Kinshasa",
-      "Capital Latitude": -4.441931,
-      "Capital Longitude": 15.266293,
-      "Two Letter Code": "CD",
-      "Three Letter Code": "COD",
-      "Centroid Lat": -4.038333,
-      "Centroid Long": 21.758664,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Congo (Republic)",
-      "Capital": "Brazzaville",
-      "Capital Latitude": -4.26336,
-      "Capital Longitude": 15.242885,
-      "Two Letter Code": "CG",
-      "Three Letter Code": "COG",
-      "Centroid Lat": -0.228021,
-      "Centroid Long": 15.827659,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Cook Islands",
-      "Capital": "Avarua",
-      "Capital Latitude": -21.212901,
-      "Capital Longitude": -159.782306,
-      "Two Letter Code": "CK",
-      "Three Letter Code": "COK",
-      "Centroid Lat": -21.236736,
-      "Centroid Long": -159.777671,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Costa Rica",
-      "Capital": "San José",
-      "Capital Latitude": 9.928069,
-      "Capital Longitude": -84.090725,
-      "Two Letter Code": "CR",
-      "Three Letter Code": "CRI",
-      "Centroid Lat": 9.748917,
-      "Centroid Long": -83.753428,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Côte d’Ivoire",
-      "Capital": "Yamoussoukro",
-      "Capital Latitude": 6.827623,
-      "Capital Longitude": -5.289343,
-      "Two Letter Code": "CI",
-      "Three Letter Code": "CIV",
-      "Centroid Lat": 7.539989,
-      "Centroid Long": -5.54708,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Croatia",
-      "Capital": "Zagreb ",
-      "Capital Latitude": 45.815011,
-      "Capital Longitude": 15.981919,
-      "Two Letter Code": "HR",
-      "Three Letter Code": "HRV",
-      "Centroid Lat": 45.1,
-      "Centroid Long": 15.2,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Cuba",
-      "Capital": "Havana",
-      "Capital Latitude": 23.05407,
-      "Capital Longitude": -82.345189,
-      "Two Letter Code": "CU",
-      "Three Letter Code": "CUB",
-      "Centroid Lat": 21.521757,
-      "Centroid Long": -77.781167,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Curaçao",
-      "Capital": "Willemstad",
-      "Capital Latitude": 12.122422,
-      "Capital Longitude": -68.882423,
-      "Two Letter Code": "CW",
-      "Three Letter Code": "CUW",
-      "Centroid Lat": 12.122422,
-      "Centroid Long": -68.882423,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Cyprus",
-      "Capital": "Nicosia",
-      "Capital Latitude": 35.185566,
-      "Capital Longitude": 33.382276,
-      "Two Letter Code": "CY",
-      "Three Letter Code": "CYP",
-      "Centroid Lat": 35.126413,
-      "Centroid Long": 33.429859,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Czechia",
-      "Capital": "Prague",
-      "Capital Latitude": 50.075538,
-      "Capital Longitude": 14.4378,
-      "Two Letter Code": "CZ",
-      "Three Letter Code": "CZE",
-      "Centroid Lat": 49.817492,
-      "Centroid Long": 15.472962,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Denmark",
-      "Capital": "Copenhagen",
-      "Capital Latitude": 55.676097,
-      "Capital Longitude": 12.568337,
-      "Two Letter Code": "DK",
-      "Three Letter Code": "DNK",
-      "Centroid Lat": 56.26392,
-      "Centroid Long": 9.501785,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Djibouti",
-      "Capital": "Djibouti",
-      "Capital Latitude": 11.572077,
-      "Capital Longitude": 43.145647,
-      "Two Letter Code": "DJ",
-      "Three Letter Code": "DJI",
-      "Centroid Lat": 11.825138,
-      "Centroid Long": 42.590275,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Dominica",
-      "Capital": "Roseau",
-      "Capital Latitude": 15.309168,
-      "Capital Longitude": -61.379355,
-      "Two Letter Code": "DM",
-      "Three Letter Code": "DMA",
-      "Centroid Lat": 15.414999,
-      "Centroid Long": -61.370976,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Dominican Republic",
-      "Capital": "Santo Domingo",
-      "Capital Latitude": 18.486058,
-      "Capital Longitude": -69.931212,
-      "Two Letter Code": "DO",
-      "Three Letter Code": "DOM",
-      "Centroid Lat": 18.735693,
-      "Centroid Long": -70.162651,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Ecuador",
-      "Capital": "Quito",
-      "Capital Latitude": -0.180653,
-      "Capital Longitude": -78.467838,
-      "Two Letter Code": "EC",
-      "Three Letter Code": "ECU",
-      "Centroid Lat": -1.831239,
-      "Centroid Long": -78.183406,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Egypt",
-      "Capital": "Cairo",
-      "Capital Latitude": 30.04442,
-      "Capital Longitude": 31.235712,
-      "Two Letter Code": "EG",
-      "Three Letter Code": "EGY",
-      "Centroid Lat": 26.820553,
-      "Centroid Long": 30.802498,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "El Salvador",
-      "Capital": "San Salvador",
-      "Capital Latitude": 13.69294,
-      "Capital Longitude": -89.218191,
-      "Two Letter Code": "SV",
-      "Three Letter Code": "SLV",
-      "Centroid Lat": 13.794185,
-      "Centroid Long": -88.89653,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Equatorial Guinea",
-      "Capital": "Malabo",
-      "Capital Latitude": 3.750412,
-      "Capital Longitude": 8.737104,
-      "Two Letter Code": "GQ",
-      "Three Letter Code": "GNQ",
-      "Centroid Lat": 1.650801,
-      "Centroid Long": 10.267895,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Eritrea",
-      "Capital": "Asmara",
-      "Capital Latitude": 15.322877,
-      "Capital Longitude": 38.925052,
-      "Two Letter Code": "ER",
-      "Three Letter Code": "ERI",
-      "Centroid Lat": 15.179384,
-      "Centroid Long": 39.782334,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Estonia",
-      "Capital": "Tallinn",
-      "Capital Latitude": 59.436961,
-      "Capital Longitude": 24.753575,
-      "Two Letter Code": "EE",
-      "Three Letter Code": "EST",
-      "Centroid Lat": 58.595272,
-      "Centroid Long": 25.013607,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Ethiopia",
-      "Capital": "Addis Ababa",
-      "Capital Latitude": 8.980603,
-      "Capital Longitude": 38.757761,
-      "Two Letter Code": "ET",
-      "Three Letter Code": "ETH",
-      "Centroid Lat": 9.145,
-      "Centroid Long": 40.489673,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Falkland Islands",
-      "Capital": "Stanley",
-      "Capital Latitude": -51.697713,
-      "Capital Longitude": -57.851663,
-      "Two Letter Code": "FK",
-      "Three Letter Code": "FLK",
-      "Centroid Lat": -51.796253,
-      "Centroid Long": -59.523613,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Faroe Islands",
-      "Capital": "Tórshavn",
-      "Capital Latitude": 62.007864,
-      "Capital Longitude": -6.790982,
-      "Two Letter Code": "FO",
-      "Three Letter Code": "FRO",
-      "Centroid Lat": 61.892635,
-      "Centroid Long": -6.911806,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Fiji",
-      "Capital": "Suva",
-      "Capital Latitude": -18.124809,
-      "Capital Longitude": 178.450079,
-      "Two Letter Code": "FJ",
-      "Three Letter Code": "FJI",
-      "Centroid Lat": -16.578193,
-      "Centroid Long": 179.414413,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Finland",
-      "Capital": "Helsinki",
-      "Capital Latitude": 60.173324,
-      "Capital Longitude": 24.941025,
-      "Two Letter Code": "FI",
-      "Three Letter Code": "FIN",
-      "Centroid Lat": 61.92411,
-      "Centroid Long": 25.748151,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "France",
-      "Capital": "Paris",
-      "Capital Latitude": 48.856614,
-      "Capital Longitude": 2.352222,
-      "Two Letter Code": "FR",
-      "Three Letter Code": "FRA",
-      "Centroid Lat": 46.227638,
-      "Centroid Long": 2.213749,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "French Guiana",
-      "Capital": "Cayenne",
-      "Capital Latitude": 4.92242,
-      "Capital Longitude": -52.313453,
-      "Two Letter Code": "GF",
-      "Three Letter Code": "GUF",
-      "Centroid Lat": 3.933889,
-      "Centroid Long": -53.125782,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "French Polynesia",
-      "Capital": "Papeete",
-      "Capital Latitude": -17.551625,
-      "Capital Longitude": -149.558476,
-      "Two Letter Code": "PF",
-      "Three Letter Code": "PYF",
-      "Centroid Lat": -17.679742,
-      "Centroid Long": -149.406843,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "French Southern Territories",
-      "Capital": "Saint-Pierre ",
-      "Capital Latitude": -21.3419,
-      "Capital Longitude": 55.4778,
-      "Two Letter Code": "TF",
-      "Three Letter Code": "ATF",
-      "Centroid Lat": -49.280366,
-      "Centroid Long": 69.348557,
-      "Continent": "Indian Ocean"
-    },
-    {
-      "Country": "Gabon",
-      "Capital": "Libreville",
-      "Capital Latitude": 0.416198,
-      "Capital Longitude": 9.467268,
-      "Two Letter Code": "GA",
-      "Three Letter Code": "GAB",
-      "Centroid Lat": -0.803689,
-      "Centroid Long": 11.609444,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Gambia",
-      "Capital": "Banjul",
-      "Capital Latitude": 13.454876,
-      "Capital Longitude": -16.579032,
-      "Two Letter Code": "GM",
-      "Three Letter Code": "GMB",
-      "Centroid Lat": 13.443182,
-      "Centroid Long": -15.310139,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Georgia",
-      "Capital": "Tbilisi",
-      "Capital Latitude": 41.715138,
-      "Capital Longitude": 44.827096,
-      "Two Letter Code": "GE",
-      "Three Letter Code": "GEO",
-      "Centroid Lat": 42.315407,
-      "Centroid Long": 43.356892,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Germany",
-      "Capital": "Berlin",
-      "Capital Latitude": 52.520007,
-      "Capital Longitude": 13.404954,
-      "Two Letter Code": "DE",
-      "Three Letter Code": "DEU",
-      "Centroid Lat": 51.165691,
-      "Centroid Long": 10.451526,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Ghana",
-      "Capital": "Accra",
-      "Capital Latitude": 5.603717,
-      "Capital Longitude": -0.186964,
-      "Two Letter Code": "GH",
-      "Three Letter Code": "GHA",
-      "Centroid Lat": 7.946527,
-      "Centroid Long": -1.023194,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Gibraltar",
-      "Capital": "Gibraltar",
-      "Capital Latitude": 36.140773,
-      "Capital Longitude": -5.353599,
-      "Two Letter Code": "GI",
-      "Three Letter Code": "GIB",
-      "Centroid Lat": 36.137741,
-      "Centroid Long": -5.345374,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Greece",
-      "Capital": "Athens",
-      "Capital Latitude": 37.983917,
-      "Capital Longitude": 23.72936,
-      "Two Letter Code": "GR",
-      "Three Letter Code": "GRC",
-      "Centroid Lat": 39.074208,
-      "Centroid Long": 21.824312,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Greenland",
-      "Capital": "Nuuk",
-      "Capital Latitude": 64.18141,
-      "Capital Longitude": -51.694138,
-      "Two Letter Code": "GL",
-      "Three Letter Code": "GRL",
-      "Centroid Lat": 71.706936,
-      "Centroid Long": -42.604303,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Grenada",
-      "Capital": "St. George's",
-      "Capital Latitude": 12.056098,
-      "Capital Longitude": -61.7488,
-      "Two Letter Code": "GD",
-      "Three Letter Code": "GRD",
-      "Centroid Lat": 12.262776,
-      "Centroid Long": -61.604171,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Guadeloupe",
-      "Capital": "Basse-Terre",
-      "Capital Latitude": 16.014453,
-      "Capital Longitude": -61.706411,
-      "Two Letter Code": "GP",
-      "Three Letter Code": "GLP",
-      "Centroid Lat": 16.995971,
-      "Centroid Long": -62.067641,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Guam",
-      "Capital": "Hagåtña",
-      "Capital Latitude": 13.470891,
-      "Capital Longitude": 144.751278,
-      "Two Letter Code": "GU",
-      "Three Letter Code": "GUM",
-      "Centroid Lat": 13.444304,
-      "Centroid Long": 144.793731,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Guatemala",
-      "Capital": "Guatemala City",
-      "Capital Latitude": 14.634915,
-      "Capital Longitude": -90.506882,
-      "Two Letter Code": "GT",
-      "Three Letter Code": "GTM",
-      "Centroid Lat": 15.783471,
-      "Centroid Long": -90.230759,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Guernsey",
-      "Capital": "St. Peter Port",
-      "Capital Latitude": 49.455443,
-      "Capital Longitude": -2.536871,
-      "Two Letter Code": "GG",
-      "Three Letter Code": "GGY",
-      "Centroid Lat": 49.465691,
-      "Centroid Long": -2.585278,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Guinea",
-      "Capital": "Conakry",
-      "Capital Latitude": 9.641185,
-      "Capital Longitude": -13.578401,
-      "Two Letter Code": "GN",
-      "Three Letter Code": "GIN",
-      "Centroid Lat": 9.945587,
-      "Centroid Long": -9.696645,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Guinea-Bissau",
-      "Capital": "Bissau",
-      "Capital Latitude": 11.881655,
-      "Capital Longitude": -15.617794,
-      "Two Letter Code": "GW",
-      "Three Letter Code": "GNB",
-      "Centroid Lat": 11.803749,
-      "Centroid Long": -15.180413,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Guyana",
-      "Capital": "Georgetown",
-      "Capital Latitude": 6.801279,
-      "Capital Longitude": -58.155125,
-      "Two Letter Code": "GY",
-      "Three Letter Code": "GUY",
-      "Centroid Lat": 4.860416,
-      "Centroid Long": -58.93018,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Haiti",
-      "Capital": "Port-au-Prince",
-      "Capital Latitude": 18.594395,
-      "Capital Longitude": -72.307433,
-      "Two Letter Code": "HT",
-      "Three Letter Code": "HTI",
-      "Centroid Lat": 18.971187,
-      "Centroid Long": -72.285215,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Honduras",
-      "Capital": "Tegucigalpa",
-      "Capital Latitude": 14.072275,
-      "Capital Longitude": -87.192136,
-      "Two Letter Code": "HN",
-      "Three Letter Code": "HND",
-      "Centroid Lat": 15.199999,
-      "Centroid Long": -86.241905,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Hong Kong",
-      "Capital": "Hong Kong",
-      "Capital Latitude": 22.396428,
-      "Capital Longitude": 114.109497,
-      "Two Letter Code": "HK",
-      "Three Letter Code": "HKG",
-      "Centroid Lat": 22.396428,
-      "Centroid Long": 114.109497,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Hungary",
-      "Capital": "Budapest",
-      "Capital Latitude": 47.497912,
-      "Capital Longitude": 19.040235,
-      "Two Letter Code": "HU",
-      "Three Letter Code": "HUN",
-      "Centroid Lat": 47.162494,
-      "Centroid Long": 19.503304,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Iceland",
-      "Capital": "Reykjavík",
-      "Capital Latitude": 64.126521,
-      "Capital Longitude": -21.817439,
-      "Two Letter Code": "IS",
-      "Three Letter Code": "ISL",
-      "Centroid Lat": 64.963051,
-      "Centroid Long": -19.020835,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "India",
-      "Capital": "New Delhi",
-      "Capital Latitude": 28.613939,
-      "Capital Longitude": 77.209021,
-      "Two Letter Code": "IN",
-      "Three Letter Code": "IND",
-      "Centroid Lat": 20.593684,
-      "Centroid Long": 78.96288,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Indonesia",
-      "Capital": "Jakarta",
-      "Capital Latitude": -6.208763,
-      "Capital Longitude": 106.845599,
-      "Two Letter Code": "ID",
-      "Three Letter Code": "IDN",
-      "Centroid Lat": -0.789275,
-      "Centroid Long": 113.921327,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Iran",
-      "Capital": "Tehran",
-      "Capital Latitude": 35.689198,
-      "Capital Longitude": 51.388974,
-      "Two Letter Code": "IR",
-      "Three Letter Code": "IRN",
-      "Centroid Lat": 32.427908,
-      "Centroid Long": 53.688046,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Iraq",
-      "Capital": "Baghdad",
-      "Capital Latitude": 33.312806,
-      "Capital Longitude": 44.361488,
-      "Two Letter Code": "IQ",
-      "Three Letter Code": "IRQ",
-      "Centroid Lat": 33.223191,
-      "Centroid Long": 43.679291,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Ireland",
-      "Capital": "Dublin",
-      "Capital Latitude": 53.349805,
-      "Capital Longitude": -6.26031,
-      "Two Letter Code": "IE",
-      "Three Letter Code": "IRL",
-      "Centroid Lat": 53.41291,
-      "Centroid Long": -8.24389,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Isle of Man",
-      "Capital": "Douglas",
-      "Capital Latitude": 54.152337,
-      "Capital Longitude": -4.486123,
-      "Two Letter Code": "IM",
-      "Three Letter Code": "IMN",
-      "Centroid Lat": 54.236107,
-      "Centroid Long": -4.548056,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Israel",
-      "Capital": "Tel Aviv",
-      "Capital Latitude": 32.0853,
-      "Capital Longitude": 34.781768,
-      "Two Letter Code": "IL",
-      "Three Letter Code": "ISR",
-      "Centroid Lat": 31.046051,
-      "Centroid Long": 34.851612,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Italy",
-      "Capital": "Rome",
-      "Capital Latitude": 41.902784,
-      "Capital Longitude": 12.496366,
-      "Two Letter Code": "IT",
-      "Three Letter Code": "ITA",
-      "Centroid Lat": 41.87194,
-      "Centroid Long": 12.56738,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Jamaica",
-      "Capital": "Kingston",
-      "Capital Latitude": 18.042327,
-      "Capital Longitude": -76.802893,
-      "Two Letter Code": "JM",
-      "Three Letter Code": "JAM",
-      "Centroid Lat": 18.109581,
-      "Centroid Long": -77.297508,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Japan",
-      "Capital": "Tokyo",
-      "Capital Latitude": 35.709026,
-      "Capital Longitude": 139.731992,
-      "Two Letter Code": "JP",
-      "Three Letter Code": "JPN",
-      "Centroid Lat": 36.204824,
-      "Centroid Long": 138.252924,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Jersey",
-      "Capital": "St. Helier",
-      "Capital Latitude": 49.186823,
-      "Capital Longitude": -2.106568,
-      "Two Letter Code": "JE",
-      "Three Letter Code": "JEY",
-      "Centroid Lat": 49.214439,
-      "Centroid Long": -2.13125,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Jordan",
-      "Capital": "Amman",
-      "Capital Latitude": 31.956578,
-      "Capital Longitude": 35.945695,
-      "Two Letter Code": "JO",
-      "Three Letter Code": "JOR",
-      "Centroid Lat": 30.585164,
-      "Centroid Long": 36.238414,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Kazakhstan",
-      "Capital": "Astana",
-      "Capital Latitude": 51.160523,
-      "Capital Longitude": 71.470356,
-      "Two Letter Code": "KZ",
-      "Three Letter Code": "KAZ",
-      "Centroid Lat": 48.019573,
-      "Centroid Long": 66.923684,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Kenya",
-      "Capital": "Nairobi",
-      "Capital Latitude": -1.292066,
-      "Capital Longitude": 36.821946,
-      "Two Letter Code": "KE",
-      "Three Letter Code": "KEN",
-      "Centroid Lat": -0.023559,
-      "Centroid Long": 37.906193,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Kiribati",
-      "Capital": "Tarawa Atoll",
-      "Capital Latitude": 1.451817,
-      "Capital Longitude": 172.971662,
-      "Two Letter Code": "KI",
-      "Three Letter Code": "KIR",
-      "Centroid Lat": -3.370417,
-      "Centroid Long": -168.734039,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Kosovo",
-      "Capital": "Pristina",
-      "Capital Latitude": 42.662914,
-      "Capital Longitude": 21.165503,
-      "Two Letter Code": "XK",
-      "Three Letter Code": "XXK",
-      "Centroid Lat": 42.602636,
-      "Centroid Long": 20.902977,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Kuwait",
-      "Capital": "Kuwait City",
-      "Capital Latitude": 29.375859,
-      "Capital Longitude": 47.977405,
-      "Two Letter Code": "KW",
-      "Three Letter Code": "KWT",
-      "Centroid Lat": 29.31166,
-      "Centroid Long": 47.481766,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Kyrgyzstan",
-      "Capital": "Bishkek",
-      "Capital Latitude": 42.874621,
-      "Capital Longitude": 74.569762,
-      "Two Letter Code": "KG",
-      "Three Letter Code": "KGZ",
-      "Centroid Lat": 41.20438,
-      "Centroid Long": 74.766098,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Laos",
-      "Capital": "Vientiane",
-      "Capital Latitude": 17.975706,
-      "Capital Longitude": 102.633104,
-      "Two Letter Code": "LA",
-      "Three Letter Code": "LAO",
-      "Centroid Lat": 19.85627,
-      "Centroid Long": 102.495496,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Latvia",
-      "Capital": "Riga",
-      "Capital Latitude": 56.949649,
-      "Capital Longitude": 24.105186,
-      "Two Letter Code": "LV",
-      "Three Letter Code": "LVA",
-      "Centroid Lat": 56.879635,
-      "Centroid Long": 24.603189,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Lebanon",
-      "Capital": "Beirut",
-      "Capital Latitude": 33.888629,
-      "Capital Longitude": 35.495479,
-      "Two Letter Code": "LB",
-      "Three Letter Code": "LBN",
-      "Centroid Lat": 33.854721,
-      "Centroid Long": 35.862285,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Lesotho",
-      "Capital": "Maseru",
-      "Capital Latitude": -29.363219,
-      "Capital Longitude": 27.51436,
-      "Two Letter Code": "LS",
-      "Three Letter Code": "LSO",
-      "Centroid Lat": -29.609988,
-      "Centroid Long": 28.233608,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Liberia",
-      "Capital": "Monrovia",
-      "Capital Latitude": 6.290743,
-      "Capital Longitude": -10.760524,
-      "Two Letter Code": "LR",
-      "Three Letter Code": "LBR",
-      "Centroid Lat": 6.428055,
-      "Centroid Long": -9.429499,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Libya",
-      "Capital": "Tripoli",
-      "Capital Latitude": 32.887209,
-      "Capital Longitude": 13.191338,
-      "Two Letter Code": "LY",
-      "Three Letter Code": "LBY",
-      "Centroid Lat": 26.3351,
-      "Centroid Long": 17.228331,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Liechtenstein",
-      "Capital": "Vaduz",
-      "Capital Latitude": 47.14103,
-      "Capital Longitude": 9.520928,
-      "Two Letter Code": "LI",
-      "Three Letter Code": "LIE",
-      "Centroid Lat": 47.166,
-      "Centroid Long": 9.555373,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Lithuania",
-      "Capital": "Vilnius",
-      "Capital Latitude": 54.687156,
-      "Capital Longitude": 25.279651,
-      "Two Letter Code": "LT",
-      "Three Letter Code": "LTU",
-      "Centroid Lat": 55.169438,
-      "Centroid Long": 23.881275,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Luxembourg",
-      "Capital": "Luxembourg",
-      "Capital Latitude": 49.611621,
-      "Capital Longitude": 6.131935,
-      "Two Letter Code": "LU",
-      "Three Letter Code": "LUX",
-      "Centroid Lat": 49.815273,
-      "Centroid Long": 6.129583,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Macau",
-      "Capital": "Macau",
-      "Capital Latitude": 22.166667,
-      "Capital Longitude": 113.55,
-      "Two Letter Code": "MO",
-      "Three Letter Code": "MAC",
-      "Centroid Lat": 22.198745,
-      "Centroid Long": 113.543873,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Republic of North Macedonia",
-      "Capital": "Skopje",
-      "Capital Latitude": 41.997346,
-      "Capital Longitude": 21.427996,
-      "Two Letter Code": "MK",
-      "Three Letter Code": "MKD",
-      "Centroid Lat": 41.608635,
-      "Centroid Long": 21.745275,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Madagascar",
-      "Capital": "Antananarivo",
-      "Capital Latitude": -18.87919,
-      "Capital Longitude": 47.507905,
-      "Two Letter Code": "MG",
-      "Three Letter Code": "MDG",
-      "Centroid Lat": -18.766947,
-      "Centroid Long": 46.869107,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Malawi",
-      "Capital": "Lilongwe",
-      "Capital Latitude": -13.962612,
-      "Capital Longitude": 33.774119,
-      "Two Letter Code": "MW",
-      "Three Letter Code": "MWI",
-      "Centroid Lat": -13.254308,
-      "Centroid Long": 34.301525,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Malaysia",
-      "Capital": "Kuala Lumpur",
-      "Capital Latitude": 3.139003,
-      "Capital Longitude": 101.686855,
-      "Two Letter Code": "MY",
-      "Three Letter Code": "MYS",
-      "Centroid Lat": 4.210484,
-      "Centroid Long": 101.975766,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Maldives",
-      "Capital": "Malé",
-      "Capital Latitude": 4.175496,
-      "Capital Longitude": 73.509347,
-      "Two Letter Code": "MV",
-      "Three Letter Code": "MDV",
-      "Centroid Lat": 3.202778,
-      "Centroid Long": 73.22068,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Mali",
-      "Capital": "Bamako",
-      "Capital Latitude": 12.639232,
-      "Capital Longitude": -8.002889,
-      "Two Letter Code": "ML",
-      "Three Letter Code": "MLI",
-      "Centroid Lat": 17.570692,
-      "Centroid Long": -3.996166,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Malta",
-      "Capital": "Valletta",
-      "Capital Latitude": 35.898909,
-      "Capital Longitude": 14.514553,
-      "Two Letter Code": "MT",
-      "Three Letter Code": "MLT",
-      "Centroid Lat": 35.937496,
-      "Centroid Long": 14.375416,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Marshall Islands",
-      "Capital": "Majuro",
-      "Capital Latitude": 7.116421,
-      "Capital Longitude": 171.185774,
-      "Two Letter Code": "MH",
-      "Three Letter Code": "MHL",
-      "Centroid Lat": 7.131474,
-      "Centroid Long": 171.184478,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Martinique",
-      "Capital": "Fort-de-France",
-      "Capital Latitude": 14.616065,
-      "Capital Longitude": -61.05878,
-      "Two Letter Code": "MQ",
-      "Three Letter Code": "MTQ",
-      "Centroid Lat": 14.641528,
-      "Centroid Long": -61.024174,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Mauritania",
-      "Capital": "Nouakchott",
-      "Capital Latitude": 18.07353,
-      "Capital Longitude": -15.958237,
-      "Two Letter Code": "MR",
-      "Three Letter Code": "MRT",
-      "Centroid Lat": 21.00789,
-      "Centroid Long": -10.940835,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Mauritius",
-      "Capital": "Port Louis",
-      "Capital Latitude": -20.166896,
-      "Capital Longitude": 57.502332,
-      "Two Letter Code": "MU",
-      "Three Letter Code": "MUS",
-      "Centroid Lat": -20.348404,
-      "Centroid Long": 57.552152,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Mayotte",
-      "Capital": "Mamoudzou",
-      "Capital Latitude": -12.780949,
-      "Capital Longitude": 45.227872,
-      "Two Letter Code": "YT",
-      "Three Letter Code": "MYT",
-      "Centroid Lat": -12.8275,
-      "Centroid Long": 45.166244,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Mexico",
-      "Capital": "Mexico City",
-      "Capital Latitude": 19.432608,
-      "Capital Longitude": -99.133208,
-      "Two Letter Code": "MX",
-      "Three Letter Code": "MEX",
-      "Centroid Lat": 23.634501,
-      "Centroid Long": -102.552784,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Micronesia",
-      "Capital": "Palikir",
-      "Capital Latitude": 6.914712,
-      "Capital Longitude": 158.161027,
-      "Two Letter Code": "FM",
-      "Three Letter Code": "FSM",
-      "Centroid Lat": 7.425554,
-      "Centroid Long": 150.550812,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Moldova",
-      "Capital": "Chisinau",
-      "Capital Latitude": 47.010453,
-      "Capital Longitude": 28.86381,
-      "Two Letter Code": "MD",
-      "Three Letter Code": "MDA",
-      "Centroid Lat": 47.411631,
-      "Centroid Long": 28.369885,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Monaco",
-      "Capital": "Monaco",
-      "Capital Latitude": 43.737411,
-      "Capital Longitude": 7.420816,
-      "Two Letter Code": "MC",
-      "Three Letter Code": "MCO",
-      "Centroid Lat": 43.750298,
-      "Centroid Long": 7.412841,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Mongolia",
-      "Capital": "Ulaanbaatar",
-      "Capital Latitude": 47.886399,
-      "Capital Longitude": 106.905744,
-      "Two Letter Code": "MN",
-      "Three Letter Code": "MNG",
-      "Centroid Lat": 46.862496,
-      "Centroid Long": 103.846656,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Montenegro",
-      "Capital": "Podgorica",
-      "Capital Latitude": 42.43042,
-      "Capital Longitude": 19.259364,
-      "Two Letter Code": "ME",
-      "Three Letter Code": "MNE",
-      "Centroid Lat": 42.708678,
-      "Centroid Long": 19.37439,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Montserrat",
-      "Capital": "Plymouth",
-      "Capital Latitude": 16.706523,
-      "Capital Longitude": -62.215738,
-      "Two Letter Code": "MS",
-      "Three Letter Code": "MSR",
-      "Centroid Lat": 16.742498,
-      "Centroid Long": -62.187366,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Morocco",
-      "Capital": "Rabat",
-      "Capital Latitude": 33.97159,
-      "Capital Longitude": -6.849813,
-      "Two Letter Code": "MA",
-      "Three Letter Code": "MAR",
-      "Centroid Lat": 31.791702,
-      "Centroid Long": -7.09262,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Mozambique",
-      "Capital": "Maputo",
-      "Capital Latitude": -25.891968,
-      "Capital Longitude": 32.605135,
-      "Two Letter Code": "MZ",
-      "Three Letter Code": "MOZ",
-      "Centroid Lat": -18.665695,
-      "Centroid Long": 35.529562,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Myanmar",
-      "Capital": "Naypyidaw",
-      "Capital Latitude": 19.763306,
-      "Capital Longitude": 96.07851,
-      "Two Letter Code": "MM",
-      "Three Letter Code": "MMR",
-      "Centroid Lat": 21.913965,
-      "Centroid Long": 95.956223,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Namibia",
-      "Capital": "Windhoek",
-      "Capital Latitude": -22.560881,
-      "Capital Longitude": 17.065755,
-      "Two Letter Code": "NA",
-      "Three Letter Code": "NAM",
-      "Centroid Lat": -22.95764,
-      "Centroid Long": 18.49041,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Nauru",
-      "Capital": "Yaren",
-      "Capital Latitude": -0.546686,
-      "Capital Longitude": 166.921091,
-      "Two Letter Code": "NR",
-      "Three Letter Code": "NRU",
-      "Centroid Lat": -0.522778,
-      "Centroid Long": 166.931503,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Nepal",
-      "Capital": "Kathmandu",
-      "Capital Latitude": 27.717245,
-      "Capital Longitude": 85.323961,
-      "Two Letter Code": "NP",
-      "Three Letter Code": "NPL",
-      "Centroid Lat": 28.394857,
-      "Centroid Long": 84.124008,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Netherlands",
-      "Capital": "Amsterdam",
-      "Capital Latitude": 52.370216,
-      "Capital Longitude": 4.895168,
-      "Two Letter Code": "NL",
-      "Three Letter Code": "NLD",
-      "Centroid Lat": 52.132633,
-      "Centroid Long": 5.291266,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Netherlands Antilles",
-      "Capital": "Willemstad ",
-      "Capital Latitude": 12.1091242,
-      "Capital Longitude": -68.9316546,
-      "Two Letter Code": "AN",
-      "Three Letter Code": "ANT",
-      "Centroid Lat": 12.226079,
-      "Centroid Long": -69.060087,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "New Caledonia",
-      "Capital": "Nouméa",
-      "Capital Latitude": -22.255823,
-      "Capital Longitude": 166.450524,
-      "Two Letter Code": "NC",
-      "Three Letter Code": "NCL",
-      "Centroid Lat": -20.904305,
-      "Centroid Long": 165.618042,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "New Zealand",
-      "Capital": "Wellington",
-      "Capital Latitude": -41.28646,
-      "Capital Longitude": 174.776236,
-      "Two Letter Code": "NZ",
-      "Three Letter Code": "NZL",
-      "Centroid Lat": -40.900557,
-      "Centroid Long": 174.885971,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Nicaragua",
-      "Capital": "Managua",
-      "Capital Latitude": 12.114993,
-      "Capital Longitude": -86.236174,
-      "Two Letter Code": "NI",
-      "Three Letter Code": "NIC",
-      "Centroid Lat": 12.865416,
-      "Centroid Long": -85.207229,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Niger",
-      "Capital": "Niamey",
-      "Capital Latitude": 13.511596,
-      "Capital Longitude": 2.125385,
-      "Two Letter Code": "NE",
-      "Three Letter Code": "NER",
-      "Centroid Lat": 17.607789,
-      "Centroid Long": 8.081666,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Nigeria",
-      "Capital": "Abuja",
-      "Capital Latitude": 9.076479,
-      "Capital Longitude": 7.398574,
-      "Two Letter Code": "NG",
-      "Three Letter Code": "NGA",
-      "Centroid Lat": 9.081999,
-      "Centroid Long": 8.675277,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Niue",
-      "Capital": "Alofi",
-      "Capital Latitude": -19.055371,
-      "Capital Longitude": -169.917871,
-      "Two Letter Code": "NU",
-      "Three Letter Code": "NIU",
-      "Centroid Lat": -19.054445,
-      "Centroid Long": -169.867233,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Norfolk Island",
-      "Capital": "Kingston",
-      "Capital Latitude": -29.056394,
-      "Capital Longitude": 167.959588,
-      "Two Letter Code": "NF",
-      "Three Letter Code": "NFK",
-      "Centroid Lat": -29.040835,
-      "Centroid Long": 167.954712,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "North Korea",
-      "Capital": "Pyongyang",
-      "Capital Latitude": 39.039219,
-      "Capital Longitude": 125.762524,
-      "Two Letter Code": "KP",
-      "Three Letter Code": "PRK",
-      "Centroid Lat": 40.339852,
-      "Centroid Long": 127.510093,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Northern Mariana Islands",
-      "Capital": "Saipan",
-      "Capital Latitude": 15.177801,
-      "Capital Longitude": 145.750967,
-      "Two Letter Code": "MP",
-      "Three Letter Code": "MNP",
-      "Centroid Lat": 17.33083,
-      "Centroid Long": 145.38469,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Norway",
-      "Capital": "Oslo",
-      "Capital Latitude": 59.913869,
-      "Capital Longitude": 10.752245,
-      "Two Letter Code": "NO",
-      "Three Letter Code": "NOR",
-      "Centroid Lat": 60.472024,
-      "Centroid Long": 8.468946,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Oman",
-      "Capital": "Muscat",
-      "Capital Latitude": 23.58589,
-      "Capital Longitude": 58.405923,
-      "Two Letter Code": "OM",
-      "Three Letter Code": "OMN",
-      "Centroid Lat": 21.512583,
-      "Centroid Long": 55.923255,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Pakistan",
-      "Capital": "Islamabad",
-      "Capital Latitude": 33.729388,
-      "Capital Longitude": 73.093146,
-      "Two Letter Code": "PK",
-      "Three Letter Code": "PAK",
-      "Centroid Lat": 30.375321,
-      "Centroid Long": 69.345116,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Palau",
-      "Capital": "Ngerulmud",
-      "Capital Latitude": 7.500384,
-      "Capital Longitude": 134.624289,
-      "Two Letter Code": "PW",
-      "Three Letter Code": "PLW",
-      "Centroid Lat": 7.51498,
-      "Centroid Long": 134.58252,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Panama",
-      "Capital": "Panama City",
-      "Capital Latitude": 9.101179,
-      "Capital Longitude": -79.402864,
-      "Two Letter Code": "PA",
-      "Three Letter Code": "PAN",
-      "Centroid Lat": 8.537981,
-      "Centroid Long": -80.782127,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Papua New Guinea",
-      "Capital": "Port Moresby",
-      "Capital Latitude": -9.4438,
-      "Capital Longitude": 147.180267,
-      "Two Letter Code": "PG",
-      "Three Letter Code": "PNG",
-      "Centroid Lat": -6.314993,
-      "Centroid Long": 143.95555,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Paraguay",
-      "Capital": "Asuncion",
-      "Capital Latitude": -25.26374,
-      "Capital Longitude": -57.575926,
-      "Two Letter Code": "PY",
-      "Three Letter Code": "PRY",
-      "Centroid Lat": -23.442503,
-      "Centroid Long": -58.443832,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Peru",
-      "Capital": "Lima",
-      "Capital Latitude": -12.046374,
-      "Capital Longitude": -77.042793,
-      "Two Letter Code": "PE",
-      "Three Letter Code": "PER",
-      "Centroid Lat": -9.189967,
-      "Centroid Long": -75.015152,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Philippines",
-      "Capital": "Manila",
-      "Capital Latitude": 14.599512,
-      "Capital Longitude": 120.98422,
-      "Two Letter Code": "PH",
-      "Three Letter Code": "PHL",
-      "Centroid Lat": 12.879721,
-      "Centroid Long": 121.774017,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Pitcairn Islands",
-      "Capital": "Adamstown",
-      "Capital Latitude": -25.06629,
-      "Capital Longitude": -130.100464,
-      "Two Letter Code": "PN",
-      "Three Letter Code": "PCN",
-      "Centroid Lat": -24.703615,
-      "Centroid Long": -127.439308,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Poland",
-      "Capital": "Warsaw",
-      "Capital Latitude": 52.229676,
-      "Capital Longitude": 21.012229,
-      "Two Letter Code": "PL",
-      "Three Letter Code": "POL",
-      "Centroid Lat": 51.919438,
-      "Centroid Long": 19.145136,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Portugal",
-      "Capital": "Lisbon",
-      "Capital Latitude": 38.722252,
-      "Capital Longitude": -9.139337,
-      "Two Letter Code": "PT",
-      "Three Letter Code": "PRT",
-      "Centroid Lat": 39.399872,
-      "Centroid Long": -8.224454,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Puerto Rico",
-      "Capital": "San Juan",
-      "Capital Latitude": 18.466334,
-      "Capital Longitude": -66.105722,
-      "Two Letter Code": "PR",
-      "Three Letter Code": "PRI",
-      "Centroid Lat": 18.220833,
-      "Centroid Long": -66.590149,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Qatar",
-      "Capital": "Doha",
-      "Capital Latitude": 25.285447,
-      "Capital Longitude": 51.53104,
-      "Two Letter Code": "QA",
-      "Three Letter Code": "QAT",
-      "Centroid Lat": 25.354826,
-      "Centroid Long": 51.183884,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Réunion",
-      "Capital": "Saint-Denis",
-      "Capital Latitude": -20.882057,
-      "Capital Longitude": 55.450675,
-      "Two Letter Code": "RE",
-      "Three Letter Code": "REU",
-      "Centroid Lat": -21.115141,
-      "Centroid Long": 55.536384,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Romania",
-      "Capital": "Bucharest",
-      "Capital Latitude": 44.426767,
-      "Capital Longitude": 26.102538,
-      "Two Letter Code": "RO",
-      "Three Letter Code": "ROU",
-      "Centroid Lat": 45.943161,
-      "Centroid Long": 24.96676,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Russia",
-      "Capital": "Moscow",
-      "Capital Latitude": 55.755826,
-      "Capital Longitude": 37.6173,
-      "Two Letter Code": "RU",
-      "Three Letter Code": "RUS",
-      "Centroid Lat": 61.52401,
-      "Centroid Long": 105.318756,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Rwanda",
-      "Capital": "Kigali",
-      "Capital Latitude": -1.957875,
-      "Capital Longitude": 30.112735,
-      "Two Letter Code": "RW",
-      "Three Letter Code": "RWA",
-      "Centroid Lat": -1.940278,
-      "Centroid Long": 29.873888,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Saint Pierre and Miquelon",
-      "Capital": "St. Pierre",
-      "Capital Latitude": 46.775846,
-      "Capital Longitude": -56.180636,
-      "Two Letter Code": "PM",
-      "Three Letter Code": "SPM",
-      "Centroid Lat": 46.941936,
-      "Centroid Long": -56.27111,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Saint Vincent and the Grenadines",
-      "Capital": "Kingstown",
-      "Capital Latitude": 13.160025,
-      "Capital Longitude": -61.224816,
-      "Two Letter Code": "VC",
-      "Three Letter Code": "VCT",
-      "Centroid Lat": 12.984305,
-      "Centroid Long": -61.287228,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Samoa",
-      "Capital": "Apia",
-      "Capital Latitude": -13.850696,
-      "Capital Longitude": -171.751355,
-      "Two Letter Code": "WS",
-      "Three Letter Code": "WSM",
-      "Centroid Lat": -13.759029,
-      "Centroid Long": -172.104629,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "San Marino",
-      "Capital": "San Marino",
-      "Capital Latitude": 43.935591,
-      "Capital Longitude": 12.447281,
-      "Two Letter Code": "SM",
-      "Three Letter Code": "SMR",
-      "Centroid Lat": 43.94236,
-      "Centroid Long": 12.457777,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "São Tomé and Príncipe",
-      "Capital": "São Tomé",
-      "Capital Latitude": 0.330192,
-      "Capital Longitude": 6.733343,
-      "Two Letter Code": "ST",
-      "Three Letter Code": "STP",
-      "Centroid Lat": 0.18636,
-      "Centroid Long": 6.613081,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Saudi Arabia",
-      "Capital": "Riyadh",
-      "Capital Latitude": 24.749403,
-      "Capital Longitude": 46.902838,
-      "Two Letter Code": "SA",
-      "Three Letter Code": "SAU",
-      "Centroid Lat": 23.885942,
-      "Centroid Long": 45.079162,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Senegal",
-      "Capital": "Dakar",
-      "Capital Latitude": 14.764504,
-      "Capital Longitude": -17.366029,
-      "Two Letter Code": "SN",
-      "Three Letter Code": "SEN",
-      "Centroid Lat": 14.497401,
-      "Centroid Long": -14.452362,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Serbia",
-      "Capital": "Belgrade",
-      "Capital Latitude": 44.786568,
-      "Capital Longitude": 20.448922,
-      "Two Letter Code": "RS",
-      "Three Letter Code": "SRB",
-      "Centroid Lat": 44.016521,
-      "Centroid Long": 21.005859,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Seychelles",
-      "Capital": "Victoria",
-      "Capital Latitude": -4.619143,
-      "Capital Longitude": 55.451315,
-      "Two Letter Code": "SC",
-      "Three Letter Code": "SYC",
-      "Centroid Lat": -4.679574,
-      "Centroid Long": 55.491977,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Sierra Leone",
-      "Capital": "Freetown",
-      "Capital Latitude": 8.465677,
-      "Capital Longitude": -13.231722,
-      "Two Letter Code": "SL",
-      "Three Letter Code": "SLE",
-      "Centroid Lat": 8.460555,
-      "Centroid Long": -11.779889,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Singapore",
-      "Capital": "Singapore",
-      "Capital Latitude": 1.280095,
-      "Capital Longitude": 103.850949,
-      "Two Letter Code": "SG",
-      "Three Letter Code": "SGP",
-      "Centroid Lat": 1.352083,
-      "Centroid Long": 103.819836,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Slovakia",
-      "Capital": "Bratislava",
-      "Capital Latitude": 48.145892,
-      "Capital Longitude": 17.107137,
-      "Two Letter Code": "SK",
-      "Three Letter Code": "SVK",
-      "Centroid Lat": 48.669026,
-      "Centroid Long": 19.699024,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Slovenia",
-      "Capital": "Ljubljana",
-      "Capital Latitude": 46.056947,
-      "Capital Longitude": 14.505751,
-      "Two Letter Code": "SI",
-      "Three Letter Code": "SVN",
-      "Centroid Lat": 46.151241,
-      "Centroid Long": 14.995463,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Solomon Islands",
-      "Capital": "Honiara",
-      "Capital Latitude": -9.445638,
-      "Capital Longitude": 159.9729,
-      "Two Letter Code": "SB",
-      "Three Letter Code": "SLB",
-      "Centroid Lat": -9.64571,
-      "Centroid Long": 160.156194,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Somalia",
-      "Capital": "Mogadishu",
-      "Capital Latitude": 2.046934,
-      "Capital Longitude": 45.318162,
-      "Two Letter Code": "SO",
-      "Three Letter Code": "SOM",
-      "Centroid Lat": 5.152149,
-      "Centroid Long": 46.199616,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "South Africa",
-      "Capital": "Pretoria",
-      "Capital Latitude": -25.747868,
-      "Capital Longitude": 28.229271,
-      "Two Letter Code": "ZA",
-      "Three Letter Code": "ZAF",
-      "Centroid Lat": -30.559482,
-      "Centroid Long": 22.937506,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "South Georgia and the South Sandwich Islands",
-      "Capital": "King Edward Point",
-      "Capital Latitude": -54.28325,
-      "Capital Longitude": -36.493735,
-      "Two Letter Code": "GS",
-      "Three Letter Code": "SGS",
-      "Centroid Lat": -54.429579,
-      "Centroid Long": -36.587909,
-      "Continent": "Atlantic Ocean"
-    },
-    {
-      "Country": "South Korea",
-      "Capital": "Seoul",
-      "Capital Latitude": 37.566535,
-      "Capital Longitude": 126.977969,
-      "Two Letter Code": "KR",
-      "Three Letter Code": "KOR",
-      "Centroid Lat": 35.907757,
-      "Centroid Long": 127.766922,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "South Sudan",
-      "Capital": "Juba",
-      "Capital Latitude": 4.859363,
-      "Capital Longitude": 31.57125,
-      "Two Letter Code": "SS",
-      "Three Letter Code": "SSD",
-      "Centroid Lat": 4.859363,
-      "Centroid Long": 31.57125,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Spain",
-      "Capital": "Madrid",
-      "Capital Latitude": 40.416775,
-      "Capital Longitude": -3.70379,
-      "Two Letter Code": "ES",
-      "Three Letter Code": "ESP",
-      "Centroid Lat": 40.463667,
-      "Centroid Long": -3.74922,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Sri Lanka",
-      "Capital": "Sri Jayawardenepura Kotte",
-      "Capital Latitude": 6.89407,
-      "Capital Longitude": 79.902478,
-      "Two Letter Code": "LK",
-      "Three Letter Code": "LKA",
-      "Centroid Lat": 7.873054,
-      "Centroid Long": 80.771797,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Saint Barthélemy",
-      "Capital": "Gustavia",
-      "Capital Latitude": 17.896435,
-      "Capital Longitude": -62.852201,
-      "Two Letter Code": "BL",
-      "Three Letter Code": "BLM",
-      "Centroid Lat": 17.896435,
-      "Centroid Long": -62.852201,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Saint Kitts and Nevis",
-      "Capital": "Basseterre",
-      "Capital Latitude": 17.302606,
-      "Capital Longitude": -62.717692,
-      "Two Letter Code": "KN",
-      "Three Letter Code": "KNA",
-      "Centroid Lat": 17.357822,
-      "Centroid Long": -62.782998,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Saint Lucia",
-      "Capital": "Castries",
-      "Capital Latitude": 14.010109,
-      "Capital Longitude": -60.987469,
-      "Two Letter Code": "LC",
-      "Three Letter Code": "LCA",
-      "Centroid Lat": 13.909444,
-      "Centroid Long": -60.978893,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Saint Martin",
-      "Capital": "Marigot",
-      "Capital Latitude": 18.067519,
-      "Capital Longitude": -63.082466,
-      "Two Letter Code": "SX",
-      "Three Letter Code": "SXM",
-      "Centroid Lat": 18.067519,
-      "Centroid Long": -63.082466,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Sudan",
-      "Capital": "Khartoum",
-      "Capital Latitude": 15.500654,
-      "Capital Longitude": 32.559899,
-      "Two Letter Code": "SD",
-      "Three Letter Code": "SDN",
-      "Centroid Lat": 12.862807,
-      "Centroid Long": 30.217636,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Suriname",
-      "Capital": "Paramaribo",
-      "Capital Latitude": 5.852036,
-      "Capital Longitude": -55.203828,
-      "Two Letter Code": "SR",
-      "Three Letter Code": "SUR",
-      "Centroid Lat": 3.919305,
-      "Centroid Long": -56.027783,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Svalbard and Jan Mayen",
-      "Capital": "Longyearbyen ",
-      "Capital Latitude": 78.062,
-      "Capital Longitude": 22.055,
-      "Two Letter Code": "SJ",
-      "Three Letter Code": "SJM",
-      "Centroid Lat": 77.553604,
-      "Centroid Long": 23.670272,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Eswatini (Swaziland)",
-      "Capital": "Mbabane",
-      "Capital Latitude": -26.305448,
-      "Capital Longitude": 31.136672,
-      "Two Letter Code": "SZ",
-      "Three Letter Code": "SWZ",
-      "Centroid Lat": -26.522503,
-      "Centroid Long": 31.465866,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Sweden",
-      "Capital": "Stockholm",
-      "Capital Latitude": 59.329323,
-      "Capital Longitude": 18.068581,
-      "Two Letter Code": "SE",
-      "Three Letter Code": "SWE",
-      "Centroid Lat": 60.128161,
-      "Centroid Long": 18.643501,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Switzerland",
-      "Capital": "Bern",
-      "Capital Latitude": 46.947974,
-      "Capital Longitude": 7.447447,
-      "Two Letter Code": "CH",
-      "Three Letter Code": "CHE",
-      "Centroid Lat": 46.818188,
-      "Centroid Long": 8.227512,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Syria",
-      "Capital": "Damascus",
-      "Capital Latitude": 33.513807,
-      "Capital Longitude": 36.276528,
-      "Two Letter Code": "SY",
-      "Three Letter Code": "SYR",
-      "Centroid Lat": 34.802075,
-      "Centroid Long": 38.996815,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Taiwan",
-      "Capital": "Taipei",
-      "Capital Latitude": 25.032969,
-      "Capital Longitude": 121.565418,
-      "Two Letter Code": "TW",
-      "Three Letter Code": "TWN",
-      "Centroid Lat": 23.69781,
-      "Centroid Long": 120.960515,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Tajikistan",
-      "Capital": "Dushanbe",
-      "Capital Latitude": 38.559772,
-      "Capital Longitude": 68.787038,
-      "Two Letter Code": "TJ",
-      "Three Letter Code": "TJK",
-      "Centroid Lat": 38.861034,
-      "Centroid Long": 71.276093,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Tanzania",
-      "Capital": "Dodoma",
-      "Capital Latitude": -6.162959,
-      "Capital Longitude": 35.751607,
-      "Two Letter Code": "TZ",
-      "Three Letter Code": "TZA",
-      "Centroid Lat": -6.369028,
-      "Centroid Long": 34.888822,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Thailand",
-      "Capital": "Bangkok",
-      "Capital Latitude": 13.756331,
-      "Capital Longitude": 100.501765,
-      "Two Letter Code": "TH",
-      "Three Letter Code": "THA",
-      "Centroid Lat": 15.870032,
-      "Centroid Long": 100.992541,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Timor-Leste",
-      "Capital": "Dili",
-      "Capital Latitude": -8.556856,
-      "Capital Longitude": 125.560314,
-      "Two Letter Code": "TL",
-      "Three Letter Code": "TLS",
-      "Centroid Lat": -8.874217,
-      "Centroid Long": 125.727539,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Togo",
-      "Capital": "Lomé",
-      "Capital Latitude": 6.172497,
-      "Capital Longitude": 1.231362,
-      "Two Letter Code": "TG",
-      "Three Letter Code": "TGO",
-      "Centroid Lat": 8.619543,
-      "Centroid Long": 0.824782,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Tokelau",
-      "Capital": "Nukunonu",
-      "Capital Latitude": -9.2005,
-      "Capital Longitude": -171.848,
-      "Two Letter Code": "TK",
-      "Three Letter Code": "TKL",
-      "Centroid Lat": -8.967363,
-      "Centroid Long": -171.855881,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Tonga",
-      "Capital": "Nuku'alofa",
-      "Capital Latitude": -21.139342,
-      "Capital Longitude": -175.204947,
-      "Two Letter Code": "TO",
-      "Three Letter Code": "TON",
-      "Centroid Lat": -21.178986,
-      "Centroid Long": -175.198242,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Trinidad and Tobago",
-      "Capital": "Port of Spain",
-      "Capital Latitude": 10.654901,
-      "Capital Longitude": -61.501926,
-      "Two Letter Code": "TT",
-      "Three Letter Code": "TTO",
-      "Centroid Lat": 10.691803,
-      "Centroid Long": -61.222503,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Tristan da Cunha",
-      "Capital": "Edinburgh of the Seven Seas",
-      "Capital Latitude": -37.068042,
-      "Capital Longitude": -12.311315,
-      "Two Letter Code": "SH",
-      "Three Letter Code": "SHN",
-      "Centroid Lat": -24.143474,
-      "Centroid Long": -10.030696,
-      "Continent": "Atlantic Ocean"
-    },
-    {
-      "Country": "Tunisia",
-      "Capital": "Tunis",
-      "Capital Latitude": 36.806495,
-      "Capital Longitude": 10.181532,
-      "Two Letter Code": "TN",
-      "Three Letter Code": "TUN",
-      "Centroid Lat": 33.886917,
-      "Centroid Long": 9.537499,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Turkey",
-      "Capital": "Ankara",
-      "Capital Latitude": 39.933364,
-      "Capital Longitude": 32.859742,
-      "Two Letter Code": "TR",
-      "Three Letter Code": "TUR",
-      "Centroid Lat": 38.963745,
-      "Centroid Long": 35.243322,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Turkmenistan",
-      "Capital": "Ashgabat",
-      "Capital Latitude": 37.960077,
-      "Capital Longitude": 58.326063,
-      "Two Letter Code": "TM",
-      "Three Letter Code": "TKM",
-      "Centroid Lat": 38.969719,
-      "Centroid Long": 59.556278,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Turks and Caicos Islands",
-      "Capital": "Cockburn Town",
-      "Capital Latitude": 21.467458,
-      "Capital Longitude": -71.13891,
-      "Two Letter Code": "TC",
-      "Three Letter Code": "TCA",
-      "Centroid Lat": 21.694025,
-      "Centroid Long": -71.797928,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Tuvalu",
-      "Capital": "Funafuti",
-      "Capital Latitude": -8.520066,
-      "Capital Longitude": 179.198128,
-      "Two Letter Code": "TV",
-      "Three Letter Code": "TUV",
-      "Centroid Lat": -7.109535,
-      "Centroid Long": 177.64933,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "U.S. Virgin Islands",
-      "Capital": "Charlotte Amalie",
-      "Capital Latitude": 18.3419,
-      "Capital Longitude": -64.930701,
-      "Two Letter Code": "VI",
-      "Three Letter Code": "VIR",
-      "Centroid Lat": 18.335765,
-      "Centroid Long": -64.896335,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Uganda",
-      "Capital": "Kampala",
-      "Capital Latitude": 0.347596,
-      "Capital Longitude": 32.58252,
-      "Two Letter Code": "UG",
-      "Three Letter Code": "UGA",
-      "Centroid Lat": 1.373333,
-      "Centroid Long": 32.290275,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Ukraine",
-      "Capital": "Kyiv",
-      "Capital Latitude": 50.4501,
-      "Capital Longitude": 30.5234,
-      "Two Letter Code": "UA",
-      "Three Letter Code": "UKR",
-      "Centroid Lat": 48.379433,
-      "Centroid Long": 31.16558,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "United Arab Emirates",
-      "Capital": "Abu Dhabi",
-      "Capital Latitude": 24.299174,
-      "Capital Longitude": 54.697277,
-      "Two Letter Code": "AE",
-      "Three Letter Code": "ARE",
-      "Centroid Lat": 23.424076,
-      "Centroid Long": 53.847818,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "United Kingdom",
-      "Capital": "London",
-      "Capital Latitude": 51.507351,
-      "Capital Longitude": -0.127758,
-      "Two Letter Code": "GB",
-      "Three Letter Code": "GBR",
-      "Centroid Lat": 55.378051,
-      "Centroid Long": -3.435973,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "United States",
-      "Capital": "Washington",
-      "Capital Latitude": 38.907192,
-      "Capital Longitude": -77.036871,
-      "Two Letter Code": "US",
-      "Three Letter Code": "USA",
-      "Centroid Lat": 37.09024,
-      "Centroid Long": -95.712891,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Uruguay",
-      "Capital": "Montevideo",
-      "Capital Latitude": -34.901113,
-      "Capital Longitude": -56.164531,
-      "Two Letter Code": "UY",
-      "Three Letter Code": "URY",
-      "Centroid Lat": -32.522779,
-      "Centroid Long": -55.765835,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Uzbekistan",
-      "Capital": "Tashkent",
-      "Capital Latitude": 41.299496,
-      "Capital Longitude": 69.240073,
-      "Two Letter Code": "UZ",
-      "Three Letter Code": "UZB",
-      "Centroid Lat": 41.377491,
-      "Centroid Long": 64.585262,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Vanuatu",
-      "Capital": "Port Vila",
-      "Capital Latitude": -17.733251,
-      "Capital Longitude": 168.327325,
-      "Two Letter Code": "VU",
-      "Three Letter Code": "VUT",
-      "Centroid Lat": -15.376706,
-      "Centroid Long": 166.959158,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Vatican City",
-      "Capital": "Vatican City",
-      "Capital Latitude": 41.902179,
-      "Capital Longitude": 12.453601,
-      "Two Letter Code": "VA",
-      "Three Letter Code": "VAT",
-      "Centroid Lat": 41.902916,
-      "Centroid Long": 12.453389,
-      "Continent": "Europe"
-    },
-    {
-      "Country": "Venezuela",
-      "Capital": "Caracas",
-      "Capital Latitude": 10.480594,
-      "Capital Longitude": -66.903606,
-      "Two Letter Code": "VE",
-      "Three Letter Code": "VEN",
-      "Centroid Lat": 6.42375,
-      "Centroid Long": -66.58973,
-      "Continent": "Americas"
-    },
-    {
-      "Country": "Vietnam",
-      "Capital": "Hanoi",
-      "Capital Latitude": 21.027764,
-      "Capital Longitude": 105.83416,
-      "Two Letter Code": "VN",
-      "Three Letter Code": "VNM",
-      "Centroid Lat": 14.058324,
-      "Centroid Long": 108.277199,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Wallis and Futuna",
-      "Capital": "Mata-Utu",
-      "Capital Latitude": -13.282509,
-      "Capital Longitude": -176.176447,
-      "Two Letter Code": "WF",
-      "Three Letter Code": "WLF",
-      "Centroid Lat": -13.768752,
-      "Centroid Long": -177.156097,
-      "Continent": "Oceania"
-    },
-    {
-      "Country": "Western Sahara",
-      "Capital": "El Aaiún",
-      "Capital Latitude": 27.125287,
-      "Capital Longitude": -13.1625,
-      "Two Letter Code": "EH",
-      "Three Letter Code": "ESH",
-      "Centroid Lat": 24.215527,
-      "Centroid Long": -12.885834,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Yemen",
-      "Capital": "Sana'a",
-      "Capital Latitude": 15.369445,
-      "Capital Longitude": 44.191007,
-      "Two Letter Code": "YE",
-      "Three Letter Code": "YEM",
-      "Centroid Lat": 15.552727,
-      "Centroid Long": 48.516388,
-      "Continent": "Asia"
-    },
-    {
-      "Country": "Zambia",
-      "Capital": "Lusaka",
-      "Capital Latitude": -15.387526,
-      "Capital Longitude": 28.322817,
-      "Two Letter Code": "ZM",
-      "Three Letter Code": "ZMB",
-      "Centroid Lat": -13.133897,
-      "Centroid Long": 27.849332,
-      "Continent": "Africa"
-    },
-    {
-      "Country": "Zimbabwe",
-      "Capital": "Harare",
-      "Capital Latitude": -17.825166,
-      "Capital Longitude": 31.03351,
-      "Two Letter Code": "ZW",
-      "Three Letter Code": "ZWE",
-      "Centroid Lat": -19.015438,
-      "Centroid Long": 29.154857,
-      "Continent": "Africa"
+import { Country } from "src/app/models/interfaces_and_classes";
+
+export const NEW_COUNTRY_LIST: Country[] = [
+    {
+        "name": "Afghanistan",
+        "capital": "Kabul",
+        "capitalLatLong": {
+            "latitude": 34.575503,
+            "longitude": 34.575503
+        },
+        "centroidLatLong": {
+            "latitude": 33.93911,
+            "longitude": 67.709953
+        },
+        "code": "AF",
+        "codeThree": "AFG",
+        "continent": "Asia"
+    },
+    {
+        "name": "Åland Islands",
+        "capital": "Mariehamn",
+        "capitalLatLong": {
+            "latitude": 60.1,
+            "longitude": 60.1
+        },
+        "centroidLatLong": {
+            "latitude": 60.1,
+            "longitude": 19.933333
+        },
+        "code": "AX",
+        "codeThree": "ALA",
+        "continent": "Europe"
+    },
+    {
+        "name": "Albania",
+        "capital": "Tirana",
+        "capitalLatLong": {
+            "latitude": 41.327546,
+            "longitude": 41.327546
+        },
+        "centroidLatLong": {
+            "latitude": 41.153332,
+            "longitude": 20.168331
+        },
+        "code": "AL",
+        "codeThree": "ALB",
+        "continent": "Europe"
+    },
+    {
+        "name": "Algeria",
+        "capital": "Algiers",
+        "capitalLatLong": {
+            "latitude": 36.752887,
+            "longitude": 36.752887
+        },
+        "centroidLatLong": {
+            "latitude": 28.033886,
+            "longitude": 1.659626
+        },
+        "code": "DZ",
+        "codeThree": "DZA",
+        "continent": "Africa"
+    },
+    {
+        "name": "American Samoa",
+        "capital": "Pago Pago",
+        "capitalLatLong": {
+            "latitude": -14.275632,
+            "longitude": -14.275632
+        },
+        "centroidLatLong": {
+            "latitude": -14.270972,
+            "longitude": -170.132217
+        },
+        "code": "AS",
+        "codeThree": "ASM",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Andorra",
+        "capital": "Andorra la Vella",
+        "capitalLatLong": {
+            "latitude": 42.506317,
+            "longitude": 42.506317
+        },
+        "centroidLatLong": {
+            "latitude": 42.546245,
+            "longitude": 1.601554
+        },
+        "code": "AD",
+        "codeThree": "AND",
+        "continent": "Europe"
+    },
+    {
+        "name": "Angola",
+        "capital": "Luanda",
+        "capitalLatLong": {
+            "latitude": -8.839988,
+            "longitude": -8.839988
+        },
+        "centroidLatLong": {
+            "latitude": -11.202692,
+            "longitude": 17.873887
+        },
+        "code": "AO",
+        "codeThree": "AGO",
+        "continent": "Africa"
+    },
+    {
+        "name": "Anguilla",
+        "capital": "The Valley",
+        "capitalLatLong": {
+            "latitude": 18.214813,
+            "longitude": 18.214813
+        },
+        "centroidLatLong": {
+            "latitude": 18.220554,
+            "longitude": -63.068615
+        },
+        "code": "AI",
+        "codeThree": "AIA",
+        "continent": "Americas"
+    },
+    {
+        "name": "Antarctica",
+        "capital": "South Pole",
+        "capitalLatLong": {
+            "latitude": -90,
+            "longitude": -90
+        },
+        "centroidLatLong": {
+            "latitude": -75.250973,
+            "longitude": -0.071389
+        },
+        "code": "AQ",
+        "codeThree": "ATA",
+        "continent": "Antarctica"
+    },
+    {
+        "name": "Antigua and Barbuda",
+        "capital": "St. John's",
+        "capitalLatLong": {
+            "latitude": 17.12741,
+            "longitude": 17.12741
+        },
+        "centroidLatLong": {
+            "latitude": 17.060816,
+            "longitude": -61.796428
+        },
+        "code": "AG",
+        "codeThree": "ATG",
+        "continent": "Americas"
+    },
+    {
+        "name": "Argentina",
+        "capital": "Buenos Aires",
+        "capitalLatLong": {
+            "latitude": -34.603684,
+            "longitude": -34.603684
+        },
+        "centroidLatLong": {
+            "latitude": -38.416097,
+            "longitude": -63.616672
+        },
+        "code": "AR",
+        "codeThree": "ARG",
+        "continent": "Americas"
+    },
+    {
+        "name": "Armenia",
+        "capital": "Yerevan",
+        "capitalLatLong": {
+            "latitude": 40.179186,
+            "longitude": 40.179186
+        },
+        "centroidLatLong": {
+            "latitude": 40.069099,
+            "longitude": 45.038189
+        },
+        "code": "AM",
+        "codeThree": "ARM",
+        "continent": "Asia"
+    },
+    {
+        "name": "Aruba",
+        "capital": "Oranjestad",
+        "capitalLatLong": {
+            "latitude": 12.509204,
+            "longitude": 12.509204
+        },
+        "centroidLatLong": {
+            "latitude": 12.52111,
+            "longitude": -69.968338
+        },
+        "code": "AW",
+        "codeThree": "ABW",
+        "continent": "Americas"
+    },
+    {
+        "name": "Australia",
+        "capital": "Canberra",
+        "capitalLatLong": {
+            "latitude": -35.282,
+            "longitude": -35.282
+        },
+        "centroidLatLong": {
+            "latitude": -25.274398,
+            "longitude": 133.775136
+        },
+        "code": "AU",
+        "codeThree": "AUS",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Austria",
+        "capital": "Vienna",
+        "capitalLatLong": {
+            "latitude": 48.208174,
+            "longitude": 48.208174
+        },
+        "centroidLatLong": {
+            "latitude": 47.516231,
+            "longitude": 14.550072
+        },
+        "code": "AT",
+        "codeThree": "AUT",
+        "continent": "Europe"
+    },
+    {
+        "name": "Azerbaijan",
+        "capital": "Baku",
+        "capitalLatLong": {
+            "latitude": 40.409262,
+            "longitude": 40.409262
+        },
+        "centroidLatLong": {
+            "latitude": 40.143105,
+            "longitude": 47.576927
+        },
+        "code": "AZ",
+        "codeThree": "AZE",
+        "continent": "Asia"
+    },
+    {
+        "name": "Bahamas",
+        "capital": "Nassau",
+        "capitalLatLong": {
+            "latitude": 25.047984,
+            "longitude": 25.047984
+        },
+        "centroidLatLong": {
+            "latitude": 25.03428,
+            "longitude": -77.39628
+        },
+        "code": "BS",
+        "codeThree": "BHS",
+        "continent": "Americas"
+    },
+    {
+        "name": "Bahrain",
+        "capital": "Manama",
+        "capitalLatLong": {
+            "latitude": 26.228516,
+            "longitude": 26.228516
+        },
+        "centroidLatLong": {
+            "latitude": 25.930414,
+            "longitude": 50.637772
+        },
+        "code": "BH",
+        "codeThree": "BHR",
+        "continent": "Asia"
+    },
+    {
+        "name": "Bangladesh",
+        "capital": "Dhaka",
+        "capitalLatLong": {
+            "latitude": 23.810332,
+            "longitude": 23.810332
+        },
+        "centroidLatLong": {
+            "latitude": 23.684994,
+            "longitude": 90.356331
+        },
+        "code": "BD",
+        "codeThree": "BGD",
+        "continent": "Asia"
+    },
+    {
+        "name": "Barbados",
+        "capital": "Bridgetown",
+        "capitalLatLong": {
+            "latitude": 13.113222,
+            "longitude": 13.113222
+        },
+        "centroidLatLong": {
+            "latitude": 13.193887,
+            "longitude": -59.543198
+        },
+        "code": "BB",
+        "codeThree": "BRB",
+        "continent": "Americas"
+    },
+    {
+        "name": "Belarus",
+        "capital": "Minsk",
+        "capitalLatLong": {
+            "latitude": 53.90454,
+            "longitude": 53.90454
+        },
+        "centroidLatLong": {
+            "latitude": 53.709807,
+            "longitude": 27.953389
+        },
+        "code": "BY",
+        "codeThree": "BLR",
+        "continent": "Europe"
+    },
+    {
+        "name": "Belgium",
+        "capital": "Brussels",
+        "capitalLatLong": {
+            "latitude": 50.85034,
+            "longitude": 50.85034
+        },
+        "centroidLatLong": {
+            "latitude": 50.503887,
+            "longitude": 4.469936
+        },
+        "code": "BE",
+        "codeThree": "BEL",
+        "continent": "Europe"
+    },
+    {
+        "name": "Belize",
+        "capital": "Belmopan",
+        "capitalLatLong": {
+            "latitude": 17.251011,
+            "longitude": 17.251011
+        },
+        "centroidLatLong": {
+            "latitude": 17.189877,
+            "longitude": -88.49765
+        },
+        "code": "BZ",
+        "codeThree": "BLZ",
+        "continent": "Americas"
+    },
+    {
+        "name": "Benin",
+        "capital": "Porto-Novo",
+        "capitalLatLong": {
+            "latitude": 6.496857,
+            "longitude": 6.496857
+        },
+        "centroidLatLong": {
+            "latitude": 9.30769,
+            "longitude": 2.315834
+        },
+        "code": "BJ",
+        "codeThree": "BEN",
+        "continent": "Africa"
+    },
+    {
+        "name": "Bermuda",
+        "capital": "Hamilton",
+        "capitalLatLong": {
+            "latitude": 32.294816,
+            "longitude": 32.294816
+        },
+        "centroidLatLong": {
+            "latitude": 32.321384,
+            "longitude": -64.75737
+        },
+        "code": "BM",
+        "codeThree": "BMU",
+        "continent": "Americas"
+    },
+    {
+        "name": "Bhutan",
+        "capital": "Thimphu",
+        "capitalLatLong": {
+            "latitude": 27.472792,
+            "longitude": 27.472792
+        },
+        "centroidLatLong": {
+            "latitude": 27.514162,
+            "longitude": 90.433601
+        },
+        "code": "BT",
+        "codeThree": "BTN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Bolivia",
+        "capital": "La Paz",
+        "capitalLatLong": {
+            "latitude": -16.489689,
+            "longitude": -16.489689
+        },
+        "centroidLatLong": {
+            "latitude": -16.290154,
+            "longitude": -63.588653
+        },
+        "code": "BO",
+        "codeThree": "BOL",
+        "continent": "Americas"
+    },
+    {
+        "name": "Bosnia and Herzegovina",
+        "capital": "Sarajevo",
+        "capitalLatLong": {
+            "latitude": 43.856259,
+            "longitude": 43.856259
+        },
+        "centroidLatLong": {
+            "latitude": 43.915886,
+            "longitude": 17.679076
+        },
+        "code": "BA",
+        "codeThree": "BIH",
+        "continent": "Europe"
+    },
+    {
+        "name": "Botswana",
+        "capital": "Gaborone",
+        "capitalLatLong": {
+            "latitude": -24.628208,
+            "longitude": -24.628208
+        },
+        "centroidLatLong": {
+            "latitude": -22.328474,
+            "longitude": 24.684866
+        },
+        "code": "BW",
+        "codeThree": "BWA",
+        "continent": "Africa"
+    },
+    {
+        "name": "Bouvet Island",
+        "capital": "Bouvet Island",
+        "capitalLatLong": {
+            "latitude": -54.43,
+            "longitude": -54.43
+        },
+        "centroidLatLong": {
+            "latitude": -54.423199,
+            "longitude": 3.413194
+        },
+        "code": "BV",
+        "codeThree": "BVT",
+        "continent": "Atlantic Ocean"
+    },
+    {
+        "name": "Brazil",
+        "capital": "Brasília",
+        "capitalLatLong": {
+            "latitude": -15.794229,
+            "longitude": -15.794229
+        },
+        "centroidLatLong": {
+            "latitude": -14.235004,
+            "longitude": -51.92528
+        },
+        "code": "BR",
+        "codeThree": "BRA",
+        "continent": "Americas"
+    },
+    {
+        "name": "British Indian Ocean Territory",
+        "capital": "Camp Justice",
+        "capitalLatLong": {
+            "latitude": 21.3419,
+            "longitude": 21.3419
+        },
+        "centroidLatLong": {
+            "latitude": -6.343194,
+            "longitude": 71.876519
+        },
+        "code": "IO",
+        "codeThree": "IOT",
+        "continent": "Asia"
+    },
+    {
+        "name": "British Virgin Islands",
+        "capital": "Road Town",
+        "capitalLatLong": {
+            "latitude": 18.428612,
+            "longitude": 18.428612
+        },
+        "centroidLatLong": {
+            "latitude": 18.420695,
+            "longitude": -64.639968
+        },
+        "code": "VG",
+        "codeThree": "VGB",
+        "continent": "Americas"
+    },
+    {
+        "name": "Brunei",
+        "capital": "Bandar Seri Begawan",
+        "capitalLatLong": {
+            "latitude": 4.903052,
+            "longitude": 4.903052
+        },
+        "centroidLatLong": {
+            "latitude": 4.535277,
+            "longitude": 114.727669
+        },
+        "code": "BN",
+        "codeThree": "BRN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Bulgaria",
+        "capital": "Sofia",
+        "capitalLatLong": {
+            "latitude": 42.697708,
+            "longitude": 42.697708
+        },
+        "centroidLatLong": {
+            "latitude": 42.733883,
+            "longitude": 25.48583
+        },
+        "code": "BG",
+        "codeThree": "BGR",
+        "continent": "Europe"
+    },
+    {
+        "name": "Burkina Faso",
+        "capital": "Ouagadougou",
+        "capitalLatLong": {
+            "latitude": 12.371428,
+            "longitude": 12.371428
+        },
+        "centroidLatLong": {
+            "latitude": 12.238333,
+            "longitude": -1.561593
+        },
+        "code": "BF",
+        "codeThree": "BFA",
+        "continent": "Africa"
+    },
+    {
+        "name": "Burundi",
+        "capital": "Bujumbura",
+        "capitalLatLong": {
+            "latitude": -3.361378,
+            "longitude": -3.361378
+        },
+        "centroidLatLong": {
+            "latitude": -3.373056,
+            "longitude": 29.918886
+        },
+        "code": "BI",
+        "codeThree": "BDI",
+        "continent": "Africa"
+    },
+    {
+        "name": "Cambodia",
+        "capital": "Phnom Penh",
+        "capitalLatLong": {
+            "latitude": 11.544873,
+            "longitude": 11.544873
+        },
+        "centroidLatLong": {
+            "latitude": 12.565679,
+            "longitude": 104.990963
+        },
+        "code": "KH",
+        "codeThree": "KHM",
+        "continent": "Asia"
+    },
+    {
+        "name": "Cameroon",
+        "capital": "Yaoundé",
+        "capitalLatLong": {
+            "latitude": 3.848033,
+            "longitude": 3.848033
+        },
+        "centroidLatLong": {
+            "latitude": 7.369722,
+            "longitude": 12.354722
+        },
+        "code": "CM",
+        "codeThree": "CMR",
+        "continent": "Africa"
+    },
+    {
+        "name": "Canada",
+        "capital": "Ottawa",
+        "capitalLatLong": {
+            "latitude": 45.42153,
+            "longitude": 45.42153
+        },
+        "centroidLatLong": {
+            "latitude": 56.130366,
+            "longitude": -106.346771
+        },
+        "code": "CA",
+        "codeThree": "CAN",
+        "continent": "Americas"
+    },
+    {
+        "name": "Cape Verde",
+        "capital": "Praia",
+        "capitalLatLong": {
+            "latitude": 14.93305,
+            "longitude": 14.93305
+        },
+        "centroidLatLong": {
+            "latitude": 16.002082,
+            "longitude": -24.013197
+        },
+        "code": "CV",
+        "codeThree": "CPV",
+        "continent": "Africa"
+    },
+    {
+        "name": "Cayman Islands",
+        "capital": "George Town",
+        "capitalLatLong": {
+            "latitude": 19.286932,
+            "longitude": 19.286932
+        },
+        "centroidLatLong": {
+            "latitude": 19.513469,
+            "longitude": -80.566956
+        },
+        "code": "KY",
+        "codeThree": "CYM",
+        "continent": "Americas"
+    },
+    {
+        "name": "Central African Republic",
+        "capital": "Bangui",
+        "capitalLatLong": {
+            "latitude": 4.394674,
+            "longitude": 4.394674
+        },
+        "centroidLatLong": {
+            "latitude": 6.611111,
+            "longitude": 20.939444
+        },
+        "code": "CF",
+        "codeThree": "CAF",
+        "continent": "Africa"
+    },
+    {
+        "name": "Chad",
+        "capital": "N'Djamena",
+        "capitalLatLong": {
+            "latitude": 12.134846,
+            "longitude": 12.134846
+        },
+        "centroidLatLong": {
+            "latitude": 15.454166,
+            "longitude": 18.732207
+        },
+        "code": "TD",
+        "codeThree": "TCD",
+        "continent": "Africa"
+    },
+    {
+        "name": "Chile",
+        "capital": "Santiago",
+        "capitalLatLong": {
+            "latitude": -33.44889,
+            "longitude": -33.44889
+        },
+        "centroidLatLong": {
+            "latitude": -35.675147,
+            "longitude": -71.542969
+        },
+        "code": "CL",
+        "codeThree": "CHL",
+        "continent": "Americas"
+    },
+    {
+        "name": "China",
+        "capital": "Beijing",
+        "capitalLatLong": {
+            "latitude": 39.904211,
+            "longitude": 39.904211
+        },
+        "centroidLatLong": {
+            "latitude": 35.86166,
+            "longitude": 104.195397
+        },
+        "code": "CN",
+        "codeThree": "CHN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Christmas Island",
+        "capital": "Flying Fish Cove",
+        "capitalLatLong": {
+            "latitude": -10.420686,
+            "longitude": -10.420686
+        },
+        "centroidLatLong": {
+            "latitude": -10.447525,
+            "longitude": 105.690449
+        },
+        "code": "CX",
+        "codeThree": "CXR",
+        "continent": "Asia"
+    },
+    {
+        "name": "Cocos (Keeling) Islands",
+        "capital": "West Island",
+        "capitalLatLong": {
+            "latitude": -12.188834,
+            "longitude": -12.188834
+        },
+        "centroidLatLong": {
+            "latitude": -12.164165,
+            "longitude": 96.870956
+        },
+        "code": "CC",
+        "codeThree": "CCK",
+        "continent": "Asia"
+    },
+    {
+        "name": "Colombia",
+        "capital": "Bogotá",
+        "capitalLatLong": {
+            "latitude": 4.710989,
+            "longitude": 4.710989
+        },
+        "centroidLatLong": {
+            "latitude": 4.570868,
+            "longitude": -74.297333
+        },
+        "code": "CO",
+        "codeThree": "COL",
+        "continent": "Americas"
+    },
+    {
+        "name": "Comoros",
+        "capital": "Moroni",
+        "capitalLatLong": {
+            "latitude": -11.717216,
+            "longitude": -11.717216
+        },
+        "centroidLatLong": {
+            "latitude": -11.875001,
+            "longitude": 43.872219
+        },
+        "code": "KM",
+        "codeThree": "COM",
+        "continent": "Africa"
+    },
+    {
+        "name": "Congo (DRC)",
+        "capital": "Kinshasa",
+        "capitalLatLong": {
+            "latitude": -4.441931,
+            "longitude": -4.441931
+        },
+        "centroidLatLong": {
+            "latitude": -4.038333,
+            "longitude": 21.758664
+        },
+        "code": "CD",
+        "codeThree": "COD",
+        "continent": "Africa"
+    },
+    {
+        "name": "Congo (Republic)",
+        "capital": "Brazzaville",
+        "capitalLatLong": {
+            "latitude": -4.26336,
+            "longitude": -4.26336
+        },
+        "centroidLatLong": {
+            "latitude": -0.228021,
+            "longitude": 15.827659
+        },
+        "code": "CG",
+        "codeThree": "COG",
+        "continent": "Africa"
+    },
+    {
+        "name": "Cook Islands",
+        "capital": "Avarua",
+        "capitalLatLong": {
+            "latitude": -21.212901,
+            "longitude": -21.212901
+        },
+        "centroidLatLong": {
+            "latitude": -21.236736,
+            "longitude": -159.777671
+        },
+        "code": "CK",
+        "codeThree": "COK",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Costa Rica",
+        "capital": "San José",
+        "capitalLatLong": {
+            "latitude": 9.928069,
+            "longitude": 9.928069
+        },
+        "centroidLatLong": {
+            "latitude": 9.748917,
+            "longitude": -83.753428
+        },
+        "code": "CR",
+        "codeThree": "CRI",
+        "continent": "Americas"
+    },
+    {
+        "name": "Côte d’Ivoire",
+        "capital": "Yamoussoukro",
+        "capitalLatLong": {
+            "latitude": 6.827623,
+            "longitude": 6.827623
+        },
+        "centroidLatLong": {
+            "latitude": 7.539989,
+            "longitude": -5.54708
+        },
+        "code": "CI",
+        "codeThree": "CIV",
+        "continent": "Africa"
+    },
+    {
+        "name": "Croatia",
+        "capital": "Zagreb ",
+        "capitalLatLong": {
+            "latitude": 45.815011,
+            "longitude": 45.815011
+        },
+        "centroidLatLong": {
+            "latitude": 45.1,
+            "longitude": 15.2
+        },
+        "code": "HR",
+        "codeThree": "HRV",
+        "continent": "Europe"
+    },
+    {
+        "name": "Cuba",
+        "capital": "Havana",
+        "capitalLatLong": {
+            "latitude": 23.05407,
+            "longitude": 23.05407
+        },
+        "centroidLatLong": {
+            "latitude": 21.521757,
+            "longitude": -77.781167
+        },
+        "code": "CU",
+        "codeThree": "CUB",
+        "continent": "Americas"
+    },
+    {
+        "name": "Curaçao",
+        "capital": "Willemstad",
+        "capitalLatLong": {
+            "latitude": 12.122422,
+            "longitude": 12.122422
+        },
+        "centroidLatLong": {
+            "latitude": 12.122422,
+            "longitude": -68.882423
+        },
+        "code": "CW",
+        "codeThree": "CUW",
+        "continent": "Americas"
+    },
+    {
+        "name": "Cyprus",
+        "capital": "Nicosia",
+        "capitalLatLong": {
+            "latitude": 35.185566,
+            "longitude": 35.185566
+        },
+        "centroidLatLong": {
+            "latitude": 35.126413,
+            "longitude": 33.429859
+        },
+        "code": "CY",
+        "codeThree": "CYP",
+        "continent": "Asia"
+    },
+    {
+        "name": "Czechia",
+        "capital": "Prague",
+        "capitalLatLong": {
+            "latitude": 50.075538,
+            "longitude": 50.075538
+        },
+        "centroidLatLong": {
+            "latitude": 49.817492,
+            "longitude": 15.472962
+        },
+        "code": "CZ",
+        "codeThree": "CZE",
+        "continent": "Europe"
+    },
+    {
+        "name": "Denmark",
+        "capital": "Copenhagen",
+        "capitalLatLong": {
+            "latitude": 55.676097,
+            "longitude": 55.676097
+        },
+        "centroidLatLong": {
+            "latitude": 56.26392,
+            "longitude": 9.501785
+        },
+        "code": "DK",
+        "codeThree": "DNK",
+        "continent": "Europe"
+    },
+    {
+        "name": "Djibouti",
+        "capital": "Djibouti",
+        "capitalLatLong": {
+            "latitude": 11.572077,
+            "longitude": 11.572077
+        },
+        "centroidLatLong": {
+            "latitude": 11.825138,
+            "longitude": 42.590275
+        },
+        "code": "DJ",
+        "codeThree": "DJI",
+        "continent": "Africa"
+    },
+    {
+        "name": "Dominica",
+        "capital": "Roseau",
+        "capitalLatLong": {
+            "latitude": 15.309168,
+            "longitude": 15.309168
+        },
+        "centroidLatLong": {
+            "latitude": 15.414999,
+            "longitude": -61.370976
+        },
+        "code": "DM",
+        "codeThree": "DMA",
+        "continent": "Americas"
+    },
+    {
+        "name": "Dominican Republic",
+        "capital": "Santo Domingo",
+        "capitalLatLong": {
+            "latitude": 18.486058,
+            "longitude": 18.486058
+        },
+        "centroidLatLong": {
+            "latitude": 18.735693,
+            "longitude": -70.162651
+        },
+        "code": "DO",
+        "codeThree": "DOM",
+        "continent": "Americas"
+    },
+    {
+        "name": "Ecuador",
+        "capital": "Quito",
+        "capitalLatLong": {
+            "latitude": -0.180653,
+            "longitude": -0.180653
+        },
+        "centroidLatLong": {
+            "latitude": -1.831239,
+            "longitude": -78.183406
+        },
+        "code": "EC",
+        "codeThree": "ECU",
+        "continent": "Americas"
+    },
+    {
+        "name": "Egypt",
+        "capital": "Cairo",
+        "capitalLatLong": {
+            "latitude": 30.04442,
+            "longitude": 30.04442
+        },
+        "centroidLatLong": {
+            "latitude": 26.820553,
+            "longitude": 30.802498
+        },
+        "code": "EG",
+        "codeThree": "EGY",
+        "continent": "Africa"
+    },
+    {
+        "name": "El Salvador",
+        "capital": "San Salvador",
+        "capitalLatLong": {
+            "latitude": 13.69294,
+            "longitude": 13.69294
+        },
+        "centroidLatLong": {
+            "latitude": 13.794185,
+            "longitude": -88.89653
+        },
+        "code": "SV",
+        "codeThree": "SLV",
+        "continent": "Americas"
+    },
+    {
+        "name": "Equatorial Guinea",
+        "capital": "Malabo",
+        "capitalLatLong": {
+            "latitude": 3.750412,
+            "longitude": 3.750412
+        },
+        "centroidLatLong": {
+            "latitude": 1.650801,
+            "longitude": 10.267895
+        },
+        "code": "GQ",
+        "codeThree": "GNQ",
+        "continent": "Africa"
+    },
+    {
+        "name": "Eritrea",
+        "capital": "Asmara",
+        "capitalLatLong": {
+            "latitude": 15.322877,
+            "longitude": 15.322877
+        },
+        "centroidLatLong": {
+            "latitude": 15.179384,
+            "longitude": 39.782334
+        },
+        "code": "ER",
+        "codeThree": "ERI",
+        "continent": "Africa"
+    },
+    {
+        "name": "Estonia",
+        "capital": "Tallinn",
+        "capitalLatLong": {
+            "latitude": 59.436961,
+            "longitude": 59.436961
+        },
+        "centroidLatLong": {
+            "latitude": 58.595272,
+            "longitude": 25.013607
+        },
+        "code": "EE",
+        "codeThree": "EST",
+        "continent": "Europe"
+    },
+    {
+        "name": "Ethiopia",
+        "capital": "Addis Ababa",
+        "capitalLatLong": {
+            "latitude": 8.980603,
+            "longitude": 8.980603
+        },
+        "centroidLatLong": {
+            "latitude": 9.145,
+            "longitude": 40.489673
+        },
+        "code": "ET",
+        "codeThree": "ETH",
+        "continent": "Africa"
+    },
+    {
+        "name": "Falkland Islands",
+        "capital": "Stanley",
+        "capitalLatLong": {
+            "latitude": -51.697713,
+            "longitude": -51.697713
+        },
+        "centroidLatLong": {
+            "latitude": -51.796253,
+            "longitude": -59.523613
+        },
+        "code": "FK",
+        "codeThree": "FLK",
+        "continent": "Americas"
+    },
+    {
+        "name": "Faroe Islands",
+        "capital": "Tórshavn",
+        "capitalLatLong": {
+            "latitude": 62.007864,
+            "longitude": 62.007864
+        },
+        "centroidLatLong": {
+            "latitude": 61.892635,
+            "longitude": -6.911806
+        },
+        "code": "FO",
+        "codeThree": "FRO",
+        "continent": "Europe"
+    },
+    {
+        "name": "Fiji",
+        "capital": "Suva",
+        "capitalLatLong": {
+            "latitude": -18.124809,
+            "longitude": -18.124809
+        },
+        "centroidLatLong": {
+            "latitude": -16.578193,
+            "longitude": 179.414413
+        },
+        "code": "FJ",
+        "codeThree": "FJI",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Finland",
+        "capital": "Helsinki",
+        "capitalLatLong": {
+            "latitude": 60.173324,
+            "longitude": 60.173324
+        },
+        "centroidLatLong": {
+            "latitude": 61.92411,
+            "longitude": 25.748151
+        },
+        "code": "FI",
+        "codeThree": "FIN",
+        "continent": "Europe"
+    },
+    {
+        "name": "France",
+        "capital": "Paris",
+        "capitalLatLong": {
+            "latitude": 48.856614,
+            "longitude": 48.856614
+        },
+        "centroidLatLong": {
+            "latitude": 46.227638,
+            "longitude": 2.213749
+        },
+        "code": "FR",
+        "codeThree": "FRA",
+        "continent": "Europe"
+    },
+    {
+        "name": "French Guiana",
+        "capital": "Cayenne",
+        "capitalLatLong": {
+            "latitude": 4.92242,
+            "longitude": 4.92242
+        },
+        "centroidLatLong": {
+            "latitude": 3.933889,
+            "longitude": -53.125782
+        },
+        "code": "GF",
+        "codeThree": "GUF",
+        "continent": "Americas"
+    },
+    {
+        "name": "French Polynesia",
+        "capital": "Papeete",
+        "capitalLatLong": {
+            "latitude": -17.551625,
+            "longitude": -17.551625
+        },
+        "centroidLatLong": {
+            "latitude": -17.679742,
+            "longitude": -149.406843
+        },
+        "code": "PF",
+        "codeThree": "PYF",
+        "continent": "Oceania"
+    },
+    {
+        "name": "French Southern Territories",
+        "capital": "Saint-Pierre ",
+        "capitalLatLong": {
+            "latitude": -21.3419,
+            "longitude": -21.3419
+        },
+        "centroidLatLong": {
+            "latitude": -49.280366,
+            "longitude": 69.348557
+        },
+        "code": "TF",
+        "codeThree": "ATF",
+        "continent": "Indian Ocean"
+    },
+    {
+        "name": "Gabon",
+        "capital": "Libreville",
+        "capitalLatLong": {
+            "latitude": 0.416198,
+            "longitude": 0.416198
+        },
+        "centroidLatLong": {
+            "latitude": -0.803689,
+            "longitude": 11.609444
+        },
+        "code": "GA",
+        "codeThree": "GAB",
+        "continent": "Africa"
+    },
+    {
+        "name": "Gambia",
+        "capital": "Banjul",
+        "capitalLatLong": {
+            "latitude": 13.454876,
+            "longitude": 13.454876
+        },
+        "centroidLatLong": {
+            "latitude": 13.443182,
+            "longitude": -15.310139
+        },
+        "code": "GM",
+        "codeThree": "GMB",
+        "continent": "Africa"
+    },
+    {
+        "name": "Georgia",
+        "capital": "Tbilisi",
+        "capitalLatLong": {
+            "latitude": 41.715138,
+            "longitude": 41.715138
+        },
+        "centroidLatLong": {
+            "latitude": 42.315407,
+            "longitude": 43.356892
+        },
+        "code": "GE",
+        "codeThree": "GEO",
+        "continent": "Asia"
+    },
+    {
+        "name": "Germany",
+        "capital": "Berlin",
+        "capitalLatLong": {
+            "latitude": 52.520007,
+            "longitude": 52.520007
+        },
+        "centroidLatLong": {
+            "latitude": 51.165691,
+            "longitude": 10.451526
+        },
+        "code": "DE",
+        "codeThree": "DEU",
+        "continent": "Europe"
+    },
+    {
+        "name": "Ghana",
+        "capital": "Accra",
+        "capitalLatLong": {
+            "latitude": 5.603717,
+            "longitude": 5.603717
+        },
+        "centroidLatLong": {
+            "latitude": 7.946527,
+            "longitude": -1.023194
+        },
+        "code": "GH",
+        "codeThree": "GHA",
+        "continent": "Africa"
+    },
+    {
+        "name": "Gibraltar",
+        "capital": "Gibraltar",
+        "capitalLatLong": {
+            "latitude": 36.140773,
+            "longitude": 36.140773
+        },
+        "centroidLatLong": {
+            "latitude": 36.137741,
+            "longitude": -5.345374
+        },
+        "code": "GI",
+        "codeThree": "GIB",
+        "continent": "Europe"
+    },
+    {
+        "name": "Greece",
+        "capital": "Athens",
+        "capitalLatLong": {
+            "latitude": 37.983917,
+            "longitude": 37.983917
+        },
+        "centroidLatLong": {
+            "latitude": 39.074208,
+            "longitude": 21.824312
+        },
+        "code": "GR",
+        "codeThree": "GRC",
+        "continent": "Europe"
+    },
+    {
+        "name": "Greenland",
+        "capital": "Nuuk",
+        "capitalLatLong": {
+            "latitude": 64.18141,
+            "longitude": 64.18141
+        },
+        "centroidLatLong": {
+            "latitude": 71.706936,
+            "longitude": -42.604303
+        },
+        "code": "GL",
+        "codeThree": "GRL",
+        "continent": "Americas"
+    },
+    {
+        "name": "Grenada",
+        "capital": "St. George's",
+        "capitalLatLong": {
+            "latitude": 12.056098,
+            "longitude": 12.056098
+        },
+        "centroidLatLong": {
+            "latitude": 12.262776,
+            "longitude": -61.604171
+        },
+        "code": "GD",
+        "codeThree": "GRD",
+        "continent": "Americas"
+    },
+    {
+        "name": "Guadeloupe",
+        "capital": "Basse-Terre",
+        "capitalLatLong": {
+            "latitude": 16.014453,
+            "longitude": 16.014453
+        },
+        "centroidLatLong": {
+            "latitude": 16.995971,
+            "longitude": -62.067641
+        },
+        "code": "GP",
+        "codeThree": "GLP",
+        "continent": "Americas"
+    },
+    {
+        "name": "Guam",
+        "capital": "Hagåtña",
+        "capitalLatLong": {
+            "latitude": 13.470891,
+            "longitude": 13.470891
+        },
+        "centroidLatLong": {
+            "latitude": 13.444304,
+            "longitude": 144.793731
+        },
+        "code": "GU",
+        "codeThree": "GUM",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Guatemala",
+        "capital": "Guatemala City",
+        "capitalLatLong": {
+            "latitude": 14.634915,
+            "longitude": 14.634915
+        },
+        "centroidLatLong": {
+            "latitude": 15.783471,
+            "longitude": -90.230759
+        },
+        "code": "GT",
+        "codeThree": "GTM",
+        "continent": "Americas"
+    },
+    {
+        "name": "Guernsey",
+        "capital": "St. Peter Port",
+        "capitalLatLong": {
+            "latitude": 49.455443,
+            "longitude": 49.455443
+        },
+        "centroidLatLong": {
+            "latitude": 49.465691,
+            "longitude": -2.585278
+        },
+        "code": "GG",
+        "codeThree": "GGY",
+        "continent": "Europe"
+    },
+    {
+        "name": "Guinea",
+        "capital": "Conakry",
+        "capitalLatLong": {
+            "latitude": 9.641185,
+            "longitude": 9.641185
+        },
+        "centroidLatLong": {
+            "latitude": 9.945587,
+            "longitude": -9.696645
+        },
+        "code": "GN",
+        "codeThree": "GIN",
+        "continent": "Africa"
+    },
+    {
+        "name": "Guinea-Bissau",
+        "capital": "Bissau",
+        "capitalLatLong": {
+            "latitude": 11.881655,
+            "longitude": 11.881655
+        },
+        "centroidLatLong": {
+            "latitude": 11.803749,
+            "longitude": -15.180413
+        },
+        "code": "GW",
+        "codeThree": "GNB",
+        "continent": "Africa"
+    },
+    {
+        "name": "Guyana",
+        "capital": "Georgetown",
+        "capitalLatLong": {
+            "latitude": 6.801279,
+            "longitude": 6.801279
+        },
+        "centroidLatLong": {
+            "latitude": 4.860416,
+            "longitude": -58.93018
+        },
+        "code": "GY",
+        "codeThree": "GUY",
+        "continent": "Americas"
+    },
+    {
+        "name": "Haiti",
+        "capital": "Port-au-Prince",
+        "capitalLatLong": {
+            "latitude": 18.594395,
+            "longitude": 18.594395
+        },
+        "centroidLatLong": {
+            "latitude": 18.971187,
+            "longitude": -72.285215
+        },
+        "code": "HT",
+        "codeThree": "HTI",
+        "continent": "Americas"
+    },
+    {
+        "name": "Honduras",
+        "capital": "Tegucigalpa",
+        "capitalLatLong": {
+            "latitude": 14.072275,
+            "longitude": 14.072275
+        },
+        "centroidLatLong": {
+            "latitude": 15.199999,
+            "longitude": -86.241905
+        },
+        "code": "HN",
+        "codeThree": "HND",
+        "continent": "Americas"
+    },
+    {
+        "name": "Hong Kong",
+        "capital": "Hong Kong",
+        "capitalLatLong": {
+            "latitude": 22.396428,
+            "longitude": 22.396428
+        },
+        "centroidLatLong": {
+            "latitude": 22.396428,
+            "longitude": 114.109497
+        },
+        "code": "HK",
+        "codeThree": "HKG",
+        "continent": "Asia"
+    },
+    {
+        "name": "Hungary",
+        "capital": "Budapest",
+        "capitalLatLong": {
+            "latitude": 47.497912,
+            "longitude": 47.497912
+        },
+        "centroidLatLong": {
+            "latitude": 47.162494,
+            "longitude": 19.503304
+        },
+        "code": "HU",
+        "codeThree": "HUN",
+        "continent": "Europe"
+    },
+    {
+        "name": "Iceland",
+        "capital": "Reykjavík",
+        "capitalLatLong": {
+            "latitude": 64.126521,
+            "longitude": 64.126521
+        },
+        "centroidLatLong": {
+            "latitude": 64.963051,
+            "longitude": -19.020835
+        },
+        "code": "IS",
+        "codeThree": "ISL",
+        "continent": "Europe"
+    },
+    {
+        "name": "India",
+        "capital": "New Delhi",
+        "capitalLatLong": {
+            "latitude": 28.613939,
+            "longitude": 28.613939
+        },
+        "centroidLatLong": {
+            "latitude": 20.593684,
+            "longitude": 78.96288
+        },
+        "code": "IN",
+        "codeThree": "IND",
+        "continent": "Asia"
+    },
+    {
+        "name": "Indonesia",
+        "capital": "Jakarta",
+        "capitalLatLong": {
+            "latitude": -6.208763,
+            "longitude": -6.208763
+        },
+        "centroidLatLong": {
+            "latitude": -0.789275,
+            "longitude": 113.921327
+        },
+        "code": "ID",
+        "codeThree": "IDN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Iran",
+        "capital": "Tehran",
+        "capitalLatLong": {
+            "latitude": 35.689198,
+            "longitude": 35.689198
+        },
+        "centroidLatLong": {
+            "latitude": 32.427908,
+            "longitude": 53.688046
+        },
+        "code": "IR",
+        "codeThree": "IRN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Iraq",
+        "capital": "Baghdad",
+        "capitalLatLong": {
+            "latitude": 33.312806,
+            "longitude": 33.312806
+        },
+        "centroidLatLong": {
+            "latitude": 33.223191,
+            "longitude": 43.679291
+        },
+        "code": "IQ",
+        "codeThree": "IRQ",
+        "continent": "Asia"
+    },
+    {
+        "name": "Ireland",
+        "capital": "Dublin",
+        "capitalLatLong": {
+            "latitude": 53.349805,
+            "longitude": 53.349805
+        },
+        "centroidLatLong": {
+            "latitude": 53.41291,
+            "longitude": -8.24389
+        },
+        "code": "IE",
+        "codeThree": "IRL",
+        "continent": "Europe"
+    },
+    {
+        "name": "Isle of Man",
+        "capital": "Douglas",
+        "capitalLatLong": {
+            "latitude": 54.152337,
+            "longitude": 54.152337
+        },
+        "centroidLatLong": {
+            "latitude": 54.236107,
+            "longitude": -4.548056
+        },
+        "code": "IM",
+        "codeThree": "IMN",
+        "continent": "Europe"
+    },
+    {
+        "name": "Israel",
+        "capital": "Tel Aviv",
+        "capitalLatLong": {
+            "latitude": 32.0853,
+            "longitude": 32.0853
+        },
+        "centroidLatLong": {
+            "latitude": 31.046051,
+            "longitude": 34.851612
+        },
+        "code": "IL",
+        "codeThree": "ISR",
+        "continent": "Asia"
+    },
+    {
+        "name": "Italy",
+        "capital": "Rome",
+        "capitalLatLong": {
+            "latitude": 41.902784,
+            "longitude": 41.902784
+        },
+        "centroidLatLong": {
+            "latitude": 41.87194,
+            "longitude": 12.56738
+        },
+        "code": "IT",
+        "codeThree": "ITA",
+        "continent": "Europe"
+    },
+    {
+        "name": "Jamaica",
+        "capital": "Kingston",
+        "capitalLatLong": {
+            "latitude": 18.042327,
+            "longitude": 18.042327
+        },
+        "centroidLatLong": {
+            "latitude": 18.109581,
+            "longitude": -77.297508
+        },
+        "code": "JM",
+        "codeThree": "JAM",
+        "continent": "Americas"
+    },
+    {
+        "name": "Japan",
+        "capital": "Tokyo",
+        "capitalLatLong": {
+            "latitude": 35.709026,
+            "longitude": 35.709026
+        },
+        "centroidLatLong": {
+            "latitude": 36.204824,
+            "longitude": 138.252924
+        },
+        "code": "JP",
+        "codeThree": "JPN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Jersey",
+        "capital": "St. Helier",
+        "capitalLatLong": {
+            "latitude": 49.186823,
+            "longitude": 49.186823
+        },
+        "centroidLatLong": {
+            "latitude": 49.214439,
+            "longitude": -2.13125
+        },
+        "code": "JE",
+        "codeThree": "JEY",
+        "continent": "Europe"
+    },
+    {
+        "name": "Jordan",
+        "capital": "Amman",
+        "capitalLatLong": {
+            "latitude": 31.956578,
+            "longitude": 31.956578
+        },
+        "centroidLatLong": {
+            "latitude": 30.585164,
+            "longitude": 36.238414
+        },
+        "code": "JO",
+        "codeThree": "JOR",
+        "continent": "Asia"
+    },
+    {
+        "name": "Kazakhstan",
+        "capital": "Astana",
+        "capitalLatLong": {
+            "latitude": 51.160523,
+            "longitude": 51.160523
+        },
+        "centroidLatLong": {
+            "latitude": 48.019573,
+            "longitude": 66.923684
+        },
+        "code": "KZ",
+        "codeThree": "KAZ",
+        "continent": "Asia"
+    },
+    {
+        "name": "Kenya",
+        "capital": "Nairobi",
+        "capitalLatLong": {
+            "latitude": -1.292066,
+            "longitude": -1.292066
+        },
+        "centroidLatLong": {
+            "latitude": -0.023559,
+            "longitude": 37.906193
+        },
+        "code": "KE",
+        "codeThree": "KEN",
+        "continent": "Africa"
+    },
+    {
+        "name": "Kiribati",
+        "capital": "Tarawa Atoll",
+        "capitalLatLong": {
+            "latitude": 1.451817,
+            "longitude": 1.451817
+        },
+        "centroidLatLong": {
+            "latitude": -3.370417,
+            "longitude": -168.734039
+        },
+        "code": "KI",
+        "codeThree": "KIR",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Kosovo",
+        "capital": "Pristina",
+        "capitalLatLong": {
+            "latitude": 42.662914,
+            "longitude": 42.662914
+        },
+        "centroidLatLong": {
+            "latitude": 42.602636,
+            "longitude": 20.902977
+        },
+        "code": "XK",
+        "codeThree": "XXK",
+        "continent": "Europe"
+    },
+    {
+        "name": "Kuwait",
+        "capital": "Kuwait City",
+        "capitalLatLong": {
+            "latitude": 29.375859,
+            "longitude": 29.375859
+        },
+        "centroidLatLong": {
+            "latitude": 29.31166,
+            "longitude": 47.481766
+        },
+        "code": "KW",
+        "codeThree": "KWT",
+        "continent": "Asia"
+    },
+    {
+        "name": "Kyrgyzstan",
+        "capital": "Bishkek",
+        "capitalLatLong": {
+            "latitude": 42.874621,
+            "longitude": 42.874621
+        },
+        "centroidLatLong": {
+            "latitude": 41.20438,
+            "longitude": 74.766098
+        },
+        "code": "KG",
+        "codeThree": "KGZ",
+        "continent": "Asia"
+    },
+    {
+        "name": "Laos",
+        "capital": "Vientiane",
+        "capitalLatLong": {
+            "latitude": 17.975706,
+            "longitude": 17.975706
+        },
+        "centroidLatLong": {
+            "latitude": 19.85627,
+            "longitude": 102.495496
+        },
+        "code": "LA",
+        "codeThree": "LAO",
+        "continent": "Asia"
+    },
+    {
+        "name": "Latvia",
+        "capital": "Riga",
+        "capitalLatLong": {
+            "latitude": 56.949649,
+            "longitude": 56.949649
+        },
+        "centroidLatLong": {
+            "latitude": 56.879635,
+            "longitude": 24.603189
+        },
+        "code": "LV",
+        "codeThree": "LVA",
+        "continent": "Europe"
+    },
+    {
+        "name": "Lebanon",
+        "capital": "Beirut",
+        "capitalLatLong": {
+            "latitude": 33.888629,
+            "longitude": 33.888629
+        },
+        "centroidLatLong": {
+            "latitude": 33.854721,
+            "longitude": 35.862285
+        },
+        "code": "LB",
+        "codeThree": "LBN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Lesotho",
+        "capital": "Maseru",
+        "capitalLatLong": {
+            "latitude": -29.363219,
+            "longitude": -29.363219
+        },
+        "centroidLatLong": {
+            "latitude": -29.609988,
+            "longitude": 28.233608
+        },
+        "code": "LS",
+        "codeThree": "LSO",
+        "continent": "Africa"
+    },
+    {
+        "name": "Liberia",
+        "capital": "Monrovia",
+        "capitalLatLong": {
+            "latitude": 6.290743,
+            "longitude": 6.290743
+        },
+        "centroidLatLong": {
+            "latitude": 6.428055,
+            "longitude": -9.429499
+        },
+        "code": "LR",
+        "codeThree": "LBR",
+        "continent": "Africa"
+    },
+    {
+        "name": "Libya",
+        "capital": "Tripoli",
+        "capitalLatLong": {
+            "latitude": 32.887209,
+            "longitude": 32.887209
+        },
+        "centroidLatLong": {
+            "latitude": 26.3351,
+            "longitude": 17.228331
+        },
+        "code": "LY",
+        "codeThree": "LBY",
+        "continent": "Africa"
+    },
+    {
+        "name": "Liechtenstein",
+        "capital": "Vaduz",
+        "capitalLatLong": {
+            "latitude": 47.14103,
+            "longitude": 47.14103
+        },
+        "centroidLatLong": {
+            "latitude": 47.166,
+            "longitude": 9.555373
+        },
+        "code": "LI",
+        "codeThree": "LIE",
+        "continent": "Europe"
+    },
+    {
+        "name": "Lithuania",
+        "capital": "Vilnius",
+        "capitalLatLong": {
+            "latitude": 54.687156,
+            "longitude": 54.687156
+        },
+        "centroidLatLong": {
+            "latitude": 55.169438,
+            "longitude": 23.881275
+        },
+        "code": "LT",
+        "codeThree": "LTU",
+        "continent": "Europe"
+    },
+    {
+        "name": "Luxembourg",
+        "capital": "Luxembourg",
+        "capitalLatLong": {
+            "latitude": 49.611621,
+            "longitude": 49.611621
+        },
+        "centroidLatLong": {
+            "latitude": 49.815273,
+            "longitude": 6.129583
+        },
+        "code": "LU",
+        "codeThree": "LUX",
+        "continent": "Europe"
+    },
+    {
+        "name": "Macau",
+        "capital": "Macau",
+        "capitalLatLong": {
+            "latitude": 22.166667,
+            "longitude": 22.166667
+        },
+        "centroidLatLong": {
+            "latitude": 22.198745,
+            "longitude": 113.543873
+        },
+        "code": "MO",
+        "codeThree": "MAC",
+        "continent": "Asia"
+    },
+    {
+        "name": "Republic of North Macedonia",
+        "capital": "Skopje",
+        "capitalLatLong": {
+            "latitude": 41.997346,
+            "longitude": 41.997346
+        },
+        "centroidLatLong": {
+            "latitude": 41.608635,
+            "longitude": 21.745275
+        },
+        "code": "MK",
+        "codeThree": "MKD",
+        "continent": "Europe"
+    },
+    {
+        "name": "Madagascar",
+        "capital": "Antananarivo",
+        "capitalLatLong": {
+            "latitude": -18.87919,
+            "longitude": -18.87919
+        },
+        "centroidLatLong": {
+            "latitude": -18.766947,
+            "longitude": 46.869107
+        },
+        "code": "MG",
+        "codeThree": "MDG",
+        "continent": "Africa"
+    },
+    {
+        "name": "Malawi",
+        "capital": "Lilongwe",
+        "capitalLatLong": {
+            "latitude": -13.962612,
+            "longitude": -13.962612
+        },
+        "centroidLatLong": {
+            "latitude": -13.254308,
+            "longitude": 34.301525
+        },
+        "code": "MW",
+        "codeThree": "MWI",
+        "continent": "Africa"
+    },
+    {
+        "name": "Malaysia",
+        "capital": "Kuala Lumpur",
+        "capitalLatLong": {
+            "latitude": 3.139003,
+            "longitude": 3.139003
+        },
+        "centroidLatLong": {
+            "latitude": 4.210484,
+            "longitude": 101.975766
+        },
+        "code": "MY",
+        "codeThree": "MYS",
+        "continent": "Asia"
+    },
+    {
+        "name": "Maldives",
+        "capital": "Malé",
+        "capitalLatLong": {
+            "latitude": 4.175496,
+            "longitude": 4.175496
+        },
+        "centroidLatLong": {
+            "latitude": 3.202778,
+            "longitude": 73.22068
+        },
+        "code": "MV",
+        "codeThree": "MDV",
+        "continent": "Asia"
+    },
+    {
+        "name": "Mali",
+        "capital": "Bamako",
+        "capitalLatLong": {
+            "latitude": 12.639232,
+            "longitude": 12.639232
+        },
+        "centroidLatLong": {
+            "latitude": 17.570692,
+            "longitude": -3.996166
+        },
+        "code": "ML",
+        "codeThree": "MLI",
+        "continent": "Africa"
+    },
+    {
+        "name": "Malta",
+        "capital": "Valletta",
+        "capitalLatLong": {
+            "latitude": 35.898909,
+            "longitude": 35.898909
+        },
+        "centroidLatLong": {
+            "latitude": 35.937496,
+            "longitude": 14.375416
+        },
+        "code": "MT",
+        "codeThree": "MLT",
+        "continent": "Europe"
+    },
+    {
+        "name": "Marshall Islands",
+        "capital": "Majuro",
+        "capitalLatLong": {
+            "latitude": 7.116421,
+            "longitude": 7.116421
+        },
+        "centroidLatLong": {
+            "latitude": 7.131474,
+            "longitude": 171.184478
+        },
+        "code": "MH",
+        "codeThree": "MHL",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Martinique",
+        "capital": "Fort-de-France",
+        "capitalLatLong": {
+            "latitude": 14.616065,
+            "longitude": 14.616065
+        },
+        "centroidLatLong": {
+            "latitude": 14.641528,
+            "longitude": -61.024174
+        },
+        "code": "MQ",
+        "codeThree": "MTQ",
+        "continent": "Americas"
+    },
+    {
+        "name": "Mauritania",
+        "capital": "Nouakchott",
+        "capitalLatLong": {
+            "latitude": 18.07353,
+            "longitude": 18.07353
+        },
+        "centroidLatLong": {
+            "latitude": 21.00789,
+            "longitude": -10.940835
+        },
+        "code": "MR",
+        "codeThree": "MRT",
+        "continent": "Africa"
+    },
+    {
+        "name": "Mauritius",
+        "capital": "Port Louis",
+        "capitalLatLong": {
+            "latitude": -20.166896,
+            "longitude": -20.166896
+        },
+        "centroidLatLong": {
+            "latitude": -20.348404,
+            "longitude": 57.552152
+        },
+        "code": "MU",
+        "codeThree": "MUS",
+        "continent": "Africa"
+    },
+    {
+        "name": "Mayotte",
+        "capital": "Mamoudzou",
+        "capitalLatLong": {
+            "latitude": -12.780949,
+            "longitude": -12.780949
+        },
+        "centroidLatLong": {
+            "latitude": -12.8275,
+            "longitude": 45.166244
+        },
+        "code": "YT",
+        "codeThree": "MYT",
+        "continent": "Africa"
+    },
+    {
+        "name": "Mexico",
+        "capital": "Mexico City",
+        "capitalLatLong": {
+            "latitude": 19.432608,
+            "longitude": 19.432608
+        },
+        "centroidLatLong": {
+            "latitude": 23.634501,
+            "longitude": -102.552784
+        },
+        "code": "MX",
+        "codeThree": "MEX",
+        "continent": "Americas"
+    },
+    {
+        "name": "Micronesia",
+        "capital": "Palikir",
+        "capitalLatLong": {
+            "latitude": 6.914712,
+            "longitude": 6.914712
+        },
+        "centroidLatLong": {
+            "latitude": 7.425554,
+            "longitude": 150.550812
+        },
+        "code": "FM",
+        "codeThree": "FSM",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Moldova",
+        "capital": "Chisinau",
+        "capitalLatLong": {
+            "latitude": 47.010453,
+            "longitude": 47.010453
+        },
+        "centroidLatLong": {
+            "latitude": 47.411631,
+            "longitude": 28.369885
+        },
+        "code": "MD",
+        "codeThree": "MDA",
+        "continent": "Europe"
+    },
+    {
+        "name": "Monaco",
+        "capital": "Monaco",
+        "capitalLatLong": {
+            "latitude": 43.737411,
+            "longitude": 43.737411
+        },
+        "centroidLatLong": {
+            "latitude": 43.750298,
+            "longitude": 7.412841
+        },
+        "code": "MC",
+        "codeThree": "MCO",
+        "continent": "Europe"
+    },
+    {
+        "name": "Mongolia",
+        "capital": "Ulaanbaatar",
+        "capitalLatLong": {
+            "latitude": 47.886399,
+            "longitude": 47.886399
+        },
+        "centroidLatLong": {
+            "latitude": 46.862496,
+            "longitude": 103.846656
+        },
+        "code": "MN",
+        "codeThree": "MNG",
+        "continent": "Asia"
+    },
+    {
+        "name": "Montenegro",
+        "capital": "Podgorica",
+        "capitalLatLong": {
+            "latitude": 42.43042,
+            "longitude": 42.43042
+        },
+        "centroidLatLong": {
+            "latitude": 42.708678,
+            "longitude": 19.37439
+        },
+        "code": "ME",
+        "codeThree": "MNE",
+        "continent": "Europe"
+    },
+    {
+        "name": "Montserrat",
+        "capital": "Plymouth",
+        "capitalLatLong": {
+            "latitude": 16.706523,
+            "longitude": 16.706523
+        },
+        "centroidLatLong": {
+            "latitude": 16.742498,
+            "longitude": -62.187366
+        },
+        "code": "MS",
+        "codeThree": "MSR",
+        "continent": "Americas"
+    },
+    {
+        "name": "Morocco",
+        "capital": "Rabat",
+        "capitalLatLong": {
+            "latitude": 33.97159,
+            "longitude": 33.97159
+        },
+        "centroidLatLong": {
+            "latitude": 31.791702,
+            "longitude": -7.09262
+        },
+        "code": "MA",
+        "codeThree": "MAR",
+        "continent": "Africa"
+    },
+    {
+        "name": "Mozambique",
+        "capital": "Maputo",
+        "capitalLatLong": {
+            "latitude": -25.891968,
+            "longitude": -25.891968
+        },
+        "centroidLatLong": {
+            "latitude": -18.665695,
+            "longitude": 35.529562
+        },
+        "code": "MZ",
+        "codeThree": "MOZ",
+        "continent": "Africa"
+    },
+    {
+        "name": "Myanmar",
+        "capital": "Naypyidaw",
+        "capitalLatLong": {
+            "latitude": 19.763306,
+            "longitude": 19.763306
+        },
+        "centroidLatLong": {
+            "latitude": 21.913965,
+            "longitude": 95.956223
+        },
+        "code": "MM",
+        "codeThree": "MMR",
+        "continent": "Asia"
+    },
+    {
+        "name": "Namibia",
+        "capital": "Windhoek",
+        "capitalLatLong": {
+            "latitude": -22.560881,
+            "longitude": -22.560881
+        },
+        "centroidLatLong": {
+            "latitude": -22.95764,
+            "longitude": 18.49041
+        },
+        "code": "NA",
+        "codeThree": "NAM",
+        "continent": "Africa"
+    },
+    {
+        "name": "Nauru",
+        "capital": "Yaren",
+        "capitalLatLong": {
+            "latitude": -0.546686,
+            "longitude": -0.546686
+        },
+        "centroidLatLong": {
+            "latitude": -0.522778,
+            "longitude": 166.931503
+        },
+        "code": "NR",
+        "codeThree": "NRU",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Nepal",
+        "capital": "Kathmandu",
+        "capitalLatLong": {
+            "latitude": 27.717245,
+            "longitude": 27.717245
+        },
+        "centroidLatLong": {
+            "latitude": 28.394857,
+            "longitude": 84.124008
+        },
+        "code": "NP",
+        "codeThree": "NPL",
+        "continent": "Asia"
+    },
+    {
+        "name": "Netherlands",
+        "capital": "Amsterdam",
+        "capitalLatLong": {
+            "latitude": 52.370216,
+            "longitude": 52.370216
+        },
+        "centroidLatLong": {
+            "latitude": 52.132633,
+            "longitude": 5.291266
+        },
+        "code": "NL",
+        "codeThree": "NLD",
+        "continent": "Europe"
+    },
+    {
+        "name": "Netherlands Antilles",
+        "capital": "Willemstad ",
+        "capitalLatLong": {
+            "latitude": 12.1091242,
+            "longitude": 12.1091242
+        },
+        "centroidLatLong": {
+            "latitude": 12.226079,
+            "longitude": -69.060087
+        },
+        "code": "AN",
+        "codeThree": "ANT",
+        "continent": "Americas"
+    },
+    {
+        "name": "New Caledonia",
+        "capital": "Nouméa",
+        "capitalLatLong": {
+            "latitude": -22.255823,
+            "longitude": -22.255823
+        },
+        "centroidLatLong": {
+            "latitude": -20.904305,
+            "longitude": 165.618042
+        },
+        "code": "NC",
+        "codeThree": "NCL",
+        "continent": "Oceania"
+    },
+    {
+        "name": "New Zealand",
+        "capital": "Wellington",
+        "capitalLatLong": {
+            "latitude": -41.28646,
+            "longitude": -41.28646
+        },
+        "centroidLatLong": {
+            "latitude": -40.900557,
+            "longitude": 174.885971
+        },
+        "code": "NZ",
+        "codeThree": "NZL",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Nicaragua",
+        "capital": "Managua",
+        "capitalLatLong": {
+            "latitude": 12.114993,
+            "longitude": 12.114993
+        },
+        "centroidLatLong": {
+            "latitude": 12.865416,
+            "longitude": -85.207229
+        },
+        "code": "NI",
+        "codeThree": "NIC",
+        "continent": "Americas"
+    },
+    {
+        "name": "Niger",
+        "capital": "Niamey",
+        "capitalLatLong": {
+            "latitude": 13.511596,
+            "longitude": 13.511596
+        },
+        "centroidLatLong": {
+            "latitude": 17.607789,
+            "longitude": 8.081666
+        },
+        "code": "NE",
+        "codeThree": "NER",
+        "continent": "Africa"
+    },
+    {
+        "name": "Nigeria",
+        "capital": "Abuja",
+        "capitalLatLong": {
+            "latitude": 9.076479,
+            "longitude": 9.076479
+        },
+        "centroidLatLong": {
+            "latitude": 9.081999,
+            "longitude": 8.675277
+        },
+        "code": "NG",
+        "codeThree": "NGA",
+        "continent": "Africa"
+    },
+    {
+        "name": "Niue",
+        "capital": "Alofi",
+        "capitalLatLong": {
+            "latitude": -19.055371,
+            "longitude": -19.055371
+        },
+        "centroidLatLong": {
+            "latitude": -19.054445,
+            "longitude": -169.867233
+        },
+        "code": "NU",
+        "codeThree": "NIU",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Norfolk Island",
+        "capital": "Kingston",
+        "capitalLatLong": {
+            "latitude": -29.056394,
+            "longitude": -29.056394
+        },
+        "centroidLatLong": {
+            "latitude": -29.040835,
+            "longitude": 167.954712
+        },
+        "code": "NF",
+        "codeThree": "NFK",
+        "continent": "Oceania"
+    },
+    {
+        "name": "North Korea",
+        "capital": "Pyongyang",
+        "capitalLatLong": {
+            "latitude": 39.039219,
+            "longitude": 39.039219
+        },
+        "centroidLatLong": {
+            "latitude": 40.339852,
+            "longitude": 127.510093
+        },
+        "code": "KP",
+        "codeThree": "PRK",
+        "continent": "Asia"
+    },
+    {
+        "name": "Northern Mariana Islands",
+        "capital": "Saipan",
+        "capitalLatLong": {
+            "latitude": 15.177801,
+            "longitude": 15.177801
+        },
+        "centroidLatLong": {
+            "latitude": 17.33083,
+            "longitude": 145.38469
+        },
+        "code": "MP",
+        "codeThree": "MNP",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Norway",
+        "capital": "Oslo",
+        "capitalLatLong": {
+            "latitude": 59.913869,
+            "longitude": 59.913869
+        },
+        "centroidLatLong": {
+            "latitude": 60.472024,
+            "longitude": 8.468946
+        },
+        "code": "NO",
+        "codeThree": "NOR",
+        "continent": "Europe"
+    },
+    {
+        "name": "Oman",
+        "capital": "Muscat",
+        "capitalLatLong": {
+            "latitude": 23.58589,
+            "longitude": 23.58589
+        },
+        "centroidLatLong": {
+            "latitude": 21.512583,
+            "longitude": 55.923255
+        },
+        "code": "OM",
+        "codeThree": "OMN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Pakistan",
+        "capital": "Islamabad",
+        "capitalLatLong": {
+            "latitude": 33.729388,
+            "longitude": 33.729388
+        },
+        "centroidLatLong": {
+            "latitude": 30.375321,
+            "longitude": 69.345116
+        },
+        "code": "PK",
+        "codeThree": "PAK",
+        "continent": "Asia"
+    },
+    {
+        "name": "Palau",
+        "capital": "Ngerulmud",
+        "capitalLatLong": {
+            "latitude": 7.500384,
+            "longitude": 7.500384
+        },
+        "centroidLatLong": {
+            "latitude": 7.51498,
+            "longitude": 134.58252
+        },
+        "code": "PW",
+        "codeThree": "PLW",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Panama",
+        "capital": "Panama City",
+        "capitalLatLong": {
+            "latitude": 9.101179,
+            "longitude": 9.101179
+        },
+        "centroidLatLong": {
+            "latitude": 8.537981,
+            "longitude": -80.782127
+        },
+        "code": "PA",
+        "codeThree": "PAN",
+        "continent": "Americas"
+    },
+    {
+        "name": "Papua New Guinea",
+        "capital": "Port Moresby",
+        "capitalLatLong": {
+            "latitude": -9.4438,
+            "longitude": -9.4438
+        },
+        "centroidLatLong": {
+            "latitude": -6.314993,
+            "longitude": 143.95555
+        },
+        "code": "PG",
+        "codeThree": "PNG",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Paraguay",
+        "capital": "Asuncion",
+        "capitalLatLong": {
+            "latitude": -25.26374,
+            "longitude": -25.26374
+        },
+        "centroidLatLong": {
+            "latitude": -23.442503,
+            "longitude": -58.443832
+        },
+        "code": "PY",
+        "codeThree": "PRY",
+        "continent": "Americas"
+    },
+    {
+        "name": "Peru",
+        "capital": "Lima",
+        "capitalLatLong": {
+            "latitude": -12.046374,
+            "longitude": -12.046374
+        },
+        "centroidLatLong": {
+            "latitude": -9.189967,
+            "longitude": -75.015152
+        },
+        "code": "PE",
+        "codeThree": "PER",
+        "continent": "Americas"
+    },
+    {
+        "name": "Philippines",
+        "capital": "Manila",
+        "capitalLatLong": {
+            "latitude": 14.599512,
+            "longitude": 14.599512
+        },
+        "centroidLatLong": {
+            "latitude": 12.879721,
+            "longitude": 121.774017
+        },
+        "code": "PH",
+        "codeThree": "PHL",
+        "continent": "Asia"
+    },
+    {
+        "name": "Pitcairn Islands",
+        "capital": "Adamstown",
+        "capitalLatLong": {
+            "latitude": -25.06629,
+            "longitude": -25.06629
+        },
+        "centroidLatLong": {
+            "latitude": -24.703615,
+            "longitude": -127.439308
+        },
+        "code": "PN",
+        "codeThree": "PCN",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Poland",
+        "capital": "Warsaw",
+        "capitalLatLong": {
+            "latitude": 52.229676,
+            "longitude": 52.229676
+        },
+        "centroidLatLong": {
+            "latitude": 51.919438,
+            "longitude": 19.145136
+        },
+        "code": "PL",
+        "codeThree": "POL",
+        "continent": "Europe"
+    },
+    {
+        "name": "Portugal",
+        "capital": "Lisbon",
+        "capitalLatLong": {
+            "latitude": 38.722252,
+            "longitude": 38.722252
+        },
+        "centroidLatLong": {
+            "latitude": 39.399872,
+            "longitude": -8.224454
+        },
+        "code": "PT",
+        "codeThree": "PRT",
+        "continent": "Europe"
+    },
+    {
+        "name": "Puerto Rico",
+        "capital": "San Juan",
+        "capitalLatLong": {
+            "latitude": 18.466334,
+            "longitude": 18.466334
+        },
+        "centroidLatLong": {
+            "latitude": 18.220833,
+            "longitude": -66.590149
+        },
+        "code": "PR",
+        "codeThree": "PRI",
+        "continent": "Americas"
+    },
+    {
+        "name": "Qatar",
+        "capital": "Doha",
+        "capitalLatLong": {
+            "latitude": 25.285447,
+            "longitude": 25.285447
+        },
+        "centroidLatLong": {
+            "latitude": 25.354826,
+            "longitude": 51.183884
+        },
+        "code": "QA",
+        "codeThree": "QAT",
+        "continent": "Asia"
+    },
+    {
+        "name": "Réunion",
+        "capital": "Saint-Denis",
+        "capitalLatLong": {
+            "latitude": -20.882057,
+            "longitude": -20.882057
+        },
+        "centroidLatLong": {
+            "latitude": -21.115141,
+            "longitude": 55.536384
+        },
+        "code": "RE",
+        "codeThree": "REU",
+        "continent": "Africa"
+    },
+    {
+        "name": "Romania",
+        "capital": "Bucharest",
+        "capitalLatLong": {
+            "latitude": 44.426767,
+            "longitude": 44.426767
+        },
+        "centroidLatLong": {
+            "latitude": 45.943161,
+            "longitude": 24.96676
+        },
+        "code": "RO",
+        "codeThree": "ROU",
+        "continent": "Europe"
+    },
+    {
+        "name": "Russia",
+        "capital": "Moscow",
+        "capitalLatLong": {
+            "latitude": 55.755826,
+            "longitude": 55.755826
+        },
+        "centroidLatLong": {
+            "latitude": 61.52401,
+            "longitude": 105.318756
+        },
+        "code": "RU",
+        "codeThree": "RUS",
+        "continent": "Asia"
+    },
+    {
+        "name": "Rwanda",
+        "capital": "Kigali",
+        "capitalLatLong": {
+            "latitude": -1.957875,
+            "longitude": -1.957875
+        },
+        "centroidLatLong": {
+            "latitude": -1.940278,
+            "longitude": 29.873888
+        },
+        "code": "RW",
+        "codeThree": "RWA",
+        "continent": "Africa"
+    },
+    {
+        "name": "Saint Pierre and Miquelon",
+        "capital": "St. Pierre",
+        "capitalLatLong": {
+            "latitude": 46.775846,
+            "longitude": 46.775846
+        },
+        "centroidLatLong": {
+            "latitude": 46.941936,
+            "longitude": -56.27111
+        },
+        "code": "PM",
+        "codeThree": "SPM",
+        "continent": "Americas"
+    },
+    {
+        "name": "Saint Vincent and the Grenadines",
+        "capital": "Kingstown",
+        "capitalLatLong": {
+            "latitude": 13.160025,
+            "longitude": 13.160025
+        },
+        "centroidLatLong": {
+            "latitude": 12.984305,
+            "longitude": -61.287228
+        },
+        "code": "VC",
+        "codeThree": "VCT",
+        "continent": "Americas"
+    },
+    {
+        "name": "Samoa",
+        "capital": "Apia",
+        "capitalLatLong": {
+            "latitude": -13.850696,
+            "longitude": -13.850696
+        },
+        "centroidLatLong": {
+            "latitude": -13.759029,
+            "longitude": -172.104629
+        },
+        "code": "WS",
+        "codeThree": "WSM",
+        "continent": "Oceania"
+    },
+    {
+        "name": "San Marino",
+        "capital": "San Marino",
+        "capitalLatLong": {
+            "latitude": 43.935591,
+            "longitude": 43.935591
+        },
+        "centroidLatLong": {
+            "latitude": 43.94236,
+            "longitude": 12.457777
+        },
+        "code": "SM",
+        "codeThree": "SMR",
+        "continent": "Europe"
+    },
+    {
+        "name": "São Tomé and Príncipe",
+        "capital": "São Tomé",
+        "capitalLatLong": {
+            "latitude": 0.330192,
+            "longitude": 0.330192
+        },
+        "centroidLatLong": {
+            "latitude": 0.18636,
+            "longitude": 6.613081
+        },
+        "code": "ST",
+        "codeThree": "STP",
+        "continent": "Africa"
+    },
+    {
+        "name": "Saudi Arabia",
+        "capital": "Riyadh",
+        "capitalLatLong": {
+            "latitude": 24.749403,
+            "longitude": 24.749403
+        },
+        "centroidLatLong": {
+            "latitude": 23.885942,
+            "longitude": 45.079162
+        },
+        "code": "SA",
+        "codeThree": "SAU",
+        "continent": "Asia"
+    },
+    {
+        "name": "Senegal",
+        "capital": "Dakar",
+        "capitalLatLong": {
+            "latitude": 14.764504,
+            "longitude": 14.764504
+        },
+        "centroidLatLong": {
+            "latitude": 14.497401,
+            "longitude": -14.452362
+        },
+        "code": "SN",
+        "codeThree": "SEN",
+        "continent": "Africa"
+    },
+    {
+        "name": "Serbia",
+        "capital": "Belgrade",
+        "capitalLatLong": {
+            "latitude": 44.786568,
+            "longitude": 44.786568
+        },
+        "centroidLatLong": {
+            "latitude": 44.016521,
+            "longitude": 21.005859
+        },
+        "code": "RS",
+        "codeThree": "SRB",
+        "continent": "Europe"
+    },
+    {
+        "name": "Seychelles",
+        "capital": "Victoria",
+        "capitalLatLong": {
+            "latitude": -4.619143,
+            "longitude": -4.619143
+        },
+        "centroidLatLong": {
+            "latitude": -4.679574,
+            "longitude": 55.491977
+        },
+        "code": "SC",
+        "codeThree": "SYC",
+        "continent": "Africa"
+    },
+    {
+        "name": "Sierra Leone",
+        "capital": "Freetown",
+        "capitalLatLong": {
+            "latitude": 8.465677,
+            "longitude": 8.465677
+        },
+        "centroidLatLong": {
+            "latitude": 8.460555,
+            "longitude": -11.779889
+        },
+        "code": "SL",
+        "codeThree": "SLE",
+        "continent": "Africa"
+    },
+    {
+        "name": "Singapore",
+        "capital": "Singapore",
+        "capitalLatLong": {
+            "latitude": 1.280095,
+            "longitude": 1.280095
+        },
+        "centroidLatLong": {
+            "latitude": 1.352083,
+            "longitude": 103.819836
+        },
+        "code": "SG",
+        "codeThree": "SGP",
+        "continent": "Asia"
+    },
+    {
+        "name": "Slovakia",
+        "capital": "Bratislava",
+        "capitalLatLong": {
+            "latitude": 48.145892,
+            "longitude": 48.145892
+        },
+        "centroidLatLong": {
+            "latitude": 48.669026,
+            "longitude": 19.699024
+        },
+        "code": "SK",
+        "codeThree": "SVK",
+        "continent": "Europe"
+    },
+    {
+        "name": "Slovenia",
+        "capital": "Ljubljana",
+        "capitalLatLong": {
+            "latitude": 46.056947,
+            "longitude": 46.056947
+        },
+        "centroidLatLong": {
+            "latitude": 46.151241,
+            "longitude": 14.995463
+        },
+        "code": "SI",
+        "codeThree": "SVN",
+        "continent": "Europe"
+    },
+    {
+        "name": "Solomon Islands",
+        "capital": "Honiara",
+        "capitalLatLong": {
+            "latitude": -9.445638,
+            "longitude": -9.445638
+        },
+        "centroidLatLong": {
+            "latitude": -9.64571,
+            "longitude": 160.156194
+        },
+        "code": "SB",
+        "codeThree": "SLB",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Somalia",
+        "capital": "Mogadishu",
+        "capitalLatLong": {
+            "latitude": 2.046934,
+            "longitude": 2.046934
+        },
+        "centroidLatLong": {
+            "latitude": 5.152149,
+            "longitude": 46.199616
+        },
+        "code": "SO",
+        "codeThree": "SOM",
+        "continent": "Africa"
+    },
+    {
+        "name": "South Africa",
+        "capital": "Pretoria",
+        "capitalLatLong": {
+            "latitude": -25.747868,
+            "longitude": -25.747868
+        },
+        "centroidLatLong": {
+            "latitude": -30.559482,
+            "longitude": 22.937506
+        },
+        "code": "ZA",
+        "codeThree": "ZAF",
+        "continent": "Africa"
+    },
+    {
+        "name": "South Georgia and the South Sandwich Islands",
+        "capital": "King Edward Point",
+        "capitalLatLong": {
+            "latitude": -54.28325,
+            "longitude": -54.28325
+        },
+        "centroidLatLong": {
+            "latitude": -54.429579,
+            "longitude": -36.587909
+        },
+        "code": "GS",
+        "codeThree": "SGS",
+        "continent": "Atlantic Ocean"
+    },
+    {
+        "name": "South Korea",
+        "capital": "Seoul",
+        "capitalLatLong": {
+            "latitude": 37.566535,
+            "longitude": 37.566535
+        },
+        "centroidLatLong": {
+            "latitude": 35.907757,
+            "longitude": 127.766922
+        },
+        "code": "KR",
+        "codeThree": "KOR",
+        "continent": "Asia"
+    },
+    {
+        "name": "South Sudan",
+        "capital": "Juba",
+        "capitalLatLong": {
+            "latitude": 4.859363,
+            "longitude": 4.859363
+        },
+        "centroidLatLong": {
+            "latitude": 4.859363,
+            "longitude": 31.57125
+        },
+        "code": "SS",
+        "codeThree": "SSD",
+        "continent": "Africa"
+    },
+    {
+        "name": "Spain",
+        "capital": "Madrid",
+        "capitalLatLong": {
+            "latitude": 40.416775,
+            "longitude": 40.416775
+        },
+        "centroidLatLong": {
+            "latitude": 40.463667,
+            "longitude": -3.74922
+        },
+        "code": "ES",
+        "codeThree": "ESP",
+        "continent": "Europe"
+    },
+    {
+        "name": "Sri Lanka",
+        "capital": "Sri Jayawardenepura Kotte",
+        "capitalLatLong": {
+            "latitude": 6.89407,
+            "longitude": 6.89407
+        },
+        "centroidLatLong": {
+            "latitude": 7.873054,
+            "longitude": 80.771797
+        },
+        "code": "LK",
+        "codeThree": "LKA",
+        "continent": "Asia"
+    },
+    {
+        "name": "Saint Barthélemy",
+        "capital": "Gustavia",
+        "capitalLatLong": {
+            "latitude": 17.896435,
+            "longitude": 17.896435
+        },
+        "centroidLatLong": {
+            "latitude": 17.896435,
+            "longitude": -62.852201
+        },
+        "code": "BL",
+        "codeThree": "BLM",
+        "continent": "Americas"
+    },
+    {
+        "name": "Saint Kitts and Nevis",
+        "capital": "Basseterre",
+        "capitalLatLong": {
+            "latitude": 17.302606,
+            "longitude": 17.302606
+        },
+        "centroidLatLong": {
+            "latitude": 17.357822,
+            "longitude": -62.782998
+        },
+        "code": "KN",
+        "codeThree": "KNA",
+        "continent": "Americas"
+    },
+    {
+        "name": "Saint Lucia",
+        "capital": "Castries",
+        "capitalLatLong": {
+            "latitude": 14.010109,
+            "longitude": 14.010109
+        },
+        "centroidLatLong": {
+            "latitude": 13.909444,
+            "longitude": -60.978893
+        },
+        "code": "LC",
+        "codeThree": "LCA",
+        "continent": "Americas"
+    },
+    {
+        "name": "Saint Martin",
+        "capital": "Marigot",
+        "capitalLatLong": {
+            "latitude": 18.067519,
+            "longitude": 18.067519
+        },
+        "centroidLatLong": {
+            "latitude": 18.067519,
+            "longitude": -63.082466
+        },
+        "code": "SX",
+        "codeThree": "SXM",
+        "continent": "Americas"
+    },
+    {
+        "name": "Sudan",
+        "capital": "Khartoum",
+        "capitalLatLong": {
+            "latitude": 15.500654,
+            "longitude": 15.500654
+        },
+        "centroidLatLong": {
+            "latitude": 12.862807,
+            "longitude": 30.217636
+        },
+        "code": "SD",
+        "codeThree": "SDN",
+        "continent": "Africa"
+    },
+    {
+        "name": "Suriname",
+        "capital": "Paramaribo",
+        "capitalLatLong": {
+            "latitude": 5.852036,
+            "longitude": 5.852036
+        },
+        "centroidLatLong": {
+            "latitude": 3.919305,
+            "longitude": -56.027783
+        },
+        "code": "SR",
+        "codeThree": "SUR",
+        "continent": "Americas"
+    },
+    {
+        "name": "Svalbard and Jan Mayen",
+        "capital": "Longyearbyen ",
+        "capitalLatLong": {
+            "latitude": 78.062,
+            "longitude": 78.062
+        },
+        "centroidLatLong": {
+            "latitude": 77.553604,
+            "longitude": 23.670272
+        },
+        "code": "SJ",
+        "codeThree": "SJM",
+        "continent": "Europe"
+    },
+    {
+        "name": "Eswatini (Swaziland)",
+        "capital": "Mbabane",
+        "capitalLatLong": {
+            "latitude": -26.305448,
+            "longitude": -26.305448
+        },
+        "centroidLatLong": {
+            "latitude": -26.522503,
+            "longitude": 31.465866
+        },
+        "code": "SZ",
+        "codeThree": "SWZ",
+        "continent": "Africa"
+    },
+    {
+        "name": "Sweden",
+        "capital": "Stockholm",
+        "capitalLatLong": {
+            "latitude": 59.329323,
+            "longitude": 59.329323
+        },
+        "centroidLatLong": {
+            "latitude": 60.128161,
+            "longitude": 18.643501
+        },
+        "code": "SE",
+        "codeThree": "SWE",
+        "continent": "Europe"
+    },
+    {
+        "name": "Switzerland",
+        "capital": "Bern",
+        "capitalLatLong": {
+            "latitude": 46.947974,
+            "longitude": 46.947974
+        },
+        "centroidLatLong": {
+            "latitude": 46.818188,
+            "longitude": 8.227512
+        },
+        "code": "CH",
+        "codeThree": "CHE",
+        "continent": "Europe"
+    },
+    {
+        "name": "Syria",
+        "capital": "Damascus",
+        "capitalLatLong": {
+            "latitude": 33.513807,
+            "longitude": 33.513807
+        },
+        "centroidLatLong": {
+            "latitude": 34.802075,
+            "longitude": 38.996815
+        },
+        "code": "SY",
+        "codeThree": "SYR",
+        "continent": "Asia"
+    },
+    {
+        "name": "Taiwan",
+        "capital": "Taipei",
+        "capitalLatLong": {
+            "latitude": 25.032969,
+            "longitude": 25.032969
+        },
+        "centroidLatLong": {
+            "latitude": 23.69781,
+            "longitude": 120.960515
+        },
+        "code": "TW",
+        "codeThree": "TWN",
+        "continent": "Asia"
+    },
+    {
+        "name": "Tajikistan",
+        "capital": "Dushanbe",
+        "capitalLatLong": {
+            "latitude": 38.559772,
+            "longitude": 38.559772
+        },
+        "centroidLatLong": {
+            "latitude": 38.861034,
+            "longitude": 71.276093
+        },
+        "code": "TJ",
+        "codeThree": "TJK",
+        "continent": "Asia"
+    },
+    {
+        "name": "Tanzania",
+        "capital": "Dodoma",
+        "capitalLatLong": {
+            "latitude": -6.162959,
+            "longitude": -6.162959
+        },
+        "centroidLatLong": {
+            "latitude": -6.369028,
+            "longitude": 34.888822
+        },
+        "code": "TZ",
+        "codeThree": "TZA",
+        "continent": "Africa"
+    },
+    {
+        "name": "Thailand",
+        "capital": "Bangkok",
+        "capitalLatLong": {
+            "latitude": 13.756331,
+            "longitude": 13.756331
+        },
+        "centroidLatLong": {
+            "latitude": 15.870032,
+            "longitude": 100.992541
+        },
+        "code": "TH",
+        "codeThree": "THA",
+        "continent": "Asia"
+    },
+    {
+        "name": "Timor-Leste",
+        "capital": "Dili",
+        "capitalLatLong": {
+            "latitude": -8.556856,
+            "longitude": -8.556856
+        },
+        "centroidLatLong": {
+            "latitude": -8.874217,
+            "longitude": 125.727539
+        },
+        "code": "TL",
+        "codeThree": "TLS",
+        "continent": "Asia"
+    },
+    {
+        "name": "Togo",
+        "capital": "Lomé",
+        "capitalLatLong": {
+            "latitude": 6.172497,
+            "longitude": 6.172497
+        },
+        "centroidLatLong": {
+            "latitude": 8.619543,
+            "longitude": 0.824782
+        },
+        "code": "TG",
+        "codeThree": "TGO",
+        "continent": "Africa"
+    },
+    {
+        "name": "Tokelau",
+        "capital": "Nukunonu",
+        "capitalLatLong": {
+            "latitude": -9.2005,
+            "longitude": -9.2005
+        },
+        "centroidLatLong": {
+            "latitude": -8.967363,
+            "longitude": -171.855881
+        },
+        "code": "TK",
+        "codeThree": "TKL",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Tonga",
+        "capital": "Nuku'alofa",
+        "capitalLatLong": {
+            "latitude": -21.139342,
+            "longitude": -21.139342
+        },
+        "centroidLatLong": {
+            "latitude": -21.178986,
+            "longitude": -175.198242
+        },
+        "code": "TO",
+        "codeThree": "TON",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Trinidad and Tobago",
+        "capital": "Port of Spain",
+        "capitalLatLong": {
+            "latitude": 10.654901,
+            "longitude": 10.654901
+        },
+        "centroidLatLong": {
+            "latitude": 10.691803,
+            "longitude": -61.222503
+        },
+        "code": "TT",
+        "codeThree": "TTO",
+        "continent": "Americas"
+    },
+    {
+        "name": "Tristan da Cunha",
+        "capital": "Edinburgh of the Seven Seas",
+        "capitalLatLong": {
+            "latitude": -37.068042,
+            "longitude": -37.068042
+        },
+        "centroidLatLong": {
+            "latitude": -24.143474,
+            "longitude": -10.030696
+        },
+        "code": "SH",
+        "codeThree": "SHN",
+        "continent": "Atlantic Ocean"
+    },
+    {
+        "name": "Tunisia",
+        "capital": "Tunis",
+        "capitalLatLong": {
+            "latitude": 36.806495,
+            "longitude": 36.806495
+        },
+        "centroidLatLong": {
+            "latitude": 33.886917,
+            "longitude": 9.537499
+        },
+        "code": "TN",
+        "codeThree": "TUN",
+        "continent": "Africa"
+    },
+    {
+        "name": "Turkey",
+        "capital": "Ankara",
+        "capitalLatLong": {
+            "latitude": 39.933364,
+            "longitude": 39.933364
+        },
+        "centroidLatLong": {
+            "latitude": 38.963745,
+            "longitude": 35.243322
+        },
+        "code": "TR",
+        "codeThree": "TUR",
+        "continent": "Asia"
+    },
+    {
+        "name": "Turkmenistan",
+        "capital": "Ashgabat",
+        "capitalLatLong": {
+            "latitude": 37.960077,
+            "longitude": 37.960077
+        },
+        "centroidLatLong": {
+            "latitude": 38.969719,
+            "longitude": 59.556278
+        },
+        "code": "TM",
+        "codeThree": "TKM",
+        "continent": "Asia"
+    },
+    {
+        "name": "Turks and Caicos Islands",
+        "capital": "Cockburn Town",
+        "capitalLatLong": {
+            "latitude": 21.467458,
+            "longitude": 21.467458
+        },
+        "centroidLatLong": {
+            "latitude": 21.694025,
+            "longitude": -71.797928
+        },
+        "code": "TC",
+        "codeThree": "TCA",
+        "continent": "Americas"
+    },
+    {
+        "name": "Tuvalu",
+        "capital": "Funafuti",
+        "capitalLatLong": {
+            "latitude": -8.520066,
+            "longitude": -8.520066
+        },
+        "centroidLatLong": {
+            "latitude": -7.109535,
+            "longitude": 177.64933
+        },
+        "code": "TV",
+        "codeThree": "TUV",
+        "continent": "Oceania"
+    },
+    {
+        "name": "U.S. Virgin Islands",
+        "capital": "Charlotte Amalie",
+        "capitalLatLong": {
+            "latitude": 18.3419,
+            "longitude": 18.3419
+        },
+        "centroidLatLong": {
+            "latitude": 18.335765,
+            "longitude": -64.896335
+        },
+        "code": "VI",
+        "codeThree": "VIR",
+        "continent": "Americas"
+    },
+    {
+        "name": "Uganda",
+        "capital": "Kampala",
+        "capitalLatLong": {
+            "latitude": 0.347596,
+            "longitude": 0.347596
+        },
+        "centroidLatLong": {
+            "latitude": 1.373333,
+            "longitude": 32.290275
+        },
+        "code": "UG",
+        "codeThree": "UGA",
+        "continent": "Africa"
+    },
+    {
+        "name": "Ukraine",
+        "capital": "Kyiv",
+        "capitalLatLong": {
+            "latitude": 50.4501,
+            "longitude": 50.4501
+        },
+        "centroidLatLong": {
+            "latitude": 48.379433,
+            "longitude": 31.16558
+        },
+        "code": "UA",
+        "codeThree": "UKR",
+        "continent": "Europe"
+    },
+    {
+        "name": "United Arab Emirates",
+        "capital": "Abu Dhabi",
+        "capitalLatLong": {
+            "latitude": 24.299174,
+            "longitude": 24.299174
+        },
+        "centroidLatLong": {
+            "latitude": 23.424076,
+            "longitude": 53.847818
+        },
+        "code": "AE",
+        "codeThree": "ARE",
+        "continent": "Asia"
+    },
+    {
+        "name": "United Kingdom",
+        "capital": "London",
+        "capitalLatLong": {
+            "latitude": 51.507351,
+            "longitude": 51.507351
+        },
+        "centroidLatLong": {
+            "latitude": 55.378051,
+            "longitude": -3.435973
+        },
+        "code": "GB",
+        "codeThree": "GBR",
+        "continent": "Europe"
+    },
+    {
+        "name": "United States",
+        "capital": "Washington",
+        "capitalLatLong": {
+            "latitude": 38.907192,
+            "longitude": 38.907192
+        },
+        "centroidLatLong": {
+            "latitude": 37.09024,
+            "longitude": -95.712891
+        },
+        "code": "US",
+        "codeThree": "USA",
+        "continent": "Americas"
+    },
+    {
+        "name": "Uruguay",
+        "capital": "Montevideo",
+        "capitalLatLong": {
+            "latitude": -34.901113,
+            "longitude": -34.901113
+        },
+        "centroidLatLong": {
+            "latitude": -32.522779,
+            "longitude": -55.765835
+        },
+        "code": "UY",
+        "codeThree": "URY",
+        "continent": "Americas"
+    },
+    {
+        "name": "Uzbekistan",
+        "capital": "Tashkent",
+        "capitalLatLong": {
+            "latitude": 41.299496,
+            "longitude": 41.299496
+        },
+        "centroidLatLong": {
+            "latitude": 41.377491,
+            "longitude": 64.585262
+        },
+        "code": "UZ",
+        "codeThree": "UZB",
+        "continent": "Asia"
+    },
+    {
+        "name": "Vanuatu",
+        "capital": "Port Vila",
+        "capitalLatLong": {
+            "latitude": -17.733251,
+            "longitude": -17.733251
+        },
+        "centroidLatLong": {
+            "latitude": -15.376706,
+            "longitude": 166.959158
+        },
+        "code": "VU",
+        "codeThree": "VUT",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Vatican City",
+        "capital": "Vatican City",
+        "capitalLatLong": {
+            "latitude": 41.902179,
+            "longitude": 41.902179
+        },
+        "centroidLatLong": {
+            "latitude": 41.902916,
+            "longitude": 12.453389
+        },
+        "code": "VA",
+        "codeThree": "VAT",
+        "continent": "Europe"
+    },
+    {
+        "name": "Venezuela",
+        "capital": "Caracas",
+        "capitalLatLong": {
+            "latitude": 10.480594,
+            "longitude": 10.480594
+        },
+        "centroidLatLong": {
+            "latitude": 6.42375,
+            "longitude": -66.58973
+        },
+        "code": "VE",
+        "codeThree": "VEN",
+        "continent": "Americas"
+    },
+    {
+        "name": "Vietnam",
+        "capital": "Hanoi",
+        "capitalLatLong": {
+            "latitude": 21.027764,
+            "longitude": 21.027764
+        },
+        "centroidLatLong": {
+            "latitude": 14.058324,
+            "longitude": 108.277199
+        },
+        "code": "VN",
+        "codeThree": "VNM",
+        "continent": "Asia"
+    },
+    {
+        "name": "Wallis and Futuna",
+        "capital": "Mata-Utu",
+        "capitalLatLong": {
+            "latitude": -13.282509,
+            "longitude": -13.282509
+        },
+        "centroidLatLong": {
+            "latitude": -13.768752,
+            "longitude": -177.156097
+        },
+        "code": "WF",
+        "codeThree": "WLF",
+        "continent": "Oceania"
+    },
+    {
+        "name": "Western Sahara",
+        "capital": "El Aaiún",
+        "capitalLatLong": {
+            "latitude": 27.125287,
+            "longitude": 27.125287
+        },
+        "centroidLatLong": {
+            "latitude": 24.215527,
+            "longitude": -12.885834
+        },
+        "code": "EH",
+        "codeThree": "ESH",
+        "continent": "Africa"
+    },
+    {
+        "name": "Yemen",
+        "capital": "Sana'a",
+        "capitalLatLong": {
+            "latitude": 15.369445,
+            "longitude": 15.369445
+        },
+        "centroidLatLong": {
+            "latitude": 15.552727,
+            "longitude": 48.516388
+        },
+        "code": "YE",
+        "codeThree": "YEM",
+        "continent": "Asia"
+    },
+    {
+        "name": "Zambia",
+        "capital": "Lusaka",
+        "capitalLatLong": {
+            "latitude": -15.387526,
+            "longitude": -15.387526
+        },
+        "centroidLatLong": {
+            "latitude": -13.133897,
+            "longitude": 27.849332
+        },
+        "code": "ZM",
+        "codeThree": "ZMB",
+        "continent": "Africa"
+    },
+    {
+        "name": "Zimbabwe",
+        "capital": "Harare",
+        "capitalLatLong": {
+            "latitude": -17.825166,
+            "longitude": -17.825166
+        },
+        "centroidLatLong": {
+            "latitude": -19.015438,
+            "longitude": 29.154857
+        },
+        "code": "ZW",
+        "codeThree": "ZWE",
+        "continent": "Africa"
     }
-   ]
+]
