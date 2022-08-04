@@ -1,34 +1,34 @@
 # WorldleDx
 
 Features to Add
-[]  Modes
-    [x] Flag mode
-    []  Capitals
-    []  Outlines
-[]  Download SVG files from: [This repo]https://github.com/djaiss/mapsicon
+-  [ ]  Modes
+    - [x] Flag mode
+    -  [ ]  Capitals
+    -  [ ]  Outlines
+-  [ ]  Download SVG files from: [This repo]https://github.com/djaiss/mapsicon
         Clean up files by removing all the pngs: del /s *.png
 
-[]  Add logic for bearing deviation indicator
+-  [ ]  Add logic for bearing deviation indicator
         (show miss indicator on 2D and 3D diagrams?)
 
-[]  Ketex visualisation of the maths:
+-  [ ]  Ketex visualisation of the maths:
         Dynamically show equation values changing?
 
-[]  Material UI
-[]  Dark Mode
-[]  Disable repeat 
-[]  Freeze inputs when game completes
-[]  Free text entry with autocomplete
-[]  
+-  [ ]  Material UI
+-  [ ]  Dark Mode
+-  [ ]  Disable repeat 
+-  [ ]  Freeze inputs when game completes
+-  [ ]  Free text entry with autocomplete
+-  [ ]  
 
-[]  3D Visualisations
+-  [ ]  3D Visualisations
         Three JS
             [Discover Three JS](https://discoverthreejs.com/book/)
         [or [GlobeGL?](https://www.npmjs.com/package/globe.gl)...although this is just a plugin for ThreeJS
 
 
 Technical Debt / Refactoring
-[]  Review flags and delete countries with the same flag 
+-  [ ]  Review flags and delete countries with the same flag 
     - Must only affect flag mode
 
 
@@ -37,7 +37,8 @@ Visualisation Notes:
 
     (1) 2D Pre-defined SVGs:
         [Mapsicon](https://github.com/djaiss/mapsicon)
-    
+            SVG elements are easily colored via CSS: https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element
+
 
     (2) + (3) GeoJSON data fed into:
         (2) D3
