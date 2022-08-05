@@ -68,3 +68,22 @@ export function angleBetweenPointsOnSphere(startLocation: ILatLong, endLocation:
 export function calculateEarthGreatCircleDistance_KM(startLocation: ILatLong, endLocation: ILatLong): number {
     return EARTH_MEAN_RADIUS_KM * angleBetweenPointsOnSphere(startLocation, endLocation)
 }
+
+export function calculateRelativeBearing(startLocation: ILatLong, endLocation: ILatLong): number {
+    // Implementation of https://math.stackexchange.com/questions/2688803/angle-between-two-points-on-a-sphere
+
+    // let phi_1 = degreesToRadians(startLocation.latitude)
+    // let phi_2 = degreesToRadians(endLocation.latitude)
+    let lambda_1 = degreesToRadians(startLocation.longitude)
+    let lambda_2 = degreesToRadians(endLocation.longitude)
+
+    let A = Math.abs(lambda_2 - lambda_1)
+
+    let a = angleBetweenPointsOnSphere(startLocation, endLocation)
+    // let b = Math.PI - lambda_1
+    let c = Math.PI - lambda_2
+
+    let sinC = Math.sin(A)*Math.sin(c) / Math.sin(a)
+
+    return Math.asin(sinC)
+}
