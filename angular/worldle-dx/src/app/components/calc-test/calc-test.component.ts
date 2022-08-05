@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { calculateEarthGreatCircleDistance_KM, generateRandomInteger, getCentroidLatLong } from 'src/app/commonFunctions/functions';
+import { calculateEarthGreatCircleDistance_KM, calculateRelativeBearingDegs, generateRandomInteger, getCentroidLatLong } from 'src/app/commonFunctions/functions';
 import { ICountry, ILatLong, Jump, JumpPoint } from 'src/app/models/interfaces_and_classes';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
+import * as d3 from 'd3';
 
 const MAX_GUESSES = 5
+
+const MODES: string[] = ['flags','boundariesSVG','boundaries2D', 'boundaries3D','capitals']
 
 
 @Component({
@@ -13,6 +16,9 @@ const MAX_GUESSES = 5
   styleUrls: ['./calc-test.component.scss']
 })
 export class CalcTestComponent implements OnInit {
+
+
+    svg: any;
 
     remainingGuesses: number
 
@@ -24,6 +30,8 @@ export class CalcTestComponent implements OnInit {
         this.remainingGuesses = MAX_GUESSES
         this.gameState = "ACTIVE"
         this.uiActive= true
+        this.modeIndex=0
+        this.modeString=MODES[this.modeIndex]
         this.initialiseGame()
     }
 
@@ -36,17 +44,25 @@ export class CalcTestComponent implements OnInit {
 
     _capitalSeparation: number | undefined
     _centroidSeparation: number | undefined
+    
+    _interCentroidBearing: number | undefined
+    _interCapitalBearing: number | undefined
 
     _resultAvailable: boolean | undefined
     _guessList: string[] = []
     target: string = ""
     targetLatLong!: ILatLong;
     targetCountry!: ICountry
+    modeIndex: number
+    modeString: string
 
     jumpList!: Jump[]
 
 
     ngOnInit(): void {
+        this.svg = d3.select("svg"),
+        this.drawTestGraph()
+
     }
 
 
@@ -65,7 +81,10 @@ export class CalcTestComponent implements OnInit {
             this.remainingGuesses = MAX_GUESSES - this._guessList.length
 
             let _endPointCentroid = this._selectedCountry.centroidLatLong
-            this._centroidSeparation = calculateEarthGreatCircleDistance_KM(this.targetLatLong, _endPointCentroid)
+            this._centroidSeparation = calculateEarthGreatCircleDistance_KM(_endPointCentroid, this.targetLatLong)
+           
+            // this._interCentroidBearing = calculateRelativeBearingDegs(_endPointCentroid, this.targetLatLong)
+            // this._interCapitalBearing = calculateRelativeBearingDegs(this._selectedCountry.capitalLatLong, this.targetCountry.capitalLatLong)
                 
             // check if guess was correct/not
             if (_newGuess === this.targetCountry.code) {
@@ -178,4 +197,51 @@ export class CalcTestComponent implements OnInit {
         let _guess: ILatLong = getCentroidLatLong(code)
         return calculateEarthGreatCircleDistance_KM(_guess, this.targetLatLong)
     }
+
+
+    // replace this with an observable?
+    modeSelector(): void {
+        if(this.modeIndex === MODES.length-1){
+            this.modeIndex = 0
+        } else {
+            this.modeIndex += 1
+        }
+        this.modeString = MODES[this.modeIndex]
+    }
+
+    drawTestGraph(): void {
+        let width = +this.svg.attr("width")
+        let height = +this.svg.attr("height")
+
+    // Map and projection
+    let projection = d3.geoMercator()
+        // .center([2, 47])                // GPS of location to zoom on
+        .scale(100)                       // This is like the zoom
+        .translate([ width/2, height/2 ])
+
+        // d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then( (data: any) =>{
+        d3.json("/assets/boundaries/geojson/ne_110m_admin_0_countries.geojson").then( (data: any) =>{
+            console.log(data)
+
+    // Filter data
+    data.features = data.features.filter(function(d: any){console.log(d.properties.ISO_A2_EH) ; return d.properties.ISO_A2_EH=="US"})
+
+    // Draw the map
+    this.svg.append("g")
+        .selectAll("path")
+        .data(data.features)
+        .enter()
+        .append("path")
+          .attr("fill", "grey")
+          .attr("d", d3.geoPath()
+              .projection(projection)
+          )
+        .style("stroke", "none")
+    })
+
+
+        }
+
+    
+
 }

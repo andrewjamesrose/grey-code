@@ -1,4 +1,9 @@
-<img width="400px" src="assets/flags/png1000px/{{targetCountry.code| lowercase }}.png"/>
+<div><button (click)="modeSelector()">Mode Selector</button></div>
+<span>Current mode is {{modeString}}</span>
+    <!-- <button (click)="print()">Mode Selector</button></div> -->
+
+<div *ngIf="modeString==='flags'"><img width="400px" src="assets/flags/png1000px/{{targetCountry.code| lowercase }}.png"/></div>
+<div *ngIf="modeString==='boundariesSVG'"><img width="400px" src="assets/boundaries/svg/{{targetCountry.code| lowercase }}/vector.svg"/></div>
 
 <br>
 
@@ -16,6 +21,8 @@
     
     <div *ngIf="remainingGuesses>0 && gameState ==='ACTIVE'" >
         <div>Your guess was {{_centroidSeparation | number }}km away from the centroid of the target</div>
+        <!-- <div>The target centroid is {{_interCentroidBearing | number }}° from the centroid of your guess</div>
+        <div>The target capital is {{_interCapitalBearing | number }}° from the capital of your guess</div> -->
         <div>You have {{ remainingGuesses| number }} guesses remaining </div>
     </div>
     <div *ngIf="gameState==='GAMEOVER'">GAME OVER</div>
@@ -81,6 +88,11 @@
 
     <div *ngIf="_guessList.length===1">Perfect score!</div>
 
+</div>
+
+<div>
+    D3 2D Map
+    <svg id="my_dataviz" width="800" height="800"></svg>
 </div>
 
 

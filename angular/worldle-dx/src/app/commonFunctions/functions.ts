@@ -7,6 +7,10 @@ export function degreesToRadians(degrees: number): number {
   return degrees * (Math.PI/180)
 }
 
+export function radiansToDegrees(radians: number): number {
+    return radians * (180/Math.PI)
+}
+
 
 export function generateRandomInteger(min: number, max: number) {
     return Math.floor(min + Math.random()*(max - min + 1))
@@ -69,21 +73,29 @@ export function calculateEarthGreatCircleDistance_KM(startLocation: ILatLong, en
     return EARTH_MEAN_RADIUS_KM * angleBetweenPointsOnSphere(startLocation, endLocation)
 }
 
-export function calculateRelativeBearing(startLocation: ILatLong, endLocation: ILatLong): number {
-    // Implementation of https://math.stackexchange.com/questions/2688803/angle-between-two-points-on-a-sphere
+export function calculateRelativeBearingRads(startLocation: ILatLong, endLocation: ILatLong): number {
+   
+    let lat1 = startLocation.latitude
+    let long1 = startLocation.longitude
 
-    // let phi_1 = degreesToRadians(startLocation.latitude)
-    // let phi_2 = degreesToRadians(endLocation.latitude)
-    let lambda_1 = degreesToRadians(startLocation.longitude)
-    let lambda_2 = degreesToRadians(endLocation.longitude)
+    let lat2 = endLocation.latitude
+    let long2 = endLocation.longitude
 
-    let A = Math.abs(lambda_2 - lambda_1)
+    let deltaL = long2 - long1
 
-    let a = angleBetweenPointsOnSphere(startLocation, endLocation)
-    // let b = Math.PI - lambda_1
-    let c = Math.PI - lambda_2
+   let y = Math.sin(deltaL) * Math.cos(lat2)
+   let x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1)* Math.cos(lat2) * Math.cos(deltaL);
 
-    let sinC = Math.sin(A)*Math.sin(c) / Math.sin(a)
+    let output = Math.atan2(y, x);
 
-    return Math.asin(sinC)
+    if (output < 0) {
+        output = output + 2*Math.PI
+    }
+
+    return output
+}
+
+
+export function calculateRelativeBearingDegs(startLocation: ILatLong, endLocation: ILatLong): number {
+    return calculateRelativeBearingRads(startLocation, endLocation) * (180 / Math.PI)
 }
