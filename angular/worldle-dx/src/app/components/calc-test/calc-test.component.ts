@@ -4,10 +4,13 @@ import { ICountry, ILatLong, Jump, JumpPoint } from 'src/app/models/interfaces_a
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 import * as d3 from 'd3';
+import * as d3geoprojections from 'd3-geo-projection';
+
 
 const MAX_GUESSES = 5
 
-const MODES: string[] = ['flags','boundariesSVG','boundaries2D', 'boundaries3D','capitals']
+const GAME_MODES: string[] = ['flags','boundariesSVG','boundaries2D', 'boundaries3D','capitals']
+const VIEW_MODES: string[] =['none','2D','3D']
 
 
 @Component({
@@ -30,8 +33,11 @@ export class CalcTestComponent implements OnInit {
         this.remainingGuesses = MAX_GUESSES
         this.gameState = "ACTIVE"
         this.uiActive= true
-        this.modeIndex=0
-        this.modeString=MODES[this.modeIndex]
+
+        this.gameModeIndex=0
+        this.gameModeString=GAME_MODES[this.gameModeIndex]
+        this.viewModeIndex=0
+        this.viewModeString=VIEW_MODES[this.viewModeIndex]
         this.initialiseGame()
     }
 
@@ -53,15 +59,17 @@ export class CalcTestComponent implements OnInit {
     target: string = ""
     targetLatLong!: ILatLong;
     targetCountry!: ICountry
-    modeIndex: number
-    modeString: string
+    gameModeIndex: number
+    gameModeString: string
+    viewModeIndex: number
+    viewModeString: string
 
     jumpList!: Jump[]
 
 
     ngOnInit(): void {
         this.svg = d3.select("svg"),
-        this.drawTestGraph()
+        this.redrawGraph()
 
     }
 
@@ -83,6 +91,7 @@ export class CalcTestComponent implements OnInit {
             let _endPointCentroid = this._selectedCountry.centroidLatLong
             this._centroidSeparation = calculateEarthGreatCircleDistance_KM(_endPointCentroid, this.targetLatLong)
            
+            this.redrawGraph()
             // this._interCentroidBearing = calculateRelativeBearingDegs(_endPointCentroid, this.targetLatLong)
             // this._interCapitalBearing = calculateRelativeBearingDegs(this._selectedCountry.capitalLatLong, this.targetCountry.capitalLatLong)
                 
@@ -105,7 +114,7 @@ export class CalcTestComponent implements OnInit {
 
     isValidGuess(code: string): boolean {
         let _output = true
-        if (this._guessList.find(item => item === code)){
+        if (this.isExistingGuess(code)){
             _output = false
         }
         
@@ -200,48 +209,98 @@ export class CalcTestComponent implements OnInit {
 
 
     // replace this with an observable?
-    modeSelector(): void {
-        if(this.modeIndex === MODES.length-1){
-            this.modeIndex = 0
+    gameModeSelector(): void {
+        if(this.gameModeIndex === GAME_MODES.length-1){
+            this.gameModeIndex = 0
         } else {
-            this.modeIndex += 1
+            this.gameModeIndex += 1
         }
-        this.modeString = MODES[this.modeIndex]
+        this.gameModeString = GAME_MODES[this.gameModeIndex]
     }
 
-    drawTestGraph(): void {
+
+    viewModeSelector(): void {
+        if(this.viewModeIndex === VIEW_MODES.length-1){
+            this.viewModeIndex = 0
+        } else {
+            this.viewModeIndex += 1
+        }
+        this.viewModeString = VIEW_MODES[this.viewModeIndex]
+    }
+
+
+    isExistingGuess(code: string): boolean{
+        let _output = false
+
+        if (this._guessList.find(item => item === code)){
+            _output = true
+        }
+
+        return _output
+    }
+
+    debugPrint():void {
+        console.log(this._guessList)
+    }
+
+    clear2DMap(){
+        this.svg.selectAll('*').remove();
+    }
+
+    redrawGraph(): void {
+        // this.reset2DMap()
+        
         let width = +this.svg.attr("width")
         let height = +this.svg.attr("height")
 
-    // Map and projection
-    let projection = d3.geoMercator()
+        // Map and projection
+        // let projection = d3.geoMercator()
+        // let projection = d3.geoNaturalEarth1()
+        let projection = d3geoprojections.geoMiller()
+        // let projection = d3geoprojections.geoPatterson()
+        // let projection = d3geoprojections.geoRobinson()
         // .center([2, 47])                // GPS of location to zoom on
-        .scale(100)                       // This is like the zoom
+        .scale(120)                       // This is like the zoom. Full earth is 128 zoom, lower is further away
         .translate([ width/2, height/2 ])
 
+        //Scale Parameter depends on map being used
+        // Natural Earth = 180
+        // Mercator = 128
+        
+
+        // How to use the d3.json syntax in modern d3 with promises:
+        // https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed
         // d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then( (data: any) =>{
         d3.json("/assets/boundaries/geojson/ne_110m_admin_0_countries.geojson").then( (data: any) =>{
             console.log(data)
 
-    // Filter data
-    data.features = data.features.filter(function(d: any){console.log(d.properties.ISO_A2_EH) ; return d.properties.ISO_A2_EH=="US"})
+            this.clear2DMap ()
 
-    // Draw the map
-    this.svg.append("g")
-        .selectAll("path")
-        .data(data.features)
-        .enter()
-        .append("path")
-          .attr("fill", "grey")
-          .attr("d", d3.geoPath()
-              .projection(projection)
-          )
-        .style("stroke", "none")
-    })
+            // Filter data for existing guesses only
+            data.features = data.features.filter((d: any) => {
+                                    console.log(d.properties.ISO_A2_EH)
+                                    // return d.properties.ISO_A2_EH=="US"
+                                    return (this.isExistingGuess( d.properties.ISO_A2_EH))
+                                })
 
-
+            // Draw the map
+            this.svg.append("g")
+                .selectAll("path")
+                .data(data.features)
+                .enter()
+                .append("path")
+                // .attr("fill", "grey")
+                .attr("fill", (d: any) => {
+                    let color: string = "grey"
+                    if (d.properties.ISO_A2_EH === "NO"){
+                        color = "blue"
+                    }
+                    return color
+                    })
+                .attr("d", d3.geoPath()
+                    .projection(projection)
+                )
+                .style("stroke", "none")
+            })
         }
-
-    
-
 }

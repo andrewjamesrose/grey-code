@@ -1,5 +1,7 @@
 # WorldleDx
 
+[Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
 Features to Add
 -  [ ]  Modes
     - [x] Flag mode
@@ -27,6 +29,18 @@ Features to Add
         [or [GlobeGL?](https://www.npmjs.com/package/globe.gl)...although this is just a plugin for ThreeJS
 
 
+____
+
+# Difficulties
+-   Could not get d3-geo-projections to work
+        Attempted to try any of these projections: 
+            Patterson
+            Miller
+            Robinson
+        Potential fix to try if spare time presents itself:
+            [Ambient Declarations](https://github.com/d3/d3-geo-projection/issues/217)
+
+
 Technical Debt / Refactoring
 -  [ ]  Review flags and delete countries with the same flag 
     - Must only affect flag mode
@@ -43,6 +57,7 @@ Visualisation Notes:
     (2) + (3) GeoJSON data fed into:
         (2) D3
             [Implementation Example](https://d3-graph-gallery.com/graph/backgroundmap_basic.html)
+            [D3 Projections for maps](https://github.com/d3/d3-geo-projection)
         (3) ThreeJS + Globe
     
 
@@ -53,9 +68,16 @@ Visualisation Notes:
 
 
 
+
+
 Some resources:
 Country names, codes and centroid lat-longs (used)
-https://developers.google.com/public-data/docs/canonical/countries_csv
+    https://developers.google.com/public-data/docs/canonical/countries_csv
+
+
+[Online Great Circle Calculator](http://www.gcmap.com/)
+
+[Spherical Geometry Equations + Calculators](https://www.movable-type.co.uk/scripts/latlong.html)
 
 
 Alternative lat-longs for centroids (not used here)

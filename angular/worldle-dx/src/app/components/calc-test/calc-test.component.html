@@ -1,9 +1,15 @@
-<div><button (click)="modeSelector()">Mode Selector</button></div>
-<span>Current mode is {{modeString}}</span>
+<div>
+    <button (click)="gameModeSelector()">Mode Selector</button>
+    <button (click)="viewModeSelector()">Mode Selector</button>
+    <button (click)="debugPrint()">Debug</button>
+</div>
+<span>Current game mode is {{gameModeString}}</span>
+
+<div><span>Current view mode is {{viewModeString}}</span></div>
     <!-- <button (click)="print()">Mode Selector</button></div> -->
 
-<div *ngIf="modeString==='flags'"><img width="400px" src="assets/flags/png1000px/{{targetCountry.code| lowercase }}.png"/></div>
-<div *ngIf="modeString==='boundariesSVG'"><img width="400px" src="assets/boundaries/svg/{{targetCountry.code| lowercase }}/vector.svg"/></div>
+<div *ngIf="gameModeString==='flags'"><img width="400px" src="assets/flags/png1000px/{{targetCountry.code| lowercase }}.png"/></div>
+<div *ngIf="gameModeString==='boundariesSVG'"><img width="400px" src="assets/boundaries/svg/{{targetCountry.code| lowercase }}/vector.svg"/></div>
 
 <br>
 
@@ -90,10 +96,17 @@
 
 </div>
 
+<!-- <div *ngIf="viewModeString==='2D'"> -->
 <div>
-    D3 2D Map
-    <svg id="my_dataviz" width="800" height="800"></svg>
+    <div>2D Map</div>
+    <svg id="my_dataviz" width="800" height="500"></svg>
 </div>
+
+<div *ngIf="viewModeString==='3D'">
+    <div>3D Map</div>
+    <div>Coming soon...</div>
+</div>
+
 
 
 
