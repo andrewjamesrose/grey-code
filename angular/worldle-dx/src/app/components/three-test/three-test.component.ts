@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as THREE from 'three';
 
 
@@ -21,16 +21,16 @@ export class ThreeTestComponent implements OnInit {
     cube = new THREE.Mesh( this.geometry, this.material )
 
 
-  
-    private get canvas(): HTMLCanvasElement {
-      return this.canvasRef.nativeElement;
-    }
+    // private get canvas(): HTMLCanvasElement {
+    //   return this.canvasRef.nativeElement;
+    // }
 
 
     private createScene() {
       //* Scene
       this.scene = new THREE.Scene();
         this.scene.add(this.cube)
+        
       //* Camera
       this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
         this.camera.position.z = 5
@@ -38,11 +38,6 @@ export class ThreeTestComponent implements OnInit {
   
     
     render() {
-    //   let component: ThreeTestComponent = this;
-    //   (function render() {
-    //     requestAnimationFrame(render);
-    //     component.renderer.render(component.scene, component.camera);
-    //   }());
         window.requestAnimationFrame(this.render)
         this.renderer.render(this.scene, this.camera)
     }

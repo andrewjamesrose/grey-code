@@ -272,13 +272,13 @@ export class CalcTestComponent implements OnInit {
         // https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed
         // d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then( (data: any) =>{
         d3.json("/assets/boundaries/geojson/ne_110m_admin_0_countries.geojson").then( (data: any) =>{
-            console.log(data)
+            // console.log(data)
 
             this.clear2DMap ()
 
             // Filter data for existing guesses only
             data.features = data.features.filter((d: any) => {
-                                    console.log(d.properties.ISO_A2_EH)
+                                    // console.log(d.properties.ISO_A2_EH)
                                     // return d.properties.ISO_A2_EH=="US"
                                     return (this.isExistingGuess( d.properties.ISO_A2_EH))
                                 })
