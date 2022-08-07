@@ -21,6 +21,7 @@ export class ThreeTestComponent implements OnInit {
     cube = new THREE.Mesh( this.geometry, this.material )
 
 
+
     // private get canvas(): HTMLCanvasElement {
     //   return this.canvasRef.nativeElement;
     // }

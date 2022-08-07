@@ -102,11 +102,14 @@
     <svg id="my_dataviz" width="800" height="500"></svg>
 </div>
 
+<ng-content></ng-content>
+
 <div *ngIf="viewModeString==='3D'">
     <div>3D Map</div>
     <div>Coming soon...</div>
 </div>
 
+<app-results-map [outputResult]="remainingGuesses"></app-results-map>
 
 
 
