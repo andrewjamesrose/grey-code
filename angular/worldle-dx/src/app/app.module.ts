@@ -8,6 +8,11 @@ import { ThreeTestComponent } from './components/three-test/three-test.component
 import { ThreeGlobeTestComponent } from './components/three-globe-test/three-globe-test.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultsMapComponent } from './components/results-map/results-map.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button'
+import { KatexModule } from 'ng-katex';
+import { KatexExampleComponent } from './components/katex-example/katex-example.component';
+
 
 @NgModule({
   declarations: [
@@ -15,14 +20,18 @@ import { ResultsMapComponent } from './components/results-map/results-map.compon
     CalcTestComponent,
     ThreeTestComponent,
     ThreeGlobeTestComponent,
-    ResultsMapComponent
+    ResultsMapComponent,
+    KatexExampleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,
+    MatButtonModule,
+    KatexModule
     
   ],
   providers: [],

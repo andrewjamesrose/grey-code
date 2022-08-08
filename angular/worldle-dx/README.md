@@ -13,7 +13,7 @@ Features to Add
 -  [ ]  Add logic for bearing deviation indicator
         (show miss indicator on 2D and 3D diagrams?)
 
--  [ ]  Ketex visualisation of the maths:
+-  [ ]  Katex visualisation of the maths:
         Dynamically show equation values changing?
 
 -  [ ]  Material UI

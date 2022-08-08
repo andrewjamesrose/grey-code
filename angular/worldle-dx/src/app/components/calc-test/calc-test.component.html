@@ -1,5 +1,5 @@
 <div>
-    <button (click)="gameModeSelector()">Mode Selector</button>
+    <button mat-raised-button color="primary" (click)="gameModeSelector()">Mode Selector</button>
     <button (click)="viewModeSelector()">Mode Selector</button>
     <button (click)="debugPrint()">Debug</button>
 </div>
@@ -110,7 +110,6 @@
 </div>
 
 <app-results-map [outputResult]="remainingGuesses"></app-results-map>
-
 
 
 
