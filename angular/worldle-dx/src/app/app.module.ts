@@ -10,8 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResultsMapComponent } from './components/results-map/results-map.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button'
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
+import {MatInputModule} from '@angular/material/input'
 import { KatexModule } from 'ng-katex';
 import { KatexExampleComponent } from './components/katex-example/katex-example.component';
+import { D3OrthographicGlobeComponent } from './components/d3-orthographic-globe/d3-orthographic-globe.component';
+import { AngularAutofilterExampleComponent } from './components/angular-autofilter-example/angular-autofilter-example.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 
 @NgModule({
@@ -21,7 +27,9 @@ import { KatexExampleComponent } from './components/katex-example/katex-example.
     ThreeTestComponent,
     ThreeGlobeTestComponent,
     ResultsMapComponent,
-    KatexExampleComponent
+    KatexExampleComponent,
+    D3OrthographicGlobeComponent,
+    AngularAutofilterExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +38,13 @@ import { KatexExampleComponent } from './components/katex-example/katex-example.
     ReactiveFormsModule,
     HttpClientModule,
     NoopAnimationsModule,
+    KatexModule,
+    
     MatButtonModule,
-    KatexModule
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
+    
     
   ],
   providers: [],
