@@ -5,12 +5,9 @@ import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 import * as d3 from 'd3';
 import * as d3geoprojections from 'd3-geo-projection';
+import { GAME_MODES, MAX_GUESSES, VIEW_MODES } from 'src/app/constants';
 
 
-const MAX_GUESSES = 5
-
-const GAME_MODES: string[] = ['flags','boundariesSVG','boundaries2D', 'boundaries3D','capitals']
-const VIEW_MODES: string[] =['none','2D','3D']
 
 
 @Component({
@@ -92,8 +89,7 @@ export class CalcTestComponent implements OnInit {
             this._centroidSeparation = calculateEarthGreatCircleDistance_KM(_endPointCentroid, this.targetLatLong)
            
             this.redrawGraph()
-            // this._interCentroidBearing = calculateRelativeBearingDegs(_endPointCentroid, this.targetLatLong)
-            // this._interCapitalBearing = calculateRelativeBearingDegs(this._selectedCountry.capitalLatLong, this.targetCountry.capitalLatLong)
+
                 
             // check if guess was correct/not
             if (_newGuess === this.targetCountry.code) {
@@ -103,6 +99,7 @@ export class CalcTestComponent implements OnInit {
             }
         }
     }
+
 
     repeatGuessHandler(code: string): void {
 
@@ -157,18 +154,6 @@ export class CalcTestComponent implements OnInit {
         if(_attempts > 1) {
             this.generateJumpList()
         }   
-
-        // if (this.gameState === 'GAMEOVER') {
-        //     if(_answer){
-        //         console.log('You did not guess correctly in 5 turns. The correct answer was: ' + _answer.name)
-        //     }
-        // } else {
-
-        //   console.log("Congratulations, you won in " + _attempts)  
-        //   if(_answer) {
-        //     console.log("The correct answer was indeed: " + _answer.name)
-        //   }
-        // }
 
     }
 

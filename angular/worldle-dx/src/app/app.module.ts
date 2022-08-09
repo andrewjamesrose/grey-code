@@ -32,7 +32,7 @@ import { UserIoComponent } from './components/user-io/user-io.component';
     KatexExampleComponent,
     D3OrthographicGlobeComponent,
     AngularAutofilterExampleComponent,
-    UserIoComponent
+    UserIoComponent,
   ],
   imports: [
     BrowserModule,

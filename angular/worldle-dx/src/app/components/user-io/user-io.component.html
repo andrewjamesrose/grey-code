@@ -1,5 +1,32 @@
-<div width=200px>
-<mat-card>
-    <mat-card-title>Country Name</mat-card-title>
-</mat-card>
-</div>
+    <mat-card *ngFor="let guess of _guessList">
+        {{getCountryName(guess)}}
+    </mat-card>
+
+
+<!-- <select [(ngModel)]="_selectedCountry"  
+    (change)="onGuess()"
+    [disabled]="!uiActive"
+    >
+        <option *ngFor="let country of _countryList" [ngValue]="country">
+          {{country.name}}
+        </option>
+</select> -->
+
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Enter Country Name</mat-label>
+      <input type="text"
+             placeholder="Enter Country Name"
+             aria-label="Enter Country Name"
+             matInput
+             [formControl]="countryInput"
+             [matAutocomplete]="auto"
+             (keydown.enter)="submit()"
+             >
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayCountryName">
+        <mat-option *ngFor="let option of availableOptions | async" [value]="option" (click)="submit()">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>

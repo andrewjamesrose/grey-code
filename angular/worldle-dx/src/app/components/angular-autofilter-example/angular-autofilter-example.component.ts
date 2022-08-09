@@ -39,7 +39,6 @@ export class AngularAutofilterExampleComponent implements OnInit {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(codeIn => {this._inboundObservableValue = codeIn})
 
-            console.log("filter is hit")
     }
 
     ngOnInit() {
