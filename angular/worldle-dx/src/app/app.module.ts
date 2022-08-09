@@ -12,11 +12,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button'
 import {MatAutocompleteModule} from '@angular/material/autocomplete'
 import {MatInputModule} from '@angular/material/input'
+import {MatCardModule} from '@angular/material/card'
 import { KatexModule } from 'ng-katex';
 import { KatexExampleComponent } from './components/katex-example/katex-example.component';
 import { D3OrthographicGlobeComponent } from './components/d3-orthographic-globe/d3-orthographic-globe.component';
 import { AngularAutofilterExampleComponent } from './components/angular-autofilter-example/angular-autofilter-example.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UserIoComponent } from './components/user-io/user-io.component';
 
 
 
@@ -29,7 +31,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ResultsMapComponent,
     KatexExampleComponent,
     D3OrthographicGlobeComponent,
-    AngularAutofilterExampleComponent
+    AngularAutofilterExampleComponent,
+    UserIoComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
     
     
   ],
