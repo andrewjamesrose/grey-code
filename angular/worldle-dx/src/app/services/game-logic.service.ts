@@ -67,6 +67,11 @@ export class GameLogicService {
     }
 
 
+    getGameMode(): Observable<string> {
+        return this.gameMode$.asObservable()
+    }
+
+
     toggleDisplayMode(): void {
         let currentIndex = VIEW_MODES.indexOf(this._displayMode)
         let maxIndex = VIEW_MODES.length
@@ -78,6 +83,10 @@ export class GameLogicService {
         }
 
         this.displayMode$.next(this._displayMode)
+    }
+
+    getDisplayMode(): Observable<string> {
+        return this.displayMode$.asObservable()
     }
 
 

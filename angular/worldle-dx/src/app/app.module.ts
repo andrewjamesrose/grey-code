@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button'
 import {MatAutocompleteModule} from '@angular/material/autocomplete'
 import {MatInputModule} from '@angular/material/input'
 import {MatCardModule} from '@angular/material/card'
+import {MatToolbarModule} from '@angular/material/toolbar'
 import { KatexModule } from 'ng-katex';
 import { KatexExampleComponent } from './components/katex-example/katex-example.component';
 import { D3OrthographicGlobeComponent } from './components/d3-orthographic-globe/d3-orthographic-globe.component';
@@ -47,7 +48,8 @@ import { UserIoComponent } from './components/user-io/user-io.component';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule
     
     
   ],

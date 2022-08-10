@@ -24,15 +24,23 @@ export class UserIoComponent implements OnInit {
     private unsubscribe$: Subject<any> = new Subject<any>();
 
     _guessList: string[] = []
+    
+    _gameMode!: string
+    _displayMode!: string
+
     countryInput = new FormControl('')
     availableOptions: Observable<ICountry[]>
 
 
-    constructor(private testService: GameLogicService){
+    constructor(private gameLogic: GameLogicService){
         //set up service subscriptions
-        this.testService.getPrevioustGuesses()
+        this.gameLogic.getPrevioustGuesses()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(guessesIn => {this._guessList = guessesIn.concat(Array(MAX_GUESSES-guessesIn.length).fill(""))})
+
+
+        this.gameLogic.getGameMode().subscribe(gameMode =>{this._gameMode = gameMode})
+        this.gameLogic.getDisplayMode().subscribe(displayMode =>{this._displayMode = displayMode})
 
 
         //Country List Filter
@@ -43,10 +51,20 @@ export class UserIoComponent implements OnInit {
             )
     }
 
+    // Mode Selectors and Debug (move to menu component??)
+    toggleGameMode(): void {
+        this.gameLogic.toggleGameMode()
+    }
+
+
+    toggleDisplayMode(): void {
+        this.gameLogic.toggleDisplayMode()
+    }
+
 
     submit(): void {
         // console.log(this.countryInput.value.name)
-        this.testService.updateGuesses(this.countryInput.value.code)
+        this.gameLogic.updateGuesses(this.countryInput.value.code)
         this.countryInput.setValue('')
     }
 
@@ -61,6 +79,16 @@ export class UserIoComponent implements OnInit {
             return "―"
         }
     }
+
+    // Find length of longest country name to set display box width
+    // getLength(): void {
+    //    let longest = NEW_COUNTRY_LIST.map(country => country.name).reduce(
+    //          (a: string, b: string) => {
+    //             return a.length > b.length ? a : b;
+    //         }
+    //     )
+    //     console.log(longest)
+    // }
 
   ngOnInit(): void {
   }
