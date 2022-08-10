@@ -2,6 +2,11 @@
     <span>Worldle DX</span>
 </mat-toolbar>
 
+
+<div *ngIf="_gameMode==='flags'"><img width="400px" src="assets/flags/png1000px/{{_targetCountry.code| lowercase }}.png"/></div>
+<div *ngIf="_gameMode==='boundariesSVG'"><img width="400px" src="assets/boundaries/svg/{{_targetCountry.code| lowercase }}/vector.svg"/></div>
+
+
     <mat-card *ngFor="let guess of _guessList">
         {{getCountryName(guess)}}
     </mat-card>
@@ -16,7 +21,7 @@
         </option>
 </select> -->
 
-<form class="example-form">
+<form class="example-form" *ngIf="_gameState==='ACTIVE'">
     <mat-form-field class="guess-input" appearance="fill">
       <mat-label>Enter Country Name</mat-label>
       <input type="text"
@@ -26,7 +31,8 @@
              [formControl]="countryInput"
              [matAutocomplete]="auto"
              (keydown.enter)="submit()"
-             >
+             #countryNameInputElement
+            >
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayCountryName">
         <mat-option *ngFor="let option of availableOptions | async" [value]="option" (click)="submit()">
           {{option.name}}
@@ -35,10 +41,17 @@
     </mat-form-field>
   </form>
 
+<mat-card *ngIf="_gameState==='CORRECT'">Congratulations!</mat-card>
+<mat-card *ngIf="_gameState==='GAMEOVER'">Sorry</mat-card>
+
 <div>
     <button mat-stroked-button color="accent" (click)="toggleGameMode()">Mode Selector</button>
     <button mat-stroked-button color="accent" (click)="toggleDisplayMode()">Display Mode</button> 
 </div>
+
+<div *ngIf="_gameState==='GAMEOVER'">GAME OVER</div>
+<div *ngIf="_gameState==='CORRECT'">A winner is you</div>
+<div *ngIf="_gameState==='GAMEOVER'||_gameState==='CORRECT'"><button mat-stroked-button (click)="resetGame()">Click here to play again</button></div>
 
 <div>
     Game mode: {{_gameMode}}
@@ -47,3 +60,12 @@
 <div>
     Display mode: {{_displayMode}}
 </div>
+
+<div>
+    Game State: {{_gameState}}
+</div>
+
+<div>
+    Display mode: {{_targetCountry.name}}
+</div>
+

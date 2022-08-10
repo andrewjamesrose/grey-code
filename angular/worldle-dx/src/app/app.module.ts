@@ -20,6 +20,7 @@ import { D3OrthographicGlobeComponent } from './components/d3-orthographic-globe
 import { AngularAutofilterExampleComponent } from './components/angular-autofilter-example/angular-autofilter-example.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserIoComponent } from './components/user-io/user-io.component';
+import { GameLogicService } from './services/game-logic.service';
 
 
 
@@ -53,7 +54,7 @@ import { UserIoComponent } from './components/user-io/user-io.component';
     
     
   ],
-  providers: [],
+  providers: [GameLogicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
