@@ -1,0 +1,19 @@
+<p>maths-demo works!</p>
+
+<div>
+    <mat-slider min="-90" max="90" step="0.5" [(ngModel)]="latitude_A" vertical (input)="onInputChange_lat_A($event)"></mat-slider>
+</div>
+{{latitude_A}}, {{longitude_A}}
+<div>
+    <mat-slider min="-180" max="180" step="0.1" [(ngModel)]="longitude_A" (input)="onInputChange_long_A($event)"></mat-slider>
+</div>
+
+<div>
+    <mat-slider min="-90" max="90" step="0.5" [(ngModel)]="latitude_B" vertical (input)="onInputChange_lat_B($event)"></mat-slider>
+</div>
+{{latitude_B}}, {{longitude_B}}
+<div>
+    <mat-slider min="-180" max="180" step="0.1" [(ngModel)]="longitude_B" (input)="onInputChange_long_B($event)"></mat-slider>
+</div>
+
+<svg id="my_dataviz" width="800" height="500"></svg>

@@ -14,6 +14,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete'
 import {MatInputModule} from '@angular/material/input'
 import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatSliderModule} from '@angular/material/slider';
 import { KatexModule } from 'ng-katex';
 import { KatexExampleComponent } from './components/katex-example/katex-example.component';
 import { D3OrthographicGlobeComponent } from './components/d3-orthographic-globe/d3-orthographic-globe.component';
@@ -21,6 +22,7 @@ import { AngularAutofilterExampleComponent } from './components/angular-autofilt
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserIoComponent } from './components/user-io/user-io.component';
 import { GameLogicService } from './services/game-logic.service';
+import { MathsDemoComponent } from './components/maths-demo/maths-demo.component';
 
 
 
@@ -35,6 +37,7 @@ import { GameLogicService } from './services/game-logic.service';
     D3OrthographicGlobeComponent,
     AngularAutofilterExampleComponent,
     UserIoComponent,
+    MathsDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { GameLogicService } from './services/game-logic.service';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSliderModule
     
     
   ],
