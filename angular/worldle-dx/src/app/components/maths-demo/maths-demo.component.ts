@@ -18,17 +18,24 @@ export class MathsDemoComponent implements OnInit {
     longitude_B: number
     latitude_B: number
 
+    axialRotation: number
+
     constructor() {
         this.longitude_A = 0
         this.latitude_A = 0
 
         this.longitude_B = 0
         this.latitude_B = 0
+
+        this.axialRotation = 0
     }
 
     ngOnInit(): void {
         this.svg = d3.select("svg")
         this.svg.append("g").attr("class", "gridlines")
+        this.svg.append("g").attr("class", "points")
+        this.svg.append("g").attr("class", "boundaries")
+        this.svg.append("g").attr("class", "lines")
         this.redrawGraph()
     }
 
@@ -57,14 +64,44 @@ export class MathsDemoComponent implements OnInit {
     }
 
     clear2DMap(){
-        this.svg.selectAll('*').remove();
+        this.svg.selectAll('.boundaries').selectAll('*').remove();
+        this.svg.selectAll('.gridlines').selectAll('*').remove();
+        this.svg.selectAll('.lines').selectAll('*').remove();
+        this.svg.selectAll('.points').selectAll('*').remove();
     }
+
+    onInputChange_lambda(event: MatSliderChange) {
+        if(event.value){
+            this.axialRotation = event.value
+            this.redrawGraph()
+        }
+    }
+
+
+
+
+    updateProjectionParams(): void {
+        let scaleFactor = 120
+        let centreLon = 0
+        let centreLat = 0
+        let lambda = 0 //longitude == axial rotation about spin-axis
+        let phi = 0 // latitude == inclination out of equatorial plane
+        let gamma = 0 //z-axis rotation
+    }
+
 
     redrawGraph(): void {
         // this.reset2DMap()
         
         let width = +this.svg.attr("width")
         let height = +this.svg.attr("height")
+
+        let scaleFactor = 250
+        let centreLon = 0
+        let centreLat = 0
+        let lambda = 0 //longitude == axial rotation about spin-axis
+        let phi = 0 // latitude == inclination out of equatorial plane
+        let gamma = 0 //z-axis rotation
 
         // Map and projection
         // let projection = d3.geoMercator()
@@ -74,8 +111,11 @@ export class MathsDemoComponent implements OnInit {
         // let projection = d3geoprojections.geoPatterson()
         // let projection = d3geoprojections.geoRobinson()
         // .center([2, 47])                // GPS of location to zoom on
-        .scale(200)                       // This is like the zoom. Full earth is 128 zoom, lower is further away
-        .translate([ width/2, height/2 ])
+            .scale(scaleFactor)                       // This is like the zoom. Full earth is 128 zoom, lower is further away
+            .translate([ width/2, height/2 ])
+            .center([centreLon, centreLat])
+            // .rotate([lambda, phi, gamma])
+            .rotate([this.axialRotation, phi, gamma])
 
         //Scale Parameter depends on map being used
         // Natural Earth = 180
@@ -98,7 +138,11 @@ export class MathsDemoComponent implements OnInit {
             //                     })
 
             // Draw the map
-            this.svg.append("g")
+
+            // this.svg.append("g")
+            //     .selectAll("path")
+            this.svg
+                .select('.boundaries')  
                 .selectAll("path")
                 .data(data.features)
                 .enter()
@@ -120,12 +164,14 @@ export class MathsDemoComponent implements OnInit {
 
             let gridLines = d3.geoGraticule();
 
-            this.svg.append("g")
-                    .select('.path')
+            this.svg.select('.gridlines')
                     .datum(gridLines())
+                    .append("path")
                     .attr('d',  d3.geoPath()
                         .projection(projection)
                     )
+                    .style("stroke", "grey")
+                    .style("fill", "none")
 
             })
         }
