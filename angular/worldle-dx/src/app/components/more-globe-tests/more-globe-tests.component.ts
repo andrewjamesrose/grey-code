@@ -6,6 +6,7 @@ import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { EARTH_AXIAL_TILT_DEG } from 'src/app/constants';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
+import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/functions';
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -22,7 +23,12 @@ export class MoreGlobeTestsComponent implements OnInit {
     private camera!: THREE.PerspectiveCamera;
     private controls!: OrbitControls;
 
-    geoJsonData: any
+    phi: number =0
+    lambda:number=0
+    
+    guessList: string[] = []
+
+    geoJSONdata: any[] = []
 
 
     constructor(private http: HttpClient) { 
@@ -33,13 +39,14 @@ export class MoreGlobeTestsComponent implements OnInit {
 
     
     geometry = new THREE.BoxGeometry(1, 1, 1);
-    material = new THREE.MeshBasicMaterial( { color: 0x00ff00 })
-    cube = new THREE.Mesh( this.geometry, this.material )
+    // material = new THREE.MeshBasicMaterial( { color: 0x00ff00 })
+    // cube = new THREE.Mesh( this.geometry, this.material )
     
-    globe = new ThreeGlobe()
+    globe = new ThreeGlobe({animateIn: false})
         // .globeImageUrl('/assets/img/earth-day.jpg')
         // .globeImageUrl('/assets/img/earth-blue-marble800.jpg')
-        .globeImageUrl('/assets/img/grey.jpg')
+        // .globeImageUrl('/assets/img/grey.jpg')
+        .globeImageUrl('/assets/img/lightblue.jpg')
         // .globeImageUrl('/assets/img/earth-dark.jpg')
         //   .bumpImageUrl('http://unpkg.com/three-globe/example/img/earth-topology.png')
         .pointAltitude('size')
@@ -56,7 +63,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
 
         // this.scene.add(this.globe);
-        this.scene.add(this.cube)
+        // this.scene.add(this.cube)
         this.scene.add(this.globe)
         // this.cube.position.x = 30
         // this.cube.scale.x = 30;
@@ -66,7 +73,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.camera = new THREE.PerspectiveCamera();
         // this.camera.aspect = window.innerWidth/ window.innerHeight;
         this.camera.aspect = 1; //(square)
-            this.camera.position.z = 500;
+            this.camera.position.z = 350;
             this.camera.updateProjectionMatrix();
 
             
@@ -89,15 +96,40 @@ export class MoreGlobeTestsComponent implements OnInit {
             // let url = '/assets/boundaries/geojson/fileused.json'
                 this.http.get<any>(url).subscribe({
                     next: data => {
-                        console.log("received data")
-                        console.log(data)
+
+                        this.geoJSONdata = data
+                        
+
+                        console.log("filtered data:")
+                        // console.log(data.filter((country: { properties: { ISO_A2_EH: string; }; }) => country.properties.ISO_A2_EH === 'FR'))
+                        console.log(data.features.filter((feature: { properties: { ISO_A2_EH: string; }; }) => feature.properties.ISO_A2_EH==='FR'))
+                        
+                        type MyType = {
+                            [key: string]: any;
+                        }
+
+                        //add France
                         this.globe
                             .polygonsData(data.features)
-                            .polygonCapColor(() => 'rgba(42, 157, 143, 0.8)')
-                            .polygonSideColor(() => 'rgba(42, 157, 143, 0.6)')
+                            // .polygonsData(data.features.filter((feature: { properties: { ISO_A2_EH: string; }; }) => feature.properties.ISO_A2_EH==='FR'))
+                            // .polygonCapColor(() => 'rgba(42, 157, 143, 0.8)')
+                            // .polygonSideColor(() => 'rgba(42, 157, 143, 0.6)')
+                            .polygonCapColor((feat) => {return this.checkColourCap( (<MyType>feat)['properties'].ISO_A2_EH)})
+                            .polygonSideColor((feat) => {return this.checkColourSide( (<MyType>feat)['properties'].ISO_A2_EH)})
+                            // this.checkColourCap
+                            // this.checkColourSide
                             .polygonStrokeColor(() => '#111')
-                            // .polygonAltitude(() => Math.random())
+                            // .polygonAltitude(feat => Math.max(0.1, Math.sqrt(+(<MyType>feat)['properties'].POP_EST) * 7e-5))
+                            .polygonAltitude(feat => {return this.checkCountry( (<MyType>feat)['properties'].ISO_A2_EH)})
                             // .showGlobe(false)
+
+                        // //add !France
+                        // this.globe
+                        //     // .polygonsData(data.features)
+                        //     .polygonsData(data.features.filter((feature: { properties: { ISO_A2_EH: string; }; }) => feature.properties.ISO_A2_EH!=='FR'))
+                        //     .polygonCapColor(() => 'rgba(42, 157, 143, 0.8)')
+                        //     .polygonSideColor(() => 'rgba(42, 157, 143, 0.6)')
+                        //     .polygonStrokeColor(() => '#111')
 
             
                         this.createScene()
@@ -121,6 +153,84 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.controls.update()
         this.renderer.render(this.scene, this.camera);
     }
+
+    
+    buttonTest(): void {
+        let inputCode = 'AU'
+        this.highlightCountry(inputCode)
+
+
+    }
+
+    highlightCountry(countryCode: string): void{
+
+        if(countryCode){
+            let targetLatLong = getCentroidLatLong(countryCode)    
+            
+            console.log("lat: " + degreesToRadians(targetLatLong.latitude))
+            console.log("lat: " + degreesToRadians(targetLatLong.longitude))
+
+            // console.log()
+            
+            console.log(targetLatLong)
+
+            //  this.scene.rotation.y = -degreesToRadians(targetLatLong.longitude)
+                        // this.scene.rotation.y = Math.PI/2
+            // this.scene.rotation.x = degreesToRadians(targetLatLong.latitude)
+
+                this.globe.rotation.x = degreesToRadians(targetLatLong.latitude)
+            // y = long
+
+            this.animate()
+
+            this.lambda = -targetLatLong.longitude
+            this.phi = -targetLatLong.latitude
+        } else {
+            countryCode = ''
+        }
+    }
+
+    checkCountry(countryCode: string): number{
+        let guessList = ['DE', 'MX', 'BR', 'JP', 'CL']
+        let correctAnswer = 'AU'
+
+        let altitude: number = 0.01
+
+        if(countryCode === correctAnswer) {
+            altitude = 0.5
+        } else if (guessList.includes(countryCode)) {
+            altitude = 0.2
+        }
+
+        return altitude
+    }
+
+    checkColourCap(countryCode: string): string{
+        let guessList = ['DE', 'MX', 'BR', 'JP', 'CL']
+        let correctAnswer = 'AU'
+
+        let altitude: string = 'rgba(42, 157, 143, 0.8)'
+
+        if (guessList.includes(countryCode)) {
+            altitude = 'rgba(191, 27, 57, 0.6)'
+        }
+
+        return altitude
+    }
+
+    checkColourSide(countryCode: string): string{
+        let guessList = ['DE', 'MX', 'BR', 'JP', 'CL']
+        let correctAnswer = 'AU'
+
+        let altitude: string = 'rgba(42, 157, 143, 0.6)'
+
+        if (guessList.includes(countryCode)) {
+            altitude = 'rgba(191, 27, 57, 0.6)'
+        }
+
+        return altitude
+    }
+
 
 
 }
