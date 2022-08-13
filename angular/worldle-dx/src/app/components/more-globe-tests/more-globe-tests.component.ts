@@ -15,11 +15,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 export class MoreGlobeTestsComponent implements OnInit {
     @ViewChild('testid', { static: true }) rendererContainer!:  ElementRef<HTMLInputElement>;
 
-    private renderer: Renderer = new THREE.WebGLRenderer();
+    private renderer: Renderer = new THREE.WebGLRenderer({antialias: true});
     private scene!: THREE.Scene;
     private camera!: THREE.PerspectiveCamera;
     private controls!: OrbitControls;
 
+    geoJsonData: any
 
 
     constructor(private http: HttpClient) { 
@@ -34,10 +35,13 @@ export class MoreGlobeTestsComponent implements OnInit {
     cube = new THREE.Mesh( this.geometry, this.material )
     
     globe = new ThreeGlobe()
-      .globeImageUrl('http://unpkg.com/three-globe/example/img/earth-dark.jpg')
-      .bumpImageUrl('http://unpkg.com/three-globe/example/img/earth-topology.png')
-      .pointAltitude('size')
-      .pointColor('color');
+        // .globeImageUrl('/assets/img/earth-day.jpg')
+        .globeImageUrl('/assets/img/earth-blue-marble800.jpg')
+        
+        // .globeImageUrl('/assets/img/earth-dark.jpg')
+        //   .bumpImageUrl('http://unpkg.com/three-globe/example/img/earth-topology.png')
+        .pointAltitude('size')
+        .pointColor('color');
 
    
     private createScene(){
@@ -59,6 +63,12 @@ export class MoreGlobeTestsComponent implements OnInit {
             this.camera.position.z = 500;
             this.camera.updateProjectionMatrix();
 
+            
+        this.controls = new OrbitControls( this.camera, this.renderer.domElement );
+            //angle from the pole. North pole is 0
+            this.controls.minPolarAngle = Math.PI/4 
+            this.controls.maxPolarAngle = 3 * Math.PI/4
+
     }
 
  
@@ -69,11 +79,29 @@ export class MoreGlobeTestsComponent implements OnInit {
 
 
     ngAfterViewInit() {
-        this.createScene()
-        console.log(this.rendererContainer)
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-        this.animate();
+            let url = '/assets/boundaries/geojson/ne_110m_admin_0_countries.geojson'
+            // let url = '/assets/boundaries/geojson/fileused.json'
+                this.http.get<any>(url).subscribe({
+                    next: data => {
+                        console.log("received data")
+                        console.log(data)
+                        this.globe
+                            .polygonsData(data.features)
+                            .polygonCapColor(() => 'rgba(38, 70, 83, 0.8)')
+                            .polygonSideColor(() => 'rgba(38, 70, 83, 0.6)')
+                            .polygonStrokeColor(() => '#111')
+                            .polygonAltitude(() => Math.random())
+            
+                        this.createScene()
+                        console.log(this.rendererContainer)
+                        this.renderer.setSize(window.innerWidth, window.innerHeight);
+                        // this.renderer.setSize(1200, 600);
+                        this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
+                        this.animate();
+                
+                    }
+                    })
+        
 
     }
 
@@ -82,6 +110,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         window.requestAnimationFrame(() => this.animate());
         // this.mesh.rotation.x += 0.01;
         // this.mesh.rotation.y += 0.02;
+        this.controls.update()
         this.renderer.render(this.scene, this.camera);
     }
 
