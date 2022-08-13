@@ -4,6 +4,8 @@ import { Renderer } from 'three';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { EARTH_AXIAL_TILT_DEG } from 'src/app/constants';
+import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -36,16 +38,19 @@ export class MoreGlobeTestsComponent implements OnInit {
     
     globe = new ThreeGlobe()
         // .globeImageUrl('/assets/img/earth-day.jpg')
-        .globeImageUrl('/assets/img/earth-blue-marble800.jpg')
-        
+        // .globeImageUrl('/assets/img/earth-blue-marble800.jpg')
+        .globeImageUrl('/assets/img/grey.jpg')
         // .globeImageUrl('/assets/img/earth-dark.jpg')
         //   .bumpImageUrl('http://unpkg.com/three-globe/example/img/earth-topology.png')
         .pointAltitude('size')
-        .pointColor('color');
+
 
    
     private createScene(){
         console.log("running create scene")
+
+        this.scene.background = new THREE.Color(0x303030);
+        
 
         this.scene.add(new THREE.AmbientLight(0xbbbbbb));
         this.scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
@@ -59,7 +64,8 @@ export class MoreGlobeTestsComponent implements OnInit {
         // this.cube.scale.z = 30;
     
         this.camera = new THREE.PerspectiveCamera();
-        this.camera.aspect = window.innerWidth/ window.innerHeight;
+        // this.camera.aspect = window.innerWidth/ window.innerHeight;
+        this.camera.aspect = 1; //(square)
             this.camera.position.z = 500;
             this.camera.updateProjectionMatrix();
 
@@ -87,15 +93,17 @@ export class MoreGlobeTestsComponent implements OnInit {
                         console.log(data)
                         this.globe
                             .polygonsData(data.features)
-                            .polygonCapColor(() => 'rgba(38, 70, 83, 0.8)')
-                            .polygonSideColor(() => 'rgba(38, 70, 83, 0.6)')
+                            .polygonCapColor(() => 'rgba(42, 157, 143, 0.8)')
+                            .polygonSideColor(() => 'rgba(42, 157, 143, 0.6)')
                             .polygonStrokeColor(() => '#111')
-                            .polygonAltitude(() => Math.random())
+                            // .polygonAltitude(() => Math.random())
+                            // .showGlobe(false)
+
             
                         this.createScene()
                         console.log(this.rendererContainer)
-                        this.renderer.setSize(window.innerWidth, window.innerHeight);
-                        // this.renderer.setSize(1200, 600);
+                        // this.renderer.setSize(window.innerWidth, window.innerHeight);
+                        this.renderer.setSize(600, 600);
                         this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
                         this.animate();
                 
