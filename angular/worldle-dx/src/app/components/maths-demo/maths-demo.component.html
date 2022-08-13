@@ -20,4 +20,15 @@
     <mat-slider min="-180" max="180" step="0.1" [(ngModel)]="axialRotation" (input)="onInputChange_lambda($event)"></mat-slider>
 </div>
 
+<div>
+    <mat-slider min="-180" max="180" step="0.1" [(ngModel)]="axialTilt" (input)="onInputChange_phi($event)"></mat-slider>
+</div>
+
+<div>
+    <mat-slider min="-180" max="180" step="0.1" [(ngModel)]="obsRoll" (input)="onInputChange_gamma($event)"></mat-slider>
+</div>
+
+<div>
+    <button mat-button (click)="buttonTest()">France</button>
+</div>
 <svg id="my_dataviz" width="800" height="500"></svg>

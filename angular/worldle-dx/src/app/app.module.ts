@@ -23,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserIoComponent } from './components/user-io/user-io.component';
 import { GameLogicService } from './services/game-logic.service';
 import { MathsDemoComponent } from './components/maths-demo/maths-demo.component';
+import { MoreGlobeTestsComponent } from './components/more-globe-tests/more-globe-tests.component';
 
 
 
@@ -38,6 +39,7 @@ import { MathsDemoComponent } from './components/maths-demo/maths-demo.component
     AngularAutofilterExampleComponent,
     UserIoComponent,
     MathsDemoComponent,
+    MoreGlobeTestsComponent,
   ],
   imports: [
     BrowserModule,
