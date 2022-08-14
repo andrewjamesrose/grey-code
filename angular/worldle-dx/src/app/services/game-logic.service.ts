@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { generateRandomInteger } from '../commonFunctions/functions';
 import { GAME_MODES, MAX_GUESSES, VIEW_MODES } from '../constants';
-import { ICountry } from '../models/interfaces_and_classes';
+import { ICountry } from '../models/game-logic';
 
 @Injectable({
   providedIn: 'root'

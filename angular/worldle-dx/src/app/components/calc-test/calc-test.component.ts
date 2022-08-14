@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { calculateEarthGreatCircleDistance_KM, calculateRelativeBearingDegs, generateRandomInteger, getCentroidLatLong } from 'src/app/commonFunctions/functions';
-import { ICountry, ILatLong, Jump, JumpPoint } from 'src/app/models/interfaces_and_classes';
+import { ICountry, ILatLong, Jump, JumpPoint } from 'src/app/models/game-logic';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 import * as d3 from 'd3';

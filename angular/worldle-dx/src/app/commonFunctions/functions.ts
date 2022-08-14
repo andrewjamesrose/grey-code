@@ -1,6 +1,6 @@
 import { NEW_COUNTRY_LIST } from "src/assets/capitals/data"
 import { EARTH_MEAN_RADIUS_KM } from "src/assets/constants"
-import { ICountry, ILatLong, LatLong } from "../models/interfaces_and_classes"
+import { ICountry, ILatLong, LatLong } from "../models/game-logic"
 
 
 export function degreesToRadians(degrees: number): number { 

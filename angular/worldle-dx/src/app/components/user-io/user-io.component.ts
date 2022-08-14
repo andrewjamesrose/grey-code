@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@an
 import { map, Observable, startWith, Subject, takeUntil } from 'rxjs';
 import { getCountryNameFromCode } from 'src/app/commonFunctions/functions';
 import { MAX_GUESSES } from 'src/app/constants';
-import { Country, ICountry } from 'src/app/models/interfaces_and_classes';
+import { Country, ICountry } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 import { HelloWorldService } from 'src/app/services/hello-world.service';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';

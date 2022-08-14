@@ -25,6 +25,8 @@ import { GameLogicService } from './services/game-logic.service';
 import { MathsDemoComponent } from './components/maths-demo/maths-demo.component';
 import { MoreGlobeTestsComponent } from './components/more-globe-tests/more-globe-tests.component';
 import { SphericalGeometryDemoComponent } from './components/spherical-geometry-demo/spherical-geometry-demo.component';
+import { LocalStorageService } from './services/local-storage.service';
+import { GameStatisticsService } from './services/game-statistics.service';
 
 
 
@@ -62,7 +64,7 @@ import { SphericalGeometryDemoComponent } from './components/spherical-geometry-
     
     
   ],
-  providers: [GameLogicService],
+  providers: [LocalStorageService, GameLogicService, GameStatisticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Country } from "src/app/models/interfaces_and_classes";
+import { Country } from "src/app/models/game-logic";
 
 export const NEW_COUNTRY_LIST: Country[] = [
     {

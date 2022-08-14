@@ -7,6 +7,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { EARTH_AXIAL_TILT_DEG } from 'src/app/constants';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/functions';
+import { GameStatisticsService } from 'src/app/services/game-statistics.service';
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -31,7 +32,7 @@ export class MoreGlobeTestsComponent implements OnInit {
     geoJSONdata: any[] = []
 
 
-    constructor(private http: HttpClient) { 
+    constructor(private http: HttpClient, private statsService: GameStatisticsService) { 
 
         this.scene = new THREE.Scene();         
   
@@ -207,7 +208,7 @@ export class MoreGlobeTestsComponent implements OnInit {
 
     checkColourCap(countryCode: string): string{
         let guessList = ['DE', 'MX', 'BR', 'JP', 'CL']
-        let correctAnswer = 'AU'
+
 
         let altitude: string = 'rgba(42, 157, 143, 0.8)'
 
@@ -220,7 +221,7 @@ export class MoreGlobeTestsComponent implements OnInit {
 
     checkColourSide(countryCode: string): string{
         let guessList = ['DE', 'MX', 'BR', 'JP', 'CL']
-        let correctAnswer = 'AU'
+
 
         let altitude: string = 'rgba(42, 157, 143, 0.6)'
 

@@ -3,7 +3,7 @@ import { MatSliderChange } from '@angular/material/slider';
 import * as d3 from 'd3';
 import * as d3geoprojections from 'd3-geo-projection';
 import { getCentroidLatLong } from 'src/app/commonFunctions/functions';
-import { ILatLong } from 'src/app/models/interfaces_and_classes';
+import { ILatLong } from 'src/app/models/game-logic';
 
 type D3SVGSelection = d3.Selection<SVGElement, any, null, undefined>;
 

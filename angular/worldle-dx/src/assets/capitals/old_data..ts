@@ -1,5 +1,5 @@
 import { getCentroidLatLong } from "src/app/commonFunctions/functions";
-import { Country, ICountryOld, ICountry } from "src/app/models/interfaces_and_classes";
+import { Country, ICountryOld, ICountry } from "src/app/models/game-logic";
 
 
 export function remapCodes(): ICountry[] {
