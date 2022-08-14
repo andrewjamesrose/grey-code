@@ -41,7 +41,7 @@ export class GameStatisticsService {
     }
 
     private writeToLocalStorage(): void{
-
+        this.localStorage.saveData('gamestatistics', JSON.stringify(this.gameStats))
     }
 
 
@@ -142,11 +142,13 @@ export class GameStatisticsService {
         this.gameStats[code] = singleGameStat
 
 
-        // write entry back to disk
-        
 
-        // reload new stats from disk
 
+        // // write entry back to disk
+        // this.writeToLocalStorage()
+
+        // // reload new stats from disk
+        // this.readLocalStorage()
     }
 
 
@@ -205,6 +207,10 @@ export class GameStatisticsService {
 
         //write back inboud set
         this.localStorage.saveData('gamestatistics', JSON.stringify(newFullSet))
+    }
+
+    admin_getStatsFromMemory(): IFullStats {
+        return this.gameStats
     }
 
 

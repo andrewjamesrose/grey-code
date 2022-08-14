@@ -41,6 +41,19 @@ export class StatsTestingComponent implements OnInit {
         // console.log(this.gameStatsService.getAllStatsTotal())
 
         console.log(totalGamesInResultObject(this.gameStatsService.getSingleFlagStats(input)))
+    }
+
+    testAddScore(): void {
+    // addCountryStat(code: string, score: possibleScores, gameMode: string)
+
+    console.log("initial state in memory:")
+    console.log(this.gameStatsService.admin_getStatsFromMemory())
+
+    console.log("updating local memory object...")
+    this.gameStatsService.addCountryStat('BR', 'three', 'flags')
+
+    console.log("new memory state:")
+    console.log(this.gameStatsService.admin_getStatsFromMemory()) 
 
     }
 
