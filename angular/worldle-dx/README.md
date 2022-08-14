@@ -2,7 +2,16 @@
 
 [Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-Features to Add
+To Do
+- [ ]   Menu Bar + Mode Settings
+- [ ]   Clean up geographical data
+- [ ]   Maths pages
+- [ ]   ThreeJS spherical maths
+- [ ]   How to deploy
+- [ ]   Make available offline
+
+
+
 -  [ ]  Modes
     - [x] Flag mode
     -  [ ]  Capitals
@@ -70,7 +79,29 @@ Visualisation Notes:
 
 
 
-Some resources:
+Useful Resources
+
+JavaScript/TypeScript
+    D3
+
+    Three + globe-js
+        [Discover ThreeJS Textbook](https://discoverthreejs.com/book/first-steps/first-scene/)
+        [ThreeJS Discourse Forum](https://discourse.threejs.org/)
+        [Lots of Three Globe Examples](https://observablehq.com/@bumbeishvili/globe-gl)
+        [D3 in Depth](https://www.d3indepth.com/geographic/)
+        [D3 Geolines Example](https://bl.ocks.org/d3indepth/60f490c6abd7be53d4aa39818e11d273)
+
+
+    Angular: Publishing to GitHub Pages:
+        [GitHub Pages](https://docs.github.com/en/enterprise-cloud@latest/pages)
+        [How to deploy Angular App to GitHub Pages](https://medium.com/swlh/how-to-deploy-an-angular-app-to-github-pages-without-using-any-libraries-step-by-step-guide-cfe96fb0c879)
+
+    [Local Storage Interaction](https://blog.jscrambler.com/working-with-angular-local-storage/)    
+
+
+Spherical Geometry
+
+Geographical + Vexillological Information
 Country names, codes and centroid lat-longs (used)
     https://developers.google.com/public-data/docs/canonical/countries_csv
 
