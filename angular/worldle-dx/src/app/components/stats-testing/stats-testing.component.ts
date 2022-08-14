@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { printFrozenObject } from 'src/app/commonFunctions/debugFunctions';
 import { GameStatisticsService, totalGamesInResultObject } from 'src/app/services/game-statistics.service';
 
 @Component({
@@ -20,11 +21,11 @@ export class StatsTestingComponent implements OnInit {
 
     
     printRandomStats(): void {
-        console.log(this.gameStatsService.generateRandomStats())
+        console.log(this.gameStatsService.admin_generateRandomStats())
     }
 
     overwriteRandomStatsToDisk(): void {
-        let randomStats = this.gameStatsService.generateRandomStats()
+        let randomStats = this.gameStatsService.admin_generateRandomStats()
         this.gameStatsService.admin_OverwriteToDisk(randomStats)
         console.log("succesfully reset local stats with random data")
     }
@@ -47,13 +48,14 @@ export class StatsTestingComponent implements OnInit {
     // addCountryStat(code: string, score: possibleScores, gameMode: string)
 
     console.log("initial state in memory:")
-    console.log(this.gameStatsService.admin_getStatsFromMemory())
+    // console.log(JSON.stringify(this.gameStatsService.admin_getStatsFromMemory()))
+    printFrozenObject(this.gameStatsService.admin_getStatsFromMemory())
 
     console.log("updating local memory object...")
-    this.gameStatsService.addCountryStat('BR', 'three', 'flags')
+    this.gameStatsService.addCountryStat('AI', 'three', 'flags')
 
     console.log("new memory state:")
-    console.log(this.gameStatsService.admin_getStatsFromMemory()) 
+    printFrozenObject(this.gameStatsService.admin_getStatsFromMemory())
 
     }
 

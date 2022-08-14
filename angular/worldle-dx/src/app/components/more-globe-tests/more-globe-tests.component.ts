@@ -62,7 +62,12 @@ export class MoreGlobeTestsComponent implements OnInit {
         
 
         this.scene.add(new THREE.AmbientLight(0xbbbbbb));
-        this.scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+        
+        let light = new THREE.DirectionalLight(0xffffff, 0.6)
+        // light.position.set(-1,0,1)
+        light.position.set(0,1,0)
+        this.scene.add(light)
+        // this.scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
 
         // this.scene.add(this.globe);
         // this.scene.add(this.cube)

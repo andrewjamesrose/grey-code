@@ -20,15 +20,7 @@ export class GameStatisticsService {
 
         }
 
-        // this.gameStats = JSON.parse(localStorage.getData('gameStatistics'))
-        // // this.gameStats = JSON.parse(localStorage.getData('gameStatistics'))
-        // // localStorage.getData('gameStatistics')
-        // console.log("Game stats initialised to:")
-        // console.log(this.gameStats)
-        // console.log(typeof JSON.parse(localStorage.getData('gamestatistics')))
-        // console.log(JSON.parse(localStorage.getData('gamestatistics')))
         this.gameStats = JSON.parse(localStorage.getData('gamestatistics'))
-        // this.gameStats = JSON.parse(localStorage.getData('getstatistics'))
    }
 
     private readLocalStorage(): void{
@@ -45,7 +37,6 @@ export class GameStatisticsService {
     }
 
 
-
     getSingleFlagStats(code: string): IGameResult {
         if(code in this.gameStats) {
             return this.gameStats[code].flags
@@ -54,6 +45,7 @@ export class GameStatisticsService {
         }
     }
 
+
     getSingleBoundaryStats(code: string): IGameResult {
         if(code in this.gameStats) {
             return this.gameStats[code].boundaries
@@ -61,6 +53,7 @@ export class GameStatisticsService {
             return new GameResult()
         }
     }
+
 
     getSingleCombinedStats(code: string): IGameResult{
         // get an array of all results
@@ -85,6 +78,7 @@ export class GameStatisticsService {
         return sumArrayOfResults(_filteredArray)    
     }
 
+
     getAllBoundaryStats(): IGameResult {
         let _filteredArray: IGameResult[] = []
 
@@ -94,26 +88,6 @@ export class GameStatisticsService {
 
         return sumArrayOfResults(_filteredArray)
     }
-
-
-    // getAllStatsCountry(code: string): IGameResult {
-    //     let combinedResult: IGameResult
-
-    //     if(code in this.gameStats){
-    //         let _flagsResult = this.gameStats[code].flags
-    //         let _boundariesResult = this.gameStats[code].boundaries
-
-    //         let inputArray = [_flagsResult, _boundariesResult]
-
-    //         combinedResult = sumArrayOfResults(inputArray)
-        
-
-    //     } else {
-    //         combinedResult = new GameResult
-    //     }
-
-    //     return combinedResult
-    // }
 
 
     addCountryStat(code: string, score: possibleScores, gameMode: string): void {
@@ -133,6 +107,7 @@ export class GameStatisticsService {
         // update single entry with new data
         if(gameMode === "flags") {
             singleGameStat[gameMode][score] = singleGameStat[gameMode][score] + 1
+            console.log("break point")
         } else if (gameMode==="boundaries"){
             singleGameStat[gameMode][score] = singleGameStat[gameMode][score] + 1
         }
@@ -142,13 +117,11 @@ export class GameStatisticsService {
         this.gameStats[code] = singleGameStat
 
 
-
-
         // // write entry back to disk
-        // this.writeToLocalStorage()
+        this.writeToLocalStorage()
 
-        // // reload new stats from disk
-        // this.readLocalStorage()
+        // // sync new stats from disk
+        this.readLocalStorage()
     }
 
 
@@ -185,7 +158,7 @@ export class GameStatisticsService {
     }
 
 
-    generateRandomStats(): IFullStats {
+    admin_generateRandomStats(): IFullStats {
         let statsNumber = 25
 
         let newStats: IFullStats = {}
@@ -195,11 +168,11 @@ export class GameStatisticsService {
             if(!(_countryCode in newStats)){
                 newStats[_countryCode] = createRandomGameStats()
             }
-
           }
 
         return newStats
     }
+
 
     admin_OverwriteToDisk(newFullSet: IFullStats): void {
         //Erase local disk
@@ -209,12 +182,13 @@ export class GameStatisticsService {
         this.localStorage.saveData('gamestatistics', JSON.stringify(newFullSet))
     }
 
+
     admin_getStatsFromMemory(): IFullStats {
         return this.gameStats
     }
 
-
 }
+
 
 function sumArrayOfResults(resultsArray : IGameResult[]): IGameResult{
     let _initialValue = new GameResult
@@ -229,12 +203,11 @@ function sumArrayOfResults(resultsArray : IGameResult[]): IGameResult{
     return _outputResult
 }
 
+
 export function totalGamesInResultObject(resultObject: IGameResult): number {
-    
     return Object.values(resultObject).reduce((a, b) => a + b);
-
-
 }
+
 
 function createRandomGameResult(): IGameResult {
     return {
