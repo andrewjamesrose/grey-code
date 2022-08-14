@@ -162,7 +162,7 @@ export class GameLogicService {
 
 }
 
- function getRandomCountry(): ICountry {
+export function getRandomCountry(): ICountry {
     let _randomIndex = generateRandomInteger(0, NEW_COUNTRY_LIST.length)
     return  NEW_COUNTRY_LIST[_randomIndex]
 }

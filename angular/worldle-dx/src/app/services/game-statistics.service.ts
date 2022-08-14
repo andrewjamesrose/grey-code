@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { GameResult, IFullStats, IGameResult } from '../models/statistics';
+import { generateRandomInteger } from '../commonFunctions/functions';
+import { GameResult, IFullStats, IGameResult, IGameStats } from '../models/statistics';
+import { getRandomCountry } from './game-logic.service';
 import { LocalStorageService } from './local-storage.service';
 
 type possibleScores = 'one'|'two'|'three'|'four'|'five'|'fail'
@@ -9,7 +11,9 @@ type possibleScores = 'one'|'two'|'three'|'four'|'five'|'fail'
 })
 export class GameStatisticsService {
 
-  constructor(localStorage: LocalStorageService) {
+    private gameStats: IFullStats = {}
+
+  constructor(private localStorage: LocalStorageService) {
         if(localStorage.getData('gamestatistics') === null || localStorage.getData('gamestatistics') === ''){
             console.log("creating new blank object")
             localStorage.saveData('gamestatistics', JSON.stringify(new Object()))
@@ -27,7 +31,20 @@ export class GameStatisticsService {
         // this.gameStats = JSON.parse(localStorage.getData('getstatistics'))
    }
 
-    private gameStats: IFullStats = {}
+    private readLocalStorage(): void{
+        if(this.localStorage.getData('gamestatistics') === null || this.localStorage.getData('gamestatistics') === ''){
+            this.localStorage.saveData('gamestatistics', JSON.stringify(new Object()))
+
+        } 
+        
+        this.gameStats = JSON.parse(this.localStorage.getData('gamestatistics'))
+    }
+
+    private writeToLocalStorage(): void{
+
+    }
+
+
 
     getSingleFlagStats(code: string): IGameResult {
         if(code in this.gameStats) {
@@ -53,9 +70,10 @@ export class GameStatisticsService {
 
         let inputArray = [_flagResults, _boundaryResults]
 
-        // send to the summation array
+        // send to the summation array function + return result
         return sumArrayOfResults(inputArray)
     }
+
 
     getAllFlagStats(): IGameResult {
         let _filteredArray: IGameResult[] = []
@@ -64,8 +82,7 @@ export class GameStatisticsService {
             _filteredArray.push(result.flags)
         }
 
-        return sumArrayOfResults(_filteredArray)
-          
+        return sumArrayOfResults(_filteredArray)    
     }
 
     getAllBoundaryStats(): IGameResult {
@@ -79,24 +96,24 @@ export class GameStatisticsService {
     }
 
 
-    getAllStatsCountry(code: string): IGameResult {
-        let combinedResult: IGameResult
+    // getAllStatsCountry(code: string): IGameResult {
+    //     let combinedResult: IGameResult
 
-        if(code in this.gameStats){
-            let _flagsResult = this.gameStats[code].flags
-            let _boundariesResult = this.gameStats[code].boundaries
+    //     if(code in this.gameStats){
+    //         let _flagsResult = this.gameStats[code].flags
+    //         let _boundariesResult = this.gameStats[code].boundaries
 
-            let inputArray = [_flagsResult, _boundariesResult]
+    //         let inputArray = [_flagsResult, _boundariesResult]
 
-            combinedResult = sumArrayOfResults(inputArray)
+    //         combinedResult = sumArrayOfResults(inputArray)
         
 
-        } else {
-            combinedResult = new GameResult
-        }
+    //     } else {
+    //         combinedResult = new GameResult
+    //     }
 
-        return combinedResult
-    }
+    //     return combinedResult
+    // }
 
 
     addCountryStat(code: string, score: possibleScores, gameMode: string): void {
@@ -136,7 +153,7 @@ export class GameStatisticsService {
     getAllStatsTotal(): IGameResult {
         // get an array of all results
 
-        let _allFlagResults = this.getAllBoundaryStats()
+        let _allFlagResults = this.getAllFlagStats()
         let _all_BoundaryResults = this.getAllBoundaryStats()
 
         let inputArray = [_allFlagResults, _all_BoundaryResults]
@@ -147,7 +164,48 @@ export class GameStatisticsService {
     }
 
   
-    resetAllStats(): void{ }
+    resetAllStats(): void{
+        // erase the object stored locally in gamestatistics
+        this.localStorage.saveData('gamestatistics', JSON.stringify(new Object()))
+
+        // read back the new data into memory
+        this.readLocalStorage()
+    }
+
+    
+    getFullStatsFromDisk(): IFullStats {
+        if(this.localStorage.getData('gamestatistics') === null || this.localStorage.getData('gamestatistics') === ''){
+            this.localStorage.saveData('gamestatistics', JSON.stringify(new Object()))
+
+        } 
+        
+        return JSON.parse(this.localStorage.getData('gamestatistics'))  
+    }
+
+
+    generateRandomStats(): IFullStats {
+        let statsNumber = 25
+
+        let newStats: IFullStats = {}
+    
+        for (let i = 0; i < statsNumber; i++) {
+            let _countryCode = getRandomCountry().code
+            if(!(_countryCode in newStats)){
+                newStats[_countryCode] = createRandomGameStats()
+            }
+
+          }
+
+        return newStats
+    }
+
+    admin_OverwriteToDisk(newFullSet: IFullStats): void {
+        //Erase local disk
+        this.localStorage.saveData('gamestatistics', JSON.stringify(new Object()))
+
+        //write back inboud set
+        this.localStorage.saveData('gamestatistics', JSON.stringify(newFullSet))
+    }
 
 
 }
@@ -165,9 +223,34 @@ function sumArrayOfResults(resultsArray : IGameResult[]): IGameResult{
     return _outputResult
 }
 
-function totalGamesInResultObject(resultObject: IGameResult): number {
+export function totalGamesInResultObject(resultObject: IGameResult): number {
     
     return Object.values(resultObject).reduce((a, b) => a + b);
 
 
 }
+
+function createRandomGameResult(): IGameResult {
+    return {
+        one: generateRandomInteger(0, 50),
+        two: generateRandomInteger(0, 50),
+        three: generateRandomInteger(0, 50),
+        four: generateRandomInteger(0, 50),
+        five: generateRandomInteger(0, 50),
+        fail: generateRandomInteger(0, 50)
+    }
+}
+
+
+function createRandomGameStats(): IGameStats {
+    return {
+        flags: createRandomGameResult(),
+        boundaries: createRandomGameResult()
+    }
+}
+
+// function createRandomFullStat(code: string): IFullStats {
+//     return {
+//         [code]: createRandomGameStats()  
+//     }
+// }

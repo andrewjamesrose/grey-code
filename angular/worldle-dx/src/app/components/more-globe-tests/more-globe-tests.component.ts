@@ -8,6 +8,7 @@ import { EARTH_AXIAL_TILT_DEG } from 'src/app/constants';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/functions';
 import { GameStatisticsService } from 'src/app/services/game-statistics.service';
+import { IFullStats } from 'src/app/models/statistics';
 
 @Component({
   selector: 'app-more-globe-tests',

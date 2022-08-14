@@ -27,6 +27,7 @@ import { MoreGlobeTestsComponent } from './components/more-globe-tests/more-glob
 import { SphericalGeometryDemoComponent } from './components/spherical-geometry-demo/spherical-geometry-demo.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { GameStatisticsService } from './services/game-statistics.service';
+import { StatsTestingComponent } from './components/stats-testing/stats-testing.component';
 
 
 
@@ -44,6 +45,7 @@ import { GameStatisticsService } from './services/game-statistics.service';
     MathsDemoComponent,
     MoreGlobeTestsComponent,
     SphericalGeometryDemoComponent,
+    StatsTestingComponent,
   ],
   imports: [
     BrowserModule,
