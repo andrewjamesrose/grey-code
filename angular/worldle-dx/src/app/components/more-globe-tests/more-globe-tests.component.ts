@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Renderer } from 'three';
+import { Euler, Renderer } from 'three';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -9,6 +9,7 @@ import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/functions';
 import { GameStatisticsService } from 'src/app/services/game-statistics.service';
 import { IFullStats } from 'src/app/models/statistics';
+import { ILatLong } from 'src/app/models/game-logic';
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -89,7 +90,11 @@ export class MoreGlobeTestsComponent implements OnInit {
             this.controls.minPolarAngle = Math.PI/4 
             this.controls.maxPolarAngle = 3 * Math.PI/4
 
+
+
     }
+
+
 
  
 
@@ -185,16 +190,33 @@ export class MoreGlobeTestsComponent implements OnInit {
                         // this.scene.rotation.y = Math.PI/2
             // this.scene.rotation.x = degreesToRadians(targetLatLong.latitude)
 
-                this.globe.rotation.x = degreesToRadians(targetLatLong.latitude)
+            // this.globe.rotation.x = degreesToRadians(targetLatLong.latitude)
             // y = long
+
+            //set spacial xyz position of camera
+            // note that if orbit control limits are set then they override the camera.position.set
+            // and it pegs out at the limit set in OrbitControl
+
+            targetLatLong = getCentroidLatLong('IN')
+
+            console.log(targetLatLong)
+            let newCoords: Euler
+            let radius: number = 300
+            newCoords = getThreeJSEulerFromLatLong(targetLatLong, radius)
+    
+            console.log(newCoords)
+
+            // this.camera.position.set(0, 350, 0)
+            this.camera.position.set(newCoords.x, newCoords.y, newCoords.z)
+
+            //  this could be useful but it seems OrbitControls (or magic?) is somehow setting the lookAt(0,0,0)
+            // this.camera.lookAt(0,0,0);
 
             this.animate()
 
-            this.lambda = -targetLatLong.longitude
-            this.phi = -targetLatLong.latitude
-        } else {
-            countryCode = ''
-        }
+            // this.lambda = -targetLatLong.longitude
+            // this.phi = -targetLatLong.latitude
+        } 
     }
 
     checkCountry(countryCode: string): number{
@@ -214,31 +236,61 @@ export class MoreGlobeTestsComponent implements OnInit {
 
     checkColourCap(countryCode: string): string{
         let guessList = ['DE', 'MX', 'BR', 'JP', 'CL']
+        let correctAnswer = 'AU'
 
-
-        let altitude: string = 'rgba(42, 157, 143, 0.8)'
+        // let colour: string = 'rgba(42, 157, 143, 0.8)'  //green
+        let colour: string = 'rgba(200, 220, 200, 1)'  //grey
+        
 
         if (guessList.includes(countryCode)) {
-            altitude = 'rgba(191, 27, 57, 0.6)'
+            colour = 'rgba(191, 27, 57, 0.6)'
+        }
+        if(countryCode===correctAnswer){
+            colour = 'rgba(42, 157, 143, 0.8)'
         }
 
-        return altitude
+        return colour
     }
 
     checkColourSide(countryCode: string): string{
         let guessList = ['DE', 'MX', 'BR', 'JP', 'CL']
+        let correctAnswer = 'AU'
 
-
-        let altitude: string = 'rgba(42, 157, 143, 0.6)'
+        let sideColor: string = 'rgba(200, 220, 200, 0.6)'  //grey
+        // let sideColor: string = 'rgba(42, 157, 143, 0.6)'
 
         if (guessList.includes(countryCode)) {
-            altitude = 'rgba(191, 27, 57, 0.6)'
+            sideColor = 'rgba(191, 27, 57, 0.6)'
+        }
+        if(countryCode===correctAnswer){
+            sideColor = 'rgba(42, 157, 143, 0.6)'
         }
 
-        return altitude
+        return sideColor
     }
 
 
 
+}
+
+function getThreeJSEulerFromLatLong(latLong: ILatLong, radius: number): Euler {
+    //Spherical geometry but using 3D modelling axes: 
+        //x  + right //  - left
+        //y  + up    //  - down
+        //z  + away  //  - towards
+
+    let _x: number
+    let _y: number
+    let _z: number
+
+    let _phi = degreesToRadians(latLong.latitude)
+    let _lambda = degreesToRadians(latLong.longitude)
+
+
+    _x = radius * Math.cos(_phi) * Math.sin(_lambda)
+    _y = radius * Math.sin(_phi)
+    _z = radius * Math.cos(_phi) * Math.cos(_lambda)
+
+    return new Euler(_x, _y, _z)
 }
 
