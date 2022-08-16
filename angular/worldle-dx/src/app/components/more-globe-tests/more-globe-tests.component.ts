@@ -35,23 +35,52 @@ export class MoreGlobeTestsComponent implements OnInit {
 
 
     constructor(private http: HttpClient, private statsService: GameStatisticsService) { 
-
         this.scene = new THREE.Scene();         
-  
     }
 
-    
-    geometry = new THREE.BoxGeometry(1, 1, 1);
+    // Test cube
+    // geometry = new THREE.BoxGeometry(1, 1, 1);
     // material = new THREE.MeshBasicMaterial( { color: 0x00ff00 })
     // cube = new THREE.Mesh( this.geometry, this.material )
+
+    materialParameters = {
+            color: 0xff0000,
+            transparent: true,
+            opacity: 0.25,
+            depthTest: true,
+            polygonOffset: true,
+            polygonOffsetFactor: 1, // positive value pushes polygon further away
+            polygonOffsetUnits: 1
+            } 
+
+
+    geometry = new THREE.SphereGeometry( 150, 32, 16 );
+    // geometry = new THREE.BoxGeometry(1, 1, 1);
+    // material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+    material = new THREE.MeshLambertMaterial( this.materialParameters);
+    mathsSphere = new THREE.Mesh( this.geometry, this.material );
+
+    // Edges Wireframe
+    // https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges
+    geoEdges = new THREE.EdgesGeometry( this.geometry ); // or WireframeGeometry( geometry )
+    // geoEdges = new THREE.WireframeGeometry( this.geometry );
+    matLines = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
+    wireframe = new THREE.LineSegments( this.geoEdges, this.matLines );
+
+    // Also
+    // How to display both wireframe and solid colour:
+    // https://stackoverflow.com/questions/31539130/display-wireframe-and-solid-color/31541369#31541369
+
+
+
     
     globe = new ThreeGlobe({animateIn: false})
         // .globeImageUrl('/assets/img/earth-day.jpg')
         // .globeImageUrl('/assets/img/earth-blue-marble800.jpg')
         // .globeImageUrl('/assets/img/grey.jpg')
-        .globeImageUrl('/assets/img/lightblue.jpg')
         // .globeImageUrl('/assets/img/earth-dark.jpg')
-        //   .bumpImageUrl('http://unpkg.com/three-globe/example/img/earth-topology.png')
+        // .bumpImageUrl('http://unpkg.com/three-globe/example/img/earth-topology.png')
+        .globeImageUrl('/assets/img/lightblue.jpg')
         .pointAltitude('size')
 
 
@@ -60,23 +89,18 @@ export class MoreGlobeTestsComponent implements OnInit {
         console.log("running create scene")
 
         this.scene.background = new THREE.Color(0x303030);
-        
-
         this.scene.add(new THREE.AmbientLight(0xbbbbbb));
         
         let light = new THREE.DirectionalLight(0xffffff, 0.6)
-        // light.position.set(-1,0,1)
         light.position.set(0,1,0)
         this.scene.add(light)
-        // this.scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+    
 
-        // this.scene.add(this.globe);
-        // this.scene.add(this.cube)
+        // Add Meshes to Scene:
         this.scene.add(this.globe)
-        // this.cube.position.x = 30
-        // this.cube.scale.x = 30;
-        // this.cube.scale.y = 30;
-        // this.cube.scale.z = 30;
+        // this.scene.add( this.mathsSphere );
+        this.scene.add( this.wireframe );
+   
     
         this.camera = new THREE.PerspectiveCamera();
         // this.camera.aspect = window.innerWidth/ window.innerHeight;
@@ -86,17 +110,14 @@ export class MoreGlobeTestsComponent implements OnInit {
 
             
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-            //angle from the pole. North pole is 0
+            //angle from the pole. North pole is 0, using spherical coordinates.
             this.controls.minPolarAngle = Math.PI/4 
             this.controls.maxPolarAngle = 3 * Math.PI/4
-
-
-
+            this.controls.enablePan=false
     }
 
 
 
- 
 
     ngOnInit(): void {
         console.log("initialising")
@@ -285,7 +306,6 @@ function getThreeJSEulerFromLatLong(latLong: ILatLong, radius: number): Euler {
 
     let _phi = degreesToRadians(latLong.latitude)
     let _lambda = degreesToRadians(latLong.longitude)
-
 
     _x = radius * Math.cos(_phi) * Math.sin(_lambda)
     _y = radius * Math.sin(_phi)
