@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Euler, Renderer } from 'three';
+import { Euler, LineSegments, Renderer } from 'three';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -10,6 +10,7 @@ import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/fu
 import { GameStatisticsService } from 'src/app/services/game-statistics.service';
 import { IFullStats } from 'src/app/models/statistics';
 import { ILatLong } from 'src/app/models/game-logic';
+import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -71,9 +72,40 @@ export class MoreGlobeTestsComponent implements OnInit {
     // How to display both wireframe and solid colour:
     // https://stackoverflow.com/questions/31539130/display-wireframe-and-solid-color/31541369#31541369
 
+    lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff } );
+    axisOrigin = new THREE.Vector3(0,0,0)
+    x_axisVector = new THREE.Vector3(1, 0, 0).multiplyScalar(150)  
+    y_axisVector = new THREE.Vector3(0, 1, 0).multiplyScalar(150)
+    z_axisVector = new THREE.Vector3(0, 0, 1).multiplyScalar(150)
+    myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(150)  
 
+    xAxisGeometry = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.x_axisVector])
+    xAxisLine = new THREE.Line(this.xAxisGeometry, this.lineMaterial)
 
-    
+    yAxisGeometry = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.y_axisVector])
+    yAxisLine = new THREE.Line(this.yAxisGeometry, this.lineMaterial)
+
+    zAxisGeometry = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.z_axisVector])
+    zAxisLine = new THREE.Line(this.zAxisGeometry, this.lineMaterial)
+
+    // myLineMaterial = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+    // myLineGeometry = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.myVector])
+    // myVectorLine = new THREE.Line(this.myLineGeometry, this.myLineMaterial)
+
+    myLineMaterial = new LineMaterial({
+        color: 0xff0000,
+        linewidth: 7, // px
+        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+        dashed: true,
+        dashSize: 10,
+        gapSize: 10
+        // dashed, dashScale, dashSize, gapSize
+      })
+
+    myBufferGeo = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.myVector])
+    myLineGeometry = new LineGeometry().setPositions(this.myBufferGeo.getAttribute('position').array as any) 
+    myLine = new Line2(this.myLineGeometry, this.myLineMaterial);
+
     globe = new ThreeGlobe({animateIn: false})
         // .globeImageUrl('/assets/img/earth-day.jpg')
         // .globeImageUrl('/assets/img/earth-blue-marble800.jpg')
@@ -95,12 +127,26 @@ export class MoreGlobeTestsComponent implements OnInit {
         light.position.set(0,1,0)
         this.scene.add(light)
     
+        // this works!
+        // this.myVectorLine.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/4)
+
+        this.myLine.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/4)
+
+        this.myLine.computeLineDistances();
+
 
         // Add Meshes to Scene:
-        this.scene.add(this.globe)
+        // this.scene.add(this.globe)
         // this.scene.add( this.mathsSphere );
-        this.scene.add( this.wireframe );
-   
+        // this.scene.add( this.wireframe );
+        
+        this.scene.add(this.xAxisLine)
+        this.scene.add(this.yAxisLine)
+        this.scene.add(this.zAxisLine)
+        // this.scene.add(this.myVectorLine)
+        this.scene.add(this.myLine)
+
+    
     
         this.camera = new THREE.PerspectiveCamera();
         // this.camera.aspect = window.innerWidth/ window.innerHeight;
