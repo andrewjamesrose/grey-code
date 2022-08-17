@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Euler, LineSegments, Renderer } from 'three';
+import { Euler, LineSegments, Object3D, Renderer, Vector3 } from 'three';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -12,13 +12,14 @@ import { IFullStats } from 'src/app/models/statistics';
 import { ILatLong } from 'src/app/models/game-logic';
 import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 
+const AXIS_ORIGIN = new THREE.Vector3(0,0,0)
+const GLOBE_SCALAR = 150
+
 @Component({
   selector: 'app-more-globe-tests',
   templateUrl: './more-globe-tests.component.html',
   styleUrls: ['./more-globe-tests.component.scss']
 })
-
-
 export class MoreGlobeTestsComponent implements OnInit {
     @ViewChild('testid', { static: true }) rendererContainer!:  ElementRef<HTMLInputElement>;
 
@@ -73,24 +74,9 @@ export class MoreGlobeTestsComponent implements OnInit {
     // https://stackoverflow.com/questions/31539130/display-wireframe-and-solid-color/31541369#31541369
 
     lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff } );
-    axisOrigin = new THREE.Vector3(0,0,0)
-    x_axisVector = new THREE.Vector3(1, 0, 0).multiplyScalar(150)  
-    y_axisVector = new THREE.Vector3(0, 1, 0).multiplyScalar(150)
-    z_axisVector = new THREE.Vector3(0, 0, 1).multiplyScalar(150)
-    myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(150)  
 
-    xAxisGeometry = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.x_axisVector])
-    xAxisLine = new THREE.Line(this.xAxisGeometry, this.lineMaterial)
+    myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
 
-    yAxisGeometry = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.y_axisVector])
-    yAxisLine = new THREE.Line(this.yAxisGeometry, this.lineMaterial)
-
-    zAxisGeometry = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.z_axisVector])
-    zAxisLine = new THREE.Line(this.zAxisGeometry, this.lineMaterial)
-
-    // myLineMaterial = new THREE.LineBasicMaterial( { color: 0xff0000 } );
-    // myLineGeometry = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.myVector])
-    // myVectorLine = new THREE.Line(this.myLineGeometry, this.myLineMaterial)
 
     myLineMaterial = new LineMaterial({
         color: 0xff0000,
@@ -102,7 +88,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         // dashed, dashScale, dashSize, gapSize
       })
 
-    myBufferGeo = new THREE.BufferGeometry().setFromPoints([this.axisOrigin, this.myVector])
+    myBufferGeo = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, this.myVector])
     myLineGeometry = new LineGeometry().setPositions(this.myBufferGeo.getAttribute('position').array as any) 
     myLine = new Line2(this.myLineGeometry, this.myLineMaterial);
 
@@ -140,13 +126,28 @@ export class MoreGlobeTestsComponent implements OnInit {
         // this.scene.add( this.mathsSphere );
         // this.scene.add( this.wireframe );
         
-        this.scene.add(this.xAxisLine)
-        this.scene.add(this.yAxisLine)
-        this.scene.add(this.zAxisLine)
-        // this.scene.add(this.myVectorLine)
+
+
+        let axesSet = generateAxes()
+
+        for(let axis of axesSet){
+            console.log(axis.geometry)
+            this.scene.add(axis)
+        }
+
+        let inputLine: ILineGeometry = {
+                                        startPoint: new Vector3(50,50,25),
+                                        endPoint: new Vector3(100, 100, 125)
+                                        }
+
+        let axisProjections = generateAxisProjectionLines(inputLine)
+        for (let axPro of axisProjections){
+            this.scene.add(axPro)
+        }
+
+
         this.scene.add(this.myLine)
 
-    
     
         this.camera = new THREE.PerspectiveCamera();
         // this.camera.aspect = window.innerWidth/ window.innerHeight;
@@ -249,16 +250,9 @@ export class MoreGlobeTestsComponent implements OnInit {
             console.log("lat: " + degreesToRadians(targetLatLong.latitude))
             console.log("lat: " + degreesToRadians(targetLatLong.longitude))
 
-            // console.log()
             
             console.log(targetLatLong)
 
-            //  this.scene.rotation.y = -degreesToRadians(targetLatLong.longitude)
-                        // this.scene.rotation.y = Math.PI/2
-            // this.scene.rotation.x = degreesToRadians(targetLatLong.latitude)
-
-            // this.globe.rotation.x = degreesToRadians(targetLatLong.latitude)
-            // y = long
 
             //set spacial xyz position of camera
             // note that if orbit control limits are set then they override the camera.position.set
@@ -266,23 +260,16 @@ export class MoreGlobeTestsComponent implements OnInit {
 
             targetLatLong = getCentroidLatLong('IN')
 
-            console.log(targetLatLong)
+            // console.log(targetLatLong)
             let newCoords: Euler
             let radius: number = 300
             newCoords = getThreeJSEulerFromLatLong(targetLatLong, radius)
     
-            console.log(newCoords)
+            // console.log(newCoords)
 
-            // this.camera.position.set(0, 350, 0)
             this.camera.position.set(newCoords.x, newCoords.y, newCoords.z)
 
-            //  this could be useful but it seems OrbitControls (or magic?) is somehow setting the lookAt(0,0,0)
-            // this.camera.lookAt(0,0,0);
-
             this.animate()
-
-            // this.lambda = -targetLatLong.longitude
-            // this.phi = -targetLatLong.latitude
         } 
     }
 
@@ -360,3 +347,97 @@ function getThreeJSEulerFromLatLong(latLong: ILatLong, radius: number): Euler {
     return new Euler(_x, _y, _z)
 }
 
+
+function generateAxes(): THREE.Line[] {
+    let lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff } );
+    let x_axisVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
+    let y_axisVector = new THREE.Vector3(0, 1, 0).multiplyScalar(GLOBE_SCALAR)
+    let z_axisVector = new THREE.Vector3(0, 0, 1).multiplyScalar(GLOBE_SCALAR)
+    let myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
+
+    let xAxisGeometry = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, x_axisVector])
+    let xAxisLine = new THREE.Line(xAxisGeometry, lineMaterial)
+
+    let yAxisGeometry = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, y_axisVector])
+    let yAxisLine = new THREE.Line(yAxisGeometry, lineMaterial)
+
+    let zAxisGeometry = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, z_axisVector])
+    let zAxisLine = new THREE.Line(zAxisGeometry, lineMaterial)
+    
+    return [xAxisLine, yAxisLine, zAxisLine]
+}
+
+
+// function generateLambdaAngle(): THREE.Object3D {
+
+// }
+
+
+// function generateLambdaAngle(): THREE.Object3D {
+
+// }
+
+// function arcLat
+// function arcLong
+ 
+// function arcPolarPhi
+// function arcPolarTheta
+
+
+function generateAxisProjectionLines(inputLine: ILineGeometry): Line2[]{
+    let _myLineMaterial = new LineMaterial({
+        color: 0xff0000,
+        linewidth: 7, // px
+        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+        dashed: true,
+        dashSize: 10,
+        gapSize: 10
+        // dashed, dashScale, dashSize, gapSize
+      })
+
+
+      let xStart = new Vector3(inputLine.startPoint.x, 0, 0)
+      let xEnd = new Vector3(inputLine.endPoint.x, 0, 0)
+
+      let yStart = new Vector3(0, inputLine.startPoint.y, 0)
+      let yEnd = new Vector3(0, inputLine.endPoint.y, 0)
+
+      let zStart = new Vector3(0, 0, inputLine.startPoint.z)
+      let zEnd = new Vector3(0, 0, inputLine.endPoint.z)
+
+      let x_bufferGeo = new THREE.BufferGeometry().setFromPoints([xStart, xEnd])
+      let y_bufferGeo = new THREE.BufferGeometry().setFromPoints([yStart, yEnd])
+      let z_bufferGeo = new THREE.BufferGeometry().setFromPoints([zStart, zEnd])
+
+      let x_lineGeo = new LineGeometry().setPositions(x_bufferGeo.getAttribute('position').array as any) 
+      let y_lineGeo = new LineGeometry().setPositions(y_bufferGeo.getAttribute('position').array as any) 
+      let z_lineGeo = new LineGeometry().setPositions(z_bufferGeo.getAttribute('position').array as any) 
+
+      let _xAxisPro = new Line2(x_lineGeo, _myLineMaterial)
+      let _yAxisPro = new Line2(y_lineGeo, _myLineMaterial)
+      let _zAxisPro = new Line2(z_lineGeo, _myLineMaterial)
+
+
+    return [_xAxisPro, _yAxisPro, _zAxisPro]
+}
+
+// function generateOffsetAxisProjectionLines(inputLine: ILineGeometry): Line2[]{
+//     let _myLineMaterial = new LineMaterial({
+//         color: 0xff0000,
+//         linewidth: 7, // px
+//         resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+//         dashed: true,
+//         dashSize: 10,
+//         gapSize: 10
+//         // dashed, dashScale, dashSize, gapSize
+//       })
+
+
+
+//     return [_xAxisPro, _yAxisPro, _zAxisPro]  
+// }
+
+interface ILineGeometry {
+    startPoint: Vector3,
+    endPoint: Vector3
+}
