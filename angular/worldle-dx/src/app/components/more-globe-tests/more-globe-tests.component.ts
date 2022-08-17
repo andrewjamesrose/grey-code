@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Euler, LineSegments, Object3D, Renderer, Vector3 } from 'three';
+import { Euler, LineSegments, Object3D, Renderer, Vector, Vector3 } from 'three';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -9,7 +9,7 @@ import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/functions';
 import { GameStatisticsService } from 'src/app/services/game-statistics.service';
 import { IFullStats } from 'src/app/models/statistics';
-import { ILatLong } from 'src/app/models/game-logic';
+import { ILatLong, LatLong } from 'src/app/models/game-logic';
 import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 
 const AXIS_ORIGIN = new THREE.Vector3(0,0,0)
@@ -75,22 +75,26 @@ export class MoreGlobeTestsComponent implements OnInit {
 
     lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff } );
 
-    myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
 
 
-    myLineMaterial = new LineMaterial({
-        color: 0xff0000,
-        linewidth: 7, // px
-        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-        dashed: true,
-        dashSize: 10,
-        gapSize: 10
-        // dashed, dashScale, dashSize, gapSize
-      })
+    // Dotted Line to test Rotation 
+    // myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
 
-    myBufferGeo = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, this.myVector])
-    myLineGeometry = new LineGeometry().setPositions(this.myBufferGeo.getAttribute('position').array as any) 
-    myLine = new Line2(this.myLineGeometry, this.myLineMaterial);
+    // myLineMaterial = new LineMaterial({
+    //     color: 0xff0000,
+    //     linewidth: 7, // px
+    //     resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+    //     dashed: true,
+    //     dashSize: 10,
+    //     gapSize: 10
+    //     // dashed, dashScale, dashSize, gapSize
+    //   })
+
+    // myBufferGeo = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, this.myVector])
+    // myLineGeometry = new LineGeometry().setPositions(this.myBufferGeo.getAttribute('position').array as any) 
+    // myLine = new Line2(this.myLineGeometry, this.myLineMaterial);
+
+
 
     globe = new ThreeGlobe({animateIn: false})
         // .globeImageUrl('/assets/img/earth-day.jpg')
@@ -116,9 +120,13 @@ export class MoreGlobeTestsComponent implements OnInit {
         // this works!
         // this.myVectorLine.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/4)
 
-        this.myLine.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/4)
 
-        this.myLine.computeLineDistances();
+
+
+        // this.myLine.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/4)
+        // this.myLine.computeLineDistances();
+
+
 
 
         // Add Meshes to Scene:
@@ -140,13 +148,36 @@ export class MoreGlobeTestsComponent implements OnInit {
                                         endPoint: new Vector3(100, 100, 125)
                                         }
 
-        let axisProjections = generateAxisProjectionLines(inputLine)
-        for (let axPro of axisProjections){
-            this.scene.add(axPro)
-        }
+        // let axisProjections = generateAxisProjectionLines(inputLine)
+        // for (let axPro of axisProjections){
+        //     this.scene.add(axPro)
+        // }
+
+        // let centroidLine = radialLineFromLatLong(getCentroidLatLong("TR"))
+        let centroidPoint = getVector3FromLatLong(getCentroidLatLong("TR"), GLOBE_SCALAR)
+        
+        let centroidLine = line2FromPoints(AXIS_ORIGIN, centroidPoint)
+        let xzProjection = xz_planeProjectionPoint(centroidPoint)
+        
+        let yProjection = singleAxisProjection(AXIS_ORIGIN, centroidPoint, "y")
+
+        let yDropline = dashedDroplineToAxis(centroidPoint, "y")
+        let xz_PlaneDropLine = dashedDroplineToPlane(centroidPoint, "xz")
+
+        let xz_xDrop = xz_PlaneDropLineToAxis(centroidPoint, "x")
+        let xz_zDrop = xz_PlaneDropLineToAxis(centroidPoint, "z")
 
 
-        this.scene.add(this.myLine)
+        this.scene.add(centroidLine)
+        this.scene.add(xzProjection)
+        this.scene.add(yProjection)
+        this.scene.add(yDropline)
+        this.scene.add(xz_PlaneDropLine)
+        this.scene.add(xz_xDrop)
+        this.scene.add(xz_zDrop)
+
+
+        // this.scene.add(this.myLine)
 
     
         this.camera = new THREE.PerspectiveCamera();
@@ -261,9 +292,9 @@ export class MoreGlobeTestsComponent implements OnInit {
             targetLatLong = getCentroidLatLong('IN')
 
             // console.log(targetLatLong)
-            let newCoords: Euler
+            let newCoords: Vector3
             let radius: number = 300
-            newCoords = getThreeJSEulerFromLatLong(targetLatLong, radius)
+            newCoords = getVector3FromLatLong(targetLatLong, radius)
     
             // console.log(newCoords)
 
@@ -327,7 +358,7 @@ export class MoreGlobeTestsComponent implements OnInit {
 
 }
 
-function getThreeJSEulerFromLatLong(latLong: ILatLong, radius: number): Euler {
+function getVector3FromLatLong(latLong: ILatLong, radius: number): Vector3 {
     //Spherical geometry but using 3D modelling axes: 
         //x  + right //  - left
         //y  + up    //  - down
@@ -344,24 +375,27 @@ function getThreeJSEulerFromLatLong(latLong: ILatLong, radius: number): Euler {
     _y = radius * Math.sin(_phi)
     _z = radius * Math.cos(_phi) * Math.cos(_lambda)
 
-    return new Euler(_x, _y, _z)
+    return new Vector3(_x, _y, _z)
 }
 
 
 function generateAxes(): THREE.Line[] {
     let lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff } );
-    let x_axisVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
-    let y_axisVector = new THREE.Vector3(0, 1, 0).multiplyScalar(GLOBE_SCALAR)
-    let z_axisVector = new THREE.Vector3(0, 0, 1).multiplyScalar(GLOBE_SCALAR)
+    let x_axisBegin = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
+    let x_axisEnd = new THREE.Vector3(-1, 0, 0).multiplyScalar(GLOBE_SCALAR) 
+    let y_axisBegin = new THREE.Vector3(0, 1, 0).multiplyScalar(GLOBE_SCALAR)
+    let y_axisEnd = new THREE.Vector3(0, -1, 0).multiplyScalar(GLOBE_SCALAR)
+    let z_axisBegin = new THREE.Vector3(0, 0, 1).multiplyScalar(GLOBE_SCALAR)
+    let z_axisEnd = new THREE.Vector3(0, 0, -1).multiplyScalar(GLOBE_SCALAR)
     let myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
 
-    let xAxisGeometry = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, x_axisVector])
+    let xAxisGeometry = new THREE.BufferGeometry().setFromPoints([x_axisBegin, x_axisEnd])
     let xAxisLine = new THREE.Line(xAxisGeometry, lineMaterial)
 
-    let yAxisGeometry = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, y_axisVector])
+    let yAxisGeometry = new THREE.BufferGeometry().setFromPoints([y_axisBegin, y_axisEnd])
     let yAxisLine = new THREE.Line(yAxisGeometry, lineMaterial)
 
-    let zAxisGeometry = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, z_axisVector])
+    let zAxisGeometry = new THREE.BufferGeometry().setFromPoints([z_axisBegin, z_axisEnd])
     let zAxisLine = new THREE.Line(zAxisGeometry, lineMaterial)
     
     return [xAxisLine, yAxisLine, zAxisLine]
@@ -391,7 +425,10 @@ function generateAxisProjectionLines(inputLine: ILineGeometry): Line2[]{
         resolution: new THREE.Vector2(800, 800), // resolution of the viewport
         dashed: true,
         dashSize: 10,
-        gapSize: 10
+        gapSize: 10,
+        polygonOffset: true,
+        polygonOffsetFactor: 1, // positive value pushes polygon further away
+        polygonOffsetUnits: 1
         // dashed, dashScale, dashSize, gapSize
       })
 
@@ -405,21 +442,115 @@ function generateAxisProjectionLines(inputLine: ILineGeometry): Line2[]{
       let zStart = new Vector3(0, 0, inputLine.startPoint.z)
       let zEnd = new Vector3(0, 0, inputLine.endPoint.z)
 
-      let x_bufferGeo = new THREE.BufferGeometry().setFromPoints([xStart, xEnd])
-      let y_bufferGeo = new THREE.BufferGeometry().setFromPoints([yStart, yEnd])
-      let z_bufferGeo = new THREE.BufferGeometry().setFromPoints([zStart, zEnd])
-
-      let x_lineGeo = new LineGeometry().setPositions(x_bufferGeo.getAttribute('position').array as any) 
-      let y_lineGeo = new LineGeometry().setPositions(y_bufferGeo.getAttribute('position').array as any) 
-      let z_lineGeo = new LineGeometry().setPositions(z_bufferGeo.getAttribute('position').array as any) 
-
-      let _xAxisPro = new Line2(x_lineGeo, _myLineMaterial)
-      let _yAxisPro = new Line2(y_lineGeo, _myLineMaterial)
-      let _zAxisPro = new Line2(z_lineGeo, _myLineMaterial)
+    let _xAxisPro = line2FromPoints(xStart, xEnd)
+    let _yAxisPro = line2FromPoints(yStart, yEnd)
+    let _zAxisPro = line2FromPoints(zStart, zEnd)
 
 
     return [_xAxisPro, _yAxisPro, _zAxisPro]
 }
+
+function singleAxisProjection(startPoint: Vector3, endPoint: Vector3, axis: "x"|"y"|"z", color=0xff0000): Line2 {
+    let _startPoint: Vector3
+    let _endPoint: Vector3
+
+    if(axis === "x") {
+        _startPoint = new Vector3(startPoint.x, 0, 0)
+        _endPoint = new Vector3(endPoint.x, 0, 0)
+    } else if (axis === "y") {
+        _startPoint = new Vector3(0, startPoint.y, 0)
+        _endPoint = new Vector3(0, endPoint.y, 0)
+    } else {
+        _startPoint = new Vector3(0, 0, startPoint.z)
+        _endPoint = new Vector3(0, 0, endPoint.z)
+    }
+    return line2FromPoints(_startPoint, _endPoint, color)
+}
+
+function line2FromPoints(startPoint: Vector3, endPoint: Vector3, color=0xff0000): Line2 {
+    let _lineMaterial = new LineMaterial({
+        color: 0xff0000,
+        linewidth: 7, // px
+        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+        dashed: true,
+        dashSize: 10,
+        gapSize: 10,
+        polygonOffset: true,
+        polygonOffsetFactor: 1, // positive value pushes polygon further away
+        polygonOffsetUnits: 1
+        // dashed, dashScale, dashSize, gapSize
+      })
+
+    let _bufferGeometry = new THREE.BufferGeometry().setFromPoints([startPoint, endPoint])
+    let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 
+
+    return new Line2(_lineGeometry, _lineMaterial)
+}
+
+
+function radialLineFromLatLong(inputLatLong: LatLong): Line2 {
+    let _endpoint = getVector3FromLatLong(inputLatLong, GLOBE_SCALAR)
+    return line2FromPoints(AXIS_ORIGIN, _endpoint)
+}
+
+function radialPointFromLatLong(inputLatLong: LatLong): Vector3 {
+    return getVector3FromLatLong(inputLatLong, GLOBE_SCALAR)
+}
+
+
+function xz_planeProjectionLatLong(inputLatLong: LatLong): Line2 {
+    let _endpoint = getVector3FromLatLong(inputLatLong, GLOBE_SCALAR)
+    let _planeEndPoint = new Vector3(_endpoint.x, 0, _endpoint.z)
+    return line2FromPoints(AXIS_ORIGIN, _planeEndPoint)
+}
+
+
+function xz_planeProjectionPoint(inputVector3: Vector3): Line2 {
+    let _planeEndPoint = new Vector3(inputVector3.x, 0, inputVector3.z)
+    return line2FromPoints(AXIS_ORIGIN, _planeEndPoint)
+}
+
+
+function dashedDroplineToAxis(point: Vector3, axis: "x"|"y"|"z"): Line2 {
+    let _axisPoint
+    if(axis === "x") {
+        _axisPoint = new Vector3(point.x, 0, 0)
+    } else if (axis === "y") {
+        _axisPoint = new Vector3(0, point.y, 0)
+    } else {
+        _axisPoint = new Vector3(0, 0, point.z)
+    }
+
+    return line2FromPoints(point, _axisPoint)
+}
+
+function xz_PlaneDropLineToAxis(point: Vector3, axis: "x"|"z"): Line2 {
+    let _axisPoint
+    let _xzPlanePoint = new Vector3(point.x, 0, point.z)
+    if(axis === "x") {
+        _axisPoint = new Vector3(point.x, 0, 0)
+    } else {
+        _axisPoint = new Vector3(0, 0, point.z)
+    } 
+
+    return line2FromPoints(_xzPlanePoint, _axisPoint)
+}
+
+
+function dashedDroplineToPlane(point: Vector3, plane: "xy"|"yz"|"xz"): Line2 {
+    let _planePoint
+    if(plane === "xy") {
+        _planePoint = new Vector3(point.x, point.y, 0)
+    } else if (plane === "yz") {
+        _planePoint = new Vector3(0, point.y, point.z)
+    } else {
+        _planePoint = new Vector3(point.x, 0, point.z)
+    }
+
+    return line2FromPoints(point, _planePoint)
+}
+
+
 
 // function generateOffsetAxisProjectionLines(inputLine: ILineGeometry): Line2[]{
 //     let _myLineMaterial = new LineMaterial({
