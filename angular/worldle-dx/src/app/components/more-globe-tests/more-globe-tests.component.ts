@@ -13,6 +13,9 @@ import { ILatLong, LatLong } from 'src/app/models/game-logic';
 import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 
 const AXIS_ORIGIN = new THREE.Vector3(0,0,0)
+const X_UNIT = new Vector3(1, 0, 0)
+const Y_UNIT = new Vector3(0, 1, 0)
+const Z_UNIT = new Vector3(0, 0, 1)
 const GLOBE_SCALAR = 150
 
 @Component({
@@ -131,7 +134,7 @@ export class MoreGlobeTestsComponent implements OnInit {
 
         // Add Meshes to Scene:
         // this.scene.add(this.globe)
-        // this.scene.add( this.mathsSphere );
+        //  this.scene.add( this.mathsSphere );
         // this.scene.add( this.wireframe );
         
 
@@ -167,6 +170,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         let xz_xDrop = xz_PlaneDropLineToAxis(centroidPoint, "x")
         let xz_zDrop = xz_PlaneDropLineToAxis(centroidPoint, "z")
 
+        let testAngle = arcTest() //.rotateOnWorldAxis(X_UNIT, Math.PI/4)
 
         this.scene.add(centroidLine)
         this.scene.add(xzProjection)
@@ -175,6 +179,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.scene.add(xz_PlaneDropLine)
         this.scene.add(xz_xDrop)
         this.scene.add(xz_zDrop)
+        this.scene.add(testAngle)
 
 
         // this.scene.add(this.myLine)
@@ -468,18 +473,20 @@ function singleAxisProjection(startPoint: Vector3, endPoint: Vector3, axis: "x"|
 }
 
 function line2FromPoints(startPoint: Vector3, endPoint: Vector3, color=0xff0000): Line2 {
-    let _lineMaterial = new LineMaterial({
-        color: 0xff0000,
-        linewidth: 7, // px
-        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-        dashed: true,
-        dashSize: 10,
-        gapSize: 10,
-        polygonOffset: true,
-        polygonOffsetFactor: 1, // positive value pushes polygon further away
-        polygonOffsetUnits: 1
-        // dashed, dashScale, dashSize, gapSize
-      })
+    // let _lineMaterial = new LineMaterial({
+    //     color: 0xff0000,
+    //     linewidth: 7, // px
+    //     resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+    //     dashed: true,
+    //     dashSize: 10,
+    //     gapSize: 10,
+    //     polygonOffset: true,
+    //     polygonOffsetFactor: 1, // positive value pushes polygon further away
+    //     polygonOffsetUnits: 1
+    //     // dashed, dashScale, dashSize, gapSize
+    //   })
+
+      let _lineMaterial = getLine2Material({color: 0xff0000})
 
     let _bufferGeometry = new THREE.BufferGeometry().setFromPoints([startPoint, endPoint])
     let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 
@@ -551,24 +558,66 @@ function dashedDroplineToPlane(point: Vector3, plane: "xy"|"yz"|"xz"): Line2 {
 }
 
 
+function arcTest(): Line2 {
+    
+    let arcCurve = new THREE.EllipseCurve( 
+        0, 0,               // ax, aY
+        30, 30,             // xRadius, yRadius
+        0, 1/2 * Math.PI,   // aStartAngle, aEndAngle
+        false,              // aClockwise
+        0                   // rotation angle           
+    );
 
-// function generateOffsetAxisProjectionLines(inputLine: ILineGeometry): Line2[]{
-//     let _myLineMaterial = new LineMaterial({
-//         color: 0xff0000,
-//         linewidth: 7, // px
-//         resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-//         dashed: true,
-//         dashSize: 10,
-//         gapSize: 10
-//         // dashed, dashScale, dashSize, gapSize
-//       })
+    let _lineMaterial = new LineMaterial({
+        color: 0x00ff00,
+        linewidth: 7, // px
+        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+        dashed: true,
+        dashSize: 10,
+        gapSize: 10,
+        polygonOffset: true,
+        polygonOffsetFactor: 1, // positive value pushes polygon further away
+        polygonOffsetUnits: 1
+        // dashed, dashScale, dashSize, gapSize
+      })
+    
+    let points = arcCurve.getSpacedPoints( 50 );
+    let material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
 
+    let _bufferGeometry = new THREE.BufferGeometry().setFromPoints(points)
+    let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 
 
+    return new Line2(_lineGeometry, _lineMaterial).rotateOnAxis(X_UNIT, Math.PI/4)
+}
 
-//     return [_xAxisPro, _yAxisPro, _zAxisPro]  
-// }
 
 interface ILineGeometry {
     startPoint: Vector3,
     endPoint: Vector3
+}
+
+function getLine2Material({
+                        color = 0x0000ff, 
+                        lineWidth =7, 
+                        dashed=false,
+                        dashsize=10, 
+                        gapSize=10
+                    }):     LineMaterial{
+
+
+    return new LineMaterial({
+        color: color,
+        linewidth: lineWidth, // px
+        dashed: dashed,
+        dashSize: dashsize,
+        gapSize: gapSize,
+
+        // fixed params
+        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+        polygonOffset: true,
+        polygonOffsetFactor: 1, // positive value pushes polygon further away
+        polygonOffsetUnits: 1
+      })
+
+
 }
