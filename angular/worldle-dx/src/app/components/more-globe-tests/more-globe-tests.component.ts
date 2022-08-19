@@ -16,7 +16,7 @@ const AXIS_ORIGIN = new THREE.Vector3(0,0,0)
 const X_UNIT = new Vector3(1, 0, 0)
 const Y_UNIT = new Vector3(0, 1, 0)
 const Z_UNIT = new Vector3(0, 0, 1)
-const GLOBE_SCALAR = 150
+const GLOBE_SCALAR = 100
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -59,7 +59,7 @@ export class MoreGlobeTestsComponent implements OnInit {
             } 
 
 
-    geometry = new THREE.SphereGeometry( 150, 32, 16 );
+    geometry = new THREE.SphereGeometry( GLOBE_SCALAR, 32, 16 );
     // geometry = new THREE.BoxGeometry(1, 1, 1);
     // material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
     material = new THREE.MeshLambertMaterial( this.materialParameters);
@@ -172,6 +172,8 @@ export class MoreGlobeTestsComponent implements OnInit {
 
         let testAngle = arcTest() //.rotateOnWorldAxis(X_UNIT, Math.PI/4)
 
+        let testMarker = markerAtLatLong(getCentroidLatLong("TR"), 1.5, 0xff0000)
+
         this.scene.add(centroidLine)
         this.scene.add(xzProjection)
         this.scene.add(yProjection)
@@ -180,6 +182,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.scene.add(xz_xDrop)
         this.scene.add(xz_zDrop)
         this.scene.add(testAngle)
+        this.scene.add(testMarker)
 
 
         // this.scene.add(this.myLine)
@@ -475,23 +478,25 @@ function singleAxisProjection(startPoint: Vector3, endPoint: Vector3, axis: "x"|
 function line2FromPoints(startPoint: Vector3, endPoint: Vector3, color=0xff0000): Line2 {
     // let _lineMaterial = new LineMaterial({
     //     color: 0xff0000,
-    //     linewidth: 7, // px
+    //     linewidth: 5, // px
     //     resolution: new THREE.Vector2(800, 800), // resolution of the viewport
     //     dashed: true,
-    //     dashSize: 10,
-    //     gapSize: 10,
+    //     dashSize: 5,
+    //     gapSize: 5,
     //     polygonOffset: true,
     //     polygonOffsetFactor: 1, // positive value pushes polygon further away
     //     polygonOffsetUnits: 1
     //     // dashed, dashScale, dashSize, gapSize
     //   })
 
-      let _lineMaterial = getLine2Material({color: 0xff0000})
+    let _lineMaterial = getLine2Material({dashed: true, dashsize: 5, gapSize: 5})
+
+    //   let _lineMaterial = getLine2Material({color: 0xff0000})
 
     let _bufferGeometry = new THREE.BufferGeometry().setFromPoints([startPoint, endPoint])
     let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 
 
-    return new Line2(_lineGeometry, _lineMaterial)
+    return new Line2(_lineGeometry, _lineMaterial).computeLineDistances()
 }
 
 
@@ -554,7 +559,7 @@ function dashedDroplineToPlane(point: Vector3, plane: "xy"|"yz"|"xz"): Line2 {
         _planePoint = new Vector3(point.x, 0, point.z)
     }
 
-    return line2FromPoints(point, _planePoint)
+    return line2FromPoints(point, _planePoint).computeLineDistances()
 }
 
 
@@ -575,11 +580,21 @@ function arcTest(): Line2 {
         dashed: true,
         dashSize: 10,
         gapSize: 10,
-        polygonOffset: true,
-        polygonOffsetFactor: 1, // positive value pushes polygon further away
-        polygonOffsetUnits: 1
+        // polygonOffset: true,
+        // polygonOffsetFactor: 1, // positive value pushes polygon further away
+        // polygonOffsetUnits: 1
         // dashed, dashScale, dashSize, gapSize
       })
+
+          // myLineMaterial = new LineMaterial({
+    //     color: 0xff0000,
+    //     linewidth: 7, // px
+    //     resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+    //     dashed: true,
+    //     dashSize: 10,
+    //     gapSize: 10
+    //     // dashed, dashScale, dashSize, gapSize
+    //   })
     
     let points = arcCurve.getSpacedPoints( 50 );
     let material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
@@ -598,7 +613,7 @@ interface ILineGeometry {
 
 function getLine2Material({
                         color = 0x0000ff, 
-                        lineWidth =7, 
+                        lineWidth =5, 
                         dashed=false,
                         dashsize=10, 
                         gapSize=10
@@ -618,6 +633,18 @@ function getLine2Material({
         polygonOffsetFactor: 1, // positive value pushes polygon further away
         polygonOffsetUnits: 1
       })
+}
 
 
+function markerAtLatLong(latLong: ILatLong, size: number=10, color: number): THREE.Mesh {
+    let _markerGeometry =  new THREE.SphereGeometry( size, 32, 16 )
+
+    let _position = getVector3FromLatLong(latLong, GLOBE_SCALAR)
+
+    let _markerMmaterial = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
+
+    let _markerMesh = new THREE.Mesh(_markerGeometry, _markerMmaterial)
+    _markerMesh.position.set(_position.x, _position.y, _position.z)
+
+    return _markerMesh
 }
