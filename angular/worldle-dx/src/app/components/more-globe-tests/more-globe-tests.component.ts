@@ -6,7 +6,7 @@ import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { EARTH_AXIAL_TILT_DEG } from 'src/app/constants';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
-import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/functions';
+import { angleBetweenPointsOnSphere, degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/functions';
 import { GameStatisticsService } from 'src/app/services/game-statistics.service';
 import { IFullStats } from 'src/app/models/statistics';
 import { ILatLong, LatLong } from 'src/app/models/game-logic';
@@ -17,6 +17,7 @@ const X_UNIT = new Vector3(1, 0, 0)
 const Y_UNIT = new Vector3(0, 1, 0)
 const Z_UNIT = new Vector3(0, 0, 1)
 const GLOBE_SCALAR = 100
+const ARC_DENSITY = 360 / Math.PI
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -50,6 +51,7 @@ export class MoreGlobeTestsComponent implements OnInit {
 
     materialParameters = {
             color: 0xff0000,
+            side: THREE.DoubleSide,
             transparent: true,
             opacity: 0.25,
             depthTest: true,
@@ -156,8 +158,11 @@ export class MoreGlobeTestsComponent implements OnInit {
         //     this.scene.add(axPro)
         // }
 
-        // let centroidLine = radialLineFromLatLong(getCentroidLatLong("TR"))
-        let centroidPoint = getVector3FromLatLong(getCentroidLatLong("TR"), GLOBE_SCALAR)
+        
+        let centroid_A = getCentroidLatLong("CA")
+        let centroid_B = getCentroidLatLong("JP")
+
+        let centroidPoint = getVector3FromLatLong(centroid_A, GLOBE_SCALAR)
         
         let centroidLine = line2FromPoints(AXIS_ORIGIN, centroidPoint)
         let xzProjection = xz_planeProjectionPoint(centroidPoint)
@@ -172,18 +177,61 @@ export class MoreGlobeTestsComponent implements OnInit {
 
         let testAngle = arcTest() //.rotateOnWorldAxis(X_UNIT, Math.PI/4)
 
-        let testMarker = markerAtLatLong(getCentroidLatLong("TR"), 1.5, 0xff0000)
+
+
+        let markerTR = markerAtLatLong(centroid_A, 1.5, 0xff0000)
+        let markerJP = markerAtLatLong(centroid_B, 1.5, 0x0000ff)
+
+
+
+        let testWedge = wedgeXY(GLOBE_SCALAR, Math.PI / 3, centroid_A.longitude)
+
+        
+        // let testZero: ILatLong = {latitude: 0, longitude: 0}
+        // let test90: ILatLong= {latitude: 0, longitude: 90}
+        // let testPole: ILatLong = {latitude: 90, longitude: 0}
+
+        let testV3 = new Vector3(0,0,1).multiplyScalar(GLOBE_SCALAR)
+        testV3 = convertCartesianToThree(testV3)
+
+        // let testV3 = getVector3FromLatLong(myVector, GLOBE_SCALAR)
+
+        let greatCircle = greatCircleFromTwoPoints(centroid_A, centroid_B)
+        // let greatCircle = greatCircleFromTwoPoints(testZero, testPole)
+
+        let GC_MaxPoint = getGreatCircleMaxPoint(centroid_A, centroid_B).multiplyScalar(GLOBE_SCALAR)
+        let GC_MaxMarker = markerAtVector3(testV3, 3, 0xfffff)
+
+        // let crossMarker = markerAtVector3(getGreatCirclePlaneCrossing(getCentroidLatLong("TR"), getCentroidLatLong("JP")).multiplyScalar(GLOBE_SCALAR), 3, 0xffffff )
+    
+        let newWedge = wedgeBetweenTwoPoints(centroid_A, centroid_B)                                     
+
+        // funFunFunction(getCentroidLatLong("TR"), getCentroidLatLong("JP"))
+        // let greatCircle = great
 
         this.scene.add(centroidLine)
-        this.scene.add(xzProjection)
+        this.scene.add(xzProjection)    
         this.scene.add(yProjection)
         this.scene.add(yDropline)
         this.scene.add(xz_PlaneDropLine)
         this.scene.add(xz_xDrop)
         this.scene.add(xz_zDrop)
         this.scene.add(testAngle)
-        this.scene.add(testMarker)
+        this.scene.add(markerTR)
+        this.scene.add(markerJP)
 
+        this.scene.add(greatCircle)
+        // this.scene.add(GC_MaxMarker)
+
+        // this.scene.add(crossMarker)
+
+        // this.scene.add(testWedge)
+        this.scene.add(newWedge)
+
+
+        // this.scene.add(this.globe)
+        // this.scene.add(this.mathsSphere);
+        // this.scene.add(this.wireframe);
 
         // this.scene.add(this.myLine)
 
@@ -647,4 +695,232 @@ function markerAtLatLong(latLong: ILatLong, size: number=10, color: number): THR
     _markerMesh.position.set(_position.x, _position.y, _position.z)
 
     return _markerMesh
+} 
+
+function markerAtVector3(location: Vector3, size: number=10, color: number): THREE.Mesh {
+    let _markerGeometry =  new THREE.SphereGeometry( size, 32, 16 )
+
+    let _position = location
+
+    let _markerMmaterial = new THREE.MeshLambertMaterial( { color: color } );
+
+    let _markerMesh = new THREE.Mesh(_markerGeometry, _markerMmaterial)
+    _markerMesh.position.set(_position.x, _position.y, _position.z)
+
+    return _markerMesh
+} 
+
+
+function wedgeXY(radius: number, arcLengthRad: number, offsetLongitude: number= 0): THREE.Mesh {
+    let TWO_PI = 2*Math.PI
+
+    let _offsetLongitude = degreesToRadians(offsetLongitude)
+
+    if(arcLengthRad>TWO_PI) {
+        arcLengthRad = TWO_PI
+    }
+
+    else if (arcLengthRad < -TWO_PI){
+        arcLengthRad = -TWO_PI
+    }
+
+    let geometry = new THREE.CircleGeometry( radius, 32,0, arcLengthRad );
+    let material = new THREE.MeshLambertMaterial( { color: 0xffff00, side: THREE.DoubleSide, transparent: true, opacity: 0.5} );
+    return new THREE.Mesh( geometry, material ).rotateOnAxis(X_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, _offsetLongitude)
+    // .rotateOnAxis(Y_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, Math.PI/2)
 }
+
+
+function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatLong): Vector3 {
+
+    let _vectorStart = getVector3FromLatLong(startLatLong, 1)
+    let _vectorEnd = getVector3FromLatLong(endLatLong, 1)
+
+    //convect to cartesian coordinates:
+    _vectorStart = convertThreeToCartesian(_vectorStart)
+    _vectorEnd = convertThreeToCartesian(_vectorEnd)
+
+    let basis_U = _vectorStart
+    let basis_V
+    let basis_W
+
+    console.log("Start Vector:")
+    console.log(_vectorStart)
+
+    console.log("Start End:")
+    console.log(_vectorEnd)
+
+    basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
+    basis_V = new Vector3().crossVectors(basis_U, basis_W).multiplyScalar(1/basis_W.length())
+
+
+    console.log("End Vector:")
+    console.log(_vectorEnd)
+
+    console.log("Basis U:")
+    console.log(basis_U)
+
+    console.log("Basis V:")
+    console.log(basis_V)
+
+    console.log("Basis W:")
+    console.log(basis_W)
+
+    
+    console.log("Basis U Length:")
+    console.log(basis_U.length())
+
+    console.log("Basis V Length:")
+    console.log(basis_V.length())
+
+    console.log("Basis W Length:")
+    console.log(basis_W.length())
+
+    //  Parametric angle for max z 
+    let zMax_theta = Math.atan(basis_V.z / basis_U.z)
+    let zMax_x = basis_U.x * Math.cos(zMax_theta) + basis_V.x * Math.sin(zMax_theta)
+    let zMax_y = basis_U.y * Math.cos(zMax_theta) + basis_V.y * Math.sin(zMax_theta)
+    let zMax_z = basis_U.z * Math.cos(zMax_theta) + basis_V.z * Math.sin(zMax_theta)
+
+    let outputCartesian = new Vector3(zMax_x, zMax_y, zMax_z)
+    let outputThree = convertCartesianToThree(outputCartesian)
+    return outputThree
+
+}
+
+
+function getGreatCirclePlaneCrossing(startLatLong: ILatLong, endLatLong: ILatLong): Vector3 {
+
+    let _vectorStart = getVector3FromLatLong(startLatLong, 1)
+    let _vectorEnd = getVector3FromLatLong(endLatLong, 1)
+
+    //convect to cartesian coordinates:
+    _vectorStart = convertThreeToCartesian(_vectorStart)
+    _vectorEnd = convertThreeToCartesian(_vectorEnd)
+
+    let basis_U = _vectorStart
+    let basis_V
+    let basis_W
+
+    basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
+    basis_V = new Vector3().crossVectors(basis_U, basis_W).multiplyScalar(1/basis_W.length())
+
+    let z0_theta = Math.atan(- basis_U.z / basis_V.z )
+    let z0_x = basis_U.x * Math.cos(z0_theta) + basis_V.x * Math.sin(z0_theta)
+    let z0_y = basis_U.y * Math.cos(z0_theta) + basis_V.y * Math.sin(z0_theta)
+    let z0_z = basis_U.z * Math.cos(z0_theta) + basis_V.z * Math.sin(z0_theta)
+
+    let outputCartesian = new Vector3(z0_x, z0_y, 0)
+    let outputThree = convertCartesianToThree(outputCartesian)
+
+    return outputThree
+
+}
+
+function greatCircleElevationAngle(startLatLong: ILatLong, endLatLong: ILatLong): number{
+    // angle between great circle plane and xy plane
+    let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
+   return Math.asin(zMaxVector.y)
+}
+
+function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILatLong): number{
+    // rotation in the xy-plane to get to the z-max point of the great circle
+    let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
+    let planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)
+
+    return angleBetweenTwoVectors(Z_UNIT, planeProjection )
+}
+
+
+function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong): THREE.Mesh {
+    
+    let thetaStart 
+    let arcLength = angleBetweenPointsOnSphere(startLatLong, endLatLong)
+
+    let geometry = new THREE.CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, thetaStart, arcLength);
+    let material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide, transparent: true, opacity: 0.3} );
+    
+    let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
+
+    // console.log("elevationAngle")
+    // console.log(elevationAngle)
+
+    let inPlaneRotationAngle = greatCirclePlaneRotation(startLatLong, endLatLong)
+
+    let greatCirclePlaneCrossing = getGreatCirclePlaneCrossing(startLatLong, endLatLong)
+
+    let angleZtoXYCrossing = angleBetweenTwoVectors(Z_UNIT,greatCirclePlaneCrossing)
+    console.log(angleZtoXYCrossing)
+
+    let _startThree = radialPointFromLatLong(startLatLong)
+    let _endThree = radialPointFromLatLong(endLatLong)
+
+    let wedgeOffsetAngle = getClosestAngle(greatCirclePlaneCrossing, _startThree, _endThree )
+
+    let mesh =  new THREE.Mesh(geometry, material)
+                                .rotateOnWorldAxis(X_UNIT, -Math.PI/2) //rotate to xy plane
+                                .rotateOnWorldAxis(Y_UNIT, -Math.PI/2) //rotate so start of the circle is at Z-unit vector in the Three xz-plane
+                                .rotateOnWorldAxis(Y_UNIT, -angleZtoXYCrossing )
+                                .rotateOnWorldAxis(Y_UNIT, wedgeOffsetAngle)
+                                .rotateOnWorldAxis(greatCirclePlaneCrossing, elevationAngle)
+
+
+    return mesh
+}
+
+function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vector3 ): number{
+    let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
+    let _angle2 = angleBetweenTwoVectors(referencePoint, option2)
+
+    return Math.min(_angle1, _angle2)
+}
+
+
+function greatCircleFromTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong): THREE.Mesh {
+    let arcLength = 2* Math.PI
+    
+    ///angleBetweenPointsOnSphere(startLatLong, endLatLong)
+
+    // let angleXYPlane = 1
+    // let angleRotationZ = 2.5
+
+    let geometry = new THREE.CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, 0, arcLength);
+    let material = new THREE.MeshLambertMaterial( { color: 0xff00ff, side: THREE.DoubleSide, transparent: true, opacity: 0.3} );
+
+    let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
+
+    // console.log("elevationAngle")
+    // console.log(elevationAngle)
+
+    let inPlaneRotationAngle = greatCirclePlaneRotation(startLatLong, endLatLong)
+    
+    // console.log("planeRotationAngle")
+    // console.log(inPlaneRotationAngle)
+    
+
+    let mesh =  new THREE.Mesh(geometry, material)
+                        .rotateOnWorldAxis(X_UNIT, Math.PI/2) //rotates the circle so the max is along the Z axis
+                        .rotateOnWorldAxis(X_UNIT, -elevationAngle) //.rotateOnAxis(Y_UNIT, inPlaneRotationAngle) //.rotateOnAxis(Y_UNIT, 0.5)
+                        // .rotateOnAxis(Y_UNIT)
+                        
+    mesh.rotateOnWorldAxis(Y_UNIT, inPlaneRotationAngle)
+
+    return mesh
+}
+
+
+function angleBetweenTwoVectors(startVector: Vector3, endVector: Vector3): number {
+    let numerator = startVector.dot(endVector)
+    let denominator = startVector.length() * endVector.length()
+    return Math.acos(numerator/denominator)
+}
+
+
+function convertCartesianToThree(cartesianVector: Vector3): Vector3{
+    return new Vector3(cartesianVector.y,cartesianVector.z,cartesianVector.x)
+}
+
+function convertThreeToCartesian(threeVector: Vector3): Vector3{
+    return new Vector3(threeVector.z, threeVector.x, threeVector.y)
+}
+
