@@ -11,7 +11,7 @@ import { IFullStats } from 'src/app/models/statistics';
 import { ILatLong, LatLong } from 'src/app/models/game-logic';
 import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 import { ARC_DENSITY, AXIS_ORIGIN, GLOBE_SCALAR, X_UNIT, Y_UNIT, Z_UNIT } from 'src/app/constants';
-import { convertCartesianToThree, dashedDroplineToAxis, dashedDroplineToPlane, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getVector3FromLatLong, greatCircleFromTwoPoints, ILineGeometry, line2FromPoints, markerAtLatLong, markerAtVector3, singleAxisProjection, wedgeBetweenTwoPoints, wedgeXY, xz_PlaneDropLineToAxis, xz_planeProjectionPoint } from 'src/app/commonFunctions/threeSphereFunctions';
+import { convertCartesianToThree, dashedDroplineToAxis, dashedDroplineToPlane, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, ILineGeometry, line2FromPoints, markerAtLatLong, markerAtVector3, singleAxisProjection, wedgeBetweenTwoPoints, wedgeXY, xz_PlaneDropLineToAxis, xz_planeProjectionPoint } from 'src/app/commonFunctions/threeSphereFunctions';
 
 // const AXIS_ORIGIN = new THREE.Vector3(0,0,0)
 // const X_UNIT = new Vector3(1, 0, 0)
@@ -140,11 +140,18 @@ export class MoreGlobeTestsComponent implements OnInit {
         // }
 
         
-        let centroid_A = getCentroidLatLong("MX")
-        let centroid_B = getCentroidLatLong("JP")
+        // let centroid_A = getCentroidLatLong("CA")
+        // let centroid_B = getCentroidLatLong("TR")
+
+        // let centroid_A = getCentroidLatLong("JP")
+        // let centroid_B = getCentroidLatLong("TR")
+
+        let centroid_A = getCentroidLatLong("BZ")
+        let centroid_B = getCentroidLatLong("FR")
 
 
         let _startMeshList = getConstructorLines(centroid_A, 0xeeeeee)
+
 
         let testAngle = arcTest() //.rotateOnWorldAxis(X_UNIT, Math.PI/4)
 
@@ -171,11 +178,17 @@ export class MoreGlobeTestsComponent implements OnInit {
         // let greatCircle = greatCircleFromTwoPoints(testZero, testPole)
 
         let GC_MaxPoint = getGreatCircleMaxPoint(centroid_A, centroid_B).multiplyScalar(GLOBE_SCALAR)
-        let GC_MaxMarker = markerAtVector3(testV3, 3, 0xfffff)
+        let GC_MaxMarker = markerAtVector3(GC_MaxPoint, 3, 0xfffff)
 
-        // let crossMarker = markerAtVector3(getGreatCirclePlaneCrossing(getCentroidLatLong("TR"), getCentroidLatLong("JP")).multiplyScalar(GLOBE_SCALAR), 3, 0xffffff )
+        // let crossMarker = markerAtVector3(getGreatCirclePlaneCrossing(centroid_A, centroid_B).multiplyScalar(GLOBE_SCALAR), 3, 0xffffff )
     
-        let newWedge = wedgeBetweenTwoPoints(centroid_A, centroid_B)                                     
+        let inPlaneRotationAngle = greatCirclePlaneRotation(centroid_A, centroid_B)
+        let newCrossMarkerLocation = new Vector3(-100, 0, 0).applyAxisAngle(Y_UNIT, inPlaneRotationAngle)
+        let newCrossMarker = markerAtVector3(newCrossMarkerLocation, 3, 0xffffff)
+
+        let newWedge = wedgeBetweenTwoPoints(centroid_A, centroid_B) 
+        
+        
 
         // funFunFunction(getCentroidLatLong("TR"), getCentroidLatLong("JP"))
         // let greatCircle = great
@@ -189,10 +202,10 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.scene.add(markerTR)
         this.scene.add(markerJP)
 
-        this.scene.add(greatCircle)
-        // this.scene.add(GC_MaxMarker)
+        // this.scene.add(greatCircle)
+        this.scene.add(GC_MaxMarker)
 
-        // this.scene.add(crossMarker)
+        this.scene.add(newCrossMarker)
 
         // this.scene.add(testWedge)
         this.scene.add(newWedge)

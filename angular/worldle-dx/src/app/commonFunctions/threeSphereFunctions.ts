@@ -339,7 +339,7 @@ export function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatL
 }
 
 
-function getGreatCirclePlaneCrossing(startLatLong: ILatLong, endLatLong: ILatLong): Vector3 {
+export function getGreatCirclePlaneCrossing(startLatLong: ILatLong, endLatLong: ILatLong): Vector3 {
 
     let _vectorStart = getVector3FromLatLong(startLatLong, 1)
     let _vectorEnd = getVector3FromLatLong(endLatLong, 1)
@@ -363,6 +363,23 @@ function getGreatCirclePlaneCrossing(startLatLong: ILatLong, endLatLong: ILatLon
     let outputCartesian = new Vector3(z0_x, z0_y, 0)
     let outputThree = convertCartesianToThree(outputCartesian)
 
+    // det = x1*y2 - y1*x2
+    // det = z1 * x2 - x1 * z2
+    console.log("Initial GC determinant")
+    let det =  X_UNIT.x * outputThree.z - X_UNIT.z * outputThree.x
+    console.log(det)
+
+    if(det < 0) {
+        outputThree.multiplyScalar(-1)
+    }
+
+    // let newVector = outputThree.multiplyScalar(-1)
+    // let newdet =  X_UNIT.x * newVector.z - X_UNIT.z * newVector.x
+    
+    
+    // console.log("New GC determinant")
+    // console.log(newdet)
+
     return outputThree
 
 }
@@ -373,7 +390,7 @@ function greatCircleElevationAngle(startLatLong: ILatLong, endLatLong: ILatLong)
    return Math.asin(zMaxVector.y)
 }
 
-function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILatLong): number{
+export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILatLong): number{
     // rotation in the xy-plane to get to the z-max point of the great circle
     let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
     let planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)
@@ -392,28 +409,33 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     
     let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
 
-    // console.log("elevationAngle")
-    // console.log(elevationAngle)
 
     let inPlaneRotationAngle = greatCirclePlaneRotation(startLatLong, endLatLong)
 
     let greatCirclePlaneCrossing = getGreatCirclePlaneCrossing(startLatLong, endLatLong)
 
-    let angleZtoXYCrossing = angleBetweenTwoVectors(Z_UNIT, greatCirclePlaneCrossing)
-    console.log(angleZtoXYCrossing)
+    let wedgeRefOrigin = new Vector3(-100, 0, 0).applyAxisAngle(Y_UNIT, inPlaneRotationAngle)
+
+    // let angleZtoXYCrossing = angleBetweenTwoVectors(Z_UNIT, greatCirclePlaneCrossing)
+    
+    // console.log(angleZtoXYCrossing)
 
     let _startThree = radialPointFromLatLong(startLatLong)
     let _endThree = radialPointFromLatLong(endLatLong)
 
-    let wedgeOffsetAngle = getClosestAngle(greatCirclePlaneCrossing, _startThree, _endThree )
+    let wedgeOffsetAngle = getClosestAngle(wedgeRefOrigin, _startThree, _endThree )
+    
 
+    console.log("Wedge Offset:")
+    console.log(wedgeOffsetAngle * 180 / Math.PI )
+    
     let mesh =  new Mesh(geometry, material)
                                 .rotateOnWorldAxis(X_UNIT, -Math.PI/2) //rotate to xy plane
-                                .rotateOnWorldAxis(Y_UNIT, -Math.PI/2) //rotate so start of the circle is at Z-unit vector in the Three xz-plane
-                                .rotateOnWorldAxis(Y_UNIT, -angleZtoXYCrossing )
+                                .rotateOnWorldAxis(Y_UNIT, -Math.PI) //rotate so start of the circle is at Z-unit vector in the Three xz-plane
                                 .rotateOnWorldAxis(Y_UNIT, wedgeOffsetAngle)
-                                .rotateOnWorldAxis(greatCirclePlaneCrossing, elevationAngle)
+                                .rotateOnWorldAxis(X_UNIT, -elevationAngle)
 
+    mesh.rotateOnWorldAxis(Y_UNIT, inPlaneRotationAngle)
 
     return mesh
 }
@@ -429,10 +451,6 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
 export function greatCircleFromTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong): THREE.Mesh {
     let arcLength = 2* Math.PI
     
-    ///angleBetweenPointsOnSphere(startLatLong, endLatLong)
-
-    // let angleXYPlane = 1
-    // let angleRotationZ = 2.5
 
     let geometry = new CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, 0, arcLength);
     let material = new MeshLambertMaterial( { color: 0xff00ff, side: DoubleSide, transparent: true, opacity: 0.3} );
@@ -462,7 +480,29 @@ export function greatCircleFromTwoPoints(startLatLong: ILatLong, endLatLong: ILa
 function angleBetweenTwoVectors(startVector: Vector3, endVector: Vector3): number {
     let numerator = startVector.dot(endVector)
     let denominator = startVector.length() * endVector.length()
-    return Math.acos(numerator/denominator)
+
+    // let _output = Math.acos(numerator/denominator)
+
+    let dot = startVector.x*endVector.x + startVector.y*endVector.y + startVector.z*endVector.z   //#between [x1, y1, z1] and [x2, y2, z2]
+    let lenSq1 = startVector.length() * startVector.length()
+    let lenSq2 = endVector.length() * endVector.length()
+    let _output = Math.acos(dot/Math.sqrt(lenSq1 * lenSq2))
+
+    // let det = x1*y2 - y1*x2      # determinant
+    let det = startVector.x * endVector.z - startVector.z * endVector.x
+    console.log("determinant")
+    console.log(det)
+
+    console.log("output")
+    console.log(_output)
+
+    if (det > 0) {
+        _output = 2*Math.PI - _output 
+    }
+
+    //negative determinant gives the correct answer
+
+    return _output
 }
 
 
