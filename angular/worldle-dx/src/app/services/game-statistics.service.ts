@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { generateRandomInteger } from '../commonFunctions/functions';
+import { generateRandomInteger } from '../commonFunctions/geographyFunctions';
 import { GameResult, IFullStats, IGameResult, IGameStats } from '../models/statistics';
 import { getRandomCountry } from './game-logic.service';
 import { LocalStorageService } from './local-storage.service';

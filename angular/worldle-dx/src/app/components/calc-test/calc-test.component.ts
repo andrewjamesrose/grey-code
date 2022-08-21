@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { calculateEarthGreatCircleDistance_KM, calculateRelativeBearingDegs, generateRandomInteger, getCentroidLatLong } from 'src/app/commonFunctions/functions';
+import { calculateEarthGreatCircleDistance_KM, calculateRelativeBearingDegs, generateRandomInteger, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
 import { ICountry, ILatLong, Jump, JumpPoint } from 'src/app/models/game-logic';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';

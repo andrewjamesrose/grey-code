@@ -1,23 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Euler, LineSegments, Object3D, Renderer, Vector, Vector3 } from 'three';
+import { BufferGeometry, EllipseCurve, Euler, LineBasicMaterial, LineSegments, Object3D, Renderer, Vector, Vector2, Vector3 } from 'three';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { EARTH_AXIAL_TILT_DEG } from 'src/app/constants';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
-import { angleBetweenPointsOnSphere, degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/functions';
+import { angleBetweenPointsOnSphere, degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
 import { GameStatisticsService } from 'src/app/services/game-statistics.service';
 import { IFullStats } from 'src/app/models/statistics';
 import { ILatLong, LatLong } from 'src/app/models/game-logic';
 import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
+import { ARC_DENSITY, AXIS_ORIGIN, GLOBE_SCALAR, X_UNIT, Y_UNIT, Z_UNIT } from 'src/app/constants';
+import { convertCartesianToThree, dashedDroplineToAxis, dashedDroplineToPlane, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getVector3FromLatLong, greatCircleFromTwoPoints, ILineGeometry, line2FromPoints, markerAtLatLong, markerAtVector3, singleAxisProjection, wedgeBetweenTwoPoints, wedgeXY, xz_PlaneDropLineToAxis, xz_planeProjectionPoint } from 'src/app/commonFunctions/threeSphereFunctions';
 
-const AXIS_ORIGIN = new THREE.Vector3(0,0,0)
-const X_UNIT = new Vector3(1, 0, 0)
-const Y_UNIT = new Vector3(0, 1, 0)
-const Z_UNIT = new Vector3(0, 0, 1)
-const GLOBE_SCALAR = 100
-const ARC_DENSITY = 360 / Math.PI
+// const AXIS_ORIGIN = new THREE.Vector3(0,0,0)
+// const X_UNIT = new Vector3(1, 0, 0)
+// const Y_UNIT = new Vector3(0, 1, 0)
+// const Z_UNIT = new Vector3(0, 0, 1)
+// const GLOBE_SCALAR = 100
+// const ARC_DENSITY = 360 / Math.PI
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -81,26 +82,6 @@ export class MoreGlobeTestsComponent implements OnInit {
     lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff } );
 
 
-
-    // Dotted Line to test Rotation 
-    // myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
-
-    // myLineMaterial = new LineMaterial({
-    //     color: 0xff0000,
-    //     linewidth: 7, // px
-    //     resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-    //     dashed: true,
-    //     dashSize: 10,
-    //     gapSize: 10
-    //     // dashed, dashScale, dashSize, gapSize
-    //   })
-
-    // myBufferGeo = new THREE.BufferGeometry().setFromPoints([AXIS_ORIGIN, this.myVector])
-    // myLineGeometry = new LineGeometry().setPositions(this.myBufferGeo.getAttribute('position').array as any) 
-    // myLine = new Line2(this.myLineGeometry, this.myLineMaterial);
-
-
-
     globe = new ThreeGlobe({animateIn: false})
         // .globeImageUrl('/assets/img/earth-day.jpg')
         // .globeImageUrl('/assets/img/earth-blue-marble800.jpg')
@@ -159,21 +140,11 @@ export class MoreGlobeTestsComponent implements OnInit {
         // }
 
         
-        let centroid_A = getCentroidLatLong("CA")
+        let centroid_A = getCentroidLatLong("MX")
         let centroid_B = getCentroidLatLong("JP")
 
-        let centroidPoint = getVector3FromLatLong(centroid_A, GLOBE_SCALAR)
-        
-        let centroidLine = line2FromPoints(AXIS_ORIGIN, centroidPoint)
-        let xzProjection = xz_planeProjectionPoint(centroidPoint)
-        
-        let yProjection = singleAxisProjection(AXIS_ORIGIN, centroidPoint, "y")
 
-        let yDropline = dashedDroplineToAxis(centroidPoint, "y")
-        let xz_PlaneDropLine = dashedDroplineToPlane(centroidPoint, "xz")
-
-        let xz_xDrop = xz_PlaneDropLineToAxis(centroidPoint, "x")
-        let xz_zDrop = xz_PlaneDropLineToAxis(centroidPoint, "z")
+        let _startMeshList = getConstructorLines(centroid_A, 0xeeeeee)
 
         let testAngle = arcTest() //.rotateOnWorldAxis(X_UNIT, Math.PI/4)
 
@@ -209,13 +180,11 @@ export class MoreGlobeTestsComponent implements OnInit {
         // funFunFunction(getCentroidLatLong("TR"), getCentroidLatLong("JP"))
         // let greatCircle = great
 
-        this.scene.add(centroidLine)
-        this.scene.add(xzProjection)    
-        this.scene.add(yProjection)
-        this.scene.add(yDropline)
-        this.scene.add(xz_PlaneDropLine)
-        this.scene.add(xz_xDrop)
-        this.scene.add(xz_zDrop)
+
+        for(let mesh of _startMeshList){
+            this.scene.add(mesh)
+        }
+
         this.scene.add(testAngle)
         this.scene.add(markerTR)
         this.scene.add(markerJP)
@@ -409,211 +378,12 @@ export class MoreGlobeTestsComponent implements OnInit {
 
         return sideColor
     }
-
-
-
-}
-
-function getVector3FromLatLong(latLong: ILatLong, radius: number): Vector3 {
-    //Spherical geometry but using 3D modelling axes: 
-        //x  + right //  - left
-        //y  + up    //  - down
-        //z  + away  //  - towards
-
-    let _x: number
-    let _y: number
-    let _z: number
-
-    let _phi = degreesToRadians(latLong.latitude)
-    let _lambda = degreesToRadians(latLong.longitude)
-
-    _x = radius * Math.cos(_phi) * Math.sin(_lambda)
-    _y = radius * Math.sin(_phi)
-    _z = radius * Math.cos(_phi) * Math.cos(_lambda)
-
-    return new Vector3(_x, _y, _z)
-}
-
-
-function generateAxes(): THREE.Line[] {
-    let lineMaterial = new THREE.LineBasicMaterial( { color: 0xffffff } );
-    let x_axisBegin = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
-    let x_axisEnd = new THREE.Vector3(-1, 0, 0).multiplyScalar(GLOBE_SCALAR) 
-    let y_axisBegin = new THREE.Vector3(0, 1, 0).multiplyScalar(GLOBE_SCALAR)
-    let y_axisEnd = new THREE.Vector3(0, -1, 0).multiplyScalar(GLOBE_SCALAR)
-    let z_axisBegin = new THREE.Vector3(0, 0, 1).multiplyScalar(GLOBE_SCALAR)
-    let z_axisEnd = new THREE.Vector3(0, 0, -1).multiplyScalar(GLOBE_SCALAR)
-    let myVector = new THREE.Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
-
-    let xAxisGeometry = new THREE.BufferGeometry().setFromPoints([x_axisBegin, x_axisEnd])
-    let xAxisLine = new THREE.Line(xAxisGeometry, lineMaterial)
-
-    let yAxisGeometry = new THREE.BufferGeometry().setFromPoints([y_axisBegin, y_axisEnd])
-    let yAxisLine = new THREE.Line(yAxisGeometry, lineMaterial)
-
-    let zAxisGeometry = new THREE.BufferGeometry().setFromPoints([z_axisBegin, z_axisEnd])
-    let zAxisLine = new THREE.Line(zAxisGeometry, lineMaterial)
-    
-    return [xAxisLine, yAxisLine, zAxisLine]
-}
-
-
-// function generateLambdaAngle(): THREE.Object3D {
-
-// }
-
-
-// function generateLambdaAngle(): THREE.Object3D {
-
-// }
-
-// function arcLat
-// function arcLong
- 
-// function arcPolarPhi
-// function arcPolarTheta
-
-
-function generateAxisProjectionLines(inputLine: ILineGeometry): Line2[]{
-    let _myLineMaterial = new LineMaterial({
-        color: 0xff0000,
-        linewidth: 7, // px
-        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-        dashed: true,
-        dashSize: 10,
-        gapSize: 10,
-        polygonOffset: true,
-        polygonOffsetFactor: 1, // positive value pushes polygon further away
-        polygonOffsetUnits: 1
-        // dashed, dashScale, dashSize, gapSize
-      })
-
-
-      let xStart = new Vector3(inputLine.startPoint.x, 0, 0)
-      let xEnd = new Vector3(inputLine.endPoint.x, 0, 0)
-
-      let yStart = new Vector3(0, inputLine.startPoint.y, 0)
-      let yEnd = new Vector3(0, inputLine.endPoint.y, 0)
-
-      let zStart = new Vector3(0, 0, inputLine.startPoint.z)
-      let zEnd = new Vector3(0, 0, inputLine.endPoint.z)
-
-    let _xAxisPro = line2FromPoints(xStart, xEnd)
-    let _yAxisPro = line2FromPoints(yStart, yEnd)
-    let _zAxisPro = line2FromPoints(zStart, zEnd)
-
-
-    return [_xAxisPro, _yAxisPro, _zAxisPro]
-}
-
-function singleAxisProjection(startPoint: Vector3, endPoint: Vector3, axis: "x"|"y"|"z", color=0xff0000): Line2 {
-    let _startPoint: Vector3
-    let _endPoint: Vector3
-
-    if(axis === "x") {
-        _startPoint = new Vector3(startPoint.x, 0, 0)
-        _endPoint = new Vector3(endPoint.x, 0, 0)
-    } else if (axis === "y") {
-        _startPoint = new Vector3(0, startPoint.y, 0)
-        _endPoint = new Vector3(0, endPoint.y, 0)
-    } else {
-        _startPoint = new Vector3(0, 0, startPoint.z)
-        _endPoint = new Vector3(0, 0, endPoint.z)
-    }
-    return line2FromPoints(_startPoint, _endPoint, color)
-}
-
-function line2FromPoints(startPoint: Vector3, endPoint: Vector3, color=0xff0000): Line2 {
-    // let _lineMaterial = new LineMaterial({
-    //     color: 0xff0000,
-    //     linewidth: 5, // px
-    //     resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-    //     dashed: true,
-    //     dashSize: 5,
-    //     gapSize: 5,
-    //     polygonOffset: true,
-    //     polygonOffsetFactor: 1, // positive value pushes polygon further away
-    //     polygonOffsetUnits: 1
-    //     // dashed, dashScale, dashSize, gapSize
-    //   })
-
-    let _lineMaterial = getLine2Material({dashed: true, dashsize: 5, gapSize: 5})
-
-    //   let _lineMaterial = getLine2Material({color: 0xff0000})
-
-    let _bufferGeometry = new THREE.BufferGeometry().setFromPoints([startPoint, endPoint])
-    let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 
-
-    return new Line2(_lineGeometry, _lineMaterial).computeLineDistances()
-}
-
-
-function radialLineFromLatLong(inputLatLong: LatLong): Line2 {
-    let _endpoint = getVector3FromLatLong(inputLatLong, GLOBE_SCALAR)
-    return line2FromPoints(AXIS_ORIGIN, _endpoint)
-}
-
-function radialPointFromLatLong(inputLatLong: LatLong): Vector3 {
-    return getVector3FromLatLong(inputLatLong, GLOBE_SCALAR)
-}
-
-
-function xz_planeProjectionLatLong(inputLatLong: LatLong): Line2 {
-    let _endpoint = getVector3FromLatLong(inputLatLong, GLOBE_SCALAR)
-    let _planeEndPoint = new Vector3(_endpoint.x, 0, _endpoint.z)
-    return line2FromPoints(AXIS_ORIGIN, _planeEndPoint)
-}
-
-
-function xz_planeProjectionPoint(inputVector3: Vector3): Line2 {
-    let _planeEndPoint = new Vector3(inputVector3.x, 0, inputVector3.z)
-    return line2FromPoints(AXIS_ORIGIN, _planeEndPoint)
-}
-
-
-function dashedDroplineToAxis(point: Vector3, axis: "x"|"y"|"z"): Line2 {
-    let _axisPoint
-    if(axis === "x") {
-        _axisPoint = new Vector3(point.x, 0, 0)
-    } else if (axis === "y") {
-        _axisPoint = new Vector3(0, point.y, 0)
-    } else {
-        _axisPoint = new Vector3(0, 0, point.z)
-    }
-
-    return line2FromPoints(point, _axisPoint)
-}
-
-function xz_PlaneDropLineToAxis(point: Vector3, axis: "x"|"z"): Line2 {
-    let _axisPoint
-    let _xzPlanePoint = new Vector3(point.x, 0, point.z)
-    if(axis === "x") {
-        _axisPoint = new Vector3(point.x, 0, 0)
-    } else {
-        _axisPoint = new Vector3(0, 0, point.z)
-    } 
-
-    return line2FromPoints(_xzPlanePoint, _axisPoint)
-}
-
-
-function dashedDroplineToPlane(point: Vector3, plane: "xy"|"yz"|"xz"): Line2 {
-    let _planePoint
-    if(plane === "xy") {
-        _planePoint = new Vector3(point.x, point.y, 0)
-    } else if (plane === "yz") {
-        _planePoint = new Vector3(0, point.y, point.z)
-    } else {
-        _planePoint = new Vector3(point.x, 0, point.z)
-    }
-
-    return line2FromPoints(point, _planePoint).computeLineDistances()
 }
 
 
 function arcTest(): Line2 {
     
-    let arcCurve = new THREE.EllipseCurve( 
+    let arcCurve = new EllipseCurve( 
         0, 0,               // ax, aY
         30, 30,             // xRadius, yRadius
         0, 1/2 * Math.PI,   // aStartAngle, aEndAngle
@@ -624,7 +394,7 @@ function arcTest(): Line2 {
     let _lineMaterial = new LineMaterial({
         color: 0x00ff00,
         linewidth: 7, // px
-        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
+        resolution: new Vector2(800, 800), // resolution of the viewport
         dashed: true,
         dashSize: 10,
         gapSize: 10,
@@ -634,293 +404,12 @@ function arcTest(): Line2 {
         // dashed, dashScale, dashSize, gapSize
       })
 
-          // myLineMaterial = new LineMaterial({
-    //     color: 0xff0000,
-    //     linewidth: 7, // px
-    //     resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-    //     dashed: true,
-    //     dashSize: 10,
-    //     gapSize: 10
-    //     // dashed, dashScale, dashSize, gapSize
-    //   })
     
     let points = arcCurve.getSpacedPoints( 50 );
-    let material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
+    let material = new LineBasicMaterial( { color : 0xff0000 } );
 
-    let _bufferGeometry = new THREE.BufferGeometry().setFromPoints(points)
+    let _bufferGeometry = new BufferGeometry().setFromPoints(points)
     let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 
 
     return new Line2(_lineGeometry, _lineMaterial).rotateOnAxis(X_UNIT, Math.PI/4)
 }
-
-
-interface ILineGeometry {
-    startPoint: Vector3,
-    endPoint: Vector3
-}
-
-function getLine2Material({
-                        color = 0x0000ff, 
-                        lineWidth =5, 
-                        dashed=false,
-                        dashsize=10, 
-                        gapSize=10
-                    }):     LineMaterial{
-
-
-    return new LineMaterial({
-        color: color,
-        linewidth: lineWidth, // px
-        dashed: dashed,
-        dashSize: dashsize,
-        gapSize: gapSize,
-
-        // fixed params
-        resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-        polygonOffset: true,
-        polygonOffsetFactor: 1, // positive value pushes polygon further away
-        polygonOffsetUnits: 1
-      })
-}
-
-
-function markerAtLatLong(latLong: ILatLong, size: number=10, color: number): THREE.Mesh {
-    let _markerGeometry =  new THREE.SphereGeometry( size, 32, 16 )
-
-    let _position = getVector3FromLatLong(latLong, GLOBE_SCALAR)
-
-    let _markerMmaterial = new THREE.MeshLambertMaterial( { color: 0xff0000 } );
-
-    let _markerMesh = new THREE.Mesh(_markerGeometry, _markerMmaterial)
-    _markerMesh.position.set(_position.x, _position.y, _position.z)
-
-    return _markerMesh
-} 
-
-function markerAtVector3(location: Vector3, size: number=10, color: number): THREE.Mesh {
-    let _markerGeometry =  new THREE.SphereGeometry( size, 32, 16 )
-
-    let _position = location
-
-    let _markerMmaterial = new THREE.MeshLambertMaterial( { color: color } );
-
-    let _markerMesh = new THREE.Mesh(_markerGeometry, _markerMmaterial)
-    _markerMesh.position.set(_position.x, _position.y, _position.z)
-
-    return _markerMesh
-} 
-
-
-function wedgeXY(radius: number, arcLengthRad: number, offsetLongitude: number= 0): THREE.Mesh {
-    let TWO_PI = 2*Math.PI
-
-    let _offsetLongitude = degreesToRadians(offsetLongitude)
-
-    if(arcLengthRad>TWO_PI) {
-        arcLengthRad = TWO_PI
-    }
-
-    else if (arcLengthRad < -TWO_PI){
-        arcLengthRad = -TWO_PI
-    }
-
-    let geometry = new THREE.CircleGeometry( radius, 32,0, arcLengthRad );
-    let material = new THREE.MeshLambertMaterial( { color: 0xffff00, side: THREE.DoubleSide, transparent: true, opacity: 0.5} );
-    return new THREE.Mesh( geometry, material ).rotateOnAxis(X_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, _offsetLongitude)
-    // .rotateOnAxis(Y_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, Math.PI/2)
-}
-
-
-function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatLong): Vector3 {
-
-    let _vectorStart = getVector3FromLatLong(startLatLong, 1)
-    let _vectorEnd = getVector3FromLatLong(endLatLong, 1)
-
-    //convect to cartesian coordinates:
-    _vectorStart = convertThreeToCartesian(_vectorStart)
-    _vectorEnd = convertThreeToCartesian(_vectorEnd)
-
-    let basis_U = _vectorStart
-    let basis_V
-    let basis_W
-
-    console.log("Start Vector:")
-    console.log(_vectorStart)
-
-    console.log("Start End:")
-    console.log(_vectorEnd)
-
-    basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
-    basis_V = new Vector3().crossVectors(basis_U, basis_W).multiplyScalar(1/basis_W.length())
-
-
-    console.log("End Vector:")
-    console.log(_vectorEnd)
-
-    console.log("Basis U:")
-    console.log(basis_U)
-
-    console.log("Basis V:")
-    console.log(basis_V)
-
-    console.log("Basis W:")
-    console.log(basis_W)
-
-    
-    console.log("Basis U Length:")
-    console.log(basis_U.length())
-
-    console.log("Basis V Length:")
-    console.log(basis_V.length())
-
-    console.log("Basis W Length:")
-    console.log(basis_W.length())
-
-    //  Parametric angle for max z 
-    let zMax_theta = Math.atan(basis_V.z / basis_U.z)
-    let zMax_x = basis_U.x * Math.cos(zMax_theta) + basis_V.x * Math.sin(zMax_theta)
-    let zMax_y = basis_U.y * Math.cos(zMax_theta) + basis_V.y * Math.sin(zMax_theta)
-    let zMax_z = basis_U.z * Math.cos(zMax_theta) + basis_V.z * Math.sin(zMax_theta)
-
-    let outputCartesian = new Vector3(zMax_x, zMax_y, zMax_z)
-    let outputThree = convertCartesianToThree(outputCartesian)
-    return outputThree
-
-}
-
-
-function getGreatCirclePlaneCrossing(startLatLong: ILatLong, endLatLong: ILatLong): Vector3 {
-
-    let _vectorStart = getVector3FromLatLong(startLatLong, 1)
-    let _vectorEnd = getVector3FromLatLong(endLatLong, 1)
-
-    //convect to cartesian coordinates:
-    _vectorStart = convertThreeToCartesian(_vectorStart)
-    _vectorEnd = convertThreeToCartesian(_vectorEnd)
-
-    let basis_U = _vectorStart
-    let basis_V
-    let basis_W
-
-    basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
-    basis_V = new Vector3().crossVectors(basis_U, basis_W).multiplyScalar(1/basis_W.length())
-
-    let z0_theta = Math.atan(- basis_U.z / basis_V.z )
-    let z0_x = basis_U.x * Math.cos(z0_theta) + basis_V.x * Math.sin(z0_theta)
-    let z0_y = basis_U.y * Math.cos(z0_theta) + basis_V.y * Math.sin(z0_theta)
-    let z0_z = basis_U.z * Math.cos(z0_theta) + basis_V.z * Math.sin(z0_theta)
-
-    let outputCartesian = new Vector3(z0_x, z0_y, 0)
-    let outputThree = convertCartesianToThree(outputCartesian)
-
-    return outputThree
-
-}
-
-function greatCircleElevationAngle(startLatLong: ILatLong, endLatLong: ILatLong): number{
-    // angle between great circle plane and xy plane
-    let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
-   return Math.asin(zMaxVector.y)
-}
-
-function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILatLong): number{
-    // rotation in the xy-plane to get to the z-max point of the great circle
-    let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
-    let planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)
-
-    return angleBetweenTwoVectors(Z_UNIT, planeProjection )
-}
-
-
-function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong): THREE.Mesh {
-    
-    let thetaStart 
-    let arcLength = angleBetweenPointsOnSphere(startLatLong, endLatLong)
-
-    let geometry = new THREE.CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, thetaStart, arcLength);
-    let material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide, transparent: true, opacity: 0.3} );
-    
-    let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
-
-    // console.log("elevationAngle")
-    // console.log(elevationAngle)
-
-    let inPlaneRotationAngle = greatCirclePlaneRotation(startLatLong, endLatLong)
-
-    let greatCirclePlaneCrossing = getGreatCirclePlaneCrossing(startLatLong, endLatLong)
-
-    let angleZtoXYCrossing = angleBetweenTwoVectors(Z_UNIT,greatCirclePlaneCrossing)
-    console.log(angleZtoXYCrossing)
-
-    let _startThree = radialPointFromLatLong(startLatLong)
-    let _endThree = radialPointFromLatLong(endLatLong)
-
-    let wedgeOffsetAngle = getClosestAngle(greatCirclePlaneCrossing, _startThree, _endThree )
-
-    let mesh =  new THREE.Mesh(geometry, material)
-                                .rotateOnWorldAxis(X_UNIT, -Math.PI/2) //rotate to xy plane
-                                .rotateOnWorldAxis(Y_UNIT, -Math.PI/2) //rotate so start of the circle is at Z-unit vector in the Three xz-plane
-                                .rotateOnWorldAxis(Y_UNIT, -angleZtoXYCrossing )
-                                .rotateOnWorldAxis(Y_UNIT, wedgeOffsetAngle)
-                                .rotateOnWorldAxis(greatCirclePlaneCrossing, elevationAngle)
-
-
-    return mesh
-}
-
-function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vector3 ): number{
-    let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
-    let _angle2 = angleBetweenTwoVectors(referencePoint, option2)
-
-    return Math.min(_angle1, _angle2)
-}
-
-
-function greatCircleFromTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong): THREE.Mesh {
-    let arcLength = 2* Math.PI
-    
-    ///angleBetweenPointsOnSphere(startLatLong, endLatLong)
-
-    // let angleXYPlane = 1
-    // let angleRotationZ = 2.5
-
-    let geometry = new THREE.CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, 0, arcLength);
-    let material = new THREE.MeshLambertMaterial( { color: 0xff00ff, side: THREE.DoubleSide, transparent: true, opacity: 0.3} );
-
-    let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
-
-    // console.log("elevationAngle")
-    // console.log(elevationAngle)
-
-    let inPlaneRotationAngle = greatCirclePlaneRotation(startLatLong, endLatLong)
-    
-    // console.log("planeRotationAngle")
-    // console.log(inPlaneRotationAngle)
-    
-
-    let mesh =  new THREE.Mesh(geometry, material)
-                        .rotateOnWorldAxis(X_UNIT, Math.PI/2) //rotates the circle so the max is along the Z axis
-                        .rotateOnWorldAxis(X_UNIT, -elevationAngle) //.rotateOnAxis(Y_UNIT, inPlaneRotationAngle) //.rotateOnAxis(Y_UNIT, 0.5)
-                        // .rotateOnAxis(Y_UNIT)
-                        
-    mesh.rotateOnWorldAxis(Y_UNIT, inPlaneRotationAngle)
-
-    return mesh
-}
-
-
-function angleBetweenTwoVectors(startVector: Vector3, endVector: Vector3): number {
-    let numerator = startVector.dot(endVector)
-    let denominator = startVector.length() * endVector.length()
-    return Math.acos(numerator/denominator)
-}
-
-
-function convertCartesianToThree(cartesianVector: Vector3): Vector3{
-    return new Vector3(cartesianVector.y,cartesianVector.z,cartesianVector.x)
-}
-
-function convertThreeToCartesian(threeVector: Vector3): Vector3{
-    return new Vector3(threeVector.z, threeVector.x, threeVector.y)
-}
-

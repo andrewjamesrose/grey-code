@@ -1,4 +1,4 @@
-import { angleBetweenPointsOnSphere, calculateEarthGreatCircleDistance_KM, getCentroidLatFromCode, getCentroidLongFromCode, getCountryNameFromCode } from "../commonFunctions/functions"
+import { angleBetweenPointsOnSphere, calculateEarthGreatCircleDistance_KM, getCentroidLatFromCode, getCentroidLongFromCode, getCountryNameFromCode } from "../commonFunctions/geographyFunctions"
 
 
 export interface ICountry {

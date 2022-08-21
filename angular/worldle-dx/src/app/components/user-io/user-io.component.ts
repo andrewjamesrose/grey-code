@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { map, Observable, startWith, Subject, takeUntil } from 'rxjs';
-import { getCountryNameFromCode } from 'src/app/commonFunctions/functions';
+import { getCountryNameFromCode } from 'src/app/commonFunctions/geographyFunctions';
 import { MAX_GUESSES } from 'src/app/constants';
 import { Country, ICountry } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';

@@ -1,4 +1,4 @@
-import { getCentroidLatLong } from "src/app/commonFunctions/functions";
+import { getCentroidLatLong } from "src/app/commonFunctions/geographyFunctions";
 import { Country, ICountryOld, ICountry } from "src/app/models/game-logic";
 
 
