@@ -39,7 +39,6 @@ export function generateAxes(): THREE.Line[] {
     let y_axisEnd = new Vector3(0, -1, 0).multiplyScalar(GLOBE_SCALAR)
     let z_axisBegin = new Vector3(0, 0, 1).multiplyScalar(GLOBE_SCALAR)
     let z_axisEnd = new Vector3(0, 0, -1).multiplyScalar(GLOBE_SCALAR)
-    let myVector = new Vector3(1, 0, 0).multiplyScalar(GLOBE_SCALAR)  
 
     let xAxisGeometry = new BufferGeometry().setFromPoints([x_axisBegin, x_axisEnd])
     let xAxisLine = new Line(xAxisGeometry, lineMaterial)

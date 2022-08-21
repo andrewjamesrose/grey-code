@@ -6,9 +6,16 @@ To Do
 - [ ]   Menu Bar + Mode Settings
 - [ ]   Clean up geographical data
 - [ ]   Maths pages
-- [ ]   ThreeJS spherical maths
 - [ ]   How to deploy
 - [ ]   Make available offline
+- [ ]   Toggle buttons in results screen to show:
+            - Wedges
+            - Constrcutors
+            - Points
+-[ ]    Angle indicators for constructors
+-[ ]    Sprite labels:
+            http://stemkoski.github.io/Three.js/#sprite-text-labels
+            https://stackoverflow.com/questions/23514274/three-js-2d-text-sprite-labels
 
 
 
@@ -146,6 +153,18 @@ Flags from:
     https://github.com/hampusborgos/country-flags
 
 
+
+Color Palette Ideas:
+https://coolors.co/palette/264653-2a9d8f-e9c46a-f4a261-e76f51
+https://color.adobe.com/Aurora-Home-(Dark)-color-theme-13996473
+
+    
+
+Hall of Fame:
+    [Solution of Great Circle from Two Vectors](https://www.nosco.ch/mathematics/en/great-circle.php)
+    [Parametric Equation of a Circle in 3D](https://math.stackexchange.com/questions/73237/parametric-equation-of-a-circle-in-3d-space)
+    [Max z-point solution](https://math.stackexchange.com/questions/3858466/find-min-and-max-values-of-circle-coordinates-in-space)
+    [Ordering of 3 Vectors with a shared point](https://stackoverflow.com/questions/13640931/how-to-determine-if-a-vector-is-between-two-other-vectors)
 
 
 
