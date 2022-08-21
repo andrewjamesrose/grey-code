@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { BufferGeometry, EllipseCurve, Euler, LineBasicMaterial, LineSegments, Object3D, Renderer, Vector, Vector2, Vector3 } from 'three';
+import { BufferGeometry, EllipseCurve, Euler, Group, LineBasicMaterial, LineSegments, Object3D, Renderer, Vector, Vector2, Vector3 } from 'three';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -12,6 +12,7 @@ import { ILatLong, LatLong } from 'src/app/models/game-logic';
 import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 import { ARC_DENSITY, AXIS_ORIGIN, GLOBE_SCALAR, X_UNIT, Y_UNIT, Z_UNIT } from 'src/app/constants';
 import { convertCartesianToThree, dashedDroplineToAxis, dashedDroplineToPlane, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, ILineGeometry, line2FromPoints, markerAtLatLong, markerAtVector3, singleAxisProjection, wedgeBetweenTwoPoints, wedgeXY, xz_PlaneDropLineToAxis, xz_planeProjectionPoint } from 'src/app/commonFunctions/threeSphereFunctions';
+import { MatSliderChange } from '@angular/material/slider';
 
 const colourList: number[] = [
     0xBF1B39,   //red
@@ -38,16 +39,22 @@ export class MoreGlobeTestsComponent implements OnInit {
     private camera!: THREE.PerspectiveCamera;
     private controls!: OrbitControls;
 
-    phi: number =0
-    lambda:number=0
+    phi: number = 0
+    lambda:number = 0
     
     guessList: string[] = []
 
     geoJSONdata: any[] = []
 
+    
+    pointA: ILatLong
+    pointB: ILatLong
+
 
     constructor(private http: HttpClient, private statsService: GameStatisticsService) { 
-        this.scene = new THREE.Scene();         
+        this.scene = new THREE.Scene();      
+        this.pointA = {latitude: 45, longitude: 45}
+        this.pointB = {latitude: 0, longitude: 0}   
     }
 
     // Test cube
@@ -185,17 +192,17 @@ export class MoreGlobeTestsComponent implements OnInit {
         // let greatCircle = great
 
 
-        for(let mesh of _startMeshList){
-            this.scene.add(mesh)
-        }
+        // for(let mesh of _startMeshList){
+        //     this.scene.add(mesh)
+        // }
 
-        for(let mesh of _endMeshList){
-            this.scene.add(mesh)
-        }
+        // for(let mesh of _endMeshList){
+        //     this.scene.add(mesh)
+        // }
 
-        this.scene.add(testAngle)
-        this.scene.add(markerTR)
-        this.scene.add(markerJP)
+        // this.scene.add(testAngle)
+        // this.scene.add(markerTR)
+        // this.scene.add(markerJP)
 
         // this.scene.add(greatCircle)
 
@@ -207,32 +214,51 @@ export class MoreGlobeTestsComponent implements OnInit {
 
 
         //Add all wedges
-        for(let i=1; i <= testCountries.length-1; i++){
-            let startPoint = getCentroidLatLong(testCountries[i-1])
-            let endPoint = getCentroidLatLong(testCountries[i])
-            this.scene.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1]))
+
+
+        let showWedges = false
+        let showConstructorLines = false
+        let showPoints = false
+
+
+        if(showWedges){
+            for(let i=1; i <= testCountries.length-1; i++){
+                let startPoint = getCentroidLatLong(testCountries[i-1])
+                let endPoint = getCentroidLatLong(testCountries[i])
+                this.scene.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1]))
+            }
         }
 
-        // add all construction lines
-        for(let i=0; i<= testCountries.length-1; i++){
-            let point = getCentroidLatLong(testCountries[i])
-            
-            let _constructorMeshList = getConstructorLines(point, colourList[i])
+        if(showConstructorLines){
+            // add all construction lines
+            for(let i=0; i<= testCountries.length-1; i++){
+                let point = getCentroidLatLong(testCountries[i])
+                
+                let _constructorMeshList = getConstructorLines(point, colourList[i])
 
-            for(let mesh of _constructorMeshList){
-                this.scene.add(mesh)
+                for(let mesh of _constructorMeshList){
+                    this.scene.add(mesh)
+                }
+            }
+        }
+
+        if(showPoints){    
+            // add centroid points
+            for(let i=0; i<= testCountries.length-1; i++){
+                let point = getCentroidLatLong(testCountries[i])
+                let _mesh = markerAtLatLong(point, 2, colourList[i])
+                this.scene.add(_mesh)
             }
         }
 
         
-        // add centroid points
-        for(let i=0; i<= testCountries.length-1; i++){
-            let point = getCentroidLatLong(testCountries[i])
-            let _mesh = markerAtLatLong(point, 2, colourList[i])
-            this.scene.add(_mesh)
-        }
-
+        // let _group = generateGroup(this.pointA, "pointGroupA", 0x00ff00)
+        // this.scene.add(_group)
         
+        this.updatePointA()
+        this.updatePointB()
+
+        this.updateABTriangle()
 
 
         // this.scene.add(this.globe)
@@ -321,8 +347,6 @@ export class MoreGlobeTestsComponent implements OnInit {
     
     animate() {
         window.requestAnimationFrame(() => this.animate());
-        // this.mesh.rotation.x += 0.01;
-        // this.mesh.rotation.y += 0.02;
         this.controls.update()
         this.renderer.render(this.scene, this.camera);
     }
@@ -331,8 +355,34 @@ export class MoreGlobeTestsComponent implements OnInit {
     buttonTest(): void {
         let inputCode = 'AU'
         this.highlightCountry(inputCode)
+    }
 
+    onInputChange_lat_A(event: MatSliderChange) {
+        if(event.value){
+            this.pointA.latitude = event.value
+            this.updatePointA()
+        }
+}
 
+    onInputChange_long_A(event: MatSliderChange) {
+        if(event.value){
+            this.pointA.longitude = event.value
+            this.updatePointA()
+        }
+    }
+
+    onInputChange_lat_B(event: MatSliderChange) {
+            if(event.value){
+                this.pointB.latitude = event.value
+                this.updatePointB()
+            }
+    }
+
+    onInputChange_long_B(event: MatSliderChange) {
+        if(event.value){
+            this.pointB.longitude = event.value
+            this.updatePointB()
+        }
     }
 
     highlightCountry(countryCode: string): void{
@@ -351,7 +401,7 @@ export class MoreGlobeTestsComponent implements OnInit {
             // note that if orbit control limits are set then they override the camera.position.set
             // and it pegs out at the limit set in OrbitControl
 
-            targetLatLong = getCentroidLatLong('IN')
+            targetLatLong = getCentroidLatLong('AU')
 
             // console.log(targetLatLong)
             let newCoords: Vector3
@@ -415,6 +465,52 @@ export class MoreGlobeTestsComponent implements OnInit {
 
         return sideColor
     }
+
+    deleteObjectByNameAndUpdate(name: string){
+        let object = this.scene.getObjectByName(name)
+            if(object){
+                this.scene.remove(object)
+            }
+        
+        this.animate()
+    }
+
+
+    deleteObjectByName(name: string){
+        let object = this.scene.getObjectByName(name)
+            if(object){
+                this.scene.remove(object)
+            }
+    }
+
+    deleteTest(){
+        console.log("attempting to delete")
+        this.deleteObjectByName('pointGroupA')
+        // this.animate()
+    }
+
+    updatePointA(): void {
+        this.deleteObjectByName("pointGroupA")
+        let _group = generateGroup(this.pointA, "pointGroupA", 0x00ff00)
+        this.scene.add(_group)
+        this.updateABTriangle()
+        // this.animate()
+    }
+
+    updatePointB(): void {
+        this.deleteObjectByName("pointGroupB")
+        let _group = generateGroup(this.pointB, "pointGroupB", 0xff0000)
+        this.scene.add(_group)
+        this.updateABTriangle()
+        // this.animate()
+    }
+
+    updateABTriangle(): void {
+        this.deleteObjectByName("triangleABO") 
+        let _triangleABO = wedgeBetweenTwoPoints(this.pointA, this.pointB, 0xBF1B39)
+        _triangleABO.name = "triangleABO"
+        this.scene.add(_triangleABO)
+    }
 }
 
 
@@ -449,4 +545,22 @@ function arcTest(): Line2 {
     let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 
 
     return new Line2(_lineGeometry, _lineMaterial).rotateOnAxis(X_UNIT, Math.PI/4)
+}
+
+
+function generateGroup(point: ILatLong, name: string, color: number = 0xff0000, showConstructorLines: boolean = true): Group {
+    let _group = new THREE.Group();
+    _group.name = name
+
+    let _pointMarker = markerAtLatLong(point, 3, color)
+    _group.add(_pointMarker)
+
+    if(showConstructorLines){
+        let _lineSet = getConstructorLines(point, color)
+            for(let mesh of _lineSet){
+                _group.add(mesh)
+            }
+    }
+
+    return _group
 }

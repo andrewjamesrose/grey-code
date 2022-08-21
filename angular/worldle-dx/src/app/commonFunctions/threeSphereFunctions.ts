@@ -300,6 +300,11 @@ export function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatL
     console.log(_vectorEnd)
 
     basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
+    if(basis_W.length()==0){
+        let _epsilon = 0.0001
+        let _epsilonVector = new Vector3(_vectorStart.x+_epsilon, _vectorStart.y+_epsilon, _vectorStart.z+_epsilon)
+        basis_W = new Vector3().crossVectors(_epsilonVector, _vectorEnd)
+    }
     basis_V = new Vector3().crossVectors(basis_U, basis_W).multiplyScalar(1/basis_W.length())
 
 
@@ -359,6 +364,11 @@ export function getGreatCirclePlaneCrossing(startLatLong: ILatLong, endLatLong: 
     let basis_W
 
     basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
+    if(basis_W.length()==0){
+        let _epsilon = 0.0001
+        let _epsilonVector = new Vector3(_vectorStart.x+_epsilon, _vectorStart.y+_epsilon, _vectorStart.z+_epsilon)
+        basis_W = new Vector3().crossVectors(_epsilonVector, _vectorEnd)
+    }
     basis_V = new Vector3().crossVectors(basis_U, basis_W).multiplyScalar(1/basis_W.length())
 
     let z0_theta = Math.atan(- basis_U.z / basis_V.z )
@@ -401,6 +411,11 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
     let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
     let planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)
 
+    // if(planeProjection.length()==0){
+    //     console.log("[][][] projection was zero")
+    //     return angleBetweenTwoVectors(Z_UNIT, getVector3FromLatLong(startLatLong, 1))
+    // }
+
     return angleBetweenTwoVectors(Z_UNIT, planeProjection )
 }
 
@@ -435,6 +450,17 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
         wedgeOffsetAngle = wedgeOffsetAngle + 2*Math.PI - arcLength
     }
 
+    if(isNaN(wedgeOffsetAngle)){
+        console.log("Using backup angle method @@@@@@")
+        wedgeOffsetAngle = angleBetweenTwoVectors(_startThree, _endThree)
+    }
+
+    console.log("elevationAngle")
+    console.log(elevationAngle)
+    console.log("in plane rotation")
+    console.log(inPlaneRotationAngle)
+
+
     console.log("Wedge Offset:")
     console.log(wedgeOffsetAngle * 180 / Math.PI )
     
@@ -458,6 +484,17 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
     let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
     let _angle2 = angleBetweenTwoVectors(referencePoint, option2)
 
+    console.log("angle1")
+    console.log(_angle1)
+    console.log("angle2")
+    console.log(_angle2)
+
+    if(isNaN(_angle1)){
+        return _angle2
+    } else if(isNaN(_angle2)){
+        return _angle1
+    }
+
     return Math.min(_angle1, _angle2)
 }
 
@@ -472,6 +509,8 @@ function isReferenceInsidePoints(referencePoint: Vector3, option1: Vector3, opti
 
         let test1 = (detV3(vec_A, vec_B) * detV3(vec_A, vec_C)) > 0
         let test2 = detV3(vec_C, vec_B) * detV3(vec_C, vec_A)  > 0
+
+    
 
         return test1 && test2
 }
