@@ -133,7 +133,7 @@ export function line2FromPoints(startPoint: Vector3, endPoint: Vector3, color=0x
     //     // dashed, dashScale, dashSize, gapSize
     //   })
 
-    let _lineMaterial = getLine2Material({dashed: true, dashsize: 5, gapSize: 5, color: color})
+    let _lineMaterial = getLine2Material({dashed: true, dashsize: 4, gapSize: 4, color: color})
 
     //   let _lineMaterial = getLine2Material({color: 0xff0000})
 
@@ -239,7 +239,7 @@ export function markerAtLatLong(latLong: ILatLong, size: number=10, color: numbe
 
     let _position = getVector3FromLatLong(latLong, GLOBE_SCALAR)
 
-    let _markerMmaterial = new MeshLambertMaterial( { color: 0xff0000 } );
+    let _markerMmaterial = new MeshLambertMaterial( { color: color } );
 
     let _markerMesh = new Mesh(_markerGeometry, _markerMmaterial)
     _markerMesh.position.set(_position.x, _position.y, _position.z)

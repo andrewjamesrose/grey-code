@@ -19,7 +19,7 @@ const colourList: number[] = [
     0xBF9E3B,   //yellow
     0x3F7EA6,   //teal
     0x45488C,   //purple
- 
+    0x999999    //grey
 ]
 
 const testCountries: string[] = ['FI','CL','JP','CA','AU','DE']
@@ -139,50 +139,9 @@ export class MoreGlobeTestsComponent implements OnInit {
                                         endPoint: new Vector3(100, 100, 125)
                                         }
 
-        //      ############
-        //      ############ 
-        //      ###### wedge logic curently fails if the references vector
-        //      ###### lies between the target points
-        //      ######  determinant test working here...
-        //      ######  Failing examples: FI -> BR;  JP -> AU
-        //      ############
-        //      ############ 
-
-        // let axisProjections = generateAxisProjectionLines(inputLine)
-        // for (let axPro of axisProjections){
-        //     this.scene.add(axPro)
-        // }
-
-        // ['FI','CL','CA','JP','AU','DE']
-
-        // FI -> CL and CL -> FI both fail
-        // let centroid_A = getCentroidLatLong("FI") 
-        // let centroid_B = getCentroidLatLong("BR")
-        // det1 and de2 have different signs
-
-        // CL to CA works in both directions
-        // let centroid_A = getCentroidLatLong("CL")  //it seems the GC min is calculated, not the max
-        // let centroid_B = getCentroidLatLong("DE")
-
-        // CA to JP and JP to CA both work... in both cases GC max correct
-        // let centroid_A = getCentroidLatLong("JP")
-        // let centroid_B = getCentroidLatLong("CA")
-
-        //JP to AU is wrong #### determinant test is true
+                                        
         let centroid_A = getCentroidLatLong("JP")
         let centroid_B = getCentroidLatLong("AU")
-
-        // AU to DE and vice-versa both correct
-        // let centroid_A = getCentroidLatLong("AU")
-        // let centroid_B = getCentroidLatLong("DE")
-
-        // AU to CL correct, 
-        // let centroid_A = getCentroidLatLong("FI")
-        // let centroid_B = getCentroidLatLong("AU")
-
-
-        // let centroid_A = getCentroidLatLong("AR")
-        // let centroid_B = getCentroidLatLong("TR")
 
 
         let _startMeshList = getConstructorLines(centroid_A, 0xeeeeee)
@@ -247,15 +206,33 @@ export class MoreGlobeTestsComponent implements OnInit {
         // this.scene.add(newWedge)
 
 
+        //Add all wedges
         for(let i=1; i <= testCountries.length-1; i++){
-            // console.log("adsfasdfasdf")
-            console.log(i + testCountries[i-1])
             let startPoint = getCentroidLatLong(testCountries[i-1])
             let endPoint = getCentroidLatLong(testCountries[i])
-
-    
             this.scene.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1]))
         }
+
+        // add all construction lines
+        for(let i=0; i<= testCountries.length-1; i++){
+            let point = getCentroidLatLong(testCountries[i])
+            
+            let _constructorMeshList = getConstructorLines(point, colourList[i])
+
+            for(let mesh of _constructorMeshList){
+                this.scene.add(mesh)
+            }
+        }
+
+        
+        // add centroid points
+        for(let i=0; i<= testCountries.length-1; i++){
+            let point = getCentroidLatLong(testCountries[i])
+            let _mesh = markerAtLatLong(point, 2, colourList[i])
+            this.scene.add(_mesh)
+        }
+
+        
 
 
         // this.scene.add(this.globe)
