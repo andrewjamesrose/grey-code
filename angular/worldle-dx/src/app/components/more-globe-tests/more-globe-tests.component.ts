@@ -13,12 +13,17 @@ import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 import { ARC_DENSITY, AXIS_ORIGIN, GLOBE_SCALAR, X_UNIT, Y_UNIT, Z_UNIT } from 'src/app/constants';
 import { convertCartesianToThree, dashedDroplineToAxis, dashedDroplineToPlane, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, ILineGeometry, line2FromPoints, markerAtLatLong, markerAtVector3, singleAxisProjection, wedgeBetweenTwoPoints, wedgeXY, xz_PlaneDropLineToAxis, xz_planeProjectionPoint } from 'src/app/commonFunctions/threeSphereFunctions';
 
-// const AXIS_ORIGIN = new THREE.Vector3(0,0,0)
-// const X_UNIT = new Vector3(1, 0, 0)
-// const Y_UNIT = new Vector3(0, 1, 0)
-// const Z_UNIT = new Vector3(0, 0, 1)
-// const GLOBE_SCALAR = 100
-// const ARC_DENSITY = 360 / Math.PI
+const colourList: number[] = [
+    0xBF1B39,   //red
+    0xBF4A30,   //orange 
+    0xBF9E3B,   //yellow
+    0x3F7EA6,   //teal
+    0x45488C,   //purple
+ 
+]
+
+const testCountries: string[] = ['FI','CL','JP','CA','AU','DE']
+
 
 @Component({
   selector: 'app-more-globe-tests',
@@ -134,23 +139,54 @@ export class MoreGlobeTestsComponent implements OnInit {
                                         endPoint: new Vector3(100, 100, 125)
                                         }
 
+        //      ############
+        //      ############ 
+        //      ###### wedge logic curently fails if the references vector
+        //      ###### lies between the target points
+        //      ######  determinant test working here...
+        //      ######  Failing examples: FI -> BR;  JP -> AU
+        //      ############
+        //      ############ 
+
         // let axisProjections = generateAxisProjectionLines(inputLine)
         // for (let axPro of axisProjections){
         //     this.scene.add(axPro)
         // }
 
-        
-        // let centroid_A = getCentroidLatLong("CA")
-        // let centroid_B = getCentroidLatLong("TR")
+        // ['FI','CL','CA','JP','AU','DE']
 
+        // FI -> CL and CL -> FI both fail
+        // let centroid_A = getCentroidLatLong("FI") 
+        // let centroid_B = getCentroidLatLong("BR")
+        // det1 and de2 have different signs
+
+        // CL to CA works in both directions
+        // let centroid_A = getCentroidLatLong("CL")  //it seems the GC min is calculated, not the max
+        // let centroid_B = getCentroidLatLong("DE")
+
+        // CA to JP and JP to CA both work... in both cases GC max correct
         // let centroid_A = getCentroidLatLong("JP")
-        // let centroid_B = getCentroidLatLong("TR")
+        // let centroid_B = getCentroidLatLong("CA")
 
-        let centroid_A = getCentroidLatLong("BZ")
-        let centroid_B = getCentroidLatLong("FR")
+        //JP to AU is wrong #### determinant test is true
+        let centroid_A = getCentroidLatLong("JP")
+        let centroid_B = getCentroidLatLong("AU")
+
+        // AU to DE and vice-versa both correct
+        // let centroid_A = getCentroidLatLong("AU")
+        // let centroid_B = getCentroidLatLong("DE")
+
+        // AU to CL correct, 
+        // let centroid_A = getCentroidLatLong("FI")
+        // let centroid_B = getCentroidLatLong("AU")
+
+
+        // let centroid_A = getCentroidLatLong("AR")
+        // let centroid_B = getCentroidLatLong("TR")
 
 
         let _startMeshList = getConstructorLines(centroid_A, 0xeeeeee)
+        let _endMeshList = getConstructorLines(centroid_B, 0x8888ff)
 
 
         let testAngle = arcTest() //.rotateOnWorldAxis(X_UNIT, Math.PI/4)
@@ -159,10 +195,6 @@ export class MoreGlobeTestsComponent implements OnInit {
 
         let markerTR = markerAtLatLong(centroid_A, 1.5, 0xff0000)
         let markerJP = markerAtLatLong(centroid_B, 1.5, 0x0000ff)
-
-
-
-        let testWedge = wedgeXY(GLOBE_SCALAR, Math.PI / 3, centroid_A.longitude)
 
         
         // let testZero: ILatLong = {latitude: 0, longitude: 0}
@@ -186,7 +218,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         let newCrossMarkerLocation = new Vector3(-100, 0, 0).applyAxisAngle(Y_UNIT, inPlaneRotationAngle)
         let newCrossMarker = markerAtVector3(newCrossMarkerLocation, 3, 0xffffff)
 
-        let newWedge = wedgeBetweenTwoPoints(centroid_A, centroid_B) 
+        // let newWedge = wedgeBetweenTwoPoints(centroid_A, centroid_B) 
         
         
 
@@ -198,17 +230,32 @@ export class MoreGlobeTestsComponent implements OnInit {
             this.scene.add(mesh)
         }
 
+        for(let mesh of _endMeshList){
+            this.scene.add(mesh)
+        }
+
         this.scene.add(testAngle)
         this.scene.add(markerTR)
         this.scene.add(markerJP)
 
         // this.scene.add(greatCircle)
-        this.scene.add(GC_MaxMarker)
 
-        this.scene.add(newCrossMarker)
+        // this.scene.add(GC_MaxMarker)
+        // this.scene.add(newCrossMarker)
 
         // this.scene.add(testWedge)
-        this.scene.add(newWedge)
+        // this.scene.add(newWedge)
+
+
+        for(let i=1; i <= testCountries.length-1; i++){
+            // console.log("adsfasdfasdf")
+            console.log(i + testCountries[i-1])
+            let startPoint = getCentroidLatLong(testCountries[i-1])
+            let endPoint = getCentroidLatLong(testCountries[i])
+
+    
+            this.scene.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1]))
+        }
 
 
         // this.scene.add(this.globe)

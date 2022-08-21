@@ -331,8 +331,15 @@ export function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatL
     let zMax_x = basis_U.x * Math.cos(zMax_theta) + basis_V.x * Math.sin(zMax_theta)
     let zMax_y = basis_U.y * Math.cos(zMax_theta) + basis_V.y * Math.sin(zMax_theta)
     let zMax_z = basis_U.z * Math.cos(zMax_theta) + basis_V.z * Math.sin(zMax_theta)
+    
+    let outputCartesian 
 
-    let outputCartesian = new Vector3(zMax_x, zMax_y, zMax_z)
+    if (zMax_z < 0) {
+        outputCartesian = new Vector3(-zMax_x, -zMax_y, -zMax_z) 
+    } else {
+        outputCartesian = new Vector3(zMax_x, zMax_y, zMax_z) 
+    }
+   
     let outputThree = convertCartesianToThree(outputCartesian)
     return outputThree
 
@@ -399,13 +406,13 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
 }
 
 
-export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong): THREE.Mesh {
+export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong, color: number = 0xffffff, opacity: number = 0.3): THREE.Mesh {
     
     let thetaStart 
     let arcLength = angleBetweenPointsOnSphere(startLatLong, endLatLong)
 
     let geometry = new CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, thetaStart, arcLength);
-    let material = new MeshLambertMaterial( { color: 0xffffff, side: DoubleSide, transparent: true, opacity: 0.3} );
+    let material = new MeshLambertMaterial( { color: color, side: DoubleSide, transparent: true, opacity: opacity} );
     
     let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
 
@@ -424,7 +431,10 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     let _endThree = radialPointFromLatLong(endLatLong)
 
     let wedgeOffsetAngle = getClosestAngle(wedgeRefOrigin, _startThree, _endThree )
-    
+    // There is a problem if the wedge should pass thorugh the ref origin
+    if(isReferenceInsidePoints(wedgeRefOrigin, _startThree, _endThree)){
+        wedgeOffsetAngle = wedgeOffsetAngle + 2*Math.PI - arcLength
+    }
 
     console.log("Wedge Offset:")
     console.log(wedgeOffsetAngle * 180 / Math.PI )
@@ -441,10 +451,30 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
 }
 
 function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vector3 ): number{
+
+    let testResult = isReferenceInsidePoints(referencePoint, option1, option2)
+    console.log("######### running test #########")
+    console.log(testResult)
+    
     let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
     let _angle2 = angleBetweenTwoVectors(referencePoint, option2)
 
     return Math.min(_angle1, _angle2)
+}
+
+function detV3(startVector: Vector3, endVector: Vector3): number {
+    return startVector.x * endVector.z - startVector.z * endVector.x
+}
+
+function isReferenceInsidePoints(referencePoint: Vector3, option1: Vector3, option2: Vector3 ): boolean{
+        let vec_A = option1
+        let vec_B = referencePoint
+        let vec_C = option2
+
+        let test1 = (detV3(vec_A, vec_B) * detV3(vec_A, vec_C)) > 0
+        let test2 = detV3(vec_C, vec_B) * detV3(vec_C, vec_A)  > 0
+
+        return test1 && test2
 }
 
 
@@ -504,6 +534,7 @@ function angleBetweenTwoVectors(startVector: Vector3, endVector: Vector3): numbe
 
     return _output
 }
+
 
 
 export function convertCartesianToThree(cartesianVector: Vector3): Vector3{
