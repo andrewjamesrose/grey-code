@@ -53,12 +53,13 @@ export class MoreGlobeTestsComponent implements OnInit {
     pointB: ILatLong
 
     resultsDisplayOptions = new FormGroup ({
-        wireFrameSphere: new FormControl(true),
+        wireFrameSphere: new FormControl(false),
         cartesianAxes: new FormControl(true),
         resultsGlobe: new FormControl(false),
         guessWedges: new FormControl(false),
         guessConstructorLines: new FormControl(false),
-        guessCentroids: new FormControl(false)
+        guessCentroids: new FormControl(false),
+        mathsDemo: new FormControl(false)
     })
 
 
@@ -97,6 +98,8 @@ export class MoreGlobeTestsComponent implements OnInit {
     // geoEdges = new THREE.WireframeGeometry( this.geometry );
     matLines = new THREE.LineBasicMaterial( { color: 0x777777, linewidth: 2 } );
     wireframe = new THREE.LineSegments( this.geoEdges, this.matLines );
+    
+
 
     // Also
     // How to display both wireframe and solid colour:
@@ -215,6 +218,8 @@ export class MoreGlobeTestsComponent implements OnInit {
    
         // this.scene.add( this.mathsSphere );
 
+        this.wireframe.name = "wireFrameSphere"
+        this.wireframe.visible = this.resultsDisplayOptions.controls[this.wireframe.name].value
         this.scene.add( this.wireframe );
 
 
@@ -511,6 +516,7 @@ export class MoreGlobeTestsComponent implements OnInit {
     updatePointA(): void {
         this.deleteObjectByName("pointGroupA")
         let _group = generateGroup(this.pointA, "pointGroupA", 0x00ff00)
+        _group.visible=this.resultsDisplayOptions.controls["mathsDemo"].value
         this.scene.add(_group)
         this.updateABTriangle()
         // this.animate()
@@ -519,6 +525,7 @@ export class MoreGlobeTestsComponent implements OnInit {
     updatePointB(): void {
         this.deleteObjectByName("pointGroupB")
         let _group = generateGroup(this.pointB, "pointGroupB", 0xff0000)
+        _group.visible=this.resultsDisplayOptions.controls["mathsDemo"].value
         this.scene.add(_group)
         this.updateABTriangle()
         // this.animate()
@@ -528,7 +535,13 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.deleteObjectByName("triangleABO") 
         let _triangleABO = wedgeBetweenTwoPoints(this.pointA, this.pointB, 0xBF1B39)
         _triangleABO.name = "triangleABO"
+        _triangleABO.visible =this.resultsDisplayOptions.controls["mathsDemo"].value
         this.scene.add(_triangleABO)
+    }
+
+    updateMathsDemo(): void {
+        this.updatePointA()
+        this.updatePointB()
     }
 
  
@@ -548,12 +561,14 @@ export class MoreGlobeTestsComponent implements OnInit {
                                         "resultsGlobe", 
                                         "guessWedges", 
                                         "guessConstructorLines", 
-                                        "guessCentroids"
+                                        "guessCentroids",
                                     ]
 
         for(let group of _namedGroups){
             this.updateNamedObjectVisibility(group)
         }
+
+        this.updateMathsDemo()
 
 
     }
