@@ -1,9 +1,13 @@
-import { BufferGeometry, CircleGeometry, DoubleSide, EllipseCurve, Line, LineBasicMaterial, Mesh, MeshLambertMaterial, SphereGeometry, Vector2, Vector3 } from "three"
+import { BufferGeometry, CircleGeometry, DoubleSide, EllipseCurve, Line, LineBasicMaterial, Mesh, MeshLambertMaterial, MeshPhongMaterial, SphereGeometry, Vector2, Vector3 } from "three"
 import { Line2, LineGeometry, LineMaterial } from "three-fatline"
 import { ARC_DENSITY, AXIS_ORIGIN, GLOBE_SCALAR, X_UNIT, Y_UNIT, Z_UNIT } from "../constants"
 import { ILatLong, LatLong } from "../models/game-logic"
 import { angleBetweenPointsOnSphere, degreesToRadians } from "./geographyFunctions"
 
+const NORTH_POLE: ILatLong = {
+    latitude: 90,
+    longitude: 1
+}
 
 export interface ILineGeometry {
     startPoint: Vector3,
@@ -119,23 +123,7 @@ export function singleAxisProjection(startPoint: Vector3, endPoint: Vector3, axi
 }
 
 export function line2FromPoints(startPoint: Vector3, endPoint: Vector3, color=0xff0000): Line2 {
-    // let _lineMaterial = new LineMaterial({
-    //     color: 0xff0000,
-    //     linewidth: 5, // px
-    //     resolution: new THREE.Vector2(800, 800), // resolution of the viewport
-    //     dashed: true,
-    //     dashSize: 5,
-    //     gapSize: 5,
-    //     polygonOffset: true,
-    //     polygonOffsetFactor: 1, // positive value pushes polygon further away
-    //     polygonOffsetUnits: 1
-    //     // dashed, dashScale, dashSize, gapSize
-    //   })
-
     let _lineMaterial = getLine2Material({dashed: true, dashsize: 4, gapSize: 4, color: color})
-
-    //   let _lineMaterial = getLine2Material({color: 0xff0000})
-
     let _bufferGeometry = new BufferGeometry().setFromPoints([startPoint, endPoint])
     let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 
 
@@ -274,7 +262,7 @@ export function wedgeXY(radius: number, arcLengthRad: number, offsetLongitude: n
     }
 
     let geometry = new CircleGeometry( radius, 32,0, arcLengthRad );
-    let material = new MeshLambertMaterial( { color: 0xffff00, side: DoubleSide, transparent: true, opacity: 0.5} );
+    let material = new MeshLambertMaterial( { color: 0xffff00, side: DoubleSide, transparent: true, opacity: 0.8} );
     return new Mesh( geometry, material ).rotateOnAxis(X_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, _offsetLongitude)
     // .rotateOnAxis(Y_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, Math.PI/2)
 }
@@ -293,42 +281,43 @@ export function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatL
     let basis_V
     let basis_W
 
-    console.log("Start Vector:")
-    console.log(_vectorStart)
+    // console.log("Start Vector:")
+    // console.log(_vectorStart)
 
-    console.log("Start End:")
-    console.log(_vectorEnd)
+    // console.log("Start End:")
+    // console.log(_vectorEnd)
 
     basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
     if(basis_W.length()==0){
-        let _epsilon = 0.0001
+        // let _epsilon = 0.0001
+        let _epsilon = 0
         let _epsilonVector = new Vector3(_vectorStart.x+_epsilon, _vectorStart.y+_epsilon, _vectorStart.z+_epsilon)
         basis_W = new Vector3().crossVectors(_epsilonVector, _vectorEnd)
     }
     basis_V = new Vector3().crossVectors(basis_U, basis_W).multiplyScalar(1/basis_W.length())
 
 
-    console.log("End Vector:")
-    console.log(_vectorEnd)
+    // console.log("End Vector:")
+    // console.log(_vectorEnd)
 
-    console.log("Basis U:")
-    console.log(basis_U)
+    // console.log("Basis U:")
+    // console.log(basis_U)
 
-    console.log("Basis V:")
-    console.log(basis_V)
+    // console.log("Basis V:")
+    // console.log(basis_V)
 
-    console.log("Basis W:")
-    console.log(basis_W)
+    // console.log("Basis W:")
+    // console.log(basis_W)
 
     
-    console.log("Basis U Length:")
-    console.log(basis_U.length())
+    // console.log("Basis U Length:")
+    // console.log(basis_U.length())
 
-    console.log("Basis V Length:")
-    console.log(basis_V.length())
+    // console.log("Basis V Length:")
+    // console.log(basis_V.length())
 
-    console.log("Basis W Length:")
-    console.log(basis_W.length())
+    // console.log("Basis W Length:")
+    // console.log(basis_W.length())
 
     //  Parametric angle for max z 
     let zMax_theta = Math.atan(basis_V.z / basis_U.z)
@@ -365,7 +354,8 @@ export function getGreatCirclePlaneCrossing(startLatLong: ILatLong, endLatLong: 
 
     basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
     if(basis_W.length()==0){
-        let _epsilon = 0.0001
+        // let _epsilon = 0.0001
+        let _epsilon = 0 
         let _epsilonVector = new Vector3(_vectorStart.x+_epsilon, _vectorStart.y+_epsilon, _vectorStart.z+_epsilon)
         basis_W = new Vector3().crossVectors(_epsilonVector, _vectorEnd)
     }
@@ -401,26 +391,45 @@ export function getGreatCirclePlaneCrossing(startLatLong: ILatLong, endLatLong: 
 }
 
 function greatCircleElevationAngle(startLatLong: ILatLong, endLatLong: ILatLong): number{
-    // angle between great circle plane and xy plane
-    let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
-   return Math.asin(zMaxVector.y)
+    // check the vectors have (anti)parallel xy components (in Cartesial space)
+    // if so, reject one of the vectors and use the unit z-vecot instead
+    // ...except messy three definitions so let's switch to xz plane calcs
+    let _startV3 = getVector3FromLatLong(startLatLong, 1)
+    let _endV3 = getVector3FromLatLong(endLatLong, 1)
+    
+    if(vectorsParallelXZThree(_startV3, _endV3)){
+        return Math.PI/2
+    } else {
+        // angle between great circle plane and xy plane
+        let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
+        return Math.asin(zMaxVector.y)
+    }
+
 }
 
 export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILatLong): number{
     // rotation in the xy-plane to get to the z-max point of the great circle
-    let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
-    let planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)
+    // if the vectors are (anti)parallel then the great circle passes through both points.
+    // it can therefore be rotated the exact angle between z-unit and either of the input vectors
 
-    // if(planeProjection.length()==0){
-    //     console.log("[][][] projection was zero")
-    //     return angleBetweenTwoVectors(Z_UNIT, getVector3FromLatLong(startLatLong, 1))
-    // }
+    let _startV3 = getVector3FromLatLong(startLatLong, 1)
+    let _endV3 = getVector3FromLatLong(endLatLong, 1)
+    let planeProjection
 
-    return angleBetweenTwoVectors(Z_UNIT, planeProjection )
+    if(vectorsParallelXZThree(_startV3, _endV3)){
+        planeProjection = new Vector3(_startV3.x,0, _startV3.z)
+        console.log("using the new vectors")
+        return angleBetweenTwoVectors(Z_UNIT, planeProjection) + Math.PI/2
+    } else {
+        let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
+        planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)  
+        return angleBetweenTwoVectors(Z_UNIT, planeProjection)
+    }
+
 }
 
 
-export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong, color: number = 0xffffff, opacity: number = 0.3): THREE.Mesh {
+export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong, color: number = 0xffffff, opacity: number = 0.8): THREE.Mesh {
     
     let thetaStart 
     let arcLength = angleBetweenPointsOnSphere(startLatLong, endLatLong)
@@ -428,6 +437,8 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     let geometry = new CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, thetaStart, arcLength);
     let material = new MeshLambertMaterial( { color: color, side: DoubleSide, transparent: true, opacity: opacity} );
     
+    // let material = new MeshPhongMaterial({color: color, side: DoubleSide, transparent: true, opacity: opacity})
+
     let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
 
 
@@ -459,6 +470,13 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     console.log(elevationAngle)
     console.log("in plane rotation")
     console.log(inPlaneRotationAngle)
+
+    // let _startV3 = getVector3FromLatLong(startLatLong, 1)
+    // let _endV3 = getVector3FromLatLong(startLatLong, 1)
+    
+    let _startCartesian = convertThreeToCartesian(_startThree)
+    let _endCartesian = convertThreeToCartesian(_endThree)
+    let test = vectorsParallelXYCartesian(_startCartesian, _endCartesian)
 
 
     console.log("Wedge Offset:")
@@ -516,12 +534,12 @@ function isReferenceInsidePoints(referencePoint: Vector3, option1: Vector3, opti
 }
 
 
-export function greatCircleFromTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong): THREE.Mesh {
+export function greatCircleFromTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong, color: number = 0xffffff, opacity: number = 0.8): THREE.Mesh {
     let arcLength = 2* Math.PI
     
 
     let geometry = new CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, 0, arcLength);
-    let material = new MeshLambertMaterial( { color: 0xff00ff, side: DoubleSide, transparent: true, opacity: 0.3} );
+    let material = new MeshLambertMaterial( { color: color, side: DoubleSide, transparent: true, opacity: opacity} );
 
     let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
 
@@ -607,4 +625,56 @@ export function getConstructorLines(point: ILatLong, color: number = 0xff0000): 
     _output.push(xz_zDrop)
 
     return _output
+}
+
+function vectorsParallelXYCartesian(vec1: Vector3, vec2: Vector3): boolean {
+    let vec1_xy = new Vector3(vec1.x, vec1.y, 0)
+    let vec2_xy = new Vector3(vec2.x, vec2.y, 0)
+
+    let denominator = Math.abs(vec1_xy.length() * vec2_xy.length())
+    let numerator = vec1_xy.dot(vec2_xy)
+
+    console.log("############ running paralle test:")
+    console.log(numerator / denominator)
+    console.log(vec1_xy)
+    console.log(vec2_xy)
+
+    
+    if (isNearlyOne(numerator / denominator)) {
+        console.log( "(anti)parallel condition met")
+        return true
+    } else {
+        return false
+    }
+}
+
+function vectorsParallelXZThree(vec1: Vector3, vec2: Vector3): boolean {
+    let vec1_xz = new Vector3(vec1.x, 0, vec1.z)
+    let vec2_xz = new Vector3(vec2.x, 0, vec2.z)
+
+    let denominator = Math.abs(vec1_xz.length() * vec2_xz.length())
+    let numerator = vec1_xz.dot(vec2_xz)
+
+    console.log("############ running paralle test:")
+    console.log(numerator / denominator)
+    console.log(vec1_xz)
+    console.log(vec2_xz)
+
+    
+    if (isNearlyOne(numerator / denominator)) {
+        console.log( "(anti)parallel condition met")
+        return true
+    } else {
+        return false
+    }
+}
+
+
+//because maths in JS is not accurate
+function isNearlyOne(input: number){
+    if(0.99999 < input && input < 1.00001){
+        return true
+    } else {
+        return false
+    }
 }

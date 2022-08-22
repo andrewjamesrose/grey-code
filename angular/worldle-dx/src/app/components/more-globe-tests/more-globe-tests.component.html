@@ -2,7 +2,7 @@
 <button mat-button (click)="buttonTest()">Click me</button>
 <button mat-stroked-button color="warn" (click)="deleteTest()">Delete Green One</button>
 
-<section class="results-display-options-list" [formGroup]="resultsDisplayOptions">
+<!-- <section class="results-display-options-list" [formGroup]="resultsDisplayOptions">
     <h4>Show:</h4>
     <p><mat-checkbox formControlName="resultsGlobe" (change)=displayOptionChanged($event)>Globe</mat-checkbox></p>   
     <p><mat-checkbox formControlName="wireFrameSphere" (change)=displayOptionChanged($event)>Wire-frame</mat-checkbox></p>   
@@ -12,26 +12,30 @@
     <p><mat-checkbox formControlName="guessWedges" (change)=displayOptionChanged($event)>Wedges</mat-checkbox></p>
     <p><mat-checkbox formControlName="guessConstructorLines" (change)=displayOptionChanged($event)>Construction Lines</mat-checkbox></p>
     <p><mat-checkbox formControlName="guessCentroids" (change)=displayOptionChanged($event)>Points</mat-checkbox></p>
+    <p><mat-checkbox formControlName="guessGreatCircles" (change)=displayOptionChanged($event)>Great Circles</mat-checkbox></p>
 
+    guessGreatCircles
     Maths Demo:
     <p><mat-checkbox formControlName="mathsDemo" (change)=displayOptionChanged($event)>Maths Demo</mat-checkbox></p>
-  </section>
+  </section> -->
 
 
-<div>
-    <mat-slider min="-90" max="90" step="0.5" [(ngModel)]="pointA.latitude" vertical (input)="onInputChange_lat_A($event)"></mat-slider>
+<!-- <div *ngIf="resultsDisplayOptions.controls["mathsDemo"].value"> -->
+<div *ngIf="resultsDisplayOptions.controls['mathsDemo'].value">
+    <div>
+        <mat-slider min="-90" max="90" step="0.5" [(ngModel)]="pointA.latitude" vertical (input)="onInputChange_lat_A($event)"></mat-slider>
+    </div>
+    <div>
+        <mat-slider min="-180" max="180" step="0.5" [(ngModel)]="pointA.longitude" (input)="onInputChange_long_A($event)"></mat-slider>
+    </div>
+    <div>
+        <mat-slider min="-90" max="90" step="0.5" [(ngModel)]="pointB.latitude" vertical (input)="onInputChange_lat_B($event)"></mat-slider>
+    </div>
+    <div>
+        <mat-slider min="-180" max="180" step="0.5" [(ngModel)]="pointB.longitude" (input)="onInputChange_long_B($event)"></mat-slider>
+    </div>
+
+    <div>A: Lat = {{pointA.latitude}}; Long = {{pointA.longitude}}</div>
+    <div>B: Lat = {{pointB.latitude}}; Long = {{pointB.longitude}}</div>
+
 </div>
-<div>
-    <mat-slider min="-180" max="180" step="0.5" [(ngModel)]="pointA.longitude" (input)="onInputChange_long_A($event)"></mat-slider>
-</div>
-<div>
-    <mat-slider min="-90" max="90" step="0.5" [(ngModel)]="pointB.latitude" vertical (input)="onInputChange_lat_B($event)"></mat-slider>
-</div>
-<div>
-    <mat-slider min="-180" max="180" step="0.5" [(ngModel)]="pointB.longitude" (input)="onInputChange_long_B($event)"></mat-slider>
-</div>
-
-<div>A: Lat = {{pointA.latitude}}; Long = {{pointA.longitude}}</div>
-<div>B: Lat = {{pointB.latitude}}; Long = {{pointB.longitude}}</div>
-
-

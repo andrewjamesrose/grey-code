@@ -56,10 +56,13 @@ export class MoreGlobeTestsComponent implements OnInit {
         wireFrameSphere: new FormControl(false),
         cartesianAxes: new FormControl(true),
         resultsGlobe: new FormControl(false),
+
         guessWedges: new FormControl(false),
         guessConstructorLines: new FormControl(false),
         guessCentroids: new FormControl(false),
-        mathsDemo: new FormControl(false)
+        guessGreatCircles: new FormControl(false),
+
+        mathsDemo: new FormControl(true)
     })
 
 
@@ -96,7 +99,7 @@ export class MoreGlobeTestsComponent implements OnInit {
     // https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges
     geoEdges = new THREE.EdgesGeometry( this.geometry ); // or WireframeGeometry( geometry )
     // geoEdges = new THREE.WireframeGeometry( this.geometry );
-    matLines = new THREE.LineBasicMaterial( { color: 0x777777, linewidth: 2 } );
+    matLines = new THREE.LineBasicMaterial( { color: 0xaaaaaa, linewidth: 2, opacity: 0.1} );
     wireframe = new THREE.LineSegments( this.geoEdges, this.matLines );
     
 
@@ -123,7 +126,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         console.log("running create scene")
 
         this.scene.background = new THREE.Color(0x303030);
-        this.scene.add(new THREE.AmbientLight(0xbbbbbb));
+        this.scene.add(new THREE.AmbientLight(0xffffff));
         
         let light = new THREE.DirectionalLight(0xffffff, 0.6)
         light.position.set(0,1,0)
@@ -276,6 +279,17 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.scene.add(_group)
 
         
+        // Set up circles
+        _group = new Group();
+        _group.name = "guessGreatCircles"
+        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        for(let i=1; i <= testCountries.length-1; i++){
+            let startPoint = getCentroidLatLong(testCountries[i-1])
+            let endPoint = getCentroidLatLong(testCountries[i])
+            _group.add(greatCircleFromTwoPoints(startPoint, endPoint, colourList[i-1], 0.5))
+        }
+        this.scene.add(_group)
+
         // let _group = generateGroup(this.pointA, "pointGroupA", 0x00ff00)
         // this.scene.add(_group)
         
@@ -562,6 +576,7 @@ export class MoreGlobeTestsComponent implements OnInit {
                                         "guessWedges", 
                                         "guessConstructorLines", 
                                         "guessCentroids",
+                                        "guessGreatCircles",
                                     ]
 
         for(let group of _namedGroups){
