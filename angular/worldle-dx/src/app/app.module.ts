@@ -15,6 +15,7 @@ import {MatInputModule} from '@angular/material/input'
 import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatSliderModule} from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { KatexModule } from 'ng-katex';
 import { KatexExampleComponent } from './components/katex-example/katex-example.component';
 import { D3OrthographicGlobeComponent } from './components/d3-orthographic-globe/d3-orthographic-globe.component';
@@ -62,7 +63,8 @@ import { StatsTestingComponent } from './components/stats-testing/stats-testing.
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
-    MatSliderModule
+    MatSliderModule,
+    MatCheckboxModule,
     
     
   ],

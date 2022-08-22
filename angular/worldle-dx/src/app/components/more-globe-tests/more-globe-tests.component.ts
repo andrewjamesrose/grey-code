@@ -13,6 +13,8 @@ import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 import { ARC_DENSITY, AXIS_ORIGIN, GLOBE_SCALAR, X_UNIT, Y_UNIT, Z_UNIT } from 'src/app/constants';
 import { convertCartesianToThree, dashedDroplineToAxis, dashedDroplineToPlane, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, ILineGeometry, line2FromPoints, markerAtLatLong, markerAtVector3, singleAxisProjection, wedgeBetweenTwoPoints, wedgeXY, xz_PlaneDropLineToAxis, xz_planeProjectionPoint } from 'src/app/commonFunctions/threeSphereFunctions';
 import { MatSliderChange } from '@angular/material/slider';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 const colourList: number[] = [
     0xBF1B39,   //red
@@ -50,6 +52,15 @@ export class MoreGlobeTestsComponent implements OnInit {
     pointA: ILatLong
     pointB: ILatLong
 
+    resultsDisplayOptions = new FormGroup ({
+        wireFrameSphere: new FormControl(true),
+        cartesianAxes: new FormControl(true),
+        resultsGlobe: new FormControl(false),
+        guessWedges: new FormControl(false),
+        guessConstructorLines: new FormControl(false),
+        guessCentroids: new FormControl(false)
+    })
+
 
     constructor(private http: HttpClient, private statsService: GameStatisticsService) { 
         this.scene = new THREE.Scene();      
@@ -84,7 +95,7 @@ export class MoreGlobeTestsComponent implements OnInit {
     // https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges
     geoEdges = new THREE.EdgesGeometry( this.geometry ); // or WireframeGeometry( geometry )
     // geoEdges = new THREE.WireframeGeometry( this.geometry );
-    matLines = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
+    matLines = new THREE.LineBasicMaterial( { color: 0x777777, linewidth: 2 } );
     wireframe = new THREE.LineSegments( this.geoEdges, this.matLines );
 
     // Also
@@ -115,31 +126,19 @@ export class MoreGlobeTestsComponent implements OnInit {
         light.position.set(0,1,0)
         this.scene.add(light)
     
-        // this works!
-        // this.myVectorLine.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/4)
-
-
-
-
-        // this.myLine.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/4)
-        // this.myLine.computeLineDistances();
-
-
-
-
-        // Add Meshes to Scene:
-        // this.scene.add(this.globe)
-        //  this.scene.add( this.mathsSphere );
-        // this.scene.add( this.wireframe );
-        
-
 
         let axesSet = generateAxes()
-
+        
+        // "cartesianAxes"
+        let _group = new Group();
+        _group.name = "cartesianAxes"
+        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
         for(let axis of axesSet){
-            console.log(axis.geometry)
-            this.scene.add(axis)
+            // console.log(axis.geometry)
+            // this.scene.add(axis)
+            _group.add(axis)
         }
+        this.scene.add(_group)
 
         let inputLine: ILineGeometry = {
                                         startPoint: new Vector3(50,50,25),
@@ -212,44 +211,64 @@ export class MoreGlobeTestsComponent implements OnInit {
         // this.scene.add(testWedge)
         // this.scene.add(newWedge)
 
+        //      Add Meshes to Scene:
+   
+        // this.scene.add( this.mathsSphere );
+
+        this.scene.add( this.wireframe );
+
+
+        //set initial visibility
+        this.globe.visible = false
+        this.globe.name = "resultsGlobe"
+
+        this.scene.add(this.globe)
 
         //Add all wedges
 
 
-        let showWedges = false
-        let showConstructorLines = false
-        let showPoints = false
+        let showConstructorLines = true
+        let showPoints = true
+
+        // Set up wedges
+        _group = new Group();
+        _group.name = "guessWedges"
+        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        for(let i=1; i <= testCountries.length-1; i++){
+            let startPoint = getCentroidLatLong(testCountries[i-1])
+            let endPoint = getCentroidLatLong(testCountries[i])
+            _group.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1]))
+        }
+        this.scene.add(_group)
 
 
-        if(showWedges){
-            for(let i=1; i <= testCountries.length-1; i++){
-                let startPoint = getCentroidLatLong(testCountries[i-1])
-                let endPoint = getCentroidLatLong(testCountries[i])
-                this.scene.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1]))
+        // Set up construction lines
+        _group = new Group();
+        _group.name = "guessConstructorLines"
+        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        for(let i=0; i<= testCountries.length-1; i++){
+            let point = getCentroidLatLong(testCountries[i])
+            let _constructorMeshList = getConstructorLines(point, colourList[i])
+
+            for(let mesh of _constructorMeshList){
+                // this.scene.add(mesh)
+                _group.add(mesh)
             }
         }
+        this.scene.add(_group)
 
-        if(showConstructorLines){
-            // add all construction lines
-            for(let i=0; i<= testCountries.length-1; i++){
-                let point = getCentroidLatLong(testCountries[i])
-                
-                let _constructorMeshList = getConstructorLines(point, colourList[i])
 
-                for(let mesh of _constructorMeshList){
-                    this.scene.add(mesh)
-                }
-            }
+        // Set up centroid points
+        _group = new Group();
+        _group.name = "guessCentroids"
+        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        for(let i=0; i<= testCountries.length-1; i++){
+            let point = getCentroidLatLong(testCountries[i])
+            let _mesh = markerAtLatLong(point, 2, colourList[i])
+            _group.add(_mesh)
+            // this.scene.add(_mesh)
         }
-
-        if(showPoints){    
-            // add centroid points
-            for(let i=0; i<= testCountries.length-1; i++){
-                let point = getCentroidLatLong(testCountries[i])
-                let _mesh = markerAtLatLong(point, 2, colourList[i])
-                this.scene.add(_mesh)
-            }
-        }
+        this.scene.add(_group)
 
         
         // let _group = generateGroup(this.pointA, "pointGroupA", 0x00ff00)
@@ -510,6 +529,43 @@ export class MoreGlobeTestsComponent implements OnInit {
         let _triangleABO = wedgeBetweenTwoPoints(this.pointA, this.pointB, 0xBF1B39)
         _triangleABO.name = "triangleABO"
         this.scene.add(_triangleABO)
+    }
+
+ 
+
+    displayOptionChanged(event: MatCheckboxChange): void{
+        // redrawOutput()
+        this.updateSceneVisibility()
+        
+    }
+
+    updateSceneVisibility(): void{
+        //select each named group
+        //check visibility
+        //toggle visibility
+        let _namedGroups: string[] = [  "wireFrameSphere", 
+                                        "cartesianAxes", 
+                                        "resultsGlobe", 
+                                        "guessWedges", 
+                                        "guessConstructorLines", 
+                                        "guessCentroids"
+                                    ]
+
+        for(let group of _namedGroups){
+            this.updateNamedObjectVisibility(group)
+        }
+
+
+    }
+
+    updateNamedObjectVisibility(objectName: string): void{
+        //select each named group
+        //check visibility
+        //toggle visibility 
+        let object = this.scene.getObjectByName(objectName)
+        if(object){
+            object.visible = this.resultsDisplayOptions.controls[objectName].value
+        }
     }
 }
 
