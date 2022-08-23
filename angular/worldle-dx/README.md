@@ -8,10 +8,12 @@ To Do
 - [ ]   Maths pages
 - [ ]   How to deploy
 - [ ]   Make available offline
-- [ ]   Toggle buttons in results screen to show:
-            - Wedges
-            - Constrcutors
-            - Points
+- Statstics
+    - 
+    - 
+    - 
+
+
 -[ ]    Angle indicators for constructors
 -[ ]    Sprite labels:
             http://stemkoski.github.io/Three.js/#sprite-text-labels

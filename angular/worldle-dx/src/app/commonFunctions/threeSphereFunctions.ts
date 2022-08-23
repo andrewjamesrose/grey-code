@@ -423,6 +423,7 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
     let _startV3 = getVector3FromLatLong(startLatLong, 1)
     let _endV3 = getVector3FromLatLong(endLatLong, 1)
     let planeProjection
+    let angle
 
     if(_startV3.y===0 && _endV3.y===0){
         return 0
@@ -431,11 +432,23 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
     if(vectorsParallelXZThree(_startV3, _endV3)){
         planeProjection = new Vector3(_startV3.x,0, _startV3.z)
         console.log("using the new vectors")
-        return angleBetweenTwoVectors(Z_UNIT, planeProjection) + Math.PI/2
+        angle = aTanTwoThee(Z_UNIT, planeProjection) //+ Math.PI/2
+        if (angle < 0) {
+            angle += 2*Math.PI;
+        }
+        return angle;
+        // return angleBetweenTwoVectors(Z_UNIT, planeProjection) + Math.PI/2
     } else {
         let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
         planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)  
-        return angleBetweenTwoVectors(Z_UNIT, planeProjection)
+        angle = aTanTwoThee(Z_UNIT, planeProjection)
+        if (angle < 0) {
+            angle += 2*Math.PI;
+        }
+
+    
+        return angle + Math.PI
+        // return angleBetweenTwoVectors(Z_UNIT, planeProjection)
     }
 
 }
@@ -453,27 +466,37 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
 
     let inPlaneRotationAngle = greatCirclePlaneRotation(startLatLong, endLatLong)
+    // let inPlaneRotationAngle = newGreatCirclePlaneRotation(startLatLong, endLatLong)
+
 
     let wedgeRefOrigin = new Vector3(-100, 0, 0).applyAxisAngle(Y_UNIT, inPlaneRotationAngle)
 
     let _startThree = radialPointFromLatLong(startLatLong)
     let _endThree = radialPointFromLatLong(endLatLong)
 
-    let wedgeOffsetAngle = getClosestAngle(wedgeRefOrigin, _startThree, _endThree )
+    // let wedgeOffsetAngle = getClosestAngle(wedgeRefOrigin, _startThree, _endThree )
+    let wedgeOffsetAngle = newOffsetCalculation(wedgeRefOrigin, _startThree, _endThree)
+    
     // There is a problem if the wedge should pass thorugh the ref origin
 
     let parallel_RefOp1 = vectorsParallelXZThree(wedgeRefOrigin, _startThree)
     let parallel_RefOp2 = vectorsParallelXZThree(wedgeRefOrigin, _endThree)
 
-    if (!parallel_RefOp1 && !parallel_RefOp2){
-        if(isReferenceInsidePoints(wedgeRefOrigin, _startThree, _endThree)){
-            wedgeOffsetAngle = wedgeOffsetAngle + 2*Math.PI - arcLength
-        }
-    }
+    // if (!parallel_RefOp1 && !parallel_RefOp2){
+    //     if(isReferenceInsidePoints(wedgeRefOrigin, _startThree, _endThree)){
+    //         wedgeOffsetAngle = wedgeOffsetAngle + 2*Math.PI - arcLength
+    //     }
+    // }
 
     // if(wedgeOffsetAngle===0){
     //     wedgeOffsetAngle = 2*Math.PI - arcLength
     // }
+
+    console.log("elevationAngle")
+    console.log(elevationAngle)
+    console.log("in plane rotation")
+    console.log(inPlaneRotationAngle)
+
 
 
     if(isNaN(wedgeOffsetAngle)){
@@ -481,10 +504,10 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
         wedgeOffsetAngle = angleBetweenTwoVectors(_startThree, _endThree)
     }
 
-    console.log("elevationAngle")
-    console.log(elevationAngle)
-    console.log("in plane rotation")
-    console.log(inPlaneRotationAngle)
+    // console.log("elevationAngle")
+    // console.log(elevationAngle)
+    // console.log("in plane rotation")
+    // console.log(inPlaneRotationAngle)
 
     // let _startV3 = getVector3FromLatLong(startLatLong, 1)
     // let _endV3 = getVector3FromLatLong(startLatLong, 1)
@@ -567,6 +590,7 @@ function detV3(startVector: Vector3, endVector: Vector3): number {
 }
 
 function isReferenceInsidePoints(referencePoint: Vector3, option1: Vector3, option2: Vector3 ): boolean{
+        // in the xy plane
         let vec_A = option1
         let vec_B = referencePoint
         let vec_C = option2
@@ -577,6 +601,56 @@ function isReferenceInsidePoints(referencePoint: Vector3, option1: Vector3, opti
     
 
         return test1 && test2
+}
+
+
+function newOffsetCalculation(referencePointThree: Vector3, vecThree_A: Vector3, vecThree_B: Vector3): number {
+    let _refInsideTest = isReferenceInsidePoints(referencePointThree, vecThree_A, vecThree_B)
+
+    console.log("referencePointThree")
+    console.log(referencePointThree)
+    console.log("vecThree_A")
+    console.log(vecThree_A)
+    console.log("vecThree_B")
+    console.log(vecThree_B)
+
+    let aVec1 = aTanTwoThee(referencePointThree, vecThree_A)
+    let aVec2 = aTanTwoThee(referencePointThree, vecThree_B)
+
+    console.log("aVec1")
+    console.log(aVec1)
+    console.log("aVec2")
+    console.log(aVec2)
+
+    let p_apCheck_A = vectorsParallelXZThree(referencePointThree, vecThree_A)
+    let p_apCheck_B = vectorsParallelXZThree(referencePointThree, vecThree_B)
+
+    console.log("p_apCheck_A")
+    console.log(p_apCheck_A)
+    console.log("p_apCheck_B")
+    console.log(p_apCheck_B)
+
+    if (p_apCheck_A || p_apCheck_B){
+        return 0
+    }
+
+    if (aVec1 === aVec2){
+        return aVec1
+    } else if (_refInsideTest) {
+        return Math.max(aVec1, aVec2)
+    } else {
+        return Math.min(aVec1, aVec2)
+    }
+
+}
+
+function aTanTwoThee(refVector: Vector3, toVector: Vector3): number {
+    //calculating in the Three xz plane
+
+    let arg1 = refVector.x * toVector.z - refVector.z * toVector.x 
+    let arg2 =  refVector.x * toVector.x + refVector.z * toVector.z
+
+    return snapToZero(Math.atan2(arg1, arg2))
 }
 
 
@@ -724,5 +798,15 @@ function isNearlyOne(input: number){
         return true
     } else {
         return false
+    }
+}
+
+
+//because maths in JS is not accurate
+function snapToZero(input: number): number{
+    if(-0.000001 < input && input < 0.000001){
+        return 0
+    } else {
+        return input
     }
 }
