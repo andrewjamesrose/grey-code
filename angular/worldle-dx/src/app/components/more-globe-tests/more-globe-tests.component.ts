@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { BufferGeometry, EllipseCurve, Euler, Group, LineBasicMaterial, LineSegments, Object3D, Renderer, Vector, Vector2, Vector3 } from 'three';
+import { BufferGeometry, EllipseCurve, Euler, Group, LineBasicMaterial, LineSegments, Mesh, Object3D, Renderer, Vector, Vector2, Vector3 } from 'three';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -297,7 +297,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         this.updatePointB()
 
         this.updateABTriangle()
-
+        this.updateDebugGroup()
 
         // this.scene.add(this.globe)
         // this.scene.add(this.mathsSphere);
@@ -533,6 +533,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         _group.visible=this.resultsDisplayOptions.controls["mathsDemo"].value
         this.scene.add(_group)
         this.updateABTriangle()
+        this.updateDebugGroup()
         // this.animate()
     }
 
@@ -542,6 +543,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         _group.visible=this.resultsDisplayOptions.controls["mathsDemo"].value
         this.scene.add(_group)
         this.updateABTriangle()
+        this.updateDebugGroup()
         // this.animate()
     }
 
@@ -556,6 +558,28 @@ export class MoreGlobeTestsComponent implements OnInit {
     updateMathsDemo(): void {
         this.updatePointA()
         this.updatePointB()
+    }
+
+    updateDebugGroup(): void {
+        this.deleteObjectByName("debugGroup") 
+        let _debug = this.debugConstuctorPoints()
+        _debug.name = "debugGroup"
+        _debug.visible = true
+        this.scene.add(_debug)    
+    }
+
+
+    debugConstuctorPoints(): Group {
+        let GC_MaxPoint = getGreatCircleMaxPoint(this.pointA, this.pointB).multiplyScalar(GLOBE_SCALAR)
+        let GC_MaxMarker = markerAtVector3(GC_MaxPoint, 3, 0xfffff)
+        let crossMarker = markerAtVector3(getGreatCirclePlaneCrossing(this.pointA, this.pointB).multiplyScalar(GLOBE_SCALAR), 3, 0xffffff )
+
+        let _group = new Group()
+        // _group.name = "debugGroup"
+        _group.add(GC_MaxMarker)
+        _group.add(crossMarker)
+
+        return _group
     }
 
  

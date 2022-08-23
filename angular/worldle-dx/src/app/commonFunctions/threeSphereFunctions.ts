@@ -264,7 +264,6 @@ export function wedgeXY(radius: number, arcLengthRad: number, offsetLongitude: n
     let geometry = new CircleGeometry( radius, 32,0, arcLengthRad );
     let material = new MeshLambertMaterial( { color: 0xffff00, side: DoubleSide, transparent: true, opacity: 0.8} );
     return new Mesh( geometry, material ).rotateOnAxis(X_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, _offsetLongitude)
-    // .rotateOnAxis(Y_UNIT, -Math.PI/2).rotateOnAxis(Z_UNIT, Math.PI/2)
 }
 
 
@@ -272,6 +271,16 @@ export function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatL
 
     let _vectorStart = getVector3FromLatLong(startLatLong, 1)
     let _vectorEnd = getVector3FromLatLong(endLatLong, 1)
+
+    
+    // check if parallel / anti-parallel in the plane then return (0,v,0) ThreeCoordinates
+    if(vectorsParallelXZThree(_vectorStart, _vectorEnd)){
+        console.log("These two vectors are anti-parallel:")
+        console.log(_vectorStart)
+        console.log(_vectorEnd)
+        return new Vector3 (0, _vectorStart.length(), 0)
+    }
+
 
     //convect to cartesian coordinates:
     _vectorStart = convertThreeToCartesian(_vectorStart)
@@ -281,11 +290,6 @@ export function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatL
     let basis_V
     let basis_W
 
-    // console.log("Start Vector:")
-    // console.log(_vectorStart)
-
-    // console.log("Start End:")
-    // console.log(_vectorEnd)
 
     basis_W = new Vector3().crossVectors(_vectorStart, _vectorEnd)
     if(basis_W.length()==0){
@@ -437,29 +441,28 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     let geometry = new CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, thetaStart, arcLength);
     let material = new MeshLambertMaterial( { color: color, side: DoubleSide, transparent: true, opacity: opacity} );
     
-    // let material = new MeshPhongMaterial({color: color, side: DoubleSide, transparent: true, opacity: opacity})
 
     let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
 
-
     let inPlaneRotationAngle = greatCirclePlaneRotation(startLatLong, endLatLong)
 
-    let greatCirclePlaneCrossing = getGreatCirclePlaneCrossing(startLatLong, endLatLong)
-
     let wedgeRefOrigin = new Vector3(-100, 0, 0).applyAxisAngle(Y_UNIT, inPlaneRotationAngle)
-
-    // let angleZtoXYCrossing = angleBetweenTwoVectors(Z_UNIT, greatCirclePlaneCrossing)
-    
-    // console.log(angleZtoXYCrossing)
 
     let _startThree = radialPointFromLatLong(startLatLong)
     let _endThree = radialPointFromLatLong(endLatLong)
 
     let wedgeOffsetAngle = getClosestAngle(wedgeRefOrigin, _startThree, _endThree )
     // There is a problem if the wedge should pass thorugh the ref origin
-    if(isReferenceInsidePoints(wedgeRefOrigin, _startThree, _endThree)){
-        wedgeOffsetAngle = wedgeOffsetAngle + 2*Math.PI - arcLength
+
+    let parallel_RefOp1 = vectorsParallelXZThree(wedgeRefOrigin, _startThree)
+    let parallel_RefOp2 = vectorsParallelXZThree(wedgeRefOrigin, _endThree)
+
+    if (!parallel_RefOp1 && !parallel_RefOp2){
+        if(isReferenceInsidePoints(wedgeRefOrigin, _startThree, _endThree)){
+            wedgeOffsetAngle = wedgeOffsetAngle + 2*Math.PI - arcLength
+        }
     }
+
 
     if(isNaN(wedgeOffsetAngle)){
         console.log("Using backup angle method @@@@@@")
@@ -498,11 +501,42 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
     let testResult = isReferenceInsidePoints(referencePoint, option1, option2)
     console.log("######### running test #########")
     console.log(testResult)
+
+    console.log("referencePoint")
+    console.log(referencePoint)
+    console.log("option1")
+    console.log(option1)
+    console.log("option2")
+    console.log(option2)
+
+    console.log("checking parallelness")
+    console.log ("ref and op1")
+    console.log(vectorsParallelXZThree(referencePoint, option1))
+    console.log("ref and op2")
+    console.log(vectorsParallelXZThree(referencePoint, option2))
+    
+    //possible states:
+
+    //ref is (anti)parallel with op1
+    let parallel_RefOp1 = vectorsParallelXZThree(referencePoint, option1)
+    if(parallel_RefOp1){
+        "refop1 (anti)-parallel so returning 0"
+        return 0
+    }
+    //ref is (anti)parallel with op2
+    let parallel_RefOp2 =  vectorsParallelXZThree(referencePoint, option2)
+    if(parallel_RefOp2){
+        "refop2 (anti)-parallel so returning 0"
+        return 0
+    }
+    //both
+
+
     
     let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
     let _angle2 = angleBetweenTwoVectors(referencePoint, option2)
 
-    console.log("angle1")
+    console.log(" angle1")
     console.log(_angle1)
     console.log("angle2")
     console.log(_angle2)
@@ -634,14 +668,14 @@ function vectorsParallelXYCartesian(vec1: Vector3, vec2: Vector3): boolean {
     let denominator = Math.abs(vec1_xy.length() * vec2_xy.length())
     let numerator = vec1_xy.dot(vec2_xy)
 
-    console.log("############ running paralle test:")
-    console.log(numerator / denominator)
-    console.log(vec1_xy)
-    console.log(vec2_xy)
+    // console.log("############ running paralle test:")
+    // console.log(numerator / denominator)
+    // console.log(vec1_xy)
+    // console.log(vec2_xy)
 
     
     if (isNearlyOne(numerator / denominator)) {
-        console.log( "(anti)parallel condition met")
+        // console.log( "(anti)parallel condition met")
         return true
     } else {
         return false
@@ -655,19 +689,21 @@ function vectorsParallelXZThree(vec1: Vector3, vec2: Vector3): boolean {
     let denominator = Math.abs(vec1_xz.length() * vec2_xz.length())
     let numerator = vec1_xz.dot(vec2_xz)
 
-    console.log("############ running paralle test:")
-    console.log(numerator / denominator)
-    console.log(vec1_xz)
-    console.log(vec2_xz)
+    // console.log("############ running parallel test:")
+    // console.log(numerator / denominator)
+    // console.log(vec1_xz)
+    // console.log(vec2_xz)
 
     
     if (isNearlyOne(numerator / denominator)) {
-        console.log( "(anti)parallel condition met")
+        // console.log( "(anti)parallel condition met")
         return true
     } else {
         return false
     }
 }
+
+
 
 
 //because maths in JS is not accurate
