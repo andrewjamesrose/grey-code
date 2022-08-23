@@ -56,6 +56,7 @@ export class MoreGlobeTestsComponent implements OnInit {
         wireFrameSphere: new FormControl(false),
         cartesianAxes: new FormControl(true),
         resultsGlobe: new FormControl(false),
+        globeWedges: new FormControl(false),
 
         guessWedges: new FormControl(false),
         guessConstructorLines: new FormControl(false),
@@ -238,16 +239,30 @@ export class MoreGlobeTestsComponent implements OnInit {
         let showConstructorLines = true
         let showPoints = true
 
-        // Set up wedges
+
+        // Set up geometry wedges 
         _group = new Group();
         _group.name = "guessWedges"
         _group.visible = this.resultsDisplayOptions.controls[_group.name].value
         for(let i=1; i <= testCountries.length-1; i++){
             let startPoint = getCentroidLatLong(testCountries[i-1])
             let endPoint = getCentroidLatLong(testCountries[i])
-            _group.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1]))
+            _group.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1], 0.8, 1))
         }
         this.scene.add(_group)
+
+
+        // Set up globe wedges 
+        _group = new Group();
+        _group.name = "globeWedges"
+        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        for(let i=1; i <= testCountries.length-1; i++){
+            let startPoint = getCentroidLatLong(testCountries[i-1])
+            let endPoint = getCentroidLatLong(testCountries[i])
+            _group.add(wedgeBetweenTwoPoints(startPoint, endPoint, colourList[i-1], 0.8, 1.15))
+        }
+        this.scene.add(_group)
+        
 
 
         // Set up construction lines
@@ -601,6 +616,7 @@ export class MoreGlobeTestsComponent implements OnInit {
                                         "guessConstructorLines", 
                                         "guessCentroids",
                                         "guessGreatCircles",
+                                        "globeWedges"
                                     ]
 
         for(let group of _namedGroups){

@@ -401,6 +401,10 @@ function greatCircleElevationAngle(startLatLong: ILatLong, endLatLong: ILatLong)
     let _startV3 = getVector3FromLatLong(startLatLong, 1)
     let _endV3 = getVector3FromLatLong(endLatLong, 1)
     
+    if(_startV3.y===0 && _endV3.y===0) {
+        return 0
+    }
+
     if(vectorsParallelXZThree(_startV3, _endV3)){
         return Math.PI/2
     } else {
@@ -420,6 +424,10 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
     let _endV3 = getVector3FromLatLong(endLatLong, 1)
     let planeProjection
 
+    if(_startV3.y===0 && _endV3.y===0){
+        return 0
+    }
+
     if(vectorsParallelXZThree(_startV3, _endV3)){
         planeProjection = new Vector3(_startV3.x,0, _startV3.z)
         console.log("using the new vectors")
@@ -433,12 +441,12 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
 }
 
 
-export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong, color: number = 0xffffff, opacity: number = 0.8): THREE.Mesh {
+export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong, color: number = 0xffffff, opacity: number = 0.8, wedgeScaler: number=1): THREE.Mesh {
     
     let thetaStart 
     let arcLength = angleBetweenPointsOnSphere(startLatLong, endLatLong)
 
-    let geometry = new CircleGeometry(GLOBE_SCALAR, ARC_DENSITY * arcLength, thetaStart, arcLength);
+    let geometry = new CircleGeometry(GLOBE_SCALAR * wedgeScaler , ARC_DENSITY * arcLength, thetaStart, arcLength);
     let material = new MeshLambertMaterial( { color: color, side: DoubleSide, transparent: true, opacity: opacity} );
     
 
@@ -462,6 +470,10 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
             wedgeOffsetAngle = wedgeOffsetAngle + 2*Math.PI - arcLength
         }
     }
+
+    // if(wedgeOffsetAngle===0){
+    //     wedgeOffsetAngle = 2*Math.PI - arcLength
+    // }
 
 
     if(isNaN(wedgeOffsetAngle)){
