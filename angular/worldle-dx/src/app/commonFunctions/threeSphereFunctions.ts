@@ -1,3 +1,4 @@
+import { max, min } from "d3"
 import { BufferGeometry, CircleGeometry, DoubleSide, EllipseCurve, Line, LineBasicMaterial, Mesh, MeshLambertMaterial, MeshPhongMaterial, SphereGeometry, Vector2, Vector3 } from "three"
 import { Line2, LineGeometry, LineMaterial } from "three-fatline"
 import { ARC_DENSITY, AXIS_ORIGIN, GLOBE_SCALAR, X_UNIT, Y_UNIT, Z_UNIT } from "../constants"
@@ -429,14 +430,19 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
         return 0
     }
 
-    if(vectorsParallelXZThree(_startV3, _endV3)){
-        planeProjection = new Vector3(_startV3.x,0, _startV3.z)
+    let isParallel = isNearlyOne(Math.abs(aTanTwoThee(_startV3, _endV3)/Math.PI))
+
+
+
+    // if(vectorsParallelXZThree(_startV3, _endV3)){
+    if(isParallel){
+        planeProjection = new Vector3(_startV3.x, 0, _startV3.z)
         console.log("using the new vectors")
         angle = aTanTwoThee(planeProjection, Z_UNIT) //+ Math.PI/2
         if (angle < 0) {
             angle += 2*Math.PI;
         }
-        return angle + Math.PI/2
+        return angle //+ Math.PI/2
         // return angleBetweenTwoVectors(Z_UNIT, planeProjection) + Math.PI/2
     } else {
         let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
@@ -550,7 +556,7 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
 
     let testResult = isReferenceInsidePoints(referencePoint, option1, option2)
     console.log("######### running test #########")
-    console.log(testResult)
+   // console.log(testResult)
 
     console.log("referencePoint")
     console.log(referencePoint)
@@ -569,16 +575,57 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
 
     //ref is (anti)parallel with op1
     let parallel_RefOp1 = vectorsParallelXZThree(referencePoint, option1)
-    if(parallel_RefOp1){
+    let parallel_RefOp2 =  vectorsParallelXZThree(referencePoint, option2)
+
+    if(parallel_RefOp1 || parallel_RefOp2){
         "refop1 (anti)-parallel so returning 0"
+        // this should in fact return the angle between the xy plane and the closest vector
+        let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
+        let _angle2 = angleBetweenTwoVectors(referencePoint, option2) 
+       
+        if(_angle1 === 0 && _angle2 === 0){
+            return 0
+        } else if (_angle1 === 0 || isNaN(_angle1)) {
+            return _angle2
+        } else if (_angle2 === 0 || isNaN(_angle2)) {
+            return _angle1
+        }
+   
+        // let minAngle = -min(_angle1, _angle2)
+
+        if(option1.y > 0 && option2.y > 0){
+            return -Math.max(_angle1, _angle2) 
+        }
+        if(option1.y < 0 && option2.y < 0){
+            return +Math.min(_angle1, _angle2) 
+        }
+        
         return 0
     }
     //ref is (anti)parallel with op2
-    let parallel_RefOp2 =  vectorsParallelXZThree(referencePoint, option2)
-    if(parallel_RefOp2){
-        "refop2 (anti)-parallel so returning 0"
-        return 0
-    }
+    // let parallel_RefOp2 =  vectorsParallelXZThree(referencePoint, option2)
+    // if(parallel_RefOp2){
+    //     let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
+    //     let _angle2 = angleBetweenTwoVectors(referencePoint, option2) 
+       
+    //     if(_angle1 === 0 && _angle2 === 0){
+    //         return 0
+    //     } else if (_angle1 === 0 || isNaN(_angle1)) {
+    //         return _angle2
+    //     } else if (_angle2 === 0 || isNaN(_angle2)) {
+    //         return _angle1
+    //     }
+   
+    //     // let minAngle = -min(_angle1, _angle2)
+
+    //     if(option1.z > 0 && option2.z > 0){
+    //         return -Math.max(_angle1, _angle2) 
+    //     }
+    //     if(option1.z < 0 && option2.z < 0){
+    //         return -Math.max(_angle1, _angle2) 
+    //     }
+    //     return 0
+    // }
     //both
 
 
@@ -595,6 +642,26 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
         return _angle2
     } else if(isNaN(_angle2)){
         return _angle1
+    }
+
+    let _arcLength = angleBetweenTwoVectors(option1, option2)
+
+    if(_angle1 < _angle2){
+        console.log(_angle1)
+        if (testResult){
+            _angle1 = _angle1 + _arcLength
+        }
+    } else {
+        console.log(_angle2)
+        if (option1.y < 0 && option2.y <0) {
+            _angle2 = _angle2
+        } else if (option2.y < 0 && testResult ===false) {
+            _angle2 = _angle2 + 2*Math.PI - _arcLength//+ Math.PI
+        } else if (option1.y < 0 && testResult === true) { //&& testResult ===false) {
+            _angle2 = _angle2  - _arcLength//+ Math.PI
+        }
+
+        
     }
 
     return Math.min(_angle1, _angle2)
@@ -785,6 +852,27 @@ function vectorsParallelXYCartesian(vec1: Vector3, vec2: Vector3): boolean {
 }
 
 function vectorsParallelXZThree(vec1: Vector3, vec2: Vector3): boolean {
+    let vec1_xz = new Vector3(vec1.x, 0, vec1.z)
+    let vec2_xz = new Vector3(vec2.x, 0, vec2.z)
+
+    let denominator = Math.abs(vec1_xz.length() * vec2_xz.length())
+    let numerator = vec1_xz.dot(vec2_xz)
+
+    // console.log("############ running parallel test:")
+    // console.log(numerator / denominator)
+    // console.log(vec1_xz)
+    // console.log(vec2_xz)
+
+    
+    if (isNearlyOne(numerator / denominator)) {
+        // console.log( "(anti)parallel condition met")
+        return true
+    } else {
+        return false
+    }
+}
+
+function vectorsAntiParallelXZThree(vec1: Vector3, vec2: Vector3): boolean {
     let vec1_xz = new Vector3(vec1.x, 0, vec1.z)
     let vec2_xz = new Vector3(vec2.x, 0, vec2.z)
 
