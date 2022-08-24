@@ -432,22 +432,29 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
     if(vectorsParallelXZThree(_startV3, _endV3)){
         planeProjection = new Vector3(_startV3.x,0, _startV3.z)
         console.log("using the new vectors")
-        angle = aTanTwoThee(Z_UNIT, planeProjection) //+ Math.PI/2
+        angle = aTanTwoThee(planeProjection, Z_UNIT) //+ Math.PI/2
         if (angle < 0) {
             angle += 2*Math.PI;
         }
-        return angle;
+        return angle + Math.PI/2
         // return angleBetweenTwoVectors(Z_UNIT, planeProjection) + Math.PI/2
     } else {
         let zMaxVector = getGreatCircleMaxPoint(startLatLong, endLatLong)
-        planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)  
-        angle = aTanTwoThee(Z_UNIT, planeProjection)
+
+        //clean the vector because negative signs in the wrong place are a nightmare
+        zMaxVector = new Vector3 (  
+                                    snapToZero(zMaxVector.x),
+                                    snapToZero(zMaxVector.y),
+                                    snapToZero(zMaxVector.z)
+                                )
+
+        planeProjection = new Vector3(zMaxVector.x,0, zMaxVector.z)
+        angle = aTanTwoThee(planeProjection, Z_UNIT)
         if (angle < 0) {
             angle += 2*Math.PI;
         }
-
     
-        return angle + Math.PI
+        return angle 
         // return angleBetweenTwoVectors(Z_UNIT, planeProjection)
     }
 
@@ -465,8 +472,10 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
 
     let elevationAngle = greatCircleElevationAngle(startLatLong, endLatLong)
 
+    //this is the angle from Three(0,0,1) to the xz projection of the y-max line
     let inPlaneRotationAngle = greatCirclePlaneRotation(startLatLong, endLatLong)
     // let inPlaneRotationAngle = newGreatCirclePlaneRotation(startLatLong, endLatLong)
+
 
 
     let wedgeRefOrigin = new Vector3(-100, 0, 0).applyAxisAngle(Y_UNIT, inPlaneRotationAngle)
@@ -474,8 +483,14 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     let _startThree = radialPointFromLatLong(startLatLong)
     let _endThree = radialPointFromLatLong(endLatLong)
 
-    // let wedgeOffsetAngle = getClosestAngle(wedgeRefOrigin, _startThree, _endThree )
-    let wedgeOffsetAngle = newOffsetCalculation(wedgeRefOrigin, _startThree, _endThree)
+
+        // co-planar angle between O-vector-prime and the first vector encountered where:
+        //    O-vector is the (-100,0,0) [i.e. negative X vector]
+        //    O-vector prime is is O-vector rotated alpha in the xz plane
+        //          to account for the "inPlane rotation alpha
+        //          this is the angle between 0-prime and the great-circle plane crossing
+    let wedgeOffsetAngle = getClosestAngle(wedgeRefOrigin, _startThree, _endThree )
+    // let wedgeOffsetAngle = newOffsetCalculation(wedgeRefOrigin, _startThree, _endThree)
     
     // There is a problem if the wedge should pass thorugh the ref origin
 
@@ -495,7 +510,7 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     console.log("elevationAngle")
     console.log(elevationAngle)
     console.log("in plane rotation")
-    console.log(inPlaneRotationAngle)
+    console.log(inPlaneRotationAngle * 180 / Math.PI)
 
 
 
@@ -607,6 +622,8 @@ function isReferenceInsidePoints(referencePoint: Vector3, option1: Vector3, opti
 function newOffsetCalculation(referencePointThree: Vector3, vecThree_A: Vector3, vecThree_B: Vector3): number {
     let _refInsideTest = isReferenceInsidePoints(referencePointThree, vecThree_A, vecThree_B)
 
+
+
     console.log("referencePointThree")
     console.log(referencePointThree)
     console.log("vecThree_A")
@@ -687,7 +704,6 @@ function angleBetweenTwoVectors(startVector: Vector3, endVector: Vector3): numbe
     let numerator = startVector.dot(endVector)
     let denominator = startVector.length() * endVector.length()
 
-    // let _output = Math.acos(numerator/denominator)
 
     let dot = startVector.x*endVector.x + startVector.y*endVector.y + startVector.z*endVector.z   //#between [x1, y1, z1] and [x2, y2, z2]
     let lenSq1 = startVector.length() * startVector.length()
