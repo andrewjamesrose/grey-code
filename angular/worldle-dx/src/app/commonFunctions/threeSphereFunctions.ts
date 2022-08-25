@@ -432,8 +432,6 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
 
     let isParallel = isNearlyOne(Math.abs(aTanTwoThee(_startV3, _endV3)/Math.PI))
 
-
-
     // if(vectorsParallelXZThree(_startV3, _endV3)){
     if(isParallel){
         planeProjection = new Vector3(_startV3.x, 0, _startV3.z)
@@ -468,7 +466,7 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
 
 
 export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLong, color: number = 0xffffff, opacity: number = 0.8, wedgeScaler: number=1): THREE.Mesh {
-    
+    console.log("################# Wedge Calculation Begins ##################")
     let thetaStart 
     let arcLength = angleBetweenPointsOnSphere(startLatLong, endLatLong)
 
@@ -555,21 +553,21 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
 function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vector3 ): number{
 
     let testResult = isReferenceInsidePoints(referencePoint, option1, option2)
-    console.log("######### running test #########")
+
    // console.log(testResult)
 
-    console.log("referencePoint")
-    console.log(referencePoint)
-    console.log("option1")
-    console.log(option1)
-    console.log("option2")
-    console.log(option2)
+    // console.log("referencePoint")
+    // console.log(referencePoint)
+    // console.log("option1")
+    // console.log(option1)
+    // console.log("option2")
+    // console.log(option2)
 
-    console.log("checking parallelness")
-    console.log ("ref and op1")
-    console.log(vectorsParallelXZThree(referencePoint, option1))
-    console.log("ref and op2")
-    console.log(vectorsParallelXZThree(referencePoint, option2))
+    // console.log("checking parallelness")
+    // console.log ("ref and op1")
+    // console.log(vectorsParallelXZThree(referencePoint, option1))
+    // console.log("ref and op2")
+    // console.log(vectorsParallelXZThree(referencePoint, option2))
     
     //possible states:
 
@@ -602,31 +600,7 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
         
         return 0
     }
-    //ref is (anti)parallel with op2
-    // let parallel_RefOp2 =  vectorsParallelXZThree(referencePoint, option2)
-    // if(parallel_RefOp2){
-    //     let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
-    //     let _angle2 = angleBetweenTwoVectors(referencePoint, option2) 
-       
-    //     if(_angle1 === 0 && _angle2 === 0){
-    //         return 0
-    //     } else if (_angle1 === 0 || isNaN(_angle1)) {
-    //         return _angle2
-    //     } else if (_angle2 === 0 || isNaN(_angle2)) {
-    //         return _angle1
-    //     }
-   
-    //     // let minAngle = -min(_angle1, _angle2)
 
-    //     if(option1.z > 0 && option2.z > 0){
-    //         return -Math.max(_angle1, _angle2) 
-    //     }
-    //     if(option1.z < 0 && option2.z < 0){
-    //         return -Math.max(_angle1, _angle2) 
-    //     }
-    //     return 0
-    // }
-    //both
 
 
     
