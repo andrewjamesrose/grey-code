@@ -406,6 +406,29 @@ function greatCircleElevationAngle(startLatLong: ILatLong, endLatLong: ILatLong)
         return 0
     }
 
+    let yDeltaStart = yDeltaFunctionThree(_startV3)
+    let yDeltaEnd = yDeltaFunctionThree(_endV3)
+
+    if(yDeltaStart !== 0 || yDeltaEnd !==0){
+        if(yDeltaStart ===1 ){
+            return Math.PI/2
+        }
+        
+        if(yDeltaStart === -1){
+            return Math.PI/2
+        }
+
+        if(yDeltaEnd === 1){
+            return Math.PI/2
+        }
+        
+        if(yDeltaEnd === -1){
+            return Math.PI/2     
+        }
+    }
+
+
+
     if(vectorsParallelXZThree(_startV3, _endV3)){
         return Math.PI/2
     } else {
@@ -428,6 +451,37 @@ export function greatCirclePlaneRotation(startLatLong: ILatLong, endLatLong: ILa
 
     if(_startV3.y===0 && _endV3.y===0){
         return 0
+    }
+
+    let yDeltaStart = yDeltaFunctionThree(_startV3)
+    let yDeltaEnd = yDeltaFunctionThree(_endV3)
+
+    if(yDeltaStart !== 0 || yDeltaEnd !==0){
+        if(yDeltaStart === 1){
+            // planeProjection = new Vector3(_endV3.x, 0, _endV3.z)
+            // angle = aTanTwoThee(planeProjection, Z_UNIT)
+            // return angle
+             planeProjection = new Vector3(_endV3.x, 0, _endV3.z)
+
+            return aTanTwoThee(planeProjection, Z_UNIT) + Math.PI/2
+
+        }
+        
+        if(yDeltaStart === -1){
+            planeProjection = new Vector3(_endV3.x, 0, _endV3.z)
+
+            return aTanTwoThee(planeProjection, Z_UNIT) + Math.PI/2
+        }
+
+        if(yDeltaEnd === 1){
+            planeProjection = new Vector3(_startV3.x, 0, _startV3.z)
+            return aTanTwoThee(planeProjection, Z_UNIT) + Math.PI/2
+        }
+        
+        if(yDeltaEnd === -1){
+            planeProjection = new Vector3(_startV3.x, 0, _startV3.z)
+            return aTanTwoThee(planeProjection, Z_UNIT) + Math.PI/2   
+        }
     }
 
     let isAntiParallel = isNearlyOne(Math.abs(aTanTwoThee(_startV3, _endV3)/Math.PI))
@@ -565,27 +619,6 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
 
     let testResult = isReferenceInsidePoints(referencePoint, option1, option2)
 
-   // console.log(testResult)
-
-    // console.log("referencePoint")
-    // console.log(referencePoint)
-    // console.log("option1")
-    // console.log(option1)
-    // console.log("option2")
-    // console.log(option2)
-
-    // console.log("checking parallelness")
-    // console.log ("ref and op1")
-    // console.log(vectorsParallelXZThree(referencePoint, option1))
-    // console.log("ref and op2")
-    // console.log(vectorsParallelXZThree(referencePoint, option2))
-    
-    //possible states:
-
-    //ref is (anti)parallel with op1
-    // let parallel_RefOp1 = vectorsParallelXZThree(referencePoint, option1)
-    // let parallel_RefOp2 =  vectorsParallelXZThree(referencePoint, option2)
-
     let parallel_RefOp1 = parallelcoplanarXZ(referencePoint, option1)
     let antiParallel_RefOp1 = antiParallelcoplanarXZ(referencePoint, option1)
     let parallel_RefOp2 = parallelcoplanarXZ(referencePoint, option2)
@@ -599,8 +632,64 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
 
     let _arcLength = angleBetweenTwoVectors(option1, option2)
 
+    let _inXY_op1 = isInXZPlaneThree(option1)
+    let _inXY_op2 = isInXZPlaneThree(option2)
+
+
+    //Check if either vector is in the xy plane:
+
+    if(_inXY_op1 != _inXY_op2){
+        //logic to handle single vector in xy problem
+        console.log("plane")
+    }
+
+
+    let yDelta1 = yDeltaFunctionThree(option1)
+    let yDelta2 = yDeltaFunctionThree(option2)
+
+    if(yDelta1 !== 0 || yDelta2 !==0 ){
+        console.log("z-axis handler")
+        if(yDelta1 === 1){
+            let angle = angleBetweenTwoVectors(referencePoint, option2)
+            if(option2.y >0){
+                return angle
+            } else {
+                return  -angle
+            }
+        }
+
+        if(yDelta1 === -1){
+            let angle = angleBetweenTwoVectors(referencePoint, option2)
+            if(option2.y >0){
+                return angle - _arcLength
+            } else {
+                return  - angle - _arcLength
+            }
+        }
+
+        if(yDelta2 === 1){
+            let angle = angleBetweenTwoVectors(referencePoint, option1)
+            if(option1.y >0){
+                return -angle
+            } else {
+                return  angle
+            }
+        }
+
+        if(yDelta2 === -1){
+            let angle = angleBetweenTwoVectors(referencePoint, option1)
+            if(option1.y >0){
+                return - angle - _arcLength
+            } else {
+                return  angle - _arcLength
+            }
+        }
+
+
+    }
+
+
     if(parallel_RefOp1 || parallel_RefOp2 || antiParallel_RefOp1 || antiParallel_RefOp2 ){
-        "refop1 (anti)-parallel so returning 0"
         // this should in fact return the angle between the xy plane and the closest vector
 
        
@@ -619,7 +708,7 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
             _angle1 = angleBetweenTwoEitherDirection(referencePoint, option1)
             _angle2 = angleBetweenTwoEitherDirection(referencePoint, option2)
 
-            // There are 4 situations where the vectors are parralel:
+            // There are 4 situations where the vectors are parallel:
             //  opt1.y > 0 && opt2.Y > 0
             //  opt1.y < 0 && opt2.Y < 0
 
@@ -674,6 +763,7 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
         }
    
     }
+
 
   
 
@@ -980,3 +1070,34 @@ function snapToZero(input: number): number{
         return input
     }
 }
+
+
+function isInXZPlaneThree(vector: Vector3): boolean {
+    return vector.y ===0
+}
+
+
+//returns +1 or -1 depending if exactly parallel to the z axis, else returns 0
+function yDeltaFunctionThree(vector: Vector3): DeltaOutput {
+    
+    let test = angleBetweenTwoEitherDirection(Y_UNIT, vector)
+    
+    if (test === 0) {
+        return 1
+    } else if (test === Math.PI) {
+        return -1
+    }
+    return 0
+
+    // // console.log(vector)
+    // console.log(new Vector3(0,1,0).dot(vector))
+    // if (vector.dot(Y_UNIT) === 1) {
+    //     return 1
+    // } else if (vector.dot(new Vector3(0,-1,0)) === 1) {
+    //     return -1
+    // }
+    // return 0
+}
+
+
+type DeltaOutput = 1|0|-1
