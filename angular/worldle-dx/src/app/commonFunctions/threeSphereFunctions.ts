@@ -612,72 +612,65 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
             return _angle1
         }
 
+
         if(vectorsParallel){
-            
-            if(_angle1 < _angle2){
-                    _angle1 = _angle1 + _arcLength
-                    return Math.min(_angle1, _angle2)             
-            } else {
-                if (option1.y < 0 && option2.y <0) {
-                    _angle2 = - _angle2
-                } else if (option2.y < 0 && testResult ===false) {
 
+            // use correct version of cosine scalar product
+            _angle1 = angleBetweenTwoEitherDirection(referencePoint, option1)
+            _angle2 = angleBetweenTwoEitherDirection(referencePoint, option2)
 
-                    _angle2 = _angle2 + 2*Math.PI - _arcLength//+ Math.PI
-                    //this is wrong
+            // There are 4 situations where the vectors are parralel:
+            //  opt1.y > 0 && opt2.Y > 0
+            //  opt1.y < 0 && opt2.Y < 0
 
+            //  opt1.y > 0 && opt2.Y > 0
+            //  opt1.y < 0 && opt2.y < 0
 
-                } else if (option1.y < 0 && testResult === true) { //&& testResult ===false) {
-                    _angle2 = _angle2  - _arcLength//+ Math.PI
-                }
-
-                if(option1.y>0 && option2.y>0){
-                    
-                    return _arcLength + Math.min(_angle1, _angle2) 
-                }
-
+            if ((_angle1 === 0 && option2.y > 1) || (_angle2 === 0 && option1.y > 1)) {
+                return 0
+            } else 
+            if ((_angle1 === 0 && option2.y > 1) || (_angle2 === 0 && option1.y > 1)) {
+                return -Math.max(_angle1, _angle2)
             }
-            return Math.min(_angle1, _angle2)
+
+
+            if(option1.y > 0 && option2.y > 0) {
+                return Math.min(_angle1,_angle2)
+            } else if (option1.y < 0 && option2.y < 0) {
+                return -Math.max(_angle1,_angle2)
+            } else if (option1.y > 0 && option2.y < 0) {
+                return -_angle2
+            } else if (option1.y < 0 && option2.y > 0) {
+                return -_angle1
+            }
             
+        }
+
+
+        if(vectorsAntiParallel){
+            _angle1 = angleBetweenTwoEitherDirection(referencePoint, option1)
+            _angle2 = angleBetweenTwoEitherDirection(referencePoint, option2)
+
+            if(option1.y > 0 && option2.y > 0) {
+                return Math.min(_angle1,_angle2)
+            } else if (option1.y < 0 && option2.y < 0) {
+                return -Math.max(_angle1,_angle2)
+            } else if (option1.y > 0 && option2.y < 0) {
+                if ((_angle1 + _angle2) > Math.PI){
+                    return -_angle2 + Math.PI
+                }
+                    return _angle2
+            } else if (option1.y < 0 && option2.y > 0) {
+                if (_angle1 > Math.PI){
+                    return -_angle1
+                }
+                // return -_angle1
+            }
         }
    
-        // let minAngle = -min(_angle1, _angle2)
-
-        if(option1.y > 0 && option2.y > 0){
-            return -Math.max(_angle1, _angle2) 
-        }
-
-        // if(option1.y < 0 && option2.y < 0){
-        //     return +Math.min(_angle1, _angle2) 
-        // }
-        
-        if(vectorsAntiParallel){
-            return +Math.min(_angle1, _angle2) 
-        }
-
-
     }
 
   
-
-
-    // if(vectorsParallel){
-    //     return Math.min(_angle1, _angle2)
-    // }
-
-    // if(vectorsAntiParallel){
-    //     return Math.min(_angle1, _angle2)
-    
-    // }
-
-    
-    // let _angle1 = angleBetweenTwoVectors(referencePoint, option1)
-    // let _angle2 = angleBetweenTwoVectors(referencePoint, option2)
-
-    // console.log(" angle1")
-    // console.log(_angle1)
-    // console.log("angle2")
-    // console.log(_angle2)
 
 
 
@@ -832,6 +825,22 @@ function angleBetweenTwoVectors(startVector: Vector3, endVector: Vector3): numbe
     }
 
     //negative determinant gives the correct answer
+
+    return _output
+}
+
+function angleBetweenTwoEitherDirection(startVector: Vector3, endVector: Vector3): number {
+    let numerator = startVector.dot(endVector)
+    let denominator = startVector.length() * endVector.length()
+
+
+    let dot = startVector.x*endVector.x + startVector.y*endVector.y + startVector.z*endVector.z   //#between [x1, y1, z1] and [x2, y2, z2]
+    let lenSq1 = startVector.length() * startVector.length()
+    let lenSq2 = endVector.length() * endVector.length()
+    let _output = Math.acos(dot/Math.sqrt(lenSq1 * lenSq2))
+
+    // let det = x1*y2 - y1*x2      # determinant
+    // let det = startVector.x * endVector.z - startVector.z * endVector.x
 
     return _output
 }
