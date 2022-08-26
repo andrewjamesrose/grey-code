@@ -653,18 +653,23 @@ function getClosestAngle(referencePoint: Vector3, option1: Vector3, option2: Vec
 
             if(option1.y > 0 && option2.y > 0) {
                 return Math.min(_angle1,_angle2)
+
             } else if (option1.y < 0 && option2.y < 0) {
                 return -Math.max(_angle1,_angle2)
+
             } else if (option1.y > 0 && option2.y < 0) {
                 if ((_angle1 + _angle2) > Math.PI){
-                    return -_angle2 + Math.PI
+                    return -_angle2 + _arcLength
+                } else {
+                    return 2*Math.PI-_angle2
                 }
-                    return _angle2
+
             } else if (option1.y < 0 && option2.y > 0) {
-                if (_angle1 > Math.PI){
-                    return -_angle1
+                if ((_angle1 + _angle2) > Math.PI){
+                    return _arcLength - _angle1
+                } else {
+                    return 2*Math.PI-_angle1
                 }
-                // return -_angle1
             }
         }
    
