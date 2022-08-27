@@ -51,3 +51,18 @@ export interface IFullStats {
     [index: string]: IGameStats;
   }
 
+
+export interface IResultsTable {
+    code: string,
+    name: string,
+    flags: IGameResult
+    boundaries: IGameResult
+    totals: IGameResult
+}
+
+export interface IResultsTableDisplayRow {
+    code: string,
+    name: string,
+    data: IGameResult
+}
+

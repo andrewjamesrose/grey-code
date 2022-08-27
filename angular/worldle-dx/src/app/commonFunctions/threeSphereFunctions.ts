@@ -302,28 +302,6 @@ export function getGreatCircleMaxPoint(startLatLong: ILatLong, endLatLong: ILatL
     basis_V = new Vector3().crossVectors(basis_U, basis_W).multiplyScalar(1/basis_W.length())
 
 
-    // console.log("End Vector:")
-    // console.log(_vectorEnd)
-
-    // console.log("Basis U:")
-    // console.log(basis_U)
-
-    // console.log("Basis V:")
-    // console.log(basis_V)
-
-    // console.log("Basis W:")
-    // console.log(basis_W)
-
-    
-    // console.log("Basis U Length:")
-    // console.log(basis_U.length())
-
-    // console.log("Basis V Length:")
-    // console.log(basis_V.length())
-
-    // console.log("Basis W Length:")
-    // console.log(basis_W.length())
-
     //  Parametric angle for max z 
     let zMax_theta = Math.atan(basis_V.z / basis_U.z)
     let zMax_x = basis_U.x * Math.cos(zMax_theta) + basis_V.x * Math.sin(zMax_theta)
@@ -586,18 +564,6 @@ export function wedgeBetweenTwoPoints(startLatLong: ILatLong, endLatLong: ILatLo
     console.log("wedgeOffsetAngle")
     console.log(wedgeOffsetAngle * 180 / Math.PI)
 
-
-
-
-
-
-    // console.log("elevationAngle")
-    // console.log(elevationAngle)
-    // console.log("in plane rotation")
-    // console.log(inPlaneRotationAngle)
-
-    // let _startV3 = getVector3FromLatLong(startLatLong, 1)
-    // let _endV3 = getVector3FromLatLong(startLatLong, 1)
     
     let _startCartesian = convertThreeToCartesian(_startThree)
     let _endCartesian = convertThreeToCartesian(_endThree)
@@ -1089,14 +1055,6 @@ function yDeltaFunctionThree(vector: Vector3): DeltaOutput {
     }
     return 0
 
-    // // console.log(vector)
-    // console.log(new Vector3(0,1,0).dot(vector))
-    // if (vector.dot(Y_UNIT) === 1) {
-    //     return 1
-    // } else if (vector.dot(new Vector3(0,-1,0)) === 1) {
-    //     return -1
-    // }
-    // return 0
 }
 
 

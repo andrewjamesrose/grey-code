@@ -16,6 +16,9 @@ import {MatCardModule} from '@angular/material/card'
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatSliderModule} from '@angular/material/slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTableModule} from '@angular/material/table'
+import {MatRadioModule} from '@angular/material/radio'
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { KatexModule } from 'ng-katex';
 import { KatexExampleComponent } from './components/katex-example/katex-example.component';
 import { D3OrthographicGlobeComponent } from './components/d3-orthographic-globe/d3-orthographic-globe.component';
@@ -29,6 +32,7 @@ import { SphericalGeometryDemoComponent } from './components/spherical-geometry-
 import { LocalStorageService } from './services/local-storage.service';
 import { GameStatisticsService } from './services/game-statistics.service';
 import { StatsTestingComponent } from './components/stats-testing/stats-testing.component';
+import { StatsTableComponent } from './components/stats-table/stats-table.component';
 
 
 
@@ -47,6 +51,7 @@ import { StatsTestingComponent } from './components/stats-testing/stats-testing.
     MoreGlobeTestsComponent,
     SphericalGeometryDemoComponent,
     StatsTestingComponent,
+    StatsTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +70,9 @@ import { StatsTestingComponent } from './components/stats-testing/stats-testing.
     MatToolbarModule,
     MatSliderModule,
     MatCheckboxModule,
+    MatTableModule,
+    MatRadioModule,
+    MatButtonToggleModule
     
     
   ],

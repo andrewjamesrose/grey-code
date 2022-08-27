@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { generateRandomInteger } from '../commonFunctions/geographyFunctions';
-import { GameResult, IFullStats, IGameResult, IGameStats } from '../models/statistics';
+import { generateRandomInteger, getCountryNameFromCode } from '../commonFunctions/geographyFunctions';
+import { GameResult, IFullStats, IGameResult, IGameStats, IResultsTable } from '../models/statistics';
 import { getRandomCountry } from './game-logic.service';
 import { LocalStorageService } from './local-storage.service';
 
-type possibleScores = 'one'|'two'|'three'|'four'|'five'|'fail'
+export type possibleScores = 'one'|'two'|'three'|'four'|'five'|'fail'
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +76,30 @@ export class GameStatisticsService {
         }
 
         return sumArrayOfResults(_filteredArray)    
+    }
+
+    getFullResultsTable(): IResultsTable[] {
+        let _resultsTableData: IResultsTable[] = []
+        
+        //console.log(this.gameStats)
+
+
+        Object.keys(this.gameStats).forEach((key) => {
+                let tableRow: IResultsTable = {
+                                        code: key,
+                                        name: getCountryNameFromCode(key),
+                                        flags: this.getSingleFlagStats(key),
+                                        boundaries: this.getSingleBoundaryStats(key),
+                                        totals: this.getSingleCombinedStats(key)
+                }
+
+            _resultsTableData.push(tableRow)
+            // console.log(key, this.gameStats[key]);
+            
+          });
+
+
+        return _resultsTableData
     }
 
 
