@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Sort, MatSort } from '@angular/material/sort';
 import { GameResult, IGameResult, IResultsTable, IResultsTable as IResultsTableObject, IResultsTableDisplayRow } from 'src/app/models/statistics';
 import { GameStatisticsService, possibleScores } from 'src/app/services/game-statistics.service';
 
@@ -50,9 +51,11 @@ export class StatsTableComponent implements OnInit {
         this.recalculateTableData()
     }
 
+
     getTableFullData() {
         console.log(this.rawData)
     }
+
 
     totalGamesPlayed(inputRow: IResultsTableObject): number {
         return totalGamesPlayed(inputRow)
@@ -93,6 +96,40 @@ export class StatsTableComponent implements OnInit {
 
         this.displayedData = output
     }
+
+    sortData(sort: Sort) {
+        const data = this.displayedData.slice();
+        if (!sort.active || sort.direction === '') {
+          this.displayedData = data;
+          return;
+        }
+    
+        this.displayedData = data.sort((a, b) => {
+          const isAsc = sort.direction === 'asc';
+          switch (sort.active) {
+            case 'name':
+                return comparator(a.name, b.name, isAsc);
+            case 'code':
+                return comparator(a.code, b.code, isAsc);
+            case 'one':
+              return comparator(a.data.one, b.data.one, isAsc);
+            case 'two':
+              return comparator(a.data.two, b.data.two, isAsc);
+            case 'three':
+              return comparator(a.data.three, b.data.three, isAsc);
+            case 'four':
+              return comparator(a.data.four, b.data.four, isAsc);
+            case 'five':
+              return comparator(a.data.five, b.data.five, isAsc);
+            case 'fail':
+                return comparator(a.data.fail, b.data.fail, isAsc);
+            default:
+              return 0;
+          }
+        });
+      }
+    
+    
 
 }
 
@@ -144,9 +181,11 @@ function resultCountToPercent(gameResult: IGameResult): IGameResult{
     return _output
 }
 
+
 function IGameResultFactory(): IGameResult {
     return  { one: 0, two: 0, three: 0, four: 0, five: 0, fail: 0 }
 }
+
 
 function IResultsTableDisplayRowFactory(): IResultsTableDisplayRow {
     return {
@@ -155,4 +194,9 @@ function IResultsTableDisplayRowFactory(): IResultsTableDisplayRow {
                 data: IGameResultFactory()
             }
 }
+
+
+function comparator(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
 

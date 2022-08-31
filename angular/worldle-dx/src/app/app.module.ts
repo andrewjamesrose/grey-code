@@ -17,6 +17,7 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatSliderModule} from '@angular/material/slider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table'
+import {MatSortModule} from '@angular/material/sort'
 import {MatRadioModule} from '@angular/material/radio'
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { KatexModule } from 'ng-katex';
@@ -72,9 +73,8 @@ import { StatsTableComponent } from './components/stats-table/stats-table.compon
     MatCheckboxModule,
     MatTableModule,
     MatRadioModule,
-    MatButtonToggleModule
-    
-    
+    MatButtonToggleModule,
+    MatSortModule
   ],
   providers: [LocalStorageService, GameLogicService, GameStatisticsService],
   bootstrap: [AppComponent]
