@@ -5,7 +5,6 @@ import { getCountryNameFromCode } from 'src/app/commonFunctions/geographyFunctio
 import { MAX_GUESSES } from 'src/app/constants';
 import { Country, ICountry } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';
-import { HelloWorldService } from 'src/app/services/hello-world.service';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 
 
@@ -15,7 +14,7 @@ const MAX_LIST_LENGTH = 20
 
 
 @Component({
-  selector: 'app-user-io',
+  selector: 'user-io',
   templateUrl: './user-io.component.html',
   styleUrls: ['./user-io.component.scss']
 })

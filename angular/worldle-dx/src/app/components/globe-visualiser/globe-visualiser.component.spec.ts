@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThreeGlobeTestComponent } from './three-globe-test.component';
+import { MoreGlobeTestsComponent } from './globe-visualiser.component';
 
-describe('ThreeGlobeTestComponent', () => {
-  let component: ThreeGlobeTestComponent;
-  let fixture: ComponentFixture<ThreeGlobeTestComponent>;
+describe('MoreGlobeTestsComponent', () => {
+  let component: MoreGlobeTestsComponent;
+  let fixture: ComponentFixture<MoreGlobeTestsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThreeGlobeTestComponent ]
+      declarations: [ MoreGlobeTestsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ThreeGlobeTestComponent);
+    fixture = TestBed.createComponent(MoreGlobeTestsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

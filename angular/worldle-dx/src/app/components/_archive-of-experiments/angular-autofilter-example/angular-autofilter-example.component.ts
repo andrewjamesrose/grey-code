@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith, takeUntil, Subject } from 'rxjs';
 import { ICountry } from 'src/app/models/game-logic';
-import { HelloWorldService } from 'src/app/services/hello-world.service';
+import { HelloWorldService } from 'src/app/services/_archive-of-experiments/hello-world.service';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 
 //  Angular re-draws are slow

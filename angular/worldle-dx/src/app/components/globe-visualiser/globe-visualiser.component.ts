@@ -29,11 +29,11 @@ const testCountries: string[] = ['FI','CL','JP','CA','AU','DE']
 
 
 @Component({
-  selector: 'app-more-globe-tests',
-  templateUrl: './more-globe-tests.component.html',
-  styleUrls: ['./more-globe-tests.component.scss']
+  selector: 'globe-visualiser',
+  templateUrl: './globe-visualiser.component.html',
+  styleUrls: ['./globe-visualiser.component.scss']
 })
-export class MoreGlobeTestsComponent implements OnInit {
+export class GlobeVisualiser implements OnInit {
     @ViewChild('testid', { static: true }) rendererContainer!:  ElementRef<HTMLInputElement>;
 
     private renderer: Renderer = new THREE.WebGLRenderer({antialias: true});

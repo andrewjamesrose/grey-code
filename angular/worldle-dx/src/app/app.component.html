@@ -1,16 +1,76 @@
-<router-outlet></router-outlet>
+<!-- Required for app router -->
+    <router-outlet></router-outlet>
 
-<!-- <app-angular-autofilter-example></app-angular-autofilter-example> -->
-<!-- <app-user-io></app-user-io> -->
-<!-- <app-three-test></app-three-test> -->
-<!-- <app-three-globe-test></app-three-globe-test> -->
-<!-- <app-katex-example></app-katex-example> -->
-<!-- <app-calc-test></app-calc-test> -->
-<!-- <app-maths-demo></app-maths-demo> -->
 
-<!-- <app-more-globe-tests></app-more-globe-tests> -->
+<!-- Top block containing  -->
+    <!-- 
+        0   Top menu bar (could be moved?)
+        1   Flag / SVG Display element
+        2   Five guess boxes
+        3   DEBUG   Mode selectors
+        4   DEBUG   Display mode
+    -->
+    <user-io></user-io>
+<!--  -->
 
-<app-stats-testing></app-stats-testing>
-<span width = 600px>
-    <app-stats-table></app-stats-table>
-</span>
+
+<!-- 3D Globe Visualise and IO -->
+    <!-- Includes the IO panels and maths-mode IO panels -->
+    <globe-visualiser></globe-visualiser>
+<!--  -->
+
+
+<!-- DEBUGGING for Stats -->
+    <app-stats-testing></app-stats-testing>
+
+
+<!-- Contains the output table for game statistics -->
+    <span width = 600px>
+        <app-stats-table></app-stats-table>
+    </span>
+
+
+
+
+
+
+
+<!-- List of Components and what they do
+    KEEP
+        Test of:
+            auto-filter of list in text-input
+            <app-angular-autofilter-example></app-angular-autofilter-example>
+
+            This also features a test of:
+                Observables and services
+
+                ... probably smart to rename this
+            This also has a depending on 
+
+
+        Katex Example
+            Used for drawing mathematical symbols/equations
+            <app-katex-example></app-katex-example>
+   
+
+        Experimental version of app with distance calculations
+            Includes supports for more game versions
+            <app-calc-test></app-calc-test>
+
+
+
+
+        <app-maths-demo></app-maths-demo>
+            A demo using sliders and a D3 map to plot results. Abandoned
+
+
+    TO DELETE
+        This doesn't seem to work so can be deleted
+            <app-three-globe-test></app-three-globe-test>
+
+    DELETED
+        <app-three-test></app-three-test>
+            This was an attempt to use the three API
+            It is not relevant for this
+
+-->
