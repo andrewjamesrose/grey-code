@@ -29,6 +29,8 @@ import { LocalStorageService } from './services/local-storage.service';
 import { GameStatisticsService } from './services/game-statistics.service';
 import { StatsTestingComponent } from './components/stats-testing/stats-testing.component';
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
+import { StatsComponent } from './components/stats/stats.component';
+import { GlobeControlsComponent } from './components/globe-controls/globe-controls.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { StatsTableComponent } from './components/stats-table/stats-table.compon
     GlobeVisualiser,
     StatsTestingComponent,
     StatsTableComponent,
+    StatsComponent,
+    GlobeControlsComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,8 +9,15 @@
     <!-- <button (click)="print()">Mode Selector</button></div> -->
 
 <div *ngIf="gameModeString==='flags'"><img width="400px" src="assets/flags/png1000px/{{targetCountry.code| lowercase }}.png"/></div>
-<div *ngIf="gameModeString==='boundariesSVG'"><img width="400px" src="assets/boundaries/svg/{{targetCountry.code| lowercase }}/vector.svg"/></div>
-
+<div *ngIf="gameModeString==='boundariesSVG'"><img width="400px" 
+                                                    src="assets/boundaries/svg/{{targetCountry.code| lowercase }}/vector.svg"
+                                                    [ngStyle] = "{'filter': ' brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%)'}"
+                                                /></div>
+<!-- <div *ngIf="gameModeString==='boundariesSVG'" [ngStyle]="{  'background-color': '#ff0000',
+                                                            'background-image': 'url(assets/boundaries/svg/'+ targetCountry.code.toLowerCase() + ')'}"></div> -->
+<!-- <svg  *ngIf="gameModeString==='boundariesSVG'" data="assets/boundaries/svg/{{targetCountry.code| lowercase }}/vector.svg" type="image/svg+xml" 
+        [ngStyle]="{'fill': '#ff0000'}">
+</svg> -->
 <br>
 
 <select [(ngModel)]="_selectedCountry"  

@@ -1,20 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { BufferGeometry, EllipseCurve, Euler, Group, LineBasicMaterial, LineSegments, Mesh, Object3D, Renderer, Vector, Vector2, Vector3 } from 'three';
-import * as THREE from 'three';
-import ThreeGlobe from 'three-globe';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
-import { angleBetweenPointsOnSphere, degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
-import { GameStatisticsService } from 'src/app/services/game-statistics.service';
-import { IFullStats } from 'src/app/models/statistics';
-import { ILatLong, LatLong } from 'src/app/models/game-logic';
-import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
-import { ARC_DENSITY, AXIS_ORIGIN, GLOBE_SCALAR, X_UNIT, Y_UNIT, Z_UNIT } from 'src/app/constants';
-import { convertCartesianToThree, dashedDroplineToAxis, dashedDroplineToPlane, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, ILineGeometry, line2FromPoints, markerAtLatLong, markerAtVector3, singleAxisProjection, wedgeBetweenTwoPoints, wedgeXY, xz_PlaneDropLineToAxis, xz_planeProjectionPoint } from 'src/app/commonFunctions/threeSphereFunctions';
-import { MatSliderChange } from '@angular/material/slider';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatSliderChange } from '@angular/material/slider';
+import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
+import { convertCartesianToThree, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, ILineGeometry, markerAtLatLong, markerAtVector3, wedgeBetweenTwoPoints } from 'src/app/commonFunctions/threeSphereFunctions';
+import { GLOBE_SCALAR, X_UNIT, Y_UNIT } from 'src/app/constants';
+import { ILatLong } from 'src/app/models/game-logic';
+import { GameStatisticsService } from 'src/app/services/game-statistics.service';
+import * as THREE from 'three';
+import { BufferGeometry, EllipseCurve, Group, Renderer, Vector2, Vector3 } from 'three';
+import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
+import ThreeGlobe from 'three-globe';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const colourList: number[] = [
     0xBF1B39,   //red
@@ -73,10 +71,6 @@ export class GlobeVisualiser implements OnInit {
         this.pointB = {latitude: 0, longitude: 0}   
     }
 
-    // Test cube
-    // geometry = new THREE.BoxGeometry(1, 1, 1);
-    // material = new THREE.MeshBasicMaterial( { color: 0x00ff00 })
-    // cube = new THREE.Mesh( this.geometry, this.material )
 
     materialParameters = {
             color: 0xff0000,
@@ -91,8 +85,6 @@ export class GlobeVisualiser implements OnInit {
 
 
     geometry = new THREE.SphereGeometry( GLOBE_SCALAR, 32, 16 );
-    // geometry = new THREE.BoxGeometry(1, 1, 1);
-    // material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
     material = new THREE.MeshLambertMaterial( this.materialParameters);
     mathsSphere = new THREE.Mesh( this.geometry, this.material );
 
@@ -141,32 +133,13 @@ export class GlobeVisualiser implements OnInit {
         _group.name = "cartesianAxes"
         _group.visible = this.resultsDisplayOptions.controls[_group.name].value
         for(let axis of axesSet){
-            // console.log(axis.geometry)
-            // this.scene.add(axis)
             _group.add(axis)
         }
         this.scene.add(_group)
 
-        let inputLine: ILineGeometry = {
-                                        startPoint: new Vector3(50,50,25),
-                                        endPoint: new Vector3(100, 100, 125)
-                                        }
-
                                         
         let centroid_A = getCentroidLatLong("JP")
         let centroid_B = getCentroidLatLong("AU")
-
-
-        let _startMeshList = getConstructorLines(centroid_A, 0xeeeeee)
-        let _endMeshList = getConstructorLines(centroid_B, 0x8888ff)
-
-
-        let testAngle = arcTest() //.rotateOnWorldAxis(X_UNIT, Math.PI/4)
-
-
-
-        let markerTR = markerAtLatLong(centroid_A, 1.5, 0xff0000)
-        let markerJP = markerAtLatLong(centroid_B, 1.5, 0x0000ff)
 
         
         // let testZero: ILatLong = {latitude: 0, longitude: 0}
@@ -176,13 +149,8 @@ export class GlobeVisualiser implements OnInit {
         let testV3 = new Vector3(0,0,1).multiplyScalar(GLOBE_SCALAR)
         testV3 = convertCartesianToThree(testV3)
 
-        // let testV3 = getVector3FromLatLong(myVector, GLOBE_SCALAR)
-
-        let greatCircle = greatCircleFromTwoPoints(centroid_A, centroid_B)
-        // let greatCircle = greatCircleFromTwoPoints(testZero, testPole)
 
         let GC_MaxPoint = getGreatCircleMaxPoint(centroid_A, centroid_B).multiplyScalar(GLOBE_SCALAR)
-        let GC_MaxMarker = markerAtVector3(GC_MaxPoint, 3, 0xfffff)
 
         // let crossMarker = markerAtVector3(getGreatCirclePlaneCrossing(centroid_A, centroid_B).multiplyScalar(GLOBE_SCALAR), 3, 0xffffff )
     
@@ -190,37 +158,6 @@ export class GlobeVisualiser implements OnInit {
         let newCrossMarkerLocation = new Vector3(-100, 0, 0).applyAxisAngle(Y_UNIT, inPlaneRotationAngle)
         let newCrossMarker = markerAtVector3(newCrossMarkerLocation, 3, 0xffffff)
 
-        // let newWedge = wedgeBetweenTwoPoints(centroid_A, centroid_B) 
-        
-        
-
-        // funFunFunction(getCentroidLatLong("TR"), getCentroidLatLong("JP"))
-        // let greatCircle = great
-
-
-        // for(let mesh of _startMeshList){
-        //     this.scene.add(mesh)
-        // }
-
-        // for(let mesh of _endMeshList){
-        //     this.scene.add(mesh)
-        // }
-
-        // this.scene.add(testAngle)
-        // this.scene.add(markerTR)
-        // this.scene.add(markerJP)
-
-        // this.scene.add(greatCircle)
-
-        // this.scene.add(GC_MaxMarker)
-        // this.scene.add(newCrossMarker)
-
-        // this.scene.add(testWedge)
-        // this.scene.add(newWedge)
-
-        //      Add Meshes to Scene:
-   
-        // this.scene.add( this.mathsSphere );
 
         this.wireframe.name = "wireFrameSphere"
         this.wireframe.visible = this.resultsDisplayOptions.controls[this.wireframe.name].value
@@ -304,22 +241,13 @@ export class GlobeVisualiser implements OnInit {
             _group.add(greatCircleFromTwoPoints(startPoint, endPoint, colourList[i-1], 0.5))
         }
         this.scene.add(_group)
-
-        // let _group = generateGroup(this.pointA, "pointGroupA", 0x00ff00)
-        // this.scene.add(_group)
         
         this.updatePointA()
         this.updatePointB()
 
         this.updateABTriangle()
         this.updateDebugGroup()
-
-        // this.scene.add(this.globe)
-        // this.scene.add(this.mathsSphere);
-        // this.scene.add(this.wireframe);
-
-        // this.scene.add(this.myLine)
-
+        
     
         this.camera = new THREE.PerspectiveCamera();
         // this.camera.aspect = window.innerWidth/ window.innerHeight;
@@ -460,11 +388,8 @@ export class GlobeVisualiser implements OnInit {
             let newCoords: Vector3
             let radius: number = 300
             newCoords = getVector3FromLatLong(targetLatLong, radius)
-    
-            // console.log(newCoords)
-
+ 
             this.camera.position.set(newCoords.x, newCoords.y, newCoords.z)
-
             this.animate()
         } 
     }
@@ -665,7 +590,6 @@ function arcTest(): Line2 {
 
     
     let points = arcCurve.getSpacedPoints( 50 );
-    let material = new LineBasicMaterial( { color : 0xff0000 } );
 
     let _bufferGeometry = new BufferGeometry().setFromPoints(points)
     let _lineGeometry = new LineGeometry().setPositions(_bufferGeometry.getAttribute('position').array as any) 

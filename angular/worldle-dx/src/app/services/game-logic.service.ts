@@ -62,7 +62,7 @@ export class GameLogicService {
     
     toggleGameMode(): void{
         let currentIndex = GAME_MODES.indexOf(this._gameMode)
-        let maxIndex = GAME_MODES.length
+        let maxIndex = GAME_MODES.length-1
 
         if(currentIndex===maxIndex){
             this._gameMode=GAME_MODES[0]
