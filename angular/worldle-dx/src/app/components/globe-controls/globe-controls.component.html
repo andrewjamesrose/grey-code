@@ -1,1 +1,34 @@
 <p>globe-controls works!</p>
+ <span>
+    <mat-slider min="-90" max="90" step="0.5" [(ngModel)]="pointA.latitude" vertical (input)="onInputChange_lat_A($event)"></mat-slider>
+</span>
+<span>
+    <mat-slider min="-180" max="180" step="0.5" [(ngModel)]="pointA.longitude" (input)="onInputChange_long_A($event)"></mat-slider>
+</span>
+<span>
+    <mat-slider min="-90" max="90" step="0.5" [(ngModel)]="pointB.latitude" vertical (input)="onInputChange_lat_B($event)"></mat-slider>
+</span>
+<span>
+    <mat-slider min="-180" max="180" step="0.5" [(ngModel)]="pointB.longitude" (input)="onInputChange_long_B($event)"></mat-slider>
+</span>
+
+
+<div>A: Lat = {{pointA.latitude}}; Long = {{pointA.longitude}}</div>
+<div>B: Lat = {{pointB.latitude}}; Long = {{pointB.longitude}}</div>
+
+<!-- <section class="results-display-options-list" [formGroup]="resultsDisplayOptions">
+    <h4>Show:</h4>
+    <p><mat-checkbox formControlName="resultsGlobe" (change)=displayOptionChanged($event)>Globe</mat-checkbox></p>   
+    <p><mat-checkbox formControlName="globeWedges" (change)=displayOptionChanged($event)>Globe Wedges</mat-checkbox></p>  
+    <p><mat-checkbox formControlName="wireFrameSphere" (change)=displayOptionChanged($event)>Wire-frame</mat-checkbox></p>   
+    <p><mat-checkbox formControlName="cartesianAxes" (change)=displayOptionChanged($event)>Cartesian Axes</mat-checkbox></p>
+    
+     Guesses:
+    <p><mat-checkbox formControlName="guessWedges" (change)=displayOptionChanged($event)>Wedges</mat-checkbox></p>
+    <p><mat-checkbox formControlName="guessConstructorLines" (change)=displayOptionChanged($event)>Construction Lines</mat-checkbox></p>
+    <p><mat-checkbox formControlName="guessCentroids" (change)=displayOptionChanged($event)>Points</mat-checkbox></p>
+    <p><mat-checkbox formControlName="guessGreatCircles" (change)=displayOptionChanged($event)>Great Circles</mat-checkbox></p>
+
+    Maths Demo:
+    <p><mat-checkbox formControlName="mathsDemo" (change)=displayOptionChanged($event)>Maths Demo</mat-checkbox></p>
+  </section>  -->

@@ -8,6 +8,7 @@ import { convertCartesianToThree, generateAxes, getConstructorLines, getGreatCir
 import { GLOBE_SCALAR, X_UNIT, Y_UNIT } from 'src/app/constants';
 import { ILatLong } from 'src/app/models/game-logic';
 import { GameStatisticsService } from 'src/app/services/game-statistics.service';
+import { GlobeVisualiserInputsService } from 'src/app/services/globe-visualiser-inputs.service';
 import * as THREE from 'three';
 import { BufferGeometry, EllipseCurve, Group, Renderer, Vector2, Vector3 } from 'three';
 import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
@@ -32,7 +33,7 @@ const testCountries: string[] = ['FI','CL','JP','CA','AU','DE']
   styleUrls: ['./globe-visualiser.component.scss']
 })
 export class GlobeVisualiser implements OnInit {
-    @ViewChild('testid', { static: true }) rendererContainer!:  ElementRef<HTMLInputElement>;
+    @ViewChild('globeVisualiser', { static: true }) rendererContainer!:  ElementRef<HTMLInputElement>;
 
     private renderer: Renderer = new THREE.WebGLRenderer({antialias: true});
     private scene!: THREE.Scene;
@@ -65,7 +66,9 @@ export class GlobeVisualiser implements OnInit {
     })
 
 
-    constructor(private http: HttpClient, private statsService: GameStatisticsService) { 
+    constructor(private http: HttpClient,
+        private globeInputsService: GlobeVisualiserInputsService
+    ) { 
         this.scene = new THREE.Scene();      
         this.pointA = {latitude: 45, longitude: 45}
         this.pointB = {latitude: 0, longitude: 0}   
@@ -247,7 +250,7 @@ export class GlobeVisualiser implements OnInit {
 
         this.updateABTriangle()
         this.updateDebugGroup()
-        
+
     
         this.camera = new THREE.PerspectiveCamera();
         // this.camera.aspect = window.innerWidth/ window.innerHeight;
@@ -273,7 +276,6 @@ export class GlobeVisualiser implements OnInit {
 
     ngAfterViewInit() {
             let url = '/assets/boundaries/geojson/ne_110m_admin_0_countries.geojson'
-            // let url = '/assets/boundaries/geojson/fileused.json'
                 this.http.get<any>(url).subscribe({
                     next: data => {
 
@@ -281,7 +283,6 @@ export class GlobeVisualiser implements OnInit {
                         
 
                         console.log("filtered data:")
-                        // console.log(data.filter((country: { properties: { ISO_A2_EH: string; }; }) => country.properties.ISO_A2_EH === 'FR'))
                         console.log(data.features.filter((feature: { properties: { ISO_A2_EH: string; }; }) => feature.properties.ISO_A2_EH==='FR'))
                         
                         type MyType = {
