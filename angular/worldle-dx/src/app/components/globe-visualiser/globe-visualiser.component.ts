@@ -46,30 +46,13 @@ export class GlobeVisualiser implements OnInit {
     geoJSONdata: any[] = []
 
 
-    // resultsDisplayOptions = new FormGroup ({
-    //     wireFrameSphere: new FormControl(false),
-    //     cartesianAxes: new FormControl(true),
-    //     resultsGlobe: new FormControl(false),
-    //     globeWedges: new FormControl(false),
-
-    //     guessWedges: new FormControl(false),
-    //     guessConstructorLines: new FormControl(false),
-    //     guessCentroids: new FormControl(false),
-    //     guessGreatCircles: new FormControl(false),
-
-    //     mathsDemo: new FormControl(true)
-    // })
-
-
     visualiserDisplayState: IDisplayModeState = DISPLAY_MODE_INITIAL_STATE
 
 
     constructor(private http: HttpClient,
         private globeInputsService: GlobeVisualiserInputsService
     ) { 
-        this.scene = new THREE.Scene();      
-        // this.pointA = {latitude: 45, longitude: 45}
-        // this.pointB = {latitude: 0, longitude: 0}   
+        this.scene = new THREE.Scene();       
     }
 
     
@@ -217,7 +200,10 @@ export class GlobeVisualiser implements OnInit {
         // Set up geometry wedges 
         _group = new Group();
         _group.name = "guessWedges"
-        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        _group.visible = this.visualiserDisplayState[_group.name as keyof IDisplayModeState]
+
+
+        
         for(let i=1; i <= testCountries.length-1; i++){
             let startPoint = getCentroidLatLong(testCountries[i-1])
             let endPoint = getCentroidLatLong(testCountries[i])
@@ -229,7 +215,8 @@ export class GlobeVisualiser implements OnInit {
         // Set up globe wedges 
         _group = new Group();
         _group.name = "globeWedges"
-        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        _group.visible = this.visualiserDisplayState[_group.name as keyof IDisplayModeState]
+
         for(let i=1; i <= testCountries.length-1; i++){
             let startPoint = getCentroidLatLong(testCountries[i-1])
             let endPoint = getCentroidLatLong(testCountries[i])
@@ -242,7 +229,8 @@ export class GlobeVisualiser implements OnInit {
         // Set up construction lines
         _group = new Group();
         _group.name = "guessConstructorLines"
-        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        _group.visible = this.visualiserDisplayState[_group.name as keyof IDisplayModeState]
+
         for(let i=0; i<= testCountries.length-1; i++){
             let point = getCentroidLatLong(testCountries[i])
             let _constructorMeshList = getConstructorLines(point, colourList[i])
@@ -258,7 +246,8 @@ export class GlobeVisualiser implements OnInit {
         // Set up centroid points
         _group = new Group();
         _group.name = "guessCentroids"
-        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        _group.visible = this.visualiserDisplayState[_group.name as keyof IDisplayModeState]
+
         for(let i=0; i<= testCountries.length-1; i++){
             let point = getCentroidLatLong(testCountries[i])
             let _mesh = markerAtLatLong(point, 2, colourList[i])
@@ -271,7 +260,8 @@ export class GlobeVisualiser implements OnInit {
         // Set up circles
         _group = new Group();
         _group.name = "guessGreatCircles"
-        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        _group.visible = this.visualiserDisplayState[_group.name as keyof IDisplayModeState]
+
         for(let i=1; i <= testCountries.length-1; i++){
             let startPoint = getCentroidLatLong(testCountries[i-1])
             let endPoint = getCentroidLatLong(testCountries[i])
@@ -299,10 +289,6 @@ export class GlobeVisualiser implements OnInit {
             this.controls.maxPolarAngle = 3 * Math.PI/4
             this.controls.enablePan=false
     }
-
-
-
-
 
 
 
@@ -353,9 +339,7 @@ export class GlobeVisualiser implements OnInit {
                         this.animate();
                 
                     }
-                    })
-        
-
+                })
     }
 
     
@@ -534,43 +518,6 @@ export class GlobeVisualiser implements OnInit {
         return _group
     }
 
- 
-    // displayOptionChanged(event: MatCheckboxChange): void{
-    //     this.updateSceneVisibility()
-    // }
-
-
-    // updateSceneVisibility(): void{
-    //     //select each named group
-    //     //check visibility
-    //     //toggle visibility
-    //     let _namedGroups: string[] = [  "wireFrameSphere", 
-    //                                     "cartesianAxes", 
-    //                                     "resultsGlobe", 
-    //                                     "guessWedges", 
-    //                                     "guessConstructorLines", 
-    //                                     "guessCentroids",
-    //                                     "guessGreatCircles",
-    //                                     "globeWedges"
-    //                                 ]
-
-    //     for(let group of _namedGroups){
-    //         this.updateNamedObjectVisibility(group)
-    //     }
-
-    //     this.updateMathsDemo()
-
-    // }
-
-    // updateNamedObjectVisibility(objectName: string): void{
-    //     //select each named group
-    //     //check visibility
-    //     //toggle visibility 
-    //     let object = this.scene.getObjectByName(objectName)
-    //     if(object){
-    //         object.visible = this.resultsDisplayOptions.controls[objectName].value
-    //     }
-    // }
 
     newUpdateSceneVisibility(): void{
         Object.entries(this.visualiserDisplayState).forEach(([key, value]) => {
