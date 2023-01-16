@@ -2,18 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { MatSliderChange } from '@angular/material/slider';
 import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
-import { convertCartesianToThree, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, ILineGeometry, markerAtLatLong, markerAtVector3, wedgeBetweenTwoPoints } from 'src/app/commonFunctions/threeSphereFunctions';
+import { convertCartesianToThree, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, markerAtLatLong, markerAtVector3, wedgeBetweenTwoPoints } from 'src/app/commonFunctions/threeSphereFunctions';
 import { GLOBE_SCALAR, X_UNIT, Y_UNIT } from 'src/app/constants';
 import { ILatLong } from 'src/app/models/game-logic';
-import { GameStatisticsService } from 'src/app/services/game-statistics.service';
-import { GlobeVisualiserInputsService } from 'src/app/services/globe-visualiser-inputs.service';
+import { DISPLAY_MODE_INITIAL_STATE, GlobeVisualiserInputsService } from 'src/app/services/globe-visualiser-inputs.service';
 import * as THREE from 'three';
 import { BufferGeometry, EllipseCurve, Group, Renderer, Vector2, Vector3 } from 'three';
 import { Line2, LineGeometry, LineMaterial } from 'three-fatline';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { IDisplayModeState } from '../globe-controls/globe-controls.component';
 
 const colourList: number[] = [
     0xBF1B39,   //red
@@ -44,35 +43,63 @@ export class GlobeVisualiser implements OnInit {
     lambda:number = 0
     
     guessList: string[] = []
-
     geoJSONdata: any[] = []
 
-    
-    pointA: ILatLong
-    pointB: ILatLong
 
-    resultsDisplayOptions = new FormGroup ({
-        wireFrameSphere: new FormControl(false),
-        cartesianAxes: new FormControl(true),
-        resultsGlobe: new FormControl(false),
-        globeWedges: new FormControl(false),
+    // resultsDisplayOptions = new FormGroup ({
+    //     wireFrameSphere: new FormControl(false),
+    //     cartesianAxes: new FormControl(true),
+    //     resultsGlobe: new FormControl(false),
+    //     globeWedges: new FormControl(false),
 
-        guessWedges: new FormControl(false),
-        guessConstructorLines: new FormControl(false),
-        guessCentroids: new FormControl(false),
-        guessGreatCircles: new FormControl(false),
+    //     guessWedges: new FormControl(false),
+    //     guessConstructorLines: new FormControl(false),
+    //     guessCentroids: new FormControl(false),
+    //     guessGreatCircles: new FormControl(false),
 
-        mathsDemo: new FormControl(true)
-    })
+    //     mathsDemo: new FormControl(true)
+    // })
+
+
+    visualiserDisplayState: IDisplayModeState = DISPLAY_MODE_INITIAL_STATE
 
 
     constructor(private http: HttpClient,
         private globeInputsService: GlobeVisualiserInputsService
     ) { 
         this.scene = new THREE.Scene();      
-        this.pointA = {latitude: 45, longitude: 45}
-        this.pointB = {latitude: 0, longitude: 0}   
+        // this.pointA = {latitude: 45, longitude: 45}
+        // this.pointB = {latitude: 0, longitude: 0}   
     }
+
+    
+  pointA: ILatLong = {latitude: 45, longitude: 45}
+  pointB: ILatLong = {latitude: 0, longitude: 0} 
+
+  ngOnInit(): void {
+    this.globeInputsService.getPointA().subscribe(
+            pointA =>{ 
+                this.pointA = pointA
+                this.updatePointA()
+            }
+            )
+    this.globeInputsService.getPointB().subscribe(
+            pointB => {
+                    this.pointB = pointB
+                    this.updatePointB()
+                }
+            )
+
+    this.globeInputsService.getDisplayModeState().subscribe(
+        updatedDisplayModeState => {
+            this.visualiserDisplayState = updatedDisplayModeState
+            this.newUpdateSceneVisibility()
+        }
+    )
+        
+    console.log("initialising")
+  }
+
 
 
     materialParameters = {
@@ -134,7 +161,10 @@ export class GlobeVisualiser implements OnInit {
         // "cartesianAxes"
         let _group = new Group();
         _group.name = "cartesianAxes"
-        _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+        // _group.visible = this.resultsDisplayOptions.controls[_group.name].value
+
+        _group.visible = this.visualiserDisplayState[_group.name as keyof IDisplayModeState]
+
         for(let axis of axesSet){
             _group.add(axis)
         }
@@ -163,7 +193,11 @@ export class GlobeVisualiser implements OnInit {
 
 
         this.wireframe.name = "wireFrameSphere"
-        this.wireframe.visible = this.resultsDisplayOptions.controls[this.wireframe.name].value
+
+        // this.wireframe.visible = this.resultsDisplayOptions.controls[this.wireframe.name].value
+        this.wireframe.visible = this.visualiserDisplayState[this.wireframe.name as keyof IDisplayModeState]
+
+
         this.scene.add( this.wireframe );
 
 
@@ -269,9 +303,7 @@ export class GlobeVisualiser implements OnInit {
 
 
 
-    ngOnInit(): void {
-        console.log("initialising")
-    }
+
 
 
     ngAfterViewInit() {
@@ -339,33 +371,6 @@ export class GlobeVisualiser implements OnInit {
         this.highlightCountry(inputCode)
     }
 
-    onInputChange_lat_A(event: MatSliderChange) {
-        if(event.value){
-            this.pointA.latitude = event.value
-            this.updatePointA()
-        }
-}
-
-    onInputChange_long_A(event: MatSliderChange) {
-        if(event.value){
-            this.pointA.longitude = event.value
-            this.updatePointA()
-        }
-    }
-
-    onInputChange_lat_B(event: MatSliderChange) {
-            if(event.value){
-                this.pointB.latitude = event.value
-                this.updatePointB()
-            }
-    }
-
-    onInputChange_long_B(event: MatSliderChange) {
-        if(event.value){
-            this.pointB.longitude = event.value
-            this.updatePointB()
-        }
-    }
 
     highlightCountry(countryCode: string): void{
 
@@ -465,34 +470,41 @@ export class GlobeVisualiser implements OnInit {
     deleteTest(){
         console.log("attempting to delete")
         this.deleteObjectByName('pointGroupA')
-        // this.animate()
     }
 
     updatePointA(): void {
         this.deleteObjectByName("pointGroupA")
         let _group = generateGroup(this.pointA, "pointGroupA", 0x00ff00)
-        _group.visible=this.resultsDisplayOptions.controls["mathsDemo"].value
+
+        // _group.visible=this.resultsDisplayOptions.controls["mathsDemo"].value
+        _group.visible= this.visualiserDisplayState.mathsDemo
+
         this.scene.add(_group)
         this.updateABTriangle()
         this.updateDebugGroup()
-        // this.animate()
     }
 
     updatePointB(): void {
         this.deleteObjectByName("pointGroupB")
         let _group = generateGroup(this.pointB, "pointGroupB", 0xff0000)
-        _group.visible=this.resultsDisplayOptions.controls["mathsDemo"].value
+
+        // _group.visible=this.resultsDisplayOptions.controls["mathsDemo"].value
+        _group.visible= this.visualiserDisplayState.mathsDemo
+
         this.scene.add(_group)
         this.updateABTriangle()
         this.updateDebugGroup()
-        // this.animate()
     }
 
     updateABTriangle(): void {
         this.deleteObjectByName("triangleABO") 
         let _triangleABO = wedgeBetweenTwoPoints(this.pointA, this.pointB, 0xBF1B39)
         _triangleABO.name = "triangleABO"
-        _triangleABO.visible =this.resultsDisplayOptions.controls["mathsDemo"].value
+
+        // _triangleABO.visible =this.resultsDisplayOptions.controls["mathsDemo"].value
+
+        _triangleABO.visible = this.visualiserDisplayState.mathsDemo
+
         this.scene.add(_triangleABO)
     }
 
@@ -516,7 +528,6 @@ export class GlobeVisualiser implements OnInit {
         let crossMarker = markerAtVector3(getGreatCirclePlaneCrossing(this.pointA, this.pointB).multiplyScalar(GLOBE_SCALAR), 3, 0xffffff )
 
         let _group = new Group()
-        // _group.name = "debugGroup"
         _group.add(GC_MaxMarker)
         _group.add(crossMarker)
 
@@ -524,44 +535,53 @@ export class GlobeVisualiser implements OnInit {
     }
 
  
-
-    displayOptionChanged(event: MatCheckboxChange): void{
-        // redrawOutput()
-        this.updateSceneVisibility()
-        
-    }
-
-    updateSceneVisibility(): void{
-        //select each named group
-        //check visibility
-        //toggle visibility
-        let _namedGroups: string[] = [  "wireFrameSphere", 
-                                        "cartesianAxes", 
-                                        "resultsGlobe", 
-                                        "guessWedges", 
-                                        "guessConstructorLines", 
-                                        "guessCentroids",
-                                        "guessGreatCircles",
-                                        "globeWedges"
-                                    ]
-
-        for(let group of _namedGroups){
-            this.updateNamedObjectVisibility(group)
-        }
-
-        this.updateMathsDemo()
+    // displayOptionChanged(event: MatCheckboxChange): void{
+    //     this.updateSceneVisibility()
+    // }
 
 
-    }
+    // updateSceneVisibility(): void{
+    //     //select each named group
+    //     //check visibility
+    //     //toggle visibility
+    //     let _namedGroups: string[] = [  "wireFrameSphere", 
+    //                                     "cartesianAxes", 
+    //                                     "resultsGlobe", 
+    //                                     "guessWedges", 
+    //                                     "guessConstructorLines", 
+    //                                     "guessCentroids",
+    //                                     "guessGreatCircles",
+    //                                     "globeWedges"
+    //                                 ]
 
-    updateNamedObjectVisibility(objectName: string): void{
-        //select each named group
-        //check visibility
-        //toggle visibility 
-        let object = this.scene.getObjectByName(objectName)
-        if(object){
-            object.visible = this.resultsDisplayOptions.controls[objectName].value
-        }
+    //     for(let group of _namedGroups){
+    //         this.updateNamedObjectVisibility(group)
+    //     }
+
+    //     this.updateMathsDemo()
+
+    // }
+
+    // updateNamedObjectVisibility(objectName: string): void{
+    //     //select each named group
+    //     //check visibility
+    //     //toggle visibility 
+    //     let object = this.scene.getObjectByName(objectName)
+    //     if(object){
+    //         object.visible = this.resultsDisplayOptions.controls[objectName].value
+    //     }
+    // }
+
+    newUpdateSceneVisibility(): void{
+        Object.entries(this.visualiserDisplayState).forEach(([key, value]) => {
+            // console.log(key, value);
+            let object = this.scene.getObjectByName(key)
+            if(object){
+                object.visible = value
+            }
+          });
+    
+          this.updateMathsDemo()
     }
 }
 

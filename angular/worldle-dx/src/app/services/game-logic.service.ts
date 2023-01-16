@@ -33,9 +33,6 @@ export class GameLogicService {
         this.displayMode$ = new BehaviorSubject(this._displayMode)
         this.gameState$ = new BehaviorSubject(this._gameState)
         this.targetCountry$ = new BehaviorSubject(this._targetCountry)
-       
-
-        // initialise game modes to 0th defaults
 
     }
 
