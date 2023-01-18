@@ -1,8 +1,3 @@
-<mat-toolbar>
-    <span>Worldle DX</span>
-</mat-toolbar>
-
-
 <div *ngIf="_gameMode==='flags'"><img width="400px" src="assets/flags/png1000px/{{_targetCountry.code| lowercase }}.png"/></div>
 <div *ngIf="_gameMode==='boundariesSVG'"><img width="400px" src="assets/boundaries/svg/{{_targetCountry.code| lowercase }}/vector.svg"
                                             [ngStyle] = "{'filter': ' brightness(0)  saturate(100%) invert(30%) sepia(5%) saturate(20%) hue-rotate(326deg) brightness(96%) contrast(83%) '}"
@@ -15,16 +10,6 @@
     <mat-card *ngFor="let guess of _guessList">
         {{getCountryName(guess)}}
     </mat-card>
-
-
-<!-- <select [(ngModel)]="_selectedCountry"  
-    (change)="onGuess()"
-    [disabled]="!uiActive"
-    >
-        <option *ngFor="let country of _countryList" [ngValue]="country">
-          {{country.name}}
-        </option>
-</select> -->
 
 <form class="example-form" *ngIf="_gameState==='ACTIVE'">
     <mat-form-field class="guess-input" appearance="fill">
@@ -57,19 +42,3 @@
 <div *ngIf="_gameState==='GAMEOVER'">GAME OVER</div>
 <div *ngIf="_gameState==='CORRECT'">A winner is you</div>
 <div *ngIf="_gameState==='GAMEOVER'||_gameState==='CORRECT'"><button mat-stroked-button (click)="resetGame()">Click here to play again</button></div>
-
-<div>
-    Game mode: {{_gameMode}}
-</div>
-
-<div>
-    Display mode: {{_displayMode}}
-</div>
-
-<div>
-    Game State: {{_gameState}}
-</div>
-
-<div>
-    Answer: {{_targetCountry.name}}
-</div>

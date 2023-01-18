@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@an
 import { map, Observable, startWith, Subject, takeUntil } from 'rxjs';
 import { getCountryNameFromCode } from 'src/app/commonFunctions/geographyFunctions';
 import { MAX_GUESSES } from 'src/app/constants';
-import { Country, ICountry } from 'src/app/models/game-logic';
+import { ICountry } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 
@@ -122,37 +122,6 @@ export class UserIoComponent implements OnInit {
             return "―"
         }
     }
-
-    // onGuess(): void {
-    //     let _newGuess = this._selectedCountry.code
-    //     if (this.isValidGuess(_newGuess)){
-    //         this.updateGuessList(_newGuess)
-    //         this.remainingGuesses = MAX_GUESSES - this._guessList.length
-
-    //         let _endPointCentroid = this._selectedCountry.centroidLatLong
-    //         this._centroidSeparation = calculateEarthGreatCircleDistance_KM(_endPointCentroid, this.targetLatLong)
-           
-    //         this.redrawGraph()
-
-                
-    //         // check if guess was correct/not
-    //         if (_newGuess === this.targetCountry.code) {
-    //             this.gameWon()
-    //         } else {
-    //             this.badGuess()
-    //         }
-    //     }
-    // }
-
-    // Find length of longest country name to set display box width
-    // getLength(): void {
-    //    let longest = NEW_COUNTRY_LIST.map(country => country.name).reduce(
-    //          (a: string, b: string) => {
-    //             return a.length > b.length ? a : b;
-    //         }
-    //     )
-    //     console.log(longest)
-    // }
 
   ngOnInit(): void {
   }

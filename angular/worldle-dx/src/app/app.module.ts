@@ -31,6 +31,11 @@ import { StatsTestingComponent } from './components/stats-testing/stats-testing.
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { GlobeControlsComponent } from './components/globe-controls/globe-controls.component';
+import { GridComponent } from './components/grid/grid.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { DebugComponent } from './components/debug/debug.component';
+import { GameClueComponent } from './components/game-clue/game-clue.component';
+import { SolutionCardComponent } from './components/solution-card/solution-card.component';
 
 
 @NgModule({
@@ -46,6 +51,11 @@ import { GlobeControlsComponent } from './components/globe-controls/globe-contro
     StatsTableComponent,
     StatsComponent,
     GlobeControlsComponent,
+    GridComponent,
+    NavbarComponent,
+    DebugComponent,
+    GameClueComponent,
+    SolutionCardComponent,
   ],
   imports: [
     BrowserModule,
