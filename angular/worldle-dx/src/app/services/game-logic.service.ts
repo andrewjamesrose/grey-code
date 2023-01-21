@@ -152,6 +152,13 @@ export class GameLogicService {
 
     
 
+    debug_GetCountryList (): ICountry[] {
+        return NEW_COUNTRY_LIST
+    }
+
+
+    
+
 
     // getMode
 

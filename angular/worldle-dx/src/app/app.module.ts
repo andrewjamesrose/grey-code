@@ -1,41 +1,43 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { KatexModule } from 'ng-katex';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CalcTestComponent } from './components/_archive-of-experiments/calc-test/calc-test.component';
-import { HttpClientModule } from '@angular/common/http';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button'
-import {MatAutocompleteModule} from '@angular/material/autocomplete'
-import {MatInputModule} from '@angular/material/input'
-import {MatCardModule} from '@angular/material/card'
-import {MatToolbarModule} from '@angular/material/toolbar'
-import {MatSliderModule} from '@angular/material/slider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatTableModule} from '@angular/material/table'
-import {MatSortModule} from '@angular/material/sort'
-import {MatRadioModule} from '@angular/material/radio'
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { KatexModule } from 'ng-katex';
-import { KatexExampleComponent } from './components/_archive-of-experiments/katex-example/katex-example.component';
-import { AngularAutofilterExampleComponent } from './components/_archive-of-experiments/angular-autofilter-example/angular-autofilter-example.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { UserIoComponent } from './components/user-io/user-io.component';
-import { GameLogicService } from './services/game-logic.service';
-import { MathsDemoComponent } from './components/_archive-of-experiments/maths-demo/maths-demo.component';
-import { GlobeVisualiser } from './components/globe-visualiser/globe-visualiser.component';
-import { LocalStorageService } from './services/local-storage.service';
-import { GameStatisticsService } from './services/game-statistics.service';
-import { StatsTestingComponent } from './components/stats-testing/stats-testing.component';
-import { StatsTableComponent } from './components/stats-table/stats-table.component';
-import { StatsComponent } from './components/stats/stats.component';
-import { GlobeControlsComponent } from './components/globe-controls/globe-controls.component';
-import { GridComponent } from './components/grid/grid.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { DebugComponent } from './components/debug/debug.component';
 import { GameClueComponent } from './components/game-clue/game-clue.component';
+import { GlobeControlsComponent } from './components/globe-controls/globe-controls.component';
+import { GlobeVisualiser } from './components/globe-visualiser/globe-visualiser.component';
+import { GridComponent } from './components/grid/grid.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { SolutionCardComponent } from './components/solution-card/solution-card.component';
+import { StatsTableComponent } from './components/stats-table/stats-table.component';
+import { StatsTestingComponent } from './components/stats-testing/stats-testing.component';
+import { StatsComponent } from './components/stats/stats.component';
+import { UserIoComponent } from './components/user-io/user-io.component';
+import { AngularAutofilterExampleComponent } from './components/_archive-of-experiments/angular-autofilter-example/angular-autofilter-example.component';
+import { CalcTestComponent } from './components/_archive-of-experiments/calc-test/calc-test.component';
+import { KatexExampleComponent } from './components/_archive-of-experiments/katex-example/katex-example.component';
+import { MathsDemoComponent } from './components/_archive-of-experiments/maths-demo/maths-demo.component';
+import { GameLogicService } from './services/game-logic.service';
+import { GameStatisticsService } from './services/game-statistics.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 
 @NgModule({
@@ -68,8 +70,10 @@ import { SolutionCardComponent } from './components/solution-card/solution-card.
     MatButtonModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatCardModule,
+    MatMenuModule,
     MatToolbarModule,
     MatSliderModule,
     MatCheckboxModule,

@@ -9,6 +9,9 @@ export interface ICountry {
     code: string
     codeThree: string
     continent: string
+    flagUnique: boolean
+    hasBoundary2D: boolean
+    hasBoundary3D: boolean
 }
 
 export class Country implements ICountry {
@@ -19,13 +22,19 @@ export class Country implements ICountry {
         code: string
         codeThree: string
         continent: string
+        flagUnique: boolean
+        hasBoundary2D: boolean
+        hasBoundary3D: boolean
     constructor(name: string,
                 capital: string,
                 capitalLatLong: ILatLong,
                 centroidLatLong: ILatLong,
                 code: string,
                 codeThree: string,
-                continent: string
+                continent: string,
+                flagUnique: boolean,
+                hasBoundary2D: boolean,
+                hasBoundary3D: boolean
         ){
             this.name = name
             this.capital = capital
@@ -34,7 +43,10 @@ export class Country implements ICountry {
             this.code = code
             this.codeThree = codeThree
             this.continent = continent
-        
+            this.flagUnique = flagUnique
+            this.hasBoundary2D = hasBoundary3D
+            this.hasBoundary3D = hasBoundary2D
+
     }
 }
 

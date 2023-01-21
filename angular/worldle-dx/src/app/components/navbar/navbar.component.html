@@ -1,3 +1,54 @@
 <mat-toolbar>
     <span>Worldle DX</span>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+        <mat-icon>skip_next</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>settings</mat-icon>
+    </button>
 </mat-toolbar>
+
+<mat-menu #menu="matMenu">
+    <span mat-menu-item disabled>Gameplay Mode</span>
+
+    <button mat-menu-item>
+        <mat-icon>location_city</mat-icon>
+        <span>Capitals</span>
+    </button>
+
+    <button mat-menu-item>
+        <mat-icon>flag</mat-icon>
+        <span>Flags</span>
+    </button>
+
+    <button mat-menu-item>
+        <mat-icon>public</mat-icon>
+        <span>Borders</span>
+    </button>
+
+    <span mat-menu-item disabled>Other Modes</span>
+
+    
+    <button mat-menu-item>
+        <mat-icon>query_stats</mat-icon>
+        <span>Game Statistics</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>functions</mat-icon>
+        <span>Maths Mode</span>
+    </button>
+
+    <span mat-menu-item disabled>Debug Tools</span>
+
+    <button mat-menu-item>
+        <mat-icon>visibility</mat-icon>
+        <span>Display States</span>
+    </button>
+
+    <button mat-menu-item>
+        <mat-icon>search</mat-icon>
+        <span>Review Data</span>
+    </button>
+
+  </mat-menu>

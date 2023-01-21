@@ -23,4 +23,12 @@ export class DebugComponent implements OnInit {
     this.gameLogic.getGameState().subscribe(gameState=>{this._gameState = gameState})
   }
 
+
+  regenerateJSON() {
+    let _countryList = this.gameLogic.debug_GetCountryList()
+    console.log("country list:")
+    
+    console.log(_countryList)
+  }
+
 }
