@@ -7,9 +7,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSortModule } from '@angular/material/sort';
@@ -20,6 +20,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { KatexModule } from 'ng-katex';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DataReviewComponent } from './components/data-review/data-review.component';
 import { DebugComponent } from './components/debug/debug.component';
 import { GameClueComponent } from './components/game-clue/game-clue.component';
 import { GlobeControlsComponent } from './components/globe-controls/globe-controls.component';
@@ -38,7 +39,10 @@ import { MathsDemoComponent } from './components/_archive-of-experiments/maths-d
 import { GameLogicService } from './services/game-logic.service';
 import { GameStatisticsService } from './services/game-statistics.service';
 import { LocalStorageService } from './services/local-storage.service';
-import { DataReviewComponent } from './components/data-review/data-review.component';
+import {MatDialogModule} from '@angular/material/dialog'
+import { PopUpDialogServiceService } from './services/pop-up-dialog-service.service';
+import { PopUpDialogComponent } from './shared/pop-up-dialog/pop-up-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -60,6 +64,7 @@ import { DataReviewComponent } from './components/data-review/data-review.compon
     GameClueComponent,
     SolutionCardComponent,
     DataReviewComponent,
+    PopUpDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,9 +87,11 @@ import { DataReviewComponent } from './components/data-review/data-review.compon
     MatTableModule,
     MatRadioModule,
     MatButtonToggleModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
+    MatSelectModule
   ],
-  providers: [LocalStorageService, GameLogicService, GameStatisticsService],
+  providers: [LocalStorageService, GameLogicService, GameStatisticsService, PopUpDialogServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

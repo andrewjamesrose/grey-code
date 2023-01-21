@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopUpDialogServiceService } from 'src/app/services/pop-up-dialog-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private popUpService: PopUpDialogServiceService) { }
 
   ngOnInit(): void {
+  }
+
+  testClick(): void {
+    console.log("clicky mc clickface")
+    this.popUpService.open()
   }
 
 }

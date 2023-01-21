@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ICountry } from 'src/app/models/game-logic';
+// import { ICountry } from 'src/app/models/game-logic';
+
 
 @Component({
   selector: 'data-review',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataReviewComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+
+  }
+
+  countryList: ICountry[] 
 
   ngOnInit(): void {
   }
+
+
+
+  foods: any[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
 
 }
