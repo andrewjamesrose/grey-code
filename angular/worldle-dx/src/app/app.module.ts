@@ -38,6 +38,7 @@ import { MathsDemoComponent } from './components/_archive-of-experiments/maths-d
 import { GameLogicService } from './services/game-logic.service';
 import { GameStatisticsService } from './services/game-statistics.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { DataReviewComponent } from './components/data-review/data-review.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { LocalStorageService } from './services/local-storage.service';
     DebugComponent,
     GameClueComponent,
     SolutionCardComponent,
+    DataReviewComponent,
   ],
   imports: [
     BrowserModule,
