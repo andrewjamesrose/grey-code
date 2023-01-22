@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
 import { convertCartesianToThree, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, markerAtLatLong, markerAtVector3, wedgeBetweenTwoPoints } from 'src/app/commonFunctions/threeSphereFunctions';
 import { GLOBE_SCALAR, X_UNIT, Y_UNIT } from 'src/app/constants';

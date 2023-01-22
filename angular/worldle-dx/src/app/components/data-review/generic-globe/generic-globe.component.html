@@ -1,0 +1,10 @@
+<p>generic-globe works!</p>
+<p>Two Letter Code: {{selectedCountry?.code}}</p>
+<p>Map</p>
+
+<div>Capital: {{selectedCountry?.capital}}</div>
+<div><img width="400px" src="assets/flags/png1000px/{{selectedCountry?.code| lowercase }}.png"/></div>
+<div><img width="400px" src="assets/boundaries/svg/{{selectedCountry?.code| lowercase }}/vector.svg"
+                                            [ngStyle] = "{'filter': ' brightness(0)  saturate(100%) invert(30%) sepia(5%) saturate(20%) hue-rotate(326deg) brightness(96%) contrast(83%) '}"
+                                    
+                        /></div>

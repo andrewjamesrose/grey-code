@@ -43,6 +43,7 @@ import {MatDialogModule} from '@angular/material/dialog'
 import { PopUpDialogServiceService } from './services/pop-up-dialog-service.service';
 import { PopUpDialogComponent } from './shared/pop-up-dialog/pop-up-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
+import { GenericGlobeComponent } from './components/data-review/generic-globe/generic-globe.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import {MatSelectModule} from '@angular/material/select';
     SolutionCardComponent,
     DataReviewComponent,
     PopUpDialogComponent,
+    GenericGlobeComponent,
   ],
   imports: [
     BrowserModule,
