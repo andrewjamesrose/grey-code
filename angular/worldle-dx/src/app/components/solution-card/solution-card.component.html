@@ -1,1 +1,7 @@
-<p>solution-card works!</p>
+<p>Solution</p>
+<div>Capital: {{targetCountry.capital}}</div>
+<div><img width="400px" src="assets/flags/png1000px/{{targetCountry?.code| lowercase }}.png"/></div>
+<div><img width="400px" src="assets/boundaries/svg/{{targetCountry?.code| lowercase }}/vector.svg"
+                                            [ngStyle] = "{'filter': ' brightness(0)  saturate(100%) invert(30%) sepia(5%) saturate(20%) hue-rotate(326deg) brightness(96%) contrast(83%) '}"
+                                    
+                        /></div>
