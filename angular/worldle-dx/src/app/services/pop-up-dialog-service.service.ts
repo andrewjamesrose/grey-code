@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { GameMode } from '../constants';
 import { PopUpDialogComponent } from '../shared/pop-up-dialog/pop-up-dialog.component';
 
 @Injectable({
@@ -12,8 +13,8 @@ export class PopUpDialogServiceService {
 
   dialogRef!: MatDialogRef<PopUpDialogComponent>
 
-  public open(){
-    this.dialogRef = this.dialog.open(PopUpDialogComponent)
+  public open(newGameMode: GameMode){
+    this.dialogRef = this.dialog.open(PopUpDialogComponent, {data: newGameMode})
   }
  
 }

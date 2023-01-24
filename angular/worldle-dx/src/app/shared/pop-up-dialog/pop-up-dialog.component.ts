@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { GameMode } from 'src/app/constants';
+import { GameLogicService } from 'src/app/services/game-logic.service';
 
 @Component({
   selector: 'app-pop-up-dialog',
@@ -8,7 +10,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class PopUpDialogComponent {
 
-  constructor(private popUpDialog: MatDialogRef<PopUpDialogComponent>) { }
+  constructor(private popUpDialog: MatDialogRef<PopUpDialogComponent>, 
+    @Inject(MAT_DIALOG_DATA) public newGameMode: GameMode,
+    private gameLogicService: GameLogicService) { }
 
 //   ngOnInit(): void {
 //   }
@@ -21,6 +25,12 @@ export class PopUpDialogComponent {
   }
   public confirm() {
     this.close(true);
+  }
+
+  yesProceed(): void {
+    this.gameLogicService.actuallySetGameMode(this.newGameMode)
+    this.gameLogicService.reInitialiseGame()
+    this.confirm()
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { map, Observable, startWith, Subject, takeUntil } from 'rxjs';
 import { getCountryNameFromCode } from 'src/app/commonFunctions/geographyFunctions';
-import { MAX_GUESSES } from 'src/app/constants';
+import { GameMode, MAX_GUESSES } from 'src/app/constants';
 import { ICountry } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
@@ -26,7 +26,7 @@ export class UserIoComponent implements OnInit {
 
     _guessList: string[] = []
     
-    _gameMode!: string
+    _gameMode!: GameMode
     _displayMode!: string
     _gameState!: string
     _targetCountry!: ICountry

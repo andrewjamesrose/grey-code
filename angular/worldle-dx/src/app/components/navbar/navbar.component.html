@@ -12,17 +12,17 @@
 <mat-menu #menu="matMenu">
     <span mat-menu-item disabled>Gameplay Mode</span>
 
-    <button mat-menu-item (click)=testClick()>
+    <button mat-menu-item (click)="modeSelector('capitals')">
         <mat-icon>location_on</mat-icon>
         <span>Capitals</span>
     </button>
 
-    <button mat-menu-item>
+    <button mat-menu-item (click)="modeSelector('flags')">
         <mat-icon>flag</mat-icon>
         <span>Flags</span>
     </button>
 
-    <button mat-menu-item>
+    <button mat-menu-item (click)="modeSelector('boundaries')">
         <mat-icon>public</mat-icon>
         <span>Borders</span>
     </button>

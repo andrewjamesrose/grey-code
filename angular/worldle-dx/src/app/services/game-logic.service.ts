@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { generateRandomInteger } from '../commonFunctions/geographyFunctions';
-import { GAME_MODES, MAX_GUESSES, VIEW_MODES } from '../constants';
+import { GameDisplayMode, GameMode as GameMode, GameState, GAME_MODES, MAX_GUESSES, VIEW_MODES } from '../constants';
 import { ICountry } from '../models/game-logic';
+import { PopUpDialogServiceService } from './pop-up-dialog-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,16 @@ export class GameLogicService {
 
     private _gameMode
     private _displayMode
-    private _gameState: string
+    private _gameState: GameState
     private _targetCountry: ICountry
 
-    constructor() {
+    constructor(private popUpService: PopUpDialogServiceService) {
         this.countryListFull = NEW_COUNTRY_LIST
         this._guessList = []
 
         this._gameMode = GAME_MODES[0]
         this._displayMode = VIEW_MODES[0]
-        this._gameState = 'ACTIVE'
+        this._gameState = <GameState>'ACTIVE'
         this._targetCountry = getRandomCountry()
         
         
@@ -40,9 +41,9 @@ export class GameLogicService {
     _guessList: string[]
 
     private guessList$: BehaviorSubject<string[]> 
-    private gameMode$: BehaviorSubject<string>
-    private displayMode$: BehaviorSubject<string>
-    private gameState$: BehaviorSubject<string>
+    private gameMode$: BehaviorSubject<GameMode>
+    private displayMode$: BehaviorSubject<GameDisplayMode>
+    private gameState$: BehaviorSubject<GameState>
     private targetCountry$: BehaviorSubject<ICountry>
 
 
@@ -58,6 +59,7 @@ export class GameLogicService {
 
     
     toggleGameMode(): void{
+
         let currentIndex = GAME_MODES.indexOf(this._gameMode)
         let maxIndex = GAME_MODES.length-1
 
@@ -71,7 +73,24 @@ export class GameLogicService {
     }
 
 
-    getGameMode(): Observable<string> {
+    setGameMode(newGameMode: GameMode): void {
+        if(this._gameState==='ACTIVE'){
+            // Bail out with challenge
+            this.popUpService.open(newGameMode)
+            console.log("Bailing out as there is a game in progress")
+        } else {
+            this.actuallySetGameMode(newGameMode)
+        }
+    }
+
+    
+    actuallySetGameMode(newGameMode: GameMode): void {
+        this._gameMode = newGameMode
+        this.gameMode$.next(this._gameMode)    
+    }
+
+
+    getGameMode(): Observable<GameMode> {
         return this.gameMode$.asObservable()
     }
 

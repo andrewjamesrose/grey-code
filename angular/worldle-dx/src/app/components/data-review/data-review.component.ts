@@ -65,8 +65,8 @@ export class DataReviewComponent implements OnInit {
     console.log("These are only in the country list")
     console.log(onlyBoundaryList)
 
-    console.log("Full 3D GeoJSON Data")
-    console.log(geoJSONFiltered)
+    // console.log("Full 3D GeoJSON Data")
+    // console.log(geoJSONFiltered)
 
 
     // 1 genereate a list of all countries in the main country list which do not have a corresponding element in the 3d geojson object
