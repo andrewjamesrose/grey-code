@@ -1,7 +1,7 @@
 <mat-toolbar>
     <span>Worldle DX</span>
     <span class="spacer"></span>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="newGame()">
         <mat-icon>skip_next</mat-icon>
     </button>
     <button mat-icon-button [matMenuTriggerFor]="menu">

@@ -74,7 +74,7 @@ export class GameLogicService {
 
 
     setGameMode(newGameMode: GameMode): void {
-        if(this._gameState==='ACTIVE'){
+        if(this._gameState==='ACTIVE' && this._gameMode!==newGameMode){
             // Bail out with challenge
             this.popUpService.open(newGameMode)
             console.log("Bailing out as there is a game in progress")

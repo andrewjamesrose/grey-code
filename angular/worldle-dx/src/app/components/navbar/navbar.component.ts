@@ -24,4 +24,8 @@ export class NavbarComponent implements OnInit {
     this.gameLogicService.setGameMode(newGameMode)
   }
 
+  newGame(): void {
+    this.gameLogicService.reInitialiseGame()
+  }
+
 }
