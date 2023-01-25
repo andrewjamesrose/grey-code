@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { generateRandomInteger } from '../commonFunctions/geographyFunctions';
-import { GameDisplayMode, GameMode as GameMode, GameState, GAME_MODES, MAX_GUESSES, VIEW_MODES } from '../constants';
+import { AppMode, GameDisplayMode, GameMode as GameMode, GameState, GAME_MODES, MAX_GUESSES, VIEW_MODES } from '../constants';
 import { ICountry } from '../models/game-logic';
 import { PopUpDialogServiceService } from './pop-up-dialog-service.service';
 
@@ -14,6 +14,7 @@ export class GameLogicService {
     private _emptyArray: string[] = []
     // private _currentCountry: ICountry
 
+    private _appMode: AppMode
     private _gameMode
     private _displayMode
     private _gameState: GameState
@@ -23,6 +24,7 @@ export class GameLogicService {
         this.countryListFull = NEW_COUNTRY_LIST
         this._guessList = []
 
+        this._appMode = <AppMode>'GAME'  //initialise to game mode
         this._gameMode = GAME_MODES[0]
         this._displayMode = VIEW_MODES[0]
         this._gameState = <GameState>'ACTIVE'
@@ -30,6 +32,8 @@ export class GameLogicService {
         
         
         this.guessList$ = new BehaviorSubject(this._emptyArray)
+
+        this.appMode$ = new BehaviorSubject(this._appMode)
         this.gameMode$ = new BehaviorSubject(this._gameMode)
         this.displayMode$ = new BehaviorSubject(this._displayMode)
         this.gameState$ = new BehaviorSubject(this._gameState)
@@ -41,6 +45,8 @@ export class GameLogicService {
     _guessList: string[]
 
     private guessList$: BehaviorSubject<string[]> 
+
+    private appMode$: BehaviorSubject<AppMode>
     private gameMode$: BehaviorSubject<GameMode>
     private displayMode$: BehaviorSubject<GameDisplayMode>
     private gameState$: BehaviorSubject<GameState>
@@ -95,6 +101,17 @@ export class GameLogicService {
     }
 
 
+    setAppMode(newAppMode: AppMode): void {
+        this._appMode = newAppMode
+        this.appMode$.next(this._appMode)
+    }
+
+
+    getAppMode(): Observable<AppMode> {
+        return this.appMode$.asObservable()
+    }
+
+    
     toggleDisplayMode(): void {
         let currentIndex = VIEW_MODES.indexOf(this._displayMode)
         let maxIndex = VIEW_MODES.length

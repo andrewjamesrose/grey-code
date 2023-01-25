@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameMode } from 'src/app/constants';
+import { AppMode, GameMode } from 'src/app/constants';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 import { PopUpDialogServiceService } from 'src/app/services/pop-up-dialog-service.service';
 
@@ -20,8 +20,13 @@ export class NavbarComponent implements OnInit {
 //     this.popUpService.open()
 //   }
 
-  modeSelector(newGameMode: GameMode): void {
+  gameModeSelector(newGameMode: GameMode): void {
+    this.gameLogicService.setAppMode('GAME')
     this.gameLogicService.setGameMode(newGameMode)
+  }
+
+  appModeSelector(newAppMode: AppMode): void {
+    this.gameLogicService.setAppMode(newAppMode)
   }
 
   newGame(): void {

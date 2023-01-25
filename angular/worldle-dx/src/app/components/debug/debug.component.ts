@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppMode } from 'src/app/constants';
 import { ICountry } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 
@@ -15,8 +16,10 @@ export class DebugComponent implements OnInit {
   _displayMode!: string
   _gameState!: string
   _targetCountry!: ICountry
+  _appMode!: AppMode
 
   ngOnInit(): void {
+    this.gameLogic.getAppMode().subscribe(appMode => {this._appMode = appMode})
     this.gameLogic.getGameMode().subscribe(gameMode =>{this._gameMode = gameMode})
     this.gameLogic.getDisplayMode().subscribe(displayMode =>{this._displayMode = displayMode})
     this.gameLogic.getTargetCountry().subscribe(targetCountry=>{this._targetCountry = targetCountry})

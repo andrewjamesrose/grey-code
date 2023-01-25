@@ -12,17 +12,17 @@
 <mat-menu #menu="matMenu">
     <span mat-menu-item disabled>Gameplay Mode</span>
 
-    <button mat-menu-item (click)="modeSelector('capitals')">
+    <button mat-menu-item (click)="gameModeSelector('capitals')">
         <mat-icon>location_on</mat-icon>
         <span>Capitals</span>
     </button>
 
-    <button mat-menu-item (click)="modeSelector('flags')">
+    <button mat-menu-item (click)="gameModeSelector('flags')">
         <mat-icon>flag</mat-icon>
         <span>Flags</span>
     </button>
 
-    <button mat-menu-item (click)="modeSelector('boundaries')">
+    <button mat-menu-item (click)="gameModeSelector('boundaries')">
         <mat-icon>public</mat-icon>
         <span>Borders</span>
     </button>
@@ -30,14 +30,20 @@
     <span mat-menu-item disabled>Other Modes</span>
 
     
-    <button mat-menu-item>
+    <button mat-menu-item (click)="appModeSelector('STATS')">
         <mat-icon>query_stats</mat-icon>
         <span>Game Statistics</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="appModeSelector('MATHS')">
         <mat-icon>functions</mat-icon>
         <span>Maths Mode</span>
     </button>
+    <button mat-menu-item (click)="appModeSelector('STUDY')">
+        <mat-icon class="icon-color-test" >import_contacts</mat-icon>
+        <span class="icon-color-test" >Revision Mode</span>
+    </button>
+
+    
 
     <span mat-menu-item disabled>Debug Tools</span>
 
