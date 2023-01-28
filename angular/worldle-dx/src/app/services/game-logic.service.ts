@@ -130,7 +130,7 @@ export class GameLogicService {
     }
 
     
-    getGameState(): Observable<string> {
+    getGameState(): Observable<GameState> {
         return this.gameState$.asObservable()
     }
 

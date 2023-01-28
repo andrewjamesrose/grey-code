@@ -13,37 +13,35 @@
     <span mat-menu-item disabled>Gameplay Mode</span>
 
     <button mat-menu-item (click)="gameModeSelector('capitals')">
-        <mat-icon>location_on</mat-icon>
-        <span>Capitals</span>
+        <mat-icon [ngClass]="{'selected': _gameMode==='capitals' && _appMode==='GAME'}">location_on</mat-icon>
+        <span [ngClass]="{'selected': _gameMode==='capitals' && _appMode==='GAME'}">Capitals</span>
     </button>
 
     <button mat-menu-item (click)="gameModeSelector('flags')">
-        <mat-icon>flag</mat-icon>
-        <span>Flags</span>
+        <mat-icon [ngClass]="{'selected': _gameMode==='flags' && _appMode==='GAME'}">flag</mat-icon>
+        <span [ngClass]="{'selected': _gameMode==='flags' && _appMode==='GAME'}">Flags</span>
     </button>
 
     <button mat-menu-item (click)="gameModeSelector('boundaries')">
-        <mat-icon>public</mat-icon>
-        <span>Borders</span>
+        <mat-icon [ngClass]="{'selected': _gameMode==='boundaries' && _appMode==='GAME'}">public</mat-icon>
+        <span [ngClass]="{'selected': _gameMode==='boundaries' && _appMode==='GAME'}">Borders</span>
     </button>
 
     <span mat-menu-item disabled>Other Modes</span>
 
     
     <button mat-menu-item (click)="appModeSelector('STATS')">
-        <mat-icon>query_stats</mat-icon>
-        <span>Game Statistics</span>
+        <mat-icon [ngClass]="{'selected': _appMode==='STATS'}">query_stats</mat-icon>
+        <span [ngClass]="{'selected': _appMode==='STATS'}">Game Statistics</span>
     </button>
     <button mat-menu-item (click)="appModeSelector('MATHS')">
-        <mat-icon>functions</mat-icon>
-        <span>Maths Mode</span>
+        <mat-icon [ngClass]="{'selected': _appMode==='MATHS'}">functions</mat-icon>
+        <span [ngClass]="{'selected': _appMode==='MATHS'}">Maths Mode</span>
     </button>
     <button mat-menu-item (click)="appModeSelector('STUDY')">
-        <mat-icon class="icon-color-test" >import_contacts</mat-icon>
-        <span class="icon-color-test" >Revision Mode</span>
+        <mat-icon [ngClass]="{'selected': _appMode==='STUDY'}">import_contacts</mat-icon>
+        <span [ngClass]="{'selected': _appMode==='STUDY'}" >Revision Mode</span>
     </button>
-
-    
 
     <span mat-menu-item disabled>Debug Tools</span>
 

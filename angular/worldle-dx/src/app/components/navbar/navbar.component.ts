@@ -10,7 +10,13 @@ import { PopUpDialogServiceService } from 'src/app/services/pop-up-dialog-servic
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private popUpService: PopUpDialogServiceService, private gameLogicService: GameLogicService) { }
+    _appMode!: AppMode
+    _gameMode!: GameMode
+
+  constructor(private popUpService: PopUpDialogServiceService, private gameLogicService: GameLogicService) { 
+    this.gameLogicService.getAppMode().subscribe(appMode => {this._appMode = appMode})
+    this.gameLogicService.getGameMode().subscribe(gameMode => {this._gameMode = gameMode})
+  }
 
   ngOnInit(): void {
   }
@@ -18,7 +24,7 @@ export class NavbarComponent implements OnInit {
 //   testClick(): void {
 //     console.log("clicky mc clickface")
 //     this.popUpService.open()
-//   }
+//   
 
   gameModeSelector(newGameMode: GameMode): void {
     this.gameLogicService.setAppMode('GAME')

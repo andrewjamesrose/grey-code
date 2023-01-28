@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
-import { ICountry } from 'src/app/models/game-logic';
+import { elementAt } from 'rxjs';
+import { ICountry, ICountryOld } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 import { GlobeVisualiserInputsService, IGeoJSON3D } from 'src/app/services/globe-visualiser-inputs.service';
-// import { ICountry } from 'src/app/models/game-logic';
+import { OLD_COUNTRY_DATA } from '../../../assets/capitals/data v1.';
+
+import { Country, ILatLong } from '../../models/game-logic';
 
 
 @Component({
@@ -19,6 +22,8 @@ export class DataReviewComponent implements OnInit {
 
   selectedCountry!: ICountry
 
+
+  oldCountryData: ICountryOld[] = OLD_COUNTRY_DATA
   countryList: ICountry[] = this.gameLogic.debug_GetCountryList()
 
   ngOnInit(): void {
@@ -65,6 +70,12 @@ export class DataReviewComponent implements OnInit {
     console.log("These are only in the country list")
     console.log(onlyBoundaryList)
 
+    let newCleanedData: ICountry[] = this.countryList.map((element: ICountry)=>{
+        return {...element, hasBoundary3D: bothLists.includes(element.code)}
+    })
+
+    console.log(newCleanedData)
+
     // console.log("Full 3D GeoJSON Data")
     // console.log(geoJSONFiltered)
 
@@ -79,12 +90,24 @@ export class DataReviewComponent implements OnInit {
     console.log($event.value)
     this.selectedCountry = $event.value
   }
+  
+  repairCapitalLatLongs(): void {
+    let newCleanedData: ICountry[] = this.countryList.map((newElement: ICountry)=>{
+        
+        let oldCountry = this.oldCountryData.filter((oldElement: ICountryOld) => {
+            return oldElement["Two Letter Code"] === newElement.code
+        })
 
+        let _capitalLatLong = {
+                                    "latitude": oldCountry[0]["Capital Latitude"],
+                                    "longitude":  oldCountry[0]["Capital Longitude"]
+                                }
 
-  foods: any[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+        return {...newElement, capitalLatLong: _capitalLatLong}
+    })
+
+    console.log(newCleanedData)
+
+  }
 
 }

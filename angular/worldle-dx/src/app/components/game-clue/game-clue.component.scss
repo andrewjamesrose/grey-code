@@ -1,0 +1,24 @@
+.clue-display {
+    height: 200px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-self: center;
+    justify-self: center;
+}
+
+.clue-boundaries {
+    align-self: center;
+    justify-self: center;
+}
+
+.clue-flags {
+    align-self: center;
+    justify-self: center;
+}
+
+.clue-capitals {
+    font-size: 38pt;
+    align-self: center;
+    justify-self: center;
+}

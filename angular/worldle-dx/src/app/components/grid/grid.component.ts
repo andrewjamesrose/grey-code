@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameLogicService } from 'src/app/services/game-logic.service';
+import { AppMode, GameMode, GameState } from '../../constants';
 
 @Component({
   selector: 'app-grid',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GridComponent implements OnInit {
 
-  constructor() { }
+    _gameMode: GameMode = 'flags'
+    _appMode: AppMode = 'GAME'
 
-  ngOnInit(): void {
-  }
+    constructor(private gameLogicService: GameLogicService) {
+        this.gameLogicService.getGameMode().subscribe(gameMode => {this._gameMode = gameMode})
+        this.gameLogicService.getAppMode().subscribe(appMode => {this._appMode = appMode})
+     }
+
+    ngOnInit(): void {
+    }
 
 }

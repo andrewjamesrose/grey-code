@@ -1,21 +1,31 @@
 <div class="container">
-    <div class="item item-1"> Item One </div>
+    <!-- <div class="item item-1"> Item One </div>
     <div class="item item-2"> Item Two</div>
-    <div class="item item-3"> Item Three</div>
-    <div class="item item-4"> Item Four</div>
+    <div class="item item-3"> Item Three</div> -->
+    <!-- <div class="item item-4"> Item Four</div> -->
 
     <app-navbar class="nav-bar"></app-navbar>
-    
-    <user-io class="user-io"></user-io>
-    <app-debug class="app-debug"></app-debug>
-    <app-game-clue class="app-debug"></app-game-clue>
-    <!-- <globe-controls class="globe-controls"></globe-controls> -->
-    <!-- <globe-visualiser class="globe-visualiser"></globe-visualiser> -->
-    
-    <!-- <app-stats-table class="stats-table"></app-stats-table> -->
+   
+    <!-- <div *ngIf="_appMode==='GAME'">  -->
+        <game-clue class="game-clue" *ngIf="_appMode==='GAME'"></game-clue>
+        <user-io class="user-io" *ngIf="_appMode==='GAME'"></user-io>
+    <!-- </div> -->
 
-    <!-- <solution-card class="solution-card"></solution-card> -->
+    <!-- <div *ngIf="_appMode==='">  -->
+        <app-debug class="app-debug"></app-debug>
+    <!-- </div> -->
 
-    <data-review class="data-review"></data-review>
+
+    <!-- <div *ngIf="_appMode==='MATHS'"> -->
+        <globe-controls class="globe-controls" *ngIf="_appMode==='MATHS'"></globe-controls>
+        <globe-visualiser class="globe-visualiser" *ngIf="_appMode==='MATHS'"></globe-visualiser>
+    <!-- </div> -->
+
+
+    <app-stats-table *ngIf="_appMode==='STATS'" class="stats-table"></app-stats-table>
+
+    <solution-card *ngIf="" class="solution-card"></solution-card>
+
+    <data-review *ngIf="_appMode==='STUDY'" class="data-review"></data-review>
 
   </div>

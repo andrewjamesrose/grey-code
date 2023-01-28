@@ -2,31 +2,31 @@ import { getCentroidLatLong } from "src/app/commonFunctions/geographyFunctions";
 import { Country, ICountryOld, ICountry } from "src/app/models/game-logic";
 
 
-export function remapCodes(): ICountry[] {
-    let _output: ICountry[] = []
+// export function remapCodes(): ICountry[] {
+//     let _output: ICountry[] = []
 
-    for (let oldCountry of OLD_COUNTRY_DATA){
-        let _name = oldCountry['Country']
-        let _capital = oldCountry['Capital']
+//     for (let oldCountry of OLD_COUNTRY_DATA){
+//         let _name = oldCountry['Country']
+//         let _capital = oldCountry['Capital']
 
-        let _code = oldCountry['Two Letter Code']
-        let _codeThree = oldCountry['Three Letter Code']
-        let _continent = oldCountry['Continent']
-        let _capitalLatlong =   {    
-                                    latitude: oldCountry['Capital Latitude'],
-                                    longitude: oldCountry['Capital Latitude']
-                                }
-        let _centroidLatLong = {    
-                                    latitude: oldCountry['Centroid Lat'],
-                                    longitude: oldCountry['Centroid Long']
-                                }
+//         let _code = oldCountry['Two Letter Code']
+//         let _codeThree = oldCountry['Three Letter Code']
+//         let _continent = oldCountry['Continent']
+//         let _capitalLatlong =   {    
+//                                     latitude: oldCountry['Capital Latitude'],
+//                                     longitude: oldCountry['Capital Longitude']
+//                                 }
+//         let _centroidLatLong = {    
+//                                     latitude: oldCountry['Centroid Lat'],
+//                                     longitude: oldCountry['Centroid Long']
+//                                 }
 
-        let newCountry = new Country(_name, _capital, _capitalLatlong, _centroidLatLong, _code, _codeThree, _continent)
-        _output.push(newCountry)
-    }
+//         let newCountry = new Country(_name, _capital, _capitalLatlong, _centroidLatLong, _code, _codeThree, _continent)
+//         _output.push(newCountry)
+//     }
 
-    return _output
-}
+//     return _output
+// }
 
 export const OLD_COUNTRY_DATA: ICountryOld[] = [
     {

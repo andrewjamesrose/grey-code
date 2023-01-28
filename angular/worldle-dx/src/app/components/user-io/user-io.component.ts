@@ -37,9 +37,9 @@ export class UserIoComponent implements OnInit {
     availableOptions: Observable<ICountry[]>
 
 
-    constructor(private gameLogic: GameLogicService){
+    constructor(private gameLogicService: GameLogicService){
         //set up service subscriptions
-        this.gameLogic.getPrevioustGuesses()
+        this.gameLogicService.getPrevioustGuesses()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(guessesIn => {
                 if(guessesIn.length < MAX_GUESSES){
@@ -50,11 +50,11 @@ export class UserIoComponent implements OnInit {
             })
 
 
-        this.gameLogic.getGameMode().subscribe(gameMode =>{this._gameMode = gameMode})
-        this.gameLogic.getDisplayMode().subscribe(displayMode =>{this._displayMode = displayMode})
-        this.gameLogic.getTargetCountry().subscribe(targetCountry=>{this._targetCountry = targetCountry})
+        this.gameLogicService.getGameMode().subscribe(gameMode =>{this._gameMode = gameMode})
+        this.gameLogicService.getDisplayMode().subscribe(displayMode =>{this._displayMode = displayMode})
+        this.gameLogicService.getTargetCountry().subscribe(targetCountry=>{this._targetCountry = targetCountry})
 
-        this.gameLogic.getGameState().subscribe(gameState=>{
+        this.gameLogicService.getGameState().subscribe(gameState=>{
             this._gameState = gameState
             if(gameState!=='ACTIVE'){
                 this.countryInput.disable()
@@ -72,26 +72,16 @@ export class UserIoComponent implements OnInit {
             )
     }
 
-    // Mode Selectors and Debug (move to menu component??)
-    toggleGameMode(): void {
-        this.gameLogic.toggleGameMode()
-    }
-
-
-    toggleDisplayMode(): void {
-        this.gameLogic.toggleDisplayMode()
-    }
-
 
     submit(): void {
         // console.log(this.countryInput.value.name)
         let _value: string | ICountry = this.countryInput.value
         if (typeof(_value)!=='string'){
-            this.gameLogic.updateGuesses(this.countryInput.value.code)
+            this.gameLogicService.updateGuesses(this.countryInput.value.code)
             if (_value.code === this._targetCountry.code) {
-                this.gameLogic.gameWon()
+                this.gameLogicService.gameWon()
             } else {
-                this.gameLogic.badGuess()
+                this.gameLogicService.badGuess()
             }          
             this.countryInput.setValue('') 
         }
@@ -105,7 +95,7 @@ export class UserIoComponent implements OnInit {
 
     resetGame(){
         console.log("resetting game")
-        this.gameLogic.reInitialiseGame()
+        this.gameLogicService.reInitialiseGame()
         this.inputElement.nativeElement.focus()
 
         // To be implemented on results service

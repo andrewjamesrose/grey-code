@@ -1,16 +1,6 @@
-<div *ngIf="_gameMode==='flags'"><img width="400px" src="assets/flags/png1000px/{{_targetCountry.code| lowercase }}.png"/></div>
-<div *ngIf="_gameMode==='boundaries'"><img width="400px" src="assets/boundaries/svg/{{_targetCountry.code| lowercase }}/vector.svg"
-                                            [ngStyle] = "{'filter': ' brightness(0)  saturate(100%) invert(30%) sepia(5%) saturate(20%) hue-rotate(326deg) brightness(96%) contrast(83%) '}"
-                                    
-                        /></div>
-<div *ngIf="_gameMode==='capitals'">{{_targetCountry.capital}}</div>
-<!-- https://codepen.io/sosuke/pen/Pjoqqp used to generate the css filter -->
-                                                    
-
-
-    <mat-card *ngFor="let guess of _guessList">
-        {{getCountryName(guess)}}
-    </mat-card>
+<mat-card *ngFor="let guess of _guessList">
+    {{getCountryName(guess)}}
+</mat-card>
 
 <form class="example-form" *ngIf="_gameState==='ACTIVE'">
     <mat-form-field class="guess-input" appearance="fill">
@@ -34,11 +24,6 @@
 
 <mat-card *ngIf="_gameState==='CORRECT'">Congratulations!</mat-card>
 <mat-card *ngIf="_gameState==='GAMEOVER'">Sorry</mat-card>
-
-<div>
-    <button mat-stroked-button color="accent" (click)="toggleGameMode()">Mode Selector</button>
-    <button mat-stroked-button color="accent" (click)="toggleDisplayMode()">Display Mode</button> 
-</div>
 
 <div *ngIf="_gameState==='GAMEOVER'">GAME OVER</div>
 <div *ngIf="_gameState==='CORRECT'">A winner is you</div>
