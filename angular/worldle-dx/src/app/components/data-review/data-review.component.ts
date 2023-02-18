@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
-import { elementAt } from 'rxjs';
 import { ICountry, ICountryOld } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 import { GlobeVisualiserInputsService, IGeoJSON3D } from 'src/app/services/globe-visualiser-inputs.service';
-import { OLD_COUNTRY_DATA } from '../../../assets/capitals/data v1.';
+import { OLD_COUNTRY_DATA } from '../../../assets/capitals/data v1';
 
 import { Country, ILatLong } from '../../models/game-logic';
 

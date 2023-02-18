@@ -10,7 +10,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kabul",
         "capitalLatLong": {
             "latitude": 34.575503,
-            "longitude": 34.575503
+            "longitude": 69.240073
         },
         "centroidLatLong": {
             "latitude": 33.93911,
@@ -28,7 +28,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Mariehamn",
         "capitalLatLong": {
             "latitude": 60.1,
-            "longitude": 60.1
+            "longitude": 19.933333
         },
         "centroidLatLong": {
             "latitude": 60.1,
@@ -46,7 +46,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tirana",
         "capitalLatLong": {
             "latitude": 41.327546,
-            "longitude": 41.327546
+            "longitude": 19.818698
         },
         "centroidLatLong": {
             "latitude": 41.153332,
@@ -64,7 +64,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Algiers",
         "capitalLatLong": {
             "latitude": 36.752887,
-            "longitude": 36.752887
+            "longitude": 3.042048
         },
         "centroidLatLong": {
             "latitude": 28.033886,
@@ -82,7 +82,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Pago Pago",
         "capitalLatLong": {
             "latitude": -14.275632,
-            "longitude": -14.275632
+            "longitude": -170.702036
         },
         "centroidLatLong": {
             "latitude": -14.270972,
@@ -100,7 +100,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Andorra la Vella",
         "capitalLatLong": {
             "latitude": 42.506317,
-            "longitude": 42.506317
+            "longitude": 1.521835
         },
         "centroidLatLong": {
             "latitude": 42.546245,
@@ -118,7 +118,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Luanda",
         "capitalLatLong": {
             "latitude": -8.839988,
-            "longitude": -8.839988
+            "longitude": 13.289437
         },
         "centroidLatLong": {
             "latitude": -11.202692,
@@ -136,7 +136,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "The Valley",
         "capitalLatLong": {
             "latitude": 18.214813,
-            "longitude": 18.214813
+            "longitude": -63.057441
         },
         "centroidLatLong": {
             "latitude": 18.220554,
@@ -154,7 +154,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "South Pole",
         "capitalLatLong": {
             "latitude": -90,
-            "longitude": -90
+            "longitude": 0
         },
         "centroidLatLong": {
             "latitude": -75.250973,
@@ -172,7 +172,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "St. John's",
         "capitalLatLong": {
             "latitude": 17.12741,
-            "longitude": 17.12741
+            "longitude": -61.846772
         },
         "centroidLatLong": {
             "latitude": 17.060816,
@@ -190,7 +190,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Buenos Aires",
         "capitalLatLong": {
             "latitude": -34.603684,
-            "longitude": -34.603684
+            "longitude": -58.381559
         },
         "centroidLatLong": {
             "latitude": -38.416097,
@@ -208,7 +208,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Yerevan",
         "capitalLatLong": {
             "latitude": 40.179186,
-            "longitude": 40.179186
+            "longitude": 44.499103
         },
         "centroidLatLong": {
             "latitude": 40.069099,
@@ -226,7 +226,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Oranjestad",
         "capitalLatLong": {
             "latitude": 12.509204,
-            "longitude": 12.509204
+            "longitude": -70.008631
         },
         "centroidLatLong": {
             "latitude": 12.52111,
@@ -244,7 +244,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Canberra",
         "capitalLatLong": {
             "latitude": -35.282,
-            "longitude": -35.282
+            "longitude": 149.128684
         },
         "centroidLatLong": {
             "latitude": -25.274398,
@@ -262,7 +262,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Vienna",
         "capitalLatLong": {
             "latitude": 48.208174,
-            "longitude": 48.208174
+            "longitude": 16.373819
         },
         "centroidLatLong": {
             "latitude": 47.516231,
@@ -280,7 +280,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Baku",
         "capitalLatLong": {
             "latitude": 40.409262,
-            "longitude": 40.409262
+            "longitude": 49.867092
         },
         "centroidLatLong": {
             "latitude": 40.143105,
@@ -298,7 +298,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Nassau",
         "capitalLatLong": {
             "latitude": 25.047984,
-            "longitude": 25.047984
+            "longitude": -77.355413
         },
         "centroidLatLong": {
             "latitude": 25.03428,
@@ -316,7 +316,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Manama",
         "capitalLatLong": {
             "latitude": 26.228516,
-            "longitude": 26.228516
+            "longitude": 50.58605
         },
         "centroidLatLong": {
             "latitude": 25.930414,
@@ -334,7 +334,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Dhaka",
         "capitalLatLong": {
             "latitude": 23.810332,
-            "longitude": 23.810332
+            "longitude": 90.412518
         },
         "centroidLatLong": {
             "latitude": 23.684994,
@@ -352,7 +352,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bridgetown",
         "capitalLatLong": {
             "latitude": 13.113222,
-            "longitude": 13.113222
+            "longitude": -59.598809
         },
         "centroidLatLong": {
             "latitude": 13.193887,
@@ -370,7 +370,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Minsk",
         "capitalLatLong": {
             "latitude": 53.90454,
-            "longitude": 53.90454
+            "longitude": 27.561524
         },
         "centroidLatLong": {
             "latitude": 53.709807,
@@ -388,7 +388,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Brussels",
         "capitalLatLong": {
             "latitude": 50.85034,
-            "longitude": 50.85034
+            "longitude": 4.35171
         },
         "centroidLatLong": {
             "latitude": 50.503887,
@@ -406,7 +406,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Belmopan",
         "capitalLatLong": {
             "latitude": 17.251011,
-            "longitude": 17.251011
+            "longitude": -88.75902
         },
         "centroidLatLong": {
             "latitude": 17.189877,
@@ -424,7 +424,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Porto-Novo",
         "capitalLatLong": {
             "latitude": 6.496857,
-            "longitude": 6.496857
+            "longitude": 2.628852
         },
         "centroidLatLong": {
             "latitude": 9.30769,
@@ -442,7 +442,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Hamilton",
         "capitalLatLong": {
             "latitude": 32.294816,
-            "longitude": 32.294816
+            "longitude": -64.781375
         },
         "centroidLatLong": {
             "latitude": 32.321384,
@@ -460,7 +460,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Thimphu",
         "capitalLatLong": {
             "latitude": 27.472792,
-            "longitude": 27.472792
+            "longitude": 89.639286
         },
         "centroidLatLong": {
             "latitude": 27.514162,
@@ -478,7 +478,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "La Paz",
         "capitalLatLong": {
             "latitude": -16.489689,
-            "longitude": -16.489689
+            "longitude": -68.119294
         },
         "centroidLatLong": {
             "latitude": -16.290154,
@@ -496,7 +496,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Sarajevo",
         "capitalLatLong": {
             "latitude": 43.856259,
-            "longitude": 43.856259
+            "longitude": 18.413076
         },
         "centroidLatLong": {
             "latitude": 43.915886,
@@ -514,7 +514,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Gaborone",
         "capitalLatLong": {
             "latitude": -24.628208,
-            "longitude": -24.628208
+            "longitude": 25.923147
         },
         "centroidLatLong": {
             "latitude": -22.328474,
@@ -532,7 +532,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bouvet Island",
         "capitalLatLong": {
             "latitude": -54.43,
-            "longitude": -54.43
+            "longitude": 3.38
         },
         "centroidLatLong": {
             "latitude": -54.423199,
@@ -550,7 +550,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Brasília",
         "capitalLatLong": {
             "latitude": -15.794229,
-            "longitude": -15.794229
+            "longitude": -47.882166
         },
         "centroidLatLong": {
             "latitude": -14.235004,
@@ -568,7 +568,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Camp Justice",
         "capitalLatLong": {
             "latitude": 21.3419,
-            "longitude": 21.3419
+            "longitude": 55.4778
         },
         "centroidLatLong": {
             "latitude": -6.343194,
@@ -586,7 +586,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Road Town",
         "capitalLatLong": {
             "latitude": 18.428612,
-            "longitude": 18.428612
+            "longitude": -64.618466
         },
         "centroidLatLong": {
             "latitude": 18.420695,
@@ -604,7 +604,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bandar Seri Begawan",
         "capitalLatLong": {
             "latitude": 4.903052,
-            "longitude": 4.903052
+            "longitude": 114.939821
         },
         "centroidLatLong": {
             "latitude": 4.535277,
@@ -622,7 +622,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Sofia",
         "capitalLatLong": {
             "latitude": 42.697708,
-            "longitude": 42.697708
+            "longitude": 23.321868
         },
         "centroidLatLong": {
             "latitude": 42.733883,
@@ -640,7 +640,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Ouagadougou",
         "capitalLatLong": {
             "latitude": 12.371428,
-            "longitude": 12.371428
+            "longitude": -1.51966
         },
         "centroidLatLong": {
             "latitude": 12.238333,
@@ -658,7 +658,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bujumbura",
         "capitalLatLong": {
             "latitude": -3.361378,
-            "longitude": -3.361378
+            "longitude": 29.359878
         },
         "centroidLatLong": {
             "latitude": -3.373056,
@@ -676,7 +676,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Phnom Penh",
         "capitalLatLong": {
             "latitude": 11.544873,
-            "longitude": 11.544873
+            "longitude": 104.892167
         },
         "centroidLatLong": {
             "latitude": 12.565679,
@@ -694,7 +694,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Yaoundé",
         "capitalLatLong": {
             "latitude": 3.848033,
-            "longitude": 3.848033
+            "longitude": 11.502075
         },
         "centroidLatLong": {
             "latitude": 7.369722,
@@ -712,7 +712,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Ottawa",
         "capitalLatLong": {
             "latitude": 45.42153,
-            "longitude": 45.42153
+            "longitude": -75.697193
         },
         "centroidLatLong": {
             "latitude": 56.130366,
@@ -730,7 +730,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Praia",
         "capitalLatLong": {
             "latitude": 14.93305,
-            "longitude": 14.93305
+            "longitude": -23.513327
         },
         "centroidLatLong": {
             "latitude": 16.002082,
@@ -748,7 +748,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "George Town",
         "capitalLatLong": {
             "latitude": 19.286932,
-            "longitude": 19.286932
+            "longitude": -81.367439
         },
         "centroidLatLong": {
             "latitude": 19.513469,
@@ -766,7 +766,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bangui",
         "capitalLatLong": {
             "latitude": 4.394674,
-            "longitude": 4.394674
+            "longitude": 18.55819
         },
         "centroidLatLong": {
             "latitude": 6.611111,
@@ -784,7 +784,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "N'Djamena",
         "capitalLatLong": {
             "latitude": 12.134846,
-            "longitude": 12.134846
+            "longitude": 15.055742
         },
         "centroidLatLong": {
             "latitude": 15.454166,
@@ -802,7 +802,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Santiago",
         "capitalLatLong": {
             "latitude": -33.44889,
-            "longitude": -33.44889
+            "longitude": -70.669265
         },
         "centroidLatLong": {
             "latitude": -35.675147,
@@ -820,7 +820,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Beijing",
         "capitalLatLong": {
             "latitude": 39.904211,
-            "longitude": 39.904211
+            "longitude": 116.407395
         },
         "centroidLatLong": {
             "latitude": 35.86166,
@@ -838,7 +838,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Flying Fish Cove",
         "capitalLatLong": {
             "latitude": -10.420686,
-            "longitude": -10.420686
+            "longitude": 105.679379
         },
         "centroidLatLong": {
             "latitude": -10.447525,
@@ -856,7 +856,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "West Island",
         "capitalLatLong": {
             "latitude": -12.188834,
-            "longitude": -12.188834
+            "longitude": 96.829316
         },
         "centroidLatLong": {
             "latitude": -12.164165,
@@ -874,7 +874,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bogotá",
         "capitalLatLong": {
             "latitude": 4.710989,
-            "longitude": 4.710989
+            "longitude": -74.072092
         },
         "centroidLatLong": {
             "latitude": 4.570868,
@@ -892,7 +892,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Moroni",
         "capitalLatLong": {
             "latitude": -11.717216,
-            "longitude": -11.717216
+            "longitude": 43.247315
         },
         "centroidLatLong": {
             "latitude": -11.875001,
@@ -910,7 +910,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kinshasa",
         "capitalLatLong": {
             "latitude": -4.441931,
-            "longitude": -4.441931
+            "longitude": 15.266293
         },
         "centroidLatLong": {
             "latitude": -4.038333,
@@ -928,7 +928,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Brazzaville",
         "capitalLatLong": {
             "latitude": -4.26336,
-            "longitude": -4.26336
+            "longitude": 15.242885
         },
         "centroidLatLong": {
             "latitude": -0.228021,
@@ -946,7 +946,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Avarua",
         "capitalLatLong": {
             "latitude": -21.212901,
-            "longitude": -21.212901
+            "longitude": -159.782306
         },
         "centroidLatLong": {
             "latitude": -21.236736,
@@ -964,7 +964,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "San José",
         "capitalLatLong": {
             "latitude": 9.928069,
-            "longitude": 9.928069
+            "longitude": -84.090725
         },
         "centroidLatLong": {
             "latitude": 9.748917,
@@ -982,7 +982,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Yamoussoukro",
         "capitalLatLong": {
             "latitude": 6.827623,
-            "longitude": 6.827623
+            "longitude": -5.289343
         },
         "centroidLatLong": {
             "latitude": 7.539989,
@@ -1000,7 +1000,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Zagreb ",
         "capitalLatLong": {
             "latitude": 45.815011,
-            "longitude": 45.815011
+            "longitude": 15.981919
         },
         "centroidLatLong": {
             "latitude": 45.1,
@@ -1018,7 +1018,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Havana",
         "capitalLatLong": {
             "latitude": 23.05407,
-            "longitude": 23.05407
+            "longitude": -82.345189
         },
         "centroidLatLong": {
             "latitude": 21.521757,
@@ -1036,7 +1036,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Willemstad",
         "capitalLatLong": {
             "latitude": 12.122422,
-            "longitude": 12.122422
+            "longitude": -68.882423
         },
         "centroidLatLong": {
             "latitude": 12.122422,
@@ -1054,7 +1054,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Nicosia",
         "capitalLatLong": {
             "latitude": 35.185566,
-            "longitude": 35.185566
+            "longitude": 33.382276
         },
         "centroidLatLong": {
             "latitude": 35.126413,
@@ -1072,7 +1072,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Prague",
         "capitalLatLong": {
             "latitude": 50.075538,
-            "longitude": 50.075538
+            "longitude": 14.4378
         },
         "centroidLatLong": {
             "latitude": 49.817492,
@@ -1090,7 +1090,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Copenhagen",
         "capitalLatLong": {
             "latitude": 55.676097,
-            "longitude": 55.676097
+            "longitude": 12.568337
         },
         "centroidLatLong": {
             "latitude": 56.26392,
@@ -1108,7 +1108,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Djibouti",
         "capitalLatLong": {
             "latitude": 11.572077,
-            "longitude": 11.572077
+            "longitude": 43.145647
         },
         "centroidLatLong": {
             "latitude": 11.825138,
@@ -1126,7 +1126,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Roseau",
         "capitalLatLong": {
             "latitude": 15.309168,
-            "longitude": 15.309168
+            "longitude": -61.379355
         },
         "centroidLatLong": {
             "latitude": 15.414999,
@@ -1144,7 +1144,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Santo Domingo",
         "capitalLatLong": {
             "latitude": 18.486058,
-            "longitude": 18.486058
+            "longitude": -69.931212
         },
         "centroidLatLong": {
             "latitude": 18.735693,
@@ -1162,7 +1162,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Quito",
         "capitalLatLong": {
             "latitude": -0.180653,
-            "longitude": -0.180653
+            "longitude": -78.467838
         },
         "centroidLatLong": {
             "latitude": -1.831239,
@@ -1180,7 +1180,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Cairo",
         "capitalLatLong": {
             "latitude": 30.04442,
-            "longitude": 30.04442
+            "longitude": 31.235712
         },
         "centroidLatLong": {
             "latitude": 26.820553,
@@ -1198,7 +1198,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "San Salvador",
         "capitalLatLong": {
             "latitude": 13.69294,
-            "longitude": 13.69294
+            "longitude": -89.218191
         },
         "centroidLatLong": {
             "latitude": 13.794185,
@@ -1216,7 +1216,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Malabo",
         "capitalLatLong": {
             "latitude": 3.750412,
-            "longitude": 3.750412
+            "longitude": 8.737104
         },
         "centroidLatLong": {
             "latitude": 1.650801,
@@ -1234,7 +1234,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Asmara",
         "capitalLatLong": {
             "latitude": 15.322877,
-            "longitude": 15.322877
+            "longitude": 38.925052
         },
         "centroidLatLong": {
             "latitude": 15.179384,
@@ -1252,7 +1252,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tallinn",
         "capitalLatLong": {
             "latitude": 59.436961,
-            "longitude": 59.436961
+            "longitude": 24.753575
         },
         "centroidLatLong": {
             "latitude": 58.595272,
@@ -1270,7 +1270,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Addis Ababa",
         "capitalLatLong": {
             "latitude": 8.980603,
-            "longitude": 8.980603
+            "longitude": 38.757761
         },
         "centroidLatLong": {
             "latitude": 9.145,
@@ -1288,7 +1288,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Stanley",
         "capitalLatLong": {
             "latitude": -51.697713,
-            "longitude": -51.697713
+            "longitude": -57.851663
         },
         "centroidLatLong": {
             "latitude": -51.796253,
@@ -1306,7 +1306,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tórshavn",
         "capitalLatLong": {
             "latitude": 62.007864,
-            "longitude": 62.007864
+            "longitude": -6.790982
         },
         "centroidLatLong": {
             "latitude": 61.892635,
@@ -1324,7 +1324,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Suva",
         "capitalLatLong": {
             "latitude": -18.124809,
-            "longitude": -18.124809
+            "longitude": 178.450079
         },
         "centroidLatLong": {
             "latitude": -16.578193,
@@ -1342,7 +1342,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Helsinki",
         "capitalLatLong": {
             "latitude": 60.173324,
-            "longitude": 60.173324
+            "longitude": 24.941025
         },
         "centroidLatLong": {
             "latitude": 61.92411,
@@ -1360,7 +1360,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Paris",
         "capitalLatLong": {
             "latitude": 48.856614,
-            "longitude": 48.856614
+            "longitude": 2.352222
         },
         "centroidLatLong": {
             "latitude": 46.227638,
@@ -1378,7 +1378,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Cayenne",
         "capitalLatLong": {
             "latitude": 4.92242,
-            "longitude": 4.92242
+            "longitude": -52.313453
         },
         "centroidLatLong": {
             "latitude": 3.933889,
@@ -1396,7 +1396,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Papeete",
         "capitalLatLong": {
             "latitude": -17.551625,
-            "longitude": -17.551625
+            "longitude": -149.558476
         },
         "centroidLatLong": {
             "latitude": -17.679742,
@@ -1414,7 +1414,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Saint-Pierre ",
         "capitalLatLong": {
             "latitude": -21.3419,
-            "longitude": -21.3419
+            "longitude": 55.4778
         },
         "centroidLatLong": {
             "latitude": -49.280366,
@@ -1432,7 +1432,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Libreville",
         "capitalLatLong": {
             "latitude": 0.416198,
-            "longitude": 0.416198
+            "longitude": 9.467268
         },
         "centroidLatLong": {
             "latitude": -0.803689,
@@ -1450,7 +1450,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Banjul",
         "capitalLatLong": {
             "latitude": 13.454876,
-            "longitude": 13.454876
+            "longitude": -16.579032
         },
         "centroidLatLong": {
             "latitude": 13.443182,
@@ -1468,7 +1468,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tbilisi",
         "capitalLatLong": {
             "latitude": 41.715138,
-            "longitude": 41.715138
+            "longitude": 44.827096
         },
         "centroidLatLong": {
             "latitude": 42.315407,
@@ -1486,7 +1486,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Berlin",
         "capitalLatLong": {
             "latitude": 52.520007,
-            "longitude": 52.520007
+            "longitude": 13.404954
         },
         "centroidLatLong": {
             "latitude": 51.165691,
@@ -1504,7 +1504,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Accra",
         "capitalLatLong": {
             "latitude": 5.603717,
-            "longitude": 5.603717
+            "longitude": -0.186964
         },
         "centroidLatLong": {
             "latitude": 7.946527,
@@ -1522,7 +1522,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Gibraltar",
         "capitalLatLong": {
             "latitude": 36.140773,
-            "longitude": 36.140773
+            "longitude": -5.353599
         },
         "centroidLatLong": {
             "latitude": 36.137741,
@@ -1540,7 +1540,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Athens",
         "capitalLatLong": {
             "latitude": 37.983917,
-            "longitude": 37.983917
+            "longitude": 23.72936
         },
         "centroidLatLong": {
             "latitude": 39.074208,
@@ -1558,7 +1558,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Nuuk",
         "capitalLatLong": {
             "latitude": 64.18141,
-            "longitude": 64.18141
+            "longitude": -51.694138
         },
         "centroidLatLong": {
             "latitude": 71.706936,
@@ -1576,7 +1576,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "St. George's",
         "capitalLatLong": {
             "latitude": 12.056098,
-            "longitude": 12.056098
+            "longitude": -61.7488
         },
         "centroidLatLong": {
             "latitude": 12.262776,
@@ -1594,7 +1594,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Basse-Terre",
         "capitalLatLong": {
             "latitude": 16.014453,
-            "longitude": 16.014453
+            "longitude": -61.706411
         },
         "centroidLatLong": {
             "latitude": 16.995971,
@@ -1612,7 +1612,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Hagåtña",
         "capitalLatLong": {
             "latitude": 13.470891,
-            "longitude": 13.470891
+            "longitude": 144.751278
         },
         "centroidLatLong": {
             "latitude": 13.444304,
@@ -1630,7 +1630,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Guatemala City",
         "capitalLatLong": {
             "latitude": 14.634915,
-            "longitude": 14.634915
+            "longitude": -90.506882
         },
         "centroidLatLong": {
             "latitude": 15.783471,
@@ -1648,7 +1648,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "St. Peter Port",
         "capitalLatLong": {
             "latitude": 49.455443,
-            "longitude": 49.455443
+            "longitude": -2.536871
         },
         "centroidLatLong": {
             "latitude": 49.465691,
@@ -1666,7 +1666,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Conakry",
         "capitalLatLong": {
             "latitude": 9.641185,
-            "longitude": 9.641185
+            "longitude": -13.578401
         },
         "centroidLatLong": {
             "latitude": 9.945587,
@@ -1684,7 +1684,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bissau",
         "capitalLatLong": {
             "latitude": 11.881655,
-            "longitude": 11.881655
+            "longitude": -15.617794
         },
         "centroidLatLong": {
             "latitude": 11.803749,
@@ -1702,7 +1702,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Georgetown",
         "capitalLatLong": {
             "latitude": 6.801279,
-            "longitude": 6.801279
+            "longitude": -58.155125
         },
         "centroidLatLong": {
             "latitude": 4.860416,
@@ -1720,7 +1720,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Port-au-Prince",
         "capitalLatLong": {
             "latitude": 18.594395,
-            "longitude": 18.594395
+            "longitude": -72.307433
         },
         "centroidLatLong": {
             "latitude": 18.971187,
@@ -1738,7 +1738,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tegucigalpa",
         "capitalLatLong": {
             "latitude": 14.072275,
-            "longitude": 14.072275
+            "longitude": -87.192136
         },
         "centroidLatLong": {
             "latitude": 15.199999,
@@ -1756,7 +1756,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Hong Kong",
         "capitalLatLong": {
             "latitude": 22.396428,
-            "longitude": 22.396428
+            "longitude": 114.109497
         },
         "centroidLatLong": {
             "latitude": 22.396428,
@@ -1774,7 +1774,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Budapest",
         "capitalLatLong": {
             "latitude": 47.497912,
-            "longitude": 47.497912
+            "longitude": 19.040235
         },
         "centroidLatLong": {
             "latitude": 47.162494,
@@ -1792,7 +1792,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Reykjavík",
         "capitalLatLong": {
             "latitude": 64.126521,
-            "longitude": 64.126521
+            "longitude": -21.817439
         },
         "centroidLatLong": {
             "latitude": 64.963051,
@@ -1810,7 +1810,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "New Delhi",
         "capitalLatLong": {
             "latitude": 28.613939,
-            "longitude": 28.613939
+            "longitude": 77.209021
         },
         "centroidLatLong": {
             "latitude": 20.593684,
@@ -1828,7 +1828,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Jakarta",
         "capitalLatLong": {
             "latitude": -6.208763,
-            "longitude": -6.208763
+            "longitude": 106.845599
         },
         "centroidLatLong": {
             "latitude": -0.789275,
@@ -1846,7 +1846,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tehran",
         "capitalLatLong": {
             "latitude": 35.689198,
-            "longitude": 35.689198
+            "longitude": 51.388974
         },
         "centroidLatLong": {
             "latitude": 32.427908,
@@ -1864,7 +1864,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Baghdad",
         "capitalLatLong": {
             "latitude": 33.312806,
-            "longitude": 33.312806
+            "longitude": 44.361488
         },
         "centroidLatLong": {
             "latitude": 33.223191,
@@ -1882,7 +1882,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Dublin",
         "capitalLatLong": {
             "latitude": 53.349805,
-            "longitude": 53.349805
+            "longitude": -6.26031
         },
         "centroidLatLong": {
             "latitude": 53.41291,
@@ -1900,7 +1900,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Douglas",
         "capitalLatLong": {
             "latitude": 54.152337,
-            "longitude": 54.152337
+            "longitude": -4.486123
         },
         "centroidLatLong": {
             "latitude": 54.236107,
@@ -1918,7 +1918,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tel Aviv",
         "capitalLatLong": {
             "latitude": 32.0853,
-            "longitude": 32.0853
+            "longitude": 34.781768
         },
         "centroidLatLong": {
             "latitude": 31.046051,
@@ -1936,7 +1936,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Rome",
         "capitalLatLong": {
             "latitude": 41.902784,
-            "longitude": 41.902784
+            "longitude": 12.496366
         },
         "centroidLatLong": {
             "latitude": 41.87194,
@@ -1954,7 +1954,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kingston",
         "capitalLatLong": {
             "latitude": 18.042327,
-            "longitude": 18.042327
+            "longitude": -76.802893
         },
         "centroidLatLong": {
             "latitude": 18.109581,
@@ -1972,7 +1972,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tokyo",
         "capitalLatLong": {
             "latitude": 35.709026,
-            "longitude": 35.709026
+            "longitude": 139.731992
         },
         "centroidLatLong": {
             "latitude": 36.204824,
@@ -1990,7 +1990,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "St. Helier",
         "capitalLatLong": {
             "latitude": 49.186823,
-            "longitude": 49.186823
+            "longitude": -2.106568
         },
         "centroidLatLong": {
             "latitude": 49.214439,
@@ -2008,7 +2008,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Amman",
         "capitalLatLong": {
             "latitude": 31.956578,
-            "longitude": 31.956578
+            "longitude": 35.945695
         },
         "centroidLatLong": {
             "latitude": 30.585164,
@@ -2026,7 +2026,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Astana",
         "capitalLatLong": {
             "latitude": 51.160523,
-            "longitude": 51.160523
+            "longitude": 71.470356
         },
         "centroidLatLong": {
             "latitude": 48.019573,
@@ -2044,7 +2044,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Nairobi",
         "capitalLatLong": {
             "latitude": -1.292066,
-            "longitude": -1.292066
+            "longitude": 36.821946
         },
         "centroidLatLong": {
             "latitude": -0.023559,
@@ -2062,7 +2062,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tarawa Atoll",
         "capitalLatLong": {
             "latitude": 1.451817,
-            "longitude": 1.451817
+            "longitude": 172.971662
         },
         "centroidLatLong": {
             "latitude": -3.370417,
@@ -2080,7 +2080,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Pristina",
         "capitalLatLong": {
             "latitude": 42.662914,
-            "longitude": 42.662914
+            "longitude": 21.165503
         },
         "centroidLatLong": {
             "latitude": 42.602636,
@@ -2098,7 +2098,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kuwait City",
         "capitalLatLong": {
             "latitude": 29.375859,
-            "longitude": 29.375859
+            "longitude": 47.977405
         },
         "centroidLatLong": {
             "latitude": 29.31166,
@@ -2116,7 +2116,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bishkek",
         "capitalLatLong": {
             "latitude": 42.874621,
-            "longitude": 42.874621
+            "longitude": 74.569762
         },
         "centroidLatLong": {
             "latitude": 41.20438,
@@ -2134,7 +2134,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Vientiane",
         "capitalLatLong": {
             "latitude": 17.975706,
-            "longitude": 17.975706
+            "longitude": 102.633104
         },
         "centroidLatLong": {
             "latitude": 19.85627,
@@ -2152,7 +2152,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Riga",
         "capitalLatLong": {
             "latitude": 56.949649,
-            "longitude": 56.949649
+            "longitude": 24.105186
         },
         "centroidLatLong": {
             "latitude": 56.879635,
@@ -2170,7 +2170,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Beirut",
         "capitalLatLong": {
             "latitude": 33.888629,
-            "longitude": 33.888629
+            "longitude": 35.495479
         },
         "centroidLatLong": {
             "latitude": 33.854721,
@@ -2188,7 +2188,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Maseru",
         "capitalLatLong": {
             "latitude": -29.363219,
-            "longitude": -29.363219
+            "longitude": 27.51436
         },
         "centroidLatLong": {
             "latitude": -29.609988,
@@ -2206,7 +2206,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Monrovia",
         "capitalLatLong": {
             "latitude": 6.290743,
-            "longitude": 6.290743
+            "longitude": -10.760524
         },
         "centroidLatLong": {
             "latitude": 6.428055,
@@ -2224,7 +2224,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tripoli",
         "capitalLatLong": {
             "latitude": 32.887209,
-            "longitude": 32.887209
+            "longitude": 13.191338
         },
         "centroidLatLong": {
             "latitude": 26.3351,
@@ -2242,7 +2242,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Vaduz",
         "capitalLatLong": {
             "latitude": 47.14103,
-            "longitude": 47.14103
+            "longitude": 9.520928
         },
         "centroidLatLong": {
             "latitude": 47.166,
@@ -2260,7 +2260,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Vilnius",
         "capitalLatLong": {
             "latitude": 54.687156,
-            "longitude": 54.687156
+            "longitude": 25.279651
         },
         "centroidLatLong": {
             "latitude": 55.169438,
@@ -2278,7 +2278,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Luxembourg",
         "capitalLatLong": {
             "latitude": 49.611621,
-            "longitude": 49.611621
+            "longitude": 6.131935
         },
         "centroidLatLong": {
             "latitude": 49.815273,
@@ -2296,7 +2296,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Macau",
         "capitalLatLong": {
             "latitude": 22.166667,
-            "longitude": 22.166667
+            "longitude": 113.55
         },
         "centroidLatLong": {
             "latitude": 22.198745,
@@ -2314,7 +2314,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Skopje",
         "capitalLatLong": {
             "latitude": 41.997346,
-            "longitude": 41.997346
+            "longitude": 21.427996
         },
         "centroidLatLong": {
             "latitude": 41.608635,
@@ -2332,7 +2332,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Antananarivo",
         "capitalLatLong": {
             "latitude": -18.87919,
-            "longitude": -18.87919
+            "longitude": 47.507905
         },
         "centroidLatLong": {
             "latitude": -18.766947,
@@ -2350,7 +2350,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Lilongwe",
         "capitalLatLong": {
             "latitude": -13.962612,
-            "longitude": -13.962612
+            "longitude": 33.774119
         },
         "centroidLatLong": {
             "latitude": -13.254308,
@@ -2368,7 +2368,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kuala Lumpur",
         "capitalLatLong": {
             "latitude": 3.139003,
-            "longitude": 3.139003
+            "longitude": 101.686855
         },
         "centroidLatLong": {
             "latitude": 4.210484,
@@ -2386,7 +2386,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Malé",
         "capitalLatLong": {
             "latitude": 4.175496,
-            "longitude": 4.175496
+            "longitude": 73.509347
         },
         "centroidLatLong": {
             "latitude": 3.202778,
@@ -2404,7 +2404,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bamako",
         "capitalLatLong": {
             "latitude": 12.639232,
-            "longitude": 12.639232
+            "longitude": -8.002889
         },
         "centroidLatLong": {
             "latitude": 17.570692,
@@ -2422,7 +2422,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Valletta",
         "capitalLatLong": {
             "latitude": 35.898909,
-            "longitude": 35.898909
+            "longitude": 14.514553
         },
         "centroidLatLong": {
             "latitude": 35.937496,
@@ -2440,7 +2440,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Majuro",
         "capitalLatLong": {
             "latitude": 7.116421,
-            "longitude": 7.116421
+            "longitude": 171.185774
         },
         "centroidLatLong": {
             "latitude": 7.131474,
@@ -2458,7 +2458,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Fort-de-France",
         "capitalLatLong": {
             "latitude": 14.616065,
-            "longitude": 14.616065
+            "longitude": -61.05878
         },
         "centroidLatLong": {
             "latitude": 14.641528,
@@ -2476,7 +2476,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Nouakchott",
         "capitalLatLong": {
             "latitude": 18.07353,
-            "longitude": 18.07353
+            "longitude": -15.958237
         },
         "centroidLatLong": {
             "latitude": 21.00789,
@@ -2494,7 +2494,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Port Louis",
         "capitalLatLong": {
             "latitude": -20.166896,
-            "longitude": -20.166896
+            "longitude": 57.502332
         },
         "centroidLatLong": {
             "latitude": -20.348404,
@@ -2512,7 +2512,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Mamoudzou",
         "capitalLatLong": {
             "latitude": -12.780949,
-            "longitude": -12.780949
+            "longitude": 45.227872
         },
         "centroidLatLong": {
             "latitude": -12.8275,
@@ -2530,7 +2530,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Mexico City",
         "capitalLatLong": {
             "latitude": 19.432608,
-            "longitude": 19.432608
+            "longitude": -99.133208
         },
         "centroidLatLong": {
             "latitude": 23.634501,
@@ -2548,7 +2548,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Palikir",
         "capitalLatLong": {
             "latitude": 6.914712,
-            "longitude": 6.914712
+            "longitude": 158.161027
         },
         "centroidLatLong": {
             "latitude": 7.425554,
@@ -2566,7 +2566,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Chisinau",
         "capitalLatLong": {
             "latitude": 47.010453,
-            "longitude": 47.010453
+            "longitude": 28.86381
         },
         "centroidLatLong": {
             "latitude": 47.411631,
@@ -2584,7 +2584,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Monaco",
         "capitalLatLong": {
             "latitude": 43.737411,
-            "longitude": 43.737411
+            "longitude": 7.420816
         },
         "centroidLatLong": {
             "latitude": 43.750298,
@@ -2602,7 +2602,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Ulaanbaatar",
         "capitalLatLong": {
             "latitude": 47.886399,
-            "longitude": 47.886399
+            "longitude": 106.905744
         },
         "centroidLatLong": {
             "latitude": 46.862496,
@@ -2620,7 +2620,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Podgorica",
         "capitalLatLong": {
             "latitude": 42.43042,
-            "longitude": 42.43042
+            "longitude": 19.259364
         },
         "centroidLatLong": {
             "latitude": 42.708678,
@@ -2638,7 +2638,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Plymouth",
         "capitalLatLong": {
             "latitude": 16.706523,
-            "longitude": 16.706523
+            "longitude": -62.215738
         },
         "centroidLatLong": {
             "latitude": 16.742498,
@@ -2656,7 +2656,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Rabat",
         "capitalLatLong": {
             "latitude": 33.97159,
-            "longitude": 33.97159
+            "longitude": -6.849813
         },
         "centroidLatLong": {
             "latitude": 31.791702,
@@ -2674,7 +2674,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Maputo",
         "capitalLatLong": {
             "latitude": -25.891968,
-            "longitude": -25.891968
+            "longitude": 32.605135
         },
         "centroidLatLong": {
             "latitude": -18.665695,
@@ -2692,7 +2692,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Naypyidaw",
         "capitalLatLong": {
             "latitude": 19.763306,
-            "longitude": 19.763306
+            "longitude": 96.07851
         },
         "centroidLatLong": {
             "latitude": 21.913965,
@@ -2710,7 +2710,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Windhoek",
         "capitalLatLong": {
             "latitude": -22.560881,
-            "longitude": -22.560881
+            "longitude": 17.065755
         },
         "centroidLatLong": {
             "latitude": -22.95764,
@@ -2728,7 +2728,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Yaren",
         "capitalLatLong": {
             "latitude": -0.546686,
-            "longitude": -0.546686
+            "longitude": 166.921091
         },
         "centroidLatLong": {
             "latitude": -0.522778,
@@ -2746,7 +2746,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kathmandu",
         "capitalLatLong": {
             "latitude": 27.717245,
-            "longitude": 27.717245
+            "longitude": 85.323961
         },
         "centroidLatLong": {
             "latitude": 28.394857,
@@ -2764,7 +2764,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Amsterdam",
         "capitalLatLong": {
             "latitude": 52.370216,
-            "longitude": 52.370216
+            "longitude": 4.895168
         },
         "centroidLatLong": {
             "latitude": 52.132633,
@@ -2782,7 +2782,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Willemstad ",
         "capitalLatLong": {
             "latitude": 12.1091242,
-            "longitude": 12.1091242
+            "longitude": -68.9316546
         },
         "centroidLatLong": {
             "latitude": 12.226079,
@@ -2800,7 +2800,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Nouméa",
         "capitalLatLong": {
             "latitude": -22.255823,
-            "longitude": -22.255823
+            "longitude": 166.450524
         },
         "centroidLatLong": {
             "latitude": -20.904305,
@@ -2818,7 +2818,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Wellington",
         "capitalLatLong": {
             "latitude": -41.28646,
-            "longitude": -41.28646
+            "longitude": 174.776236
         },
         "centroidLatLong": {
             "latitude": -40.900557,
@@ -2836,7 +2836,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Managua",
         "capitalLatLong": {
             "latitude": 12.114993,
-            "longitude": 12.114993
+            "longitude": -86.236174
         },
         "centroidLatLong": {
             "latitude": 12.865416,
@@ -2854,7 +2854,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Niamey",
         "capitalLatLong": {
             "latitude": 13.511596,
-            "longitude": 13.511596
+            "longitude": 2.125385
         },
         "centroidLatLong": {
             "latitude": 17.607789,
@@ -2872,7 +2872,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Abuja",
         "capitalLatLong": {
             "latitude": 9.076479,
-            "longitude": 9.076479
+            "longitude": 7.398574
         },
         "centroidLatLong": {
             "latitude": 9.081999,
@@ -2890,7 +2890,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Alofi",
         "capitalLatLong": {
             "latitude": -19.055371,
-            "longitude": -19.055371
+            "longitude": -169.917871
         },
         "centroidLatLong": {
             "latitude": -19.054445,
@@ -2908,7 +2908,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kingston",
         "capitalLatLong": {
             "latitude": -29.056394,
-            "longitude": -29.056394
+            "longitude": 167.959588
         },
         "centroidLatLong": {
             "latitude": -29.040835,
@@ -2926,7 +2926,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Pyongyang",
         "capitalLatLong": {
             "latitude": 39.039219,
-            "longitude": 39.039219
+            "longitude": 125.762524
         },
         "centroidLatLong": {
             "latitude": 40.339852,
@@ -2944,7 +2944,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Saipan",
         "capitalLatLong": {
             "latitude": 15.177801,
-            "longitude": 15.177801
+            "longitude": 145.750967
         },
         "centroidLatLong": {
             "latitude": 17.33083,
@@ -2962,7 +2962,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Oslo",
         "capitalLatLong": {
             "latitude": 59.913869,
-            "longitude": 59.913869
+            "longitude": 10.752245
         },
         "centroidLatLong": {
             "latitude": 60.472024,
@@ -2980,7 +2980,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Muscat",
         "capitalLatLong": {
             "latitude": 23.58589,
-            "longitude": 23.58589
+            "longitude": 58.405923
         },
         "centroidLatLong": {
             "latitude": 21.512583,
@@ -2998,7 +2998,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Islamabad",
         "capitalLatLong": {
             "latitude": 33.729388,
-            "longitude": 33.729388
+            "longitude": 73.093146
         },
         "centroidLatLong": {
             "latitude": 30.375321,
@@ -3016,7 +3016,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Ngerulmud",
         "capitalLatLong": {
             "latitude": 7.500384,
-            "longitude": 7.500384
+            "longitude": 134.624289
         },
         "centroidLatLong": {
             "latitude": 7.51498,
@@ -3034,7 +3034,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Panama City",
         "capitalLatLong": {
             "latitude": 9.101179,
-            "longitude": 9.101179
+            "longitude": -79.402864
         },
         "centroidLatLong": {
             "latitude": 8.537981,
@@ -3052,7 +3052,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Port Moresby",
         "capitalLatLong": {
             "latitude": -9.4438,
-            "longitude": -9.4438
+            "longitude": 147.180267
         },
         "centroidLatLong": {
             "latitude": -6.314993,
@@ -3070,7 +3070,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Asuncion",
         "capitalLatLong": {
             "latitude": -25.26374,
-            "longitude": -25.26374
+            "longitude": -57.575926
         },
         "centroidLatLong": {
             "latitude": -23.442503,
@@ -3088,7 +3088,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Lima",
         "capitalLatLong": {
             "latitude": -12.046374,
-            "longitude": -12.046374
+            "longitude": -77.042793
         },
         "centroidLatLong": {
             "latitude": -9.189967,
@@ -3106,7 +3106,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Manila",
         "capitalLatLong": {
             "latitude": 14.599512,
-            "longitude": 14.599512
+            "longitude": 120.98422
         },
         "centroidLatLong": {
             "latitude": 12.879721,
@@ -3124,7 +3124,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Adamstown",
         "capitalLatLong": {
             "latitude": -25.06629,
-            "longitude": -25.06629
+            "longitude": -130.100464
         },
         "centroidLatLong": {
             "latitude": -24.703615,
@@ -3142,7 +3142,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Warsaw",
         "capitalLatLong": {
             "latitude": 52.229676,
-            "longitude": 52.229676
+            "longitude": 21.012229
         },
         "centroidLatLong": {
             "latitude": 51.919438,
@@ -3160,7 +3160,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Lisbon",
         "capitalLatLong": {
             "latitude": 38.722252,
-            "longitude": 38.722252
+            "longitude": -9.139337
         },
         "centroidLatLong": {
             "latitude": 39.399872,
@@ -3178,7 +3178,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "San Juan",
         "capitalLatLong": {
             "latitude": 18.466334,
-            "longitude": 18.466334
+            "longitude": -66.105722
         },
         "centroidLatLong": {
             "latitude": 18.220833,
@@ -3196,7 +3196,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Doha",
         "capitalLatLong": {
             "latitude": 25.285447,
-            "longitude": 25.285447
+            "longitude": 51.53104
         },
         "centroidLatLong": {
             "latitude": 25.354826,
@@ -3214,7 +3214,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Saint-Denis",
         "capitalLatLong": {
             "latitude": -20.882057,
-            "longitude": -20.882057
+            "longitude": 55.450675
         },
         "centroidLatLong": {
             "latitude": -21.115141,
@@ -3232,7 +3232,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bucharest",
         "capitalLatLong": {
             "latitude": 44.426767,
-            "longitude": 44.426767
+            "longitude": 26.102538
         },
         "centroidLatLong": {
             "latitude": 45.943161,
@@ -3250,7 +3250,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Moscow",
         "capitalLatLong": {
             "latitude": 55.755826,
-            "longitude": 55.755826
+            "longitude": 37.6173
         },
         "centroidLatLong": {
             "latitude": 61.52401,
@@ -3268,7 +3268,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kigali",
         "capitalLatLong": {
             "latitude": -1.957875,
-            "longitude": -1.957875
+            "longitude": 30.112735
         },
         "centroidLatLong": {
             "latitude": -1.940278,
@@ -3286,7 +3286,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "St. Pierre",
         "capitalLatLong": {
             "latitude": 46.775846,
-            "longitude": 46.775846
+            "longitude": -56.180636
         },
         "centroidLatLong": {
             "latitude": 46.941936,
@@ -3304,7 +3304,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kingstown",
         "capitalLatLong": {
             "latitude": 13.160025,
-            "longitude": 13.160025
+            "longitude": -61.224816
         },
         "centroidLatLong": {
             "latitude": 12.984305,
@@ -3322,7 +3322,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Apia",
         "capitalLatLong": {
             "latitude": -13.850696,
-            "longitude": -13.850696
+            "longitude": -171.751355
         },
         "centroidLatLong": {
             "latitude": -13.759029,
@@ -3340,7 +3340,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "San Marino",
         "capitalLatLong": {
             "latitude": 43.935591,
-            "longitude": 43.935591
+            "longitude": 12.447281
         },
         "centroidLatLong": {
             "latitude": 43.94236,
@@ -3358,7 +3358,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "São Tomé",
         "capitalLatLong": {
             "latitude": 0.330192,
-            "longitude": 0.330192
+            "longitude": 6.733343
         },
         "centroidLatLong": {
             "latitude": 0.18636,
@@ -3376,7 +3376,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Riyadh",
         "capitalLatLong": {
             "latitude": 24.749403,
-            "longitude": 24.749403
+            "longitude": 46.902838
         },
         "centroidLatLong": {
             "latitude": 23.885942,
@@ -3394,7 +3394,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Dakar",
         "capitalLatLong": {
             "latitude": 14.764504,
-            "longitude": 14.764504
+            "longitude": -17.366029
         },
         "centroidLatLong": {
             "latitude": 14.497401,
@@ -3412,7 +3412,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Belgrade",
         "capitalLatLong": {
             "latitude": 44.786568,
-            "longitude": 44.786568
+            "longitude": 20.448922
         },
         "centroidLatLong": {
             "latitude": 44.016521,
@@ -3430,7 +3430,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Victoria",
         "capitalLatLong": {
             "latitude": -4.619143,
-            "longitude": -4.619143
+            "longitude": 55.451315
         },
         "centroidLatLong": {
             "latitude": -4.679574,
@@ -3448,7 +3448,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Freetown",
         "capitalLatLong": {
             "latitude": 8.465677,
-            "longitude": 8.465677
+            "longitude": -13.231722
         },
         "centroidLatLong": {
             "latitude": 8.460555,
@@ -3466,7 +3466,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Singapore",
         "capitalLatLong": {
             "latitude": 1.280095,
-            "longitude": 1.280095
+            "longitude": 103.850949
         },
         "centroidLatLong": {
             "latitude": 1.352083,
@@ -3484,7 +3484,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bratislava",
         "capitalLatLong": {
             "latitude": 48.145892,
-            "longitude": 48.145892
+            "longitude": 17.107137
         },
         "centroidLatLong": {
             "latitude": 48.669026,
@@ -3502,7 +3502,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Ljubljana",
         "capitalLatLong": {
             "latitude": 46.056947,
-            "longitude": 46.056947
+            "longitude": 14.505751
         },
         "centroidLatLong": {
             "latitude": 46.151241,
@@ -3520,7 +3520,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Honiara",
         "capitalLatLong": {
             "latitude": -9.445638,
-            "longitude": -9.445638
+            "longitude": 159.9729
         },
         "centroidLatLong": {
             "latitude": -9.64571,
@@ -3538,7 +3538,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Mogadishu",
         "capitalLatLong": {
             "latitude": 2.046934,
-            "longitude": 2.046934
+            "longitude": 45.318162
         },
         "centroidLatLong": {
             "latitude": 5.152149,
@@ -3556,7 +3556,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Pretoria",
         "capitalLatLong": {
             "latitude": -25.747868,
-            "longitude": -25.747868
+            "longitude": 28.229271
         },
         "centroidLatLong": {
             "latitude": -30.559482,
@@ -3574,7 +3574,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "King Edward Point",
         "capitalLatLong": {
             "latitude": -54.28325,
-            "longitude": -54.28325
+            "longitude": -36.493735
         },
         "centroidLatLong": {
             "latitude": -54.429579,
@@ -3592,7 +3592,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Seoul",
         "capitalLatLong": {
             "latitude": 37.566535,
-            "longitude": 37.566535
+            "longitude": 126.977969
         },
         "centroidLatLong": {
             "latitude": 35.907757,
@@ -3610,7 +3610,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Juba",
         "capitalLatLong": {
             "latitude": 4.859363,
-            "longitude": 4.859363
+            "longitude": 31.57125
         },
         "centroidLatLong": {
             "latitude": 4.859363,
@@ -3628,7 +3628,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Madrid",
         "capitalLatLong": {
             "latitude": 40.416775,
-            "longitude": 40.416775
+            "longitude": -3.70379
         },
         "centroidLatLong": {
             "latitude": 40.463667,
@@ -3646,7 +3646,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Sri Jayawardenepura Kotte",
         "capitalLatLong": {
             "latitude": 6.89407,
-            "longitude": 6.89407
+            "longitude": 79.902478
         },
         "centroidLatLong": {
             "latitude": 7.873054,
@@ -3664,7 +3664,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Gustavia",
         "capitalLatLong": {
             "latitude": 17.896435,
-            "longitude": 17.896435
+            "longitude": -62.852201
         },
         "centroidLatLong": {
             "latitude": 17.896435,
@@ -3682,7 +3682,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Basseterre",
         "capitalLatLong": {
             "latitude": 17.302606,
-            "longitude": 17.302606
+            "longitude": -62.717692
         },
         "centroidLatLong": {
             "latitude": 17.357822,
@@ -3700,7 +3700,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Castries",
         "capitalLatLong": {
             "latitude": 14.010109,
-            "longitude": 14.010109
+            "longitude": -60.987469
         },
         "centroidLatLong": {
             "latitude": 13.909444,
@@ -3718,7 +3718,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Marigot",
         "capitalLatLong": {
             "latitude": 18.067519,
-            "longitude": 18.067519
+            "longitude": -63.082466
         },
         "centroidLatLong": {
             "latitude": 18.067519,
@@ -3736,7 +3736,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Khartoum",
         "capitalLatLong": {
             "latitude": 15.500654,
-            "longitude": 15.500654
+            "longitude": 32.559899
         },
         "centroidLatLong": {
             "latitude": 12.862807,
@@ -3754,7 +3754,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Paramaribo",
         "capitalLatLong": {
             "latitude": 5.852036,
-            "longitude": 5.852036
+            "longitude": -55.203828
         },
         "centroidLatLong": {
             "latitude": 3.919305,
@@ -3772,7 +3772,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Longyearbyen ",
         "capitalLatLong": {
             "latitude": 78.062,
-            "longitude": 78.062
+            "longitude": 22.055
         },
         "centroidLatLong": {
             "latitude": 77.553604,
@@ -3790,7 +3790,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Mbabane",
         "capitalLatLong": {
             "latitude": -26.305448,
-            "longitude": -26.305448
+            "longitude": 31.136672
         },
         "centroidLatLong": {
             "latitude": -26.522503,
@@ -3808,7 +3808,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Stockholm",
         "capitalLatLong": {
             "latitude": 59.329323,
-            "longitude": 59.329323
+            "longitude": 18.068581
         },
         "centroidLatLong": {
             "latitude": 60.128161,
@@ -3826,7 +3826,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bern",
         "capitalLatLong": {
             "latitude": 46.947974,
-            "longitude": 46.947974
+            "longitude": 7.447447
         },
         "centroidLatLong": {
             "latitude": 46.818188,
@@ -3844,7 +3844,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Damascus",
         "capitalLatLong": {
             "latitude": 33.513807,
-            "longitude": 33.513807
+            "longitude": 36.276528
         },
         "centroidLatLong": {
             "latitude": 34.802075,
@@ -3862,7 +3862,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Taipei",
         "capitalLatLong": {
             "latitude": 25.032969,
-            "longitude": 25.032969
+            "longitude": 121.565418
         },
         "centroidLatLong": {
             "latitude": 23.69781,
@@ -3880,7 +3880,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Dushanbe",
         "capitalLatLong": {
             "latitude": 38.559772,
-            "longitude": 38.559772
+            "longitude": 68.787038
         },
         "centroidLatLong": {
             "latitude": 38.861034,
@@ -3898,7 +3898,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Dodoma",
         "capitalLatLong": {
             "latitude": -6.162959,
-            "longitude": -6.162959
+            "longitude": 35.751607
         },
         "centroidLatLong": {
             "latitude": -6.369028,
@@ -3916,7 +3916,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Bangkok",
         "capitalLatLong": {
             "latitude": 13.756331,
-            "longitude": 13.756331
+            "longitude": 100.501765
         },
         "centroidLatLong": {
             "latitude": 15.870032,
@@ -3934,7 +3934,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Dili",
         "capitalLatLong": {
             "latitude": -8.556856,
-            "longitude": -8.556856
+            "longitude": 125.560314
         },
         "centroidLatLong": {
             "latitude": -8.874217,
@@ -3952,7 +3952,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Lomé",
         "capitalLatLong": {
             "latitude": 6.172497,
-            "longitude": 6.172497
+            "longitude": 1.231362
         },
         "centroidLatLong": {
             "latitude": 8.619543,
@@ -3970,7 +3970,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Nukunonu",
         "capitalLatLong": {
             "latitude": -9.2005,
-            "longitude": -9.2005
+            "longitude": -171.848
         },
         "centroidLatLong": {
             "latitude": -8.967363,
@@ -3988,7 +3988,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Nuku'alofa",
         "capitalLatLong": {
             "latitude": -21.139342,
-            "longitude": -21.139342
+            "longitude": -175.204947
         },
         "centroidLatLong": {
             "latitude": -21.178986,
@@ -4006,7 +4006,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Port of Spain",
         "capitalLatLong": {
             "latitude": 10.654901,
-            "longitude": 10.654901
+            "longitude": -61.501926
         },
         "centroidLatLong": {
             "latitude": 10.691803,
@@ -4024,7 +4024,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Edinburgh of the Seven Seas",
         "capitalLatLong": {
             "latitude": -37.068042,
-            "longitude": -37.068042
+            "longitude": -12.311315
         },
         "centroidLatLong": {
             "latitude": -24.143474,
@@ -4042,7 +4042,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tunis",
         "capitalLatLong": {
             "latitude": 36.806495,
-            "longitude": 36.806495
+            "longitude": 10.181532
         },
         "centroidLatLong": {
             "latitude": 33.886917,
@@ -4060,7 +4060,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Ankara",
         "capitalLatLong": {
             "latitude": 39.933364,
-            "longitude": 39.933364
+            "longitude": 32.859742
         },
         "centroidLatLong": {
             "latitude": 38.963745,
@@ -4078,7 +4078,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Ashgabat",
         "capitalLatLong": {
             "latitude": 37.960077,
-            "longitude": 37.960077
+            "longitude": 58.326063
         },
         "centroidLatLong": {
             "latitude": 38.969719,
@@ -4096,7 +4096,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Cockburn Town",
         "capitalLatLong": {
             "latitude": 21.467458,
-            "longitude": 21.467458
+            "longitude": -71.13891
         },
         "centroidLatLong": {
             "latitude": 21.694025,
@@ -4114,7 +4114,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Funafuti",
         "capitalLatLong": {
             "latitude": -8.520066,
-            "longitude": -8.520066
+            "longitude": 179.198128
         },
         "centroidLatLong": {
             "latitude": -7.109535,
@@ -4132,7 +4132,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Charlotte Amalie",
         "capitalLatLong": {
             "latitude": 18.3419,
-            "longitude": 18.3419
+            "longitude": -64.930701
         },
         "centroidLatLong": {
             "latitude": 18.335765,
@@ -4150,7 +4150,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kampala",
         "capitalLatLong": {
             "latitude": 0.347596,
-            "longitude": 0.347596
+            "longitude": 32.58252
         },
         "centroidLatLong": {
             "latitude": 1.373333,
@@ -4168,7 +4168,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Kyiv",
         "capitalLatLong": {
             "latitude": 50.4501,
-            "longitude": 50.4501
+            "longitude": 30.5234
         },
         "centroidLatLong": {
             "latitude": 48.379433,
@@ -4186,7 +4186,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Abu Dhabi",
         "capitalLatLong": {
             "latitude": 24.299174,
-            "longitude": 24.299174
+            "longitude": 54.697277
         },
         "centroidLatLong": {
             "latitude": 23.424076,
@@ -4204,7 +4204,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "London",
         "capitalLatLong": {
             "latitude": 51.507351,
-            "longitude": 51.507351
+            "longitude": -0.127758
         },
         "centroidLatLong": {
             "latitude": 55.378051,
@@ -4222,7 +4222,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Washington",
         "capitalLatLong": {
             "latitude": 38.907192,
-            "longitude": 38.907192
+            "longitude": -77.036871
         },
         "centroidLatLong": {
             "latitude": 37.09024,
@@ -4240,7 +4240,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Montevideo",
         "capitalLatLong": {
             "latitude": -34.901113,
-            "longitude": -34.901113
+            "longitude": -56.164531
         },
         "centroidLatLong": {
             "latitude": -32.522779,
@@ -4258,7 +4258,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Tashkent",
         "capitalLatLong": {
             "latitude": 41.299496,
-            "longitude": 41.299496
+            "longitude": 69.240073
         },
         "centroidLatLong": {
             "latitude": 41.377491,
@@ -4276,7 +4276,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Port Vila",
         "capitalLatLong": {
             "latitude": -17.733251,
-            "longitude": -17.733251
+            "longitude": 168.327325
         },
         "centroidLatLong": {
             "latitude": -15.376706,
@@ -4294,7 +4294,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Vatican City",
         "capitalLatLong": {
             "latitude": 41.902179,
-            "longitude": 41.902179
+            "longitude": 12.453601
         },
         "centroidLatLong": {
             "latitude": 41.902916,
@@ -4312,7 +4312,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Caracas",
         "capitalLatLong": {
             "latitude": 10.480594,
-            "longitude": 10.480594
+            "longitude": -66.903606
         },
         "centroidLatLong": {
             "latitude": 6.42375,
@@ -4330,7 +4330,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Hanoi",
         "capitalLatLong": {
             "latitude": 21.027764,
-            "longitude": 21.027764
+            "longitude": 105.83416
         },
         "centroidLatLong": {
             "latitude": 14.058324,
@@ -4348,7 +4348,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Mata-Utu",
         "capitalLatLong": {
             "latitude": -13.282509,
-            "longitude": -13.282509
+            "longitude": -176.176447
         },
         "centroidLatLong": {
             "latitude": -13.768752,
@@ -4366,7 +4366,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "El Aaiún",
         "capitalLatLong": {
             "latitude": 27.125287,
-            "longitude": 27.125287
+            "longitude": -13.1625
         },
         "centroidLatLong": {
             "latitude": 24.215527,
@@ -4384,7 +4384,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Sana'a",
         "capitalLatLong": {
             "latitude": 15.369445,
-            "longitude": 15.369445
+            "longitude": 44.191007
         },
         "centroidLatLong": {
             "latitude": 15.552727,
@@ -4402,7 +4402,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Lusaka",
         "capitalLatLong": {
             "latitude": -15.387526,
-            "longitude": -15.387526
+            "longitude": 28.322817
         },
         "centroidLatLong": {
             "latitude": -13.133897,
@@ -4420,7 +4420,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "capital": "Harare",
         "capitalLatLong": {
             "latitude": -17.825166,
-            "longitude": -17.825166
+            "longitude": 31.03351
         },
         "centroidLatLong": {
             "latitude": -19.015438,

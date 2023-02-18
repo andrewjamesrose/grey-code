@@ -31,7 +31,7 @@
 
     
     <button mat-menu-item (click)="appModeSelector('STATS')">
-        <mat-icon [ngClass]="{'selected': _appMode==='STATS'}">query_stats</mat-icon>
+        <mat-icon [ngClass]="{'selected': _appMode==='STATS'}">show_chart</mat-icon>
         <span [ngClass]="{'selected': _appMode==='STATS'}">Game Statistics</span>
     </button>
     <button mat-menu-item (click)="appModeSelector('MATHS')">
@@ -54,5 +54,10 @@
         <mat-icon>search</mat-icon>
         <span>Review Data</span>
     </button>
+
+    <!-- <button mat-menu-item>
+        <mat-icon>construction</mat-icon>
+        <span>Debug and Repair</span>
+    </button> -->
 
   </mat-menu>
