@@ -9,7 +9,7 @@ export interface ICountry {
     code: string
     codeThree: string
     continent: string
-    flagUnique: boolean
+    flagIsParent: boolean
     hasBoundary2D: boolean
     hasBoundary3D: boolean
 }
@@ -22,7 +22,7 @@ export class Country implements ICountry {
         code: string
         codeThree: string
         continent: string
-        flagUnique: boolean
+        flagIsParent: boolean
         hasBoundary2D: boolean
         hasBoundary3D: boolean
     constructor(name: string,
@@ -32,7 +32,7 @@ export class Country implements ICountry {
                 code: string,
                 codeThree: string,
                 continent: string,
-                flagUnique: boolean,
+                flagIsParent: boolean,
                 hasBoundary2D: boolean,
                 hasBoundary3D: boolean
         ){
@@ -43,7 +43,7 @@ export class Country implements ICountry {
             this.code = code
             this.codeThree = codeThree
             this.continent = continent
-            this.flagUnique = flagUnique
+            this.flagIsParent = flagIsParent
             this.hasBoundary2D = hasBoundary3D
             this.hasBoundary3D = hasBoundary2D
 

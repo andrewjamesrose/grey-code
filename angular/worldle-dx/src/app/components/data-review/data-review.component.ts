@@ -6,6 +6,7 @@ import { GlobeVisualiserInputsService, IGeoJSON3D } from 'src/app/services/globe
 import { OLD_COUNTRY_DATA } from '../../../assets/capitals/data v1';
 
 import { Country, ILatLong } from '../../models/game-logic';
+import { FLAG_CHECKSUMS, IFlagChecksum } from 'src/assets/flags/md5Checksums';
 
 
 @Component({
@@ -24,6 +25,8 @@ export class DataReviewComponent implements OnInit {
 
   oldCountryData: ICountryOld[] = OLD_COUNTRY_DATA
   countryList: ICountry[] = this.gameLogic.debug_GetCountryList()
+
+  fileHashes: IFlagChecksum[] = FLAG_CHECKSUMS
 
   ngOnInit(): void {
   }
@@ -109,4 +112,58 @@ export class DataReviewComponent implements OnInit {
 
   }
 
+  printCountryNames(): void {
+    let names: string [] = this.countryList.map((newElement: ICountry)=> newElement.name)
+    console.log(names)
+  }
+
+
+  hashFunction(): void {
+    // console.log(this.fileHashes)
+    let duplicateHashes = findDuplicates(this.fileHashes.map(element => element.hash))
+    // console.log(duplicateHashes)
+    console.log(getDuplicatedHashes(duplicateHashes))
+  }
+
+}
+
+function findDuplicates(stringArray: string[]): string[] {
+  let valuesSoFar: any = Object.create(null);
+  
+  let duplicates: string[] = []
+
+  for (let i = 0; i < stringArray.length; ++i) {
+      let value = stringArray[i];
+      if (value in valuesSoFar) {
+        duplicates.push(value);
+      }
+      valuesSoFar[value] = true;
+  }
+  duplicates = [... new Set(duplicates)]
+  return duplicates;
+}
+
+function getCountryCodeByFlagHash(code: string): string[] {
+  let output: string[] = []
+  output = FLAG_CHECKSUMS.filter(flagHash => flagHash.hash === code).map(flagHash => flagHash.code.toUpperCase())
+  return output
+}
+
+interface IDuplicatedHashes {
+  hash: string,
+  list: string[]
+}
+
+function getDuplicatedHashes(inputHashes: string[]): IDuplicatedHashes[] {
+  let output: IDuplicatedHashes[] = []
+
+  for (const hash of inputHashes) {
+    let newHash = {
+      hash: hash,
+      list: getCountryCodeByFlagHash(hash)
+    }
+    output.push(newHash)
+  }
+  
+  return output
 }

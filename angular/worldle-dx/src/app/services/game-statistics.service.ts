@@ -188,7 +188,7 @@ export class GameStatisticsService {
         let newStats: IFullStats = {}
     
         for (let i = 0; i < statsNumber; i++) {
-            let _countryCode = getRandomCountry().code
+            let _countryCode = getRandomCountry('flags').code
             if(!(_countryCode in newStats)){
                 newStats[_countryCode] = createRandomGameStats()
             }
