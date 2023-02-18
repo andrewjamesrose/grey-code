@@ -112,9 +112,19 @@ export class DataReviewComponent implements OnInit {
 
   }
 
-  printCountryNames(): void {
-    let names: string [] = this.countryList.map((newElement: ICountry)=> newElement.name)
-    console.log(names)
+  printCountryCodes(): void {
+    let codes: string [] = this.countryList.map((newElement: ICountry)=> newElement.code)
+    // console.log(codes)
+
+    let outputString: string = ""
+
+    for(let code of codes){
+      // console.log(`${code} |`) 
+      outputString = outputString + `"${code}" | `
+    }
+
+    console.log(outputString)
+
   }
 
 
@@ -167,3 +177,4 @@ function getDuplicatedHashes(inputHashes: string[]): IDuplicatedHashes[] {
   
   return output
 }
+

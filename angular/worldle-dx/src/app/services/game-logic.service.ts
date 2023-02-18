@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { generateRandomInteger } from '../commonFunctions/geographyFunctions';
 import { AppMode, GameDisplayMode, GameMode as GameMode, GameState, GAME_MODES, MAX_GUESSES, VIEW_MODES } from '../constants';
-import { ICountry } from '../models/game-logic';
+import { ICountry, CountryCode } from '../models/game-logic';
 import { PopUpDialogServiceService } from './pop-up-dialog-service.service';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { PopUpDialogServiceService } from './pop-up-dialog-service.service';
 })
 export class GameLogicService {
 
-    private _emptyArray: string[] = []
+    private _emptyArray: CountryCode[] = []
     // private _currentCountry: ICountry
 
     private _appMode: AppMode
@@ -42,9 +42,9 @@ export class GameLogicService {
     }
 
     countryListFull: ICountry[]
-    _guessList: string[]
+    _guessList: CountryCode[]
 
-    private guessList$: BehaviorSubject<string[]> 
+    private guessList$: BehaviorSubject<CountryCode[]> 
 
     private appMode$: BehaviorSubject<AppMode>
     private gameMode$: BehaviorSubject<GameMode>
@@ -53,12 +53,12 @@ export class GameLogicService {
     private targetCountry$: BehaviorSubject<ICountry>
 
 
-    getPrevioustGuesses(): Observable<string[]> {
+    getPrevioustGuesses(): Observable<CountryCode[]> {
         return this.guessList$.asObservable()
     }
 
 
-    updateGuesses(guessCode: string): void{
+    updateGuesses(guessCode: CountryCode): void{
         this._guessList.push(guessCode)
         this.guessList$.next(this._guessList)
     }

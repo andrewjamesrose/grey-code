@@ -2,8 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { map, Observable, startWith, Subject, takeUntil } from 'rxjs';
 import { getCountryNameFromCode } from 'src/app/commonFunctions/geographyFunctions';
-import { GameMode, MAX_GUESSES } from 'src/app/constants';
-import { ICountry } from 'src/app/models/game-logic';
+import { GameMode, MAX_GUESSES, GameState } from 'src/app/constants';
+import { ICountry, CountryCode } from 'src/app/models/game-logic';
 import { GameLogicService } from 'src/app/services/game-logic.service';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 
@@ -24,7 +24,7 @@ export class UserIoComponent implements OnInit {
 
     @ViewChild('countryNameInputElement') inputElement!: ElementRef;
 
-    _guessList: string[] = []
+    _guessList: CountryCode[] = []
     
     _gameMode!: GameMode
     _displayMode!: string
@@ -41,7 +41,7 @@ export class UserIoComponent implements OnInit {
         //set up service subscriptions
         this.gameLogicService.getPrevioustGuesses()
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(guessesIn => {
+            .subscribe((guessesIn: CountryCode[] )=> {
                 if(guessesIn.length < MAX_GUESSES){
                     this._guessList = guessesIn.concat(Array(MAX_GUESSES-guessesIn.length).fill(""))
                 } else if (guessesIn.length === MAX_GUESSES ) {
@@ -50,11 +50,11 @@ export class UserIoComponent implements OnInit {
             })
 
 
-        this.gameLogicService.getGameMode().subscribe(gameMode =>{this._gameMode = gameMode})
+        this.gameLogicService.getGameMode().subscribe((gameMode: GameMode) =>{this._gameMode = gameMode})
         this.gameLogicService.getDisplayMode().subscribe(displayMode =>{this._displayMode = displayMode})
         this.gameLogicService.getTargetCountry().subscribe(targetCountry=>{this._targetCountry = targetCountry})
 
-        this.gameLogicService.getGameState().subscribe(gameState=>{
+        this.gameLogicService.getGameState().subscribe((gameState: GameState)=>{
             this._gameState = gameState
             if(gameState!=='ACTIVE'){
                 this.countryInput.disable()
@@ -105,7 +105,7 @@ export class UserIoComponent implements OnInit {
     }
 
 
-    getCountryName(input: string): string{
+    getCountryName(input: CountryCode): string{
         if(NEW_COUNTRY_LIST.map(country => country.code).includes(input)){
             return getCountryNameFromCode(input)
         } else {

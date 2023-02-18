@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, elementAt, Observable } from 'rxjs';
 import { IDisplayModeChange, IDisplayModeState } from '../components/globe-controls/globe-controls.component';
-import { ILatLong } from '../models/game-logic';
+import { ILatLong, CountryCode } from '../models/game-logic';
 
 @Injectable({
   providedIn: 'root'
@@ -103,7 +103,7 @@ export class GlobeVisualiserInputsService {
 }
 
 export interface IGeoJSON3D {
-    twoLetterCode: string,
+    twoLetterCode: CountryCode,
     geometry: object
 
 }
