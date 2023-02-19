@@ -5,3 +5,6 @@
 <li *ngFor="let guess of guessList">
     <b> {{guess}} </b>           
  </li>
+
+ <button mat-stroked-button color="warn" (click)="deleteTest()">Delete All Data</button>
+ <button mat-stroked-button color="accent" (click)="cameraJumpTest()">Camera Jump Test</button>
