@@ -6,6 +6,7 @@ import { GlobeVisualiserInputsService, IGeoJSON3D } from 'src/app/services/globe
 import { OLD_COUNTRY_DATA } from '../../../assets/capitals/data v1';
 
 import { Country, ILatLong } from '../../models/game-logic';
+import { IFlagChecksum, FLAG_CHECKSUMS, } from 'src/assets/flags/md5Checksums';
 
 
 @Component({
@@ -24,6 +25,8 @@ export class DataReviewComponent implements OnInit {
 
   oldCountryData: ICountryOld[] = OLD_COUNTRY_DATA
   countryList: ICountry[] = this.gameLogic.debug_GetCountryList()
+
+  fileHashes: IFlagChecksum[] = FLAG_CHECKSUMS
 
   ngOnInit(): void {
   }
@@ -109,7 +112,7 @@ export class DataReviewComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
+
   printCountryCodes(): void {
     let codes: string [] = this.countryList.map((newElement: ICountry)=> newElement.code)
     // console.log(codes)
@@ -153,7 +156,7 @@ function findDuplicates(stringArray: string[]): string[] {
 
 function getCountryCodeByFlagHash(code: string): string[] {
   let output: string[] = []
-  output = FLAG_CHECKSUMS.filter(flagHash => flagHash.hash === code).map(flagHash => flagHash.code.toUpperCase())
+  output = FLAG_CHECKSUMS.filter((flagHash: IFlagChecksum) => flagHash.hash === code).map(flagHash => flagHash.code.toUpperCase())
   return output
 }
 
@@ -161,6 +164,8 @@ interface IDuplicatedHashes {
   hash: string,
   list: string[]
 }
+
+
 
 function getDuplicatedHashes(inputHashes: string[]): IDuplicatedHashes[] {
   let output: IDuplicatedHashes[] = []
@@ -176,6 +181,3 @@ function getDuplicatedHashes(inputHashes: string[]): IDuplicatedHashes[] {
   return output
 }
 
-=======
-}
->>>>>>> parent of b7475bc... Fixed accents, flagged non-unique flags

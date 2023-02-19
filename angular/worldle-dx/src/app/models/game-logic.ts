@@ -16,37 +16,37 @@ export interface ICountry {
 }
 
 export class Country implements ICountry {
-    name: string
-    capital: string
-    capitalLatLong: ILatLong
-    centroidLatLong: ILatLong
-    code: CountryCode
-    codeThree: string
-    continent: string
-    flagIsParent: boolean
-    hasBoundary2D: boolean
-    hasBoundary3D: boolean
-    constructor(name: string,
-        capital: string,
-        capitalLatLong: ILatLong,
-        centroidLatLong: ILatLong,
-        code: CountryCode,
-        codeThree: string,
-        continent: string,
-        flagIsParent: boolean,
-        hasBoundary2D: boolean,
+        name: string
+        capital: string
+        capitalLatLong: ILatLong
+        centroidLatLong: ILatLong
+        code: CountryCode
+        codeThree: string
+        continent: string
+        flagIsParent: boolean
+        hasBoundary2D: boolean
         hasBoundary3D: boolean
-    ) {
-        this.name = name
-        this.capital = capital
-        this.capitalLatLong = capitalLatLong
-        this.centroidLatLong = centroidLatLong
-        this.code = code
-        this.codeThree = codeThree
-        this.continent = continent
-        this.flagIsParent = flagIsParent
-        this.hasBoundary2D = hasBoundary3D
-        this.hasBoundary3D = hasBoundary2D
+    constructor(name: string,
+                capital: string,
+                capitalLatLong: ILatLong,
+                centroidLatLong: ILatLong,
+                code: CountryCode,
+                codeThree: string,
+                continent: string,
+                flagIsParent: boolean,
+                hasBoundary2D: boolean,
+                hasBoundary3D: boolean
+        ){
+            this.name = name
+            this.capital = capital
+            this.capitalLatLong = capitalLatLong
+            this.centroidLatLong = centroidLatLong
+            this.code = code
+            this.codeThree = codeThree
+            this.continent = continent
+            this.flagIsParent = flagIsParent
+            this.hasBoundary2D = hasBoundary3D
+            this.hasBoundary3D = hasBoundary2D
 
     }
 }

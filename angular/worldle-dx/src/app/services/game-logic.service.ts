@@ -15,7 +15,7 @@ export class GameLogicService {
     // private _currentCountry: ICountry
 
     private _appMode: AppMode
-    private _gameMode
+    private _gameMode: GameMode
     private _displayMode
     private _gameState: GameState
     private _targetCountry: ICountry
@@ -28,7 +28,7 @@ export class GameLogicService {
         this._gameMode = GAME_MODES[0]
         this._displayMode = VIEW_MODES[0]
         this._gameState = <GameState>'ACTIVE'
-        this._targetCountry = getRandomCountry()
+        this._targetCountry = getRandomCountry(this._gameMode)
         
         
         this.guessList$ = new BehaviorSubject(this._emptyArray)
@@ -170,7 +170,7 @@ export class GameLogicService {
     
     reInitialiseGame(): void {
 
-        this._targetCountry = getRandomCountry()
+        this._targetCountry = getRandomCountry(this._gameMode)
         this.targetCountry$.next(this._targetCountry)
     
         this._guessList = []
@@ -202,7 +202,18 @@ export class GameLogicService {
 
 }
 
-export function getRandomCountry(): ICountry {
-    let _randomIndex = generateRandomInteger(0, NEW_COUNTRY_LIST.length)
-    return  NEW_COUNTRY_LIST[_randomIndex]
+export function getRandomCountry(gameMode: GameMode): ICountry {
+    if (gameMode === "flags") {
+        return getRandomCountryFlagMode()
+    } else {
+        let _randomIndex = generateRandomInteger(0, NEW_COUNTRY_LIST.length)
+        return  NEW_COUNTRY_LIST[_randomIndex]
+    }
+
+}
+
+export function getRandomCountryFlagMode(): ICountry {
+    let uniqueFlagsOnly = NEW_COUNTRY_LIST.filter(country => country.flagIsParent)
+    let _randomIndex = generateRandomInteger(0, uniqueFlagsOnly.length)
+    return  uniqueFlagsOnly[_randomIndex]
 }
