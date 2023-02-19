@@ -6,7 +6,6 @@ import { GlobeVisualiserInputsService, IGeoJSON3D } from 'src/app/services/globe
 import { OLD_COUNTRY_DATA } from '../../../assets/capitals/data v1';
 
 import { Country, ILatLong } from '../../models/game-logic';
-import { FLAG_CHECKSUMS, IFlagChecksum } from 'src/assets/flags/md5Checksums';
 
 
 @Component({
@@ -25,8 +24,6 @@ export class DataReviewComponent implements OnInit {
 
   oldCountryData: ICountryOld[] = OLD_COUNTRY_DATA
   countryList: ICountry[] = this.gameLogic.debug_GetCountryList()
-
-  fileHashes: IFlagChecksum[] = FLAG_CHECKSUMS
 
   ngOnInit(): void {
   }
@@ -112,6 +109,7 @@ export class DataReviewComponent implements OnInit {
 
   }
 
+<<<<<<< HEAD
   printCountryCodes(): void {
     let codes: string [] = this.countryList.map((newElement: ICountry)=> newElement.code)
     // console.log(codes)
@@ -178,3 +176,6 @@ function getDuplicatedHashes(inputHashes: string[]): IDuplicatedHashes[] {
   return output
 }
 
+=======
+}
+>>>>>>> parent of b7475bc... Fixed accents, flagged non-unique flags
