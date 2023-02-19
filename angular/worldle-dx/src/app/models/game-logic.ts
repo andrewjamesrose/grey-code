@@ -103,11 +103,11 @@ export class Jump implements IJump {
 }
 
 export class JumpPoint implements IJumpPoint {
-    code: string
+    code: CountryCode
     name: string
     latlong: ILatLong
 
-    constructor(code: string) {
+    constructor(code: CountryCode) {
         this.code = code
         this.name = getCountryNameFromCode(code)
         this.latlong = {

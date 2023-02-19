@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { printFrozenObject } from 'src/app/commonFunctions/debugFunctions';
+import { CountryCode } from 'src/app/models/game-logic';
 import { GameStatisticsService, totalGamesInResultObject } from 'src/app/services/game-statistics.service';
 
 @Component({
-  selector: 'app-stats-testing',
+  selector: 'stats-testing',
   templateUrl: './stats-testing.component.html',
   styleUrls: ['./stats-testing.component.scss']
 })
@@ -31,7 +32,7 @@ export class StatsTestingComponent implements OnInit {
     }
 
     checkFunction(): void {
-        let input = 'BR'
+        let input: CountryCode = 'BR'
 
         // console.log(this.gameStatsService.getSingleFlagStats(input))
         // console.log(this.gameStatsService.getSingleBoundaryStats(input))
@@ -58,5 +59,11 @@ export class StatsTestingComponent implements OnInit {
     printFrozenObject(this.gameStatsService.admin_getStatsFromMemory())
 
     }
+
+    test_clearStatsData(): void {
+        this.gameStatsService.resetAllStats()
+    }
+
+
 
 }

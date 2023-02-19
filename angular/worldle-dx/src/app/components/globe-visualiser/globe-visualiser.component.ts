@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
 import { convertCartesianToThree, generateAxes, getConstructorLines, getGreatCircleMaxPoint, getGreatCirclePlaneCrossing, getVector3FromLatLong, greatCircleFromTwoPoints, greatCirclePlaneRotation, markerAtLatLong, markerAtVector3, wedgeBetweenTwoPoints } from 'src/app/commonFunctions/threeSphereFunctions';
 import { GLOBE_SCALAR, X_UNIT, Y_UNIT } from 'src/app/constants';
-import { ILatLong } from 'src/app/models/game-logic';
+import { CountryCode, ILatLong } from 'src/app/models/game-logic';
 import { DISPLAY_MODE_INITIAL_STATE, GlobeVisualiserInputsService } from 'src/app/services/globe-visualiser-inputs.service';
 import * as THREE from 'three';
 import { BufferGeometry, EllipseCurve, Group, Renderer, Vector2, Vector3 } from 'three';
@@ -21,7 +21,7 @@ const colourList: number[] = [
     0x999999    //grey
 ]
 
-const testCountries: string[] = ['FI','CL','JP','CA','AU','DE']
+const testCountries: CountryCode[] = ['FI','CL','JP','CA','AU','DE']
 
 
 @Component({
@@ -349,12 +349,12 @@ export class GlobeVisualiser implements OnInit {
 
     
     buttonTest(): void {
-        let inputCode = 'AU'
+        let inputCode: CountryCode = 'AU'
         this.highlightCountry(inputCode)
     }
 
 
-    highlightCountry(countryCode: string): void{
+    highlightCountry(countryCode: CountryCode): void{
 
         if(countryCode){
             let targetLatLong = getCentroidLatLong(countryCode)    

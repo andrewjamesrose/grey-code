@@ -1,6 +1,6 @@
 import { NEW_COUNTRY_LIST } from "src/assets/capitals/data"
 import { EARTH_MEAN_RADIUS_KM } from "src/assets/constants"
-import { ICountry, ILatLong, LatLong } from "../models/game-logic"
+import { CountryCode, ICountry, ILatLong, LatLong } from "../models/game-logic"
 
 
 export function degreesToRadians(degrees: number): number { 
@@ -17,36 +17,36 @@ export function generateRandomInteger(min: number, max: number) {
 }
 
 
-export function getCountryNameFromCode(twoLetterCode: string): string {
+export function getCountryNameFromCode(twoLetterCode: CountryCode): string {
     let _result = <ICountry>NEW_COUNTRY_LIST.find(country => country.code===twoLetterCode)
     return _result.name
 }
 
 
-export function getCapitalFromCode(twoLetterCode: string): string {
+export function getCapitalFromCode(twoLetterCode: CountryCode): string {
     let _result = <ICountry>NEW_COUNTRY_LIST.find(country => country.code===twoLetterCode)
     return _result.capital
 }
   
 
-export function getCentroidLatFromCode(twoLetterCode: string): number {
+export function getCentroidLatFromCode(twoLetterCode: CountryCode): number {
     let _result = <ICountry>NEW_COUNTRY_LIST.find(country => country.code===twoLetterCode)
     return _result.centroidLatLong.latitude
 }
 
 
-export function getCentroidLongFromCode(twoLetterCode: string): number {
+export function getCentroidLongFromCode(twoLetterCode: CountryCode): number {
     let _result = <ICountry>NEW_COUNTRY_LIST.find(country => country.code===twoLetterCode)
     return _result.centroidLatLong.longitude
 }
 
 
-export function getCentroidFromCode(twoLetterCode: string): LatLong{
+export function getCentroidFromCode(twoLetterCode: CountryCode): LatLong{
     let _result = <ICountry>NEW_COUNTRY_LIST.find(country => country.code===twoLetterCode)
     return _result.centroidLatLong
 }
 
-export function getCentroidLatLong(twoLetterCode: string): ILatLong {
+export function getCentroidLatLong(twoLetterCode: CountryCode): ILatLong {
     let _lat = getCentroidLatFromCode(twoLetterCode)
     let _long = getCentroidLongFromCode(twoLetterCode)
     return new LatLong(_lat, _long)

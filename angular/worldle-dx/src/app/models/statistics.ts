@@ -6,7 +6,7 @@
 export interface IGameStats {
     flags: IGameResult
     boundaries: IGameResult 
-
+    capitals: IGameResult 
 }
 
 export interface IGameResult {
@@ -57,6 +57,7 @@ export interface IResultsTable {
     name: string,
     flags: IGameResult
     boundaries: IGameResult
+    capitals: IGameResult
     totals: IGameResult
 }
 

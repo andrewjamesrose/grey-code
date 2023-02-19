@@ -3,7 +3,7 @@ import { MatSliderChange } from '@angular/material/slider';
 import * as d3 from 'd3';
 import * as d3geoprojections from 'd3-geo-projection';
 import { getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
-import { ILatLong } from 'src/app/models/game-logic';
+import { CountryCode, ILatLong } from 'src/app/models/game-logic';
 
 type D3SVGSelection = d3.Selection<SVGElement, any, null, undefined>;
 
@@ -127,16 +127,16 @@ export class MathsDemoComponent implements OnInit {
 
 
     buttonTest(): void {
-        let inputCode = 'GB'
+        let inputCode: CountryCode = 'GB'
         this.highlightCountry(inputCode)
     }
 
-    highlightCountry(countryCode: string): void{
+    highlightCountry(countryCode: CountryCode): void{
         this.redrawGraph(countryCode)
     }
 
 
-    redrawGraph(countryCode?: string): void {
+    redrawGraph(countryCode?: CountryCode): void {
         // this.reset2DMap()
     
         let scaleFactor = 250
@@ -153,7 +153,6 @@ export class MathsDemoComponent implements OnInit {
             lambda = -targetLatLong.longitude
             phi = -targetLatLong.latitude
         } else {
-            countryCode = ''
         }
 
 

@@ -4,6 +4,7 @@ import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { generateRandomInteger } from '../commonFunctions/geographyFunctions';
 import { AppMode, GameDisplayMode, GameMode as GameMode, GameState, GAME_MODES, MAX_GUESSES, VIEW_MODES } from '../constants';
 import { ICountry, CountryCode } from '../models/game-logic';
+import { GameStatisticsService, possibleScores, SCORE_ARRAY } from './game-statistics.service';
 import { PopUpDialogServiceService } from './pop-up-dialog-service.service';
 
 @Injectable({
@@ -20,7 +21,7 @@ export class GameLogicService {
     private _gameState: GameState
     private _targetCountry: ICountry
 
-    constructor(private popUpService: PopUpDialogServiceService) {
+    constructor(private popUpService: PopUpDialogServiceService, private gameStatsService: GameStatisticsService) {
         this.countryListFull = NEW_COUNTRY_LIST
         this._guessList = []
 
@@ -163,7 +164,35 @@ export class GameLogicService {
     }
 
     generateEndOfGameData(){
-        console.log("generating output")
+        // console.log("generating output")
+
+        // console.log("Target Country Code")
+        // console.log(this._targetCountry.code)
+
+        // console.log("Game State:")
+        // console.log(this._gameState)
+
+        // console.log("Game Mode:")
+        // console.log(this._gameMode)
+
+        // console.log("Guess List:")
+        // console.log(this._guessList)
+
+        let gamesScore: possibleScores
+
+        if (this._gameState === 'GAMEOVER'){
+            gamesScore = 'fail'
+        } else {
+            gamesScore = SCORE_ARRAY[this._guessList.length - 1]
+        }
+
+        // console.log("Derived games score:")
+        // console.log(gamesScore)
+        
+
+        this.gameStatsService.addCountryStat(this._targetCountry.code, gamesScore, this._gameMode)
+
+
     }
 
 
@@ -192,13 +221,6 @@ export class GameLogicService {
         return NEW_COUNTRY_LIST
     }
 
-
-    
-
-
-    // getMode
-
-    // setMode
 
 }
 

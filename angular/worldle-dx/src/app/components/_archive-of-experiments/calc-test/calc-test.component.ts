@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { calculateEarthGreatCircleDistance_KM, calculateRelativeBearingDegs, generateRandomInteger, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
-import { ICountry, ILatLong, Jump, JumpPoint } from 'src/app/models/game-logic';
+import { CountryCode, ICountry, ILatLong, Jump, JumpPoint } from 'src/app/models/game-logic';
 import { NEW_COUNTRY_LIST } from 'src/assets/capitals/data';
 import { EARTH_MEAN_RADIUS_KM } from 'src/assets/constants';
 import * as d3 from 'd3';
@@ -52,7 +52,7 @@ export class CalcTestComponent implements OnInit {
     _interCapitalBearing: number | undefined
 
     _resultAvailable: boolean | undefined
-    _guessList: string[] = []
+    _guessList: CountryCode[] = []
     target: string = ""
     targetLatLong!: ILatLong;
     targetCountry!: ICountry
@@ -119,7 +119,7 @@ export class CalcTestComponent implements OnInit {
     }
 
     
-    updateGuessList(twoLetterCode: string): void {
+    updateGuessList(twoLetterCode: CountryCode): void {
         this._guessList.push(twoLetterCode)
     }
 
@@ -187,7 +187,7 @@ export class CalcTestComponent implements OnInit {
     }
 
     
-    getMissDistance(code: string): number {
+    getMissDistance(code: CountryCode): number {
         let _guess: ILatLong = getCentroidLatLong(code)
         return calculateEarthGreatCircleDistance_KM(_guess, this.targetLatLong)
     }
