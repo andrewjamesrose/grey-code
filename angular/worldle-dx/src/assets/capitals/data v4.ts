@@ -4,10 +4,6 @@ import { Country } from "src/app/models/game-logic";
 //      Fixes problem with capital lat/longs being incorrect
 //      inclues the populated hasBoundary3D
 
-
-// Duplicated Flags are present. Only the parent will be included in the game.
-
-
 export const NEW_COUNTRY_LIST: Country[] = [
     {
         "name": "Afghanistan",
@@ -23,7 +19,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AF",
         "codeThree": "AFG",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -41,7 +37,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AX",
         "codeThree": "ALA",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -59,7 +55,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AL",
         "codeThree": "ALB",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -77,7 +73,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "DZ",
         "codeThree": "DZA",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -95,7 +91,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AS",
         "codeThree": "ASM",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -113,7 +109,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AD",
         "codeThree": "AND",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -131,7 +127,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AO",
         "codeThree": "AGO",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -149,7 +145,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AI",
         "codeThree": "AIA",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -167,7 +163,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AQ",
         "codeThree": "ATA",
         "continent": "Antarctica",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -185,7 +181,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AG",
         "codeThree": "ATG",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -203,7 +199,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AR",
         "codeThree": "ARG",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -221,7 +217,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AM",
         "codeThree": "ARM",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -239,7 +235,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AW",
         "codeThree": "ABW",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -257,7 +253,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AU",
         "codeThree": "AUS",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -275,7 +271,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AT",
         "codeThree": "AUT",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -293,7 +289,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AZ",
         "codeThree": "AZE",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -311,7 +307,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BS",
         "codeThree": "BHS",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -329,7 +325,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BH",
         "codeThree": "BHR",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -347,7 +343,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BD",
         "codeThree": "BGD",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -365,7 +361,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BB",
         "codeThree": "BRB",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -383,7 +379,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BY",
         "codeThree": "BLR",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -401,7 +397,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BE",
         "codeThree": "BEL",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -419,7 +415,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BZ",
         "codeThree": "BLZ",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -437,7 +433,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BJ",
         "codeThree": "BEN",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -455,7 +451,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BM",
         "codeThree": "BMU",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -473,7 +469,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BT",
         "codeThree": "BTN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -491,7 +487,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BO",
         "codeThree": "BOL",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -509,7 +505,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BA",
         "codeThree": "BIH",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -527,7 +523,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BW",
         "codeThree": "BWA",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -545,7 +541,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BV",
         "codeThree": "BVT",
         "continent": "Atlantic Ocean",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -563,7 +559,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BR",
         "codeThree": "BRA",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -581,7 +577,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IO",
         "codeThree": "IOT",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -599,7 +595,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "VG",
         "codeThree": "VGB",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -617,7 +613,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BN",
         "codeThree": "BRN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -635,7 +631,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BG",
         "codeThree": "BGR",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -653,7 +649,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BF",
         "codeThree": "BFA",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -671,7 +667,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BI",
         "codeThree": "BDI",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -689,7 +685,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KH",
         "codeThree": "KHM",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -707,7 +703,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CM",
         "codeThree": "CMR",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -725,7 +721,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CA",
         "codeThree": "CAN",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -743,7 +739,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CV",
         "codeThree": "CPV",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -761,7 +757,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KY",
         "codeThree": "CYM",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -779,7 +775,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CF",
         "codeThree": "CAF",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -797,7 +793,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TD",
         "codeThree": "TCD",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -815,7 +811,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CL",
         "codeThree": "CHL",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -833,7 +829,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CN",
         "codeThree": "CHN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -851,7 +847,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CX",
         "codeThree": "CXR",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -869,7 +865,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CC",
         "codeThree": "CCK",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -887,7 +883,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CO",
         "codeThree": "COL",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -905,7 +901,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KM",
         "codeThree": "COM",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -923,7 +919,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CD",
         "codeThree": "COD",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -941,7 +937,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CG",
         "codeThree": "COG",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -959,7 +955,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CK",
         "codeThree": "COK",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -977,12 +973,12 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CR",
         "codeThree": "CRI",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
     {
-        "name": "Cote d’Ivoire",
+        "name": "Côte d’Ivoire",
         "capital": "Yamoussoukro",
         "capitalLatLong": {
             "latitude": 6.827623,
@@ -995,7 +991,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CI",
         "codeThree": "CIV",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1013,7 +1009,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "HR",
         "codeThree": "HRV",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1031,12 +1027,12 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CU",
         "codeThree": "CUB",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
     {
-        "name": "Curacao",
+        "name": "Curaçao",
         "capital": "Willemstad",
         "capitalLatLong": {
             "latitude": 12.122422,
@@ -1049,7 +1045,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CW",
         "codeThree": "CUW",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1067,7 +1063,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CY",
         "codeThree": "CYP",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1085,7 +1081,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CZ",
         "codeThree": "CZE",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1103,7 +1099,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "DK",
         "codeThree": "DNK",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1121,7 +1117,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "DJ",
         "codeThree": "DJI",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1139,7 +1135,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "DM",
         "codeThree": "DMA",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1157,7 +1153,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "DO",
         "codeThree": "DOM",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1175,7 +1171,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "EC",
         "codeThree": "ECU",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1193,7 +1189,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "EG",
         "codeThree": "EGY",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1211,7 +1207,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SV",
         "codeThree": "SLV",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1229,7 +1225,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GQ",
         "codeThree": "GNQ",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1247,7 +1243,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ER",
         "codeThree": "ERI",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1265,7 +1261,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "EE",
         "codeThree": "EST",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1283,7 +1279,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ET",
         "codeThree": "ETH",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1301,7 +1297,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "FK",
         "codeThree": "FLK",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1319,7 +1315,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "FO",
         "codeThree": "FRO",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1337,7 +1333,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "FJ",
         "codeThree": "FJI",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1355,7 +1351,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "FI",
         "codeThree": "FIN",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1373,7 +1369,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "FR",
         "codeThree": "FRA",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1391,7 +1387,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GF",
         "codeThree": "GUF",
         "continent": "Americas",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1409,7 +1405,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PF",
         "codeThree": "PYF",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1427,7 +1423,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TF",
         "codeThree": "ATF",
         "continent": "Indian Ocean",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1445,7 +1441,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GA",
         "codeThree": "GAB",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1463,7 +1459,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GM",
         "codeThree": "GMB",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1481,7 +1477,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GE",
         "codeThree": "GEO",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1499,7 +1495,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "DE",
         "codeThree": "DEU",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1517,7 +1513,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GH",
         "codeThree": "GHA",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1535,7 +1531,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GI",
         "codeThree": "GIB",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1553,7 +1549,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GR",
         "codeThree": "GRC",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1571,7 +1567,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GL",
         "codeThree": "GRL",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1589,7 +1585,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GD",
         "codeThree": "GRD",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1607,7 +1603,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GP",
         "codeThree": "GLP",
         "continent": "Americas",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1625,7 +1621,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GU",
         "codeThree": "GUM",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1643,7 +1639,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GT",
         "codeThree": "GTM",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1661,7 +1657,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GG",
         "codeThree": "GGY",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1679,7 +1675,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GN",
         "codeThree": "GIN",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1697,7 +1693,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GW",
         "codeThree": "GNB",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1715,7 +1711,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GY",
         "codeThree": "GUY",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1733,7 +1729,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "HT",
         "codeThree": "HTI",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1751,7 +1747,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "HN",
         "codeThree": "HND",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1769,7 +1765,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "HK",
         "codeThree": "HKG",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1787,7 +1783,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "HU",
         "codeThree": "HUN",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1805,7 +1801,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IS",
         "codeThree": "ISL",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1823,7 +1819,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IN",
         "codeThree": "IND",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1841,7 +1837,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ID",
         "codeThree": "IDN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1859,7 +1855,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IR",
         "codeThree": "IRN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1877,7 +1873,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IQ",
         "codeThree": "IRQ",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1895,7 +1891,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IE",
         "codeThree": "IRL",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1913,7 +1909,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IM",
         "codeThree": "IMN",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -1931,7 +1927,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IL",
         "codeThree": "ISR",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1949,7 +1945,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "IT",
         "codeThree": "ITA",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1967,7 +1963,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "JM",
         "codeThree": "JAM",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -1985,7 +1981,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "JP",
         "codeThree": "JPN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2003,7 +1999,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "JE",
         "codeThree": "JEY",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2021,7 +2017,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "JO",
         "codeThree": "JOR",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2039,7 +2035,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KZ",
         "codeThree": "KAZ",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2057,7 +2053,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KE",
         "codeThree": "KEN",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2075,7 +2071,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KI",
         "codeThree": "KIR",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2093,7 +2089,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "XK",
         "codeThree": "XXK",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2111,7 +2107,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KW",
         "codeThree": "KWT",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2129,7 +2125,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KG",
         "codeThree": "KGZ",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2147,7 +2143,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LA",
         "codeThree": "LAO",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2165,7 +2161,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LV",
         "codeThree": "LVA",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2183,7 +2179,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LB",
         "codeThree": "LBN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2201,7 +2197,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LS",
         "codeThree": "LSO",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2219,7 +2215,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LR",
         "codeThree": "LBR",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2237,7 +2233,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LY",
         "codeThree": "LBY",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2255,7 +2251,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LI",
         "codeThree": "LIE",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2273,7 +2269,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LT",
         "codeThree": "LTU",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2291,7 +2287,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LU",
         "codeThree": "LUX",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2309,7 +2305,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MO",
         "codeThree": "MAC",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2327,7 +2323,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MK",
         "codeThree": "MKD",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2345,7 +2341,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MG",
         "codeThree": "MDG",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2363,7 +2359,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MW",
         "codeThree": "MWI",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2381,7 +2377,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MY",
         "codeThree": "MYS",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2399,7 +2395,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MV",
         "codeThree": "MDV",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2417,7 +2413,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ML",
         "codeThree": "MLI",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2435,7 +2431,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MT",
         "codeThree": "MLT",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2453,7 +2449,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MH",
         "codeThree": "MHL",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2471,7 +2467,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MQ",
         "codeThree": "MTQ",
         "continent": "Americas",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2489,7 +2485,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MR",
         "codeThree": "MRT",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2507,7 +2503,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MU",
         "codeThree": "MUS",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2525,7 +2521,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "YT",
         "codeThree": "MYT",
         "continent": "Africa",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2543,7 +2539,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MX",
         "codeThree": "MEX",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2561,7 +2557,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "FM",
         "codeThree": "FSM",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2579,7 +2575,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MD",
         "codeThree": "MDA",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2597,7 +2593,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MC",
         "codeThree": "MCO",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2615,7 +2611,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MN",
         "codeThree": "MNG",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2633,7 +2629,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ME",
         "codeThree": "MNE",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2651,7 +2647,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MS",
         "codeThree": "MSR",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2669,7 +2665,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MA",
         "codeThree": "MAR",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2687,7 +2683,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MZ",
         "codeThree": "MOZ",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2705,7 +2701,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MM",
         "codeThree": "MMR",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2723,7 +2719,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NA",
         "codeThree": "NAM",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2741,7 +2737,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NR",
         "codeThree": "NRU",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2759,7 +2755,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NP",
         "codeThree": "NPL",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2777,7 +2773,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NL",
         "codeThree": "NLD",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2795,7 +2791,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AN",
         "codeThree": "ANT",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2813,7 +2809,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NC",
         "codeThree": "NCL",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2831,7 +2827,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NZ",
         "codeThree": "NZL",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2849,7 +2845,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NI",
         "codeThree": "NIC",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2867,7 +2863,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NE",
         "codeThree": "NER",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2885,7 +2881,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NG",
         "codeThree": "NGA",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2903,7 +2899,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NU",
         "codeThree": "NIU",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2921,7 +2917,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NF",
         "codeThree": "NFK",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2939,7 +2935,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KP",
         "codeThree": "PRK",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2957,7 +2953,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "MP",
         "codeThree": "MNP",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -2975,7 +2971,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "NO",
         "codeThree": "NOR",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -2993,7 +2989,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "OM",
         "codeThree": "OMN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3011,7 +3007,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PK",
         "codeThree": "PAK",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3029,7 +3025,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PW",
         "codeThree": "PLW",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3047,7 +3043,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PA",
         "codeThree": "PAN",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3065,7 +3061,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PG",
         "codeThree": "PNG",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3083,7 +3079,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PY",
         "codeThree": "PRY",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3101,7 +3097,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PE",
         "codeThree": "PER",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3119,7 +3115,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PH",
         "codeThree": "PHL",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3137,7 +3133,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PN",
         "codeThree": "PCN",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3155,7 +3151,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PL",
         "codeThree": "POL",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3173,7 +3169,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PT",
         "codeThree": "PRT",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3191,7 +3187,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PR",
         "codeThree": "PRI",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3209,12 +3205,12 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "QA",
         "codeThree": "QAT",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
     {
-        "name": "Reunion",
+        "name": "Réunion",
         "capital": "Saint-Denis",
         "capitalLatLong": {
             "latitude": -20.882057,
@@ -3227,7 +3223,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "RE",
         "codeThree": "REU",
         "continent": "Africa",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3245,7 +3241,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "RO",
         "codeThree": "ROU",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3263,7 +3259,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "RU",
         "codeThree": "RUS",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3281,7 +3277,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "RW",
         "codeThree": "RWA",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3299,7 +3295,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "PM",
         "codeThree": "SPM",
         "continent": "Americas",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3317,7 +3313,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "VC",
         "codeThree": "VCT",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3335,7 +3331,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "WS",
         "codeThree": "WSM",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3353,12 +3349,12 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SM",
         "codeThree": "SMR",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
     {
-        "name": "Sao Tome and Príncipe",
+        "name": "São Tomé and Príncipe",
         "capital": "São Tomé",
         "capitalLatLong": {
             "latitude": 0.330192,
@@ -3371,7 +3367,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ST",
         "codeThree": "STP",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3389,7 +3385,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SA",
         "codeThree": "SAU",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3407,7 +3403,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SN",
         "codeThree": "SEN",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3425,7 +3421,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "RS",
         "codeThree": "SRB",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3443,7 +3439,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SC",
         "codeThree": "SYC",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3461,7 +3457,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SL",
         "codeThree": "SLE",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3479,7 +3475,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SG",
         "codeThree": "SGP",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3497,7 +3493,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SK",
         "codeThree": "SVK",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3515,7 +3511,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SI",
         "codeThree": "SVN",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3533,7 +3529,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SB",
         "codeThree": "SLB",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3551,7 +3547,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SO",
         "codeThree": "SOM",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3569,7 +3565,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ZA",
         "codeThree": "ZAF",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3587,7 +3583,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GS",
         "codeThree": "SGS",
         "continent": "Atlantic Ocean",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3605,7 +3601,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KR",
         "codeThree": "KOR",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3623,7 +3619,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SS",
         "codeThree": "SSD",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3641,7 +3637,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ES",
         "codeThree": "ESP",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3659,12 +3655,12 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LK",
         "codeThree": "LKA",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
     {
-        "name": "Saint Barthelemy",
+        "name": "Saint Barthélemy",
         "capital": "Gustavia",
         "capitalLatLong": {
             "latitude": 17.896435,
@@ -3677,7 +3673,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "BL",
         "codeThree": "BLM",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3695,7 +3691,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "KN",
         "codeThree": "KNA",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3713,7 +3709,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "LC",
         "codeThree": "LCA",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3731,7 +3727,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SX",
         "codeThree": "SXM",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3749,7 +3745,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SD",
         "codeThree": "SDN",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3767,7 +3763,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SR",
         "codeThree": "SUR",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3785,7 +3781,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SJ",
         "codeThree": "SJM",
         "continent": "Europe",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -3803,7 +3799,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SZ",
         "codeThree": "SWZ",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3821,7 +3817,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SE",
         "codeThree": "SWE",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3839,7 +3835,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "CH",
         "codeThree": "CHE",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3857,7 +3853,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SY",
         "codeThree": "SYR",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3875,7 +3871,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TW",
         "codeThree": "TWN",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3893,7 +3889,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TJ",
         "codeThree": "TJK",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3911,7 +3907,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TZ",
         "codeThree": "TZA",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3929,7 +3925,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TH",
         "codeThree": "THA",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3947,7 +3943,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TL",
         "codeThree": "TLS",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3965,7 +3961,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TG",
         "codeThree": "TGO",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -3983,7 +3979,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TK",
         "codeThree": "TKL",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -4001,7 +3997,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TO",
         "codeThree": "TON",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -4019,7 +4015,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TT",
         "codeThree": "TTO",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4037,7 +4033,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "SH",
         "codeThree": "SHN",
         "continent": "Atlantic Ocean",
-        "flagIsParent": false,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -4055,7 +4051,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TN",
         "codeThree": "TUN",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4073,7 +4069,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TR",
         "codeThree": "TUR",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4091,7 +4087,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TM",
         "codeThree": "TKM",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4109,7 +4105,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TC",
         "codeThree": "TCA",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -4127,7 +4123,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "TV",
         "codeThree": "TUV",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -4145,7 +4141,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "VI",
         "codeThree": "VIR",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -4163,7 +4159,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "UG",
         "codeThree": "UGA",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4181,7 +4177,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "UA",
         "codeThree": "UKR",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4199,7 +4195,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "AE",
         "codeThree": "ARE",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4217,7 +4213,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "GB",
         "codeThree": "GBR",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4235,7 +4231,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "US",
         "codeThree": "USA",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4253,7 +4249,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "UY",
         "codeThree": "URY",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4271,7 +4267,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "UZ",
         "codeThree": "UZB",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4289,7 +4285,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "VU",
         "codeThree": "VUT",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4307,7 +4303,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "VA",
         "codeThree": "VAT",
         "continent": "Europe",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -4325,7 +4321,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "VE",
         "codeThree": "VEN",
         "continent": "Americas",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4343,7 +4339,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "VN",
         "codeThree": "VNM",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4361,7 +4357,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "WF",
         "codeThree": "WLF",
         "continent": "Oceania",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": false
     },
@@ -4379,7 +4375,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "EH",
         "codeThree": "ESH",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4397,7 +4393,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "YE",
         "codeThree": "YEM",
         "continent": "Asia",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4415,7 +4411,7 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ZM",
         "codeThree": "ZMB",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     },
@@ -4433,66 +4429,8 @@ export const NEW_COUNTRY_LIST: Country[] = [
         "code": "ZW",
         "codeThree": "ZWE",
         "continent": "Africa",
-        "flagIsParent": true,
+        "flagUnique": true,
         "hasBoundary2D": true,
         "hasBoundary3D": true
     }
 ]
-
-// object containing calulcated duplicated based on the file md5s
-// [
-//     {
-//         "hash": "F1E7B50906B03F82C34AC722C6698051",
-//         "list": [
-//             "FR",
-//             "GF",
-//             "MQ"
-//         ]
-//     },
-//     {
-//         "hash": "D5A2DF80535375E63497DADC960279CB",
-//         "list": [
-//             "AU",
-//             "HM"
-//         ]
-//     },
-//     {
-//         "hash": "FF24417D1915F33E8952057F05CB6F59",
-//         "list": [
-//             "GP",
-//             "MF",
-//             "PM",
-//             "RE",
-//             "YT"
-//         ]
-//     },
-//     {
-//         "hash": "FCEDF469EB086B6E1A75371C17324069",
-//         "list": [
-//             "BQ",
-//             "NL"
-//         ]
-//     },
-//     {
-//         "hash": "303C0165B3DEEF65E39D88871244B7FB",
-//         "list": [
-//             "BV",
-//             "NO",
-//             "SJ"
-//         ]
-//     },
-//     {
-//         "hash": "8B33222A8BE7109C1A66A0A4441AE78F",
-//         "list": [
-//             "GB",
-//             "SH"
-//         ]
-//     },
-//     {
-//         "hash": "4DBBBE1F93DAE14EA87AD215CF72E356",
-//         "list": [
-//             "UM",
-//             "US"
-//         ]
-//     }
-// ]

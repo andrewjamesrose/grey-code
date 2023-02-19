@@ -55,6 +55,11 @@
         <span>Review Data</span>
     </button>
 
+    <button mat-menu-item (click)="appModeSelector('THEORY')">
+        <mat-icon [ngClass]="{'selected': _appMode==='THEORY'}">functions</mat-icon>
+        <span [ngClass]="{'selected': _appMode==='THEORY'}">Maths Theory</span>
+    </button>
+
     <!-- <button mat-menu-item>
         <mat-icon>construction</mat-icon>
         <span>Debug and Repair</span>
