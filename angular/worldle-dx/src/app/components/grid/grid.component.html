@@ -9,6 +9,7 @@
     <!-- <div *ngIf="_appMode==='GAME'">  -->
         <game-clue class="game-clue" *ngIf="_appMode==='GAME'"></game-clue>
         <user-io class="user-io" *ngIf="_appMode==='GAME'"></user-io>
+        <globe-results-visualiser class="globe-maths-visualiser" *ngIf="_appMode==='GAME'"></globe-results-visualiser>
     <!-- </div> -->
 
     <!-- <div *ngIf="_appMode==='">  -->
@@ -18,13 +19,14 @@
 
     <!-- <div *ngIf="_appMode==='MATHS'"> -->
         <globe-controls class="globe-controls" *ngIf="_appMode==='MATHS'"></globe-controls>
-        <globe-visualiser class="globe-visualiser" *ngIf="_appMode==='MATHS'"></globe-visualiser>
+        <globe-maths-visualiser class="globe-maths-visualiser" *ngIf="_appMode==='MATHS'"></globe-maths-visualiser>
     <!-- </div> -->
 
 
     <app-stats-table *ngIf="_appMode==='STATS'" class="stats-table"></app-stats-table>
 
-    <solution-card *ngIf="" class="solution-card"></solution-card>
+    <!-- <solution-card *ngIf="false" class="solution-card"></solution-card> -->
+    
 
     <data-review *ngIf="_appMode==='STUDY'" class="data-review"></data-review>
 

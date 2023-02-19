@@ -24,7 +24,7 @@ import { DataReviewComponent } from './components/data-review/data-review.compon
 import { DebugComponent } from './components/debug/debug.component';
 import { GameClueComponent } from './components/game-clue/game-clue.component';
 import { GlobeControlsComponent } from './components/globe-controls/globe-controls.component';
-import { GlobeVisualiser } from './components/globe-visualiser/globe-visualiser.component';
+import { GlobeMathsVisualiser } from './components/globe-maths-visualiser/globe-maths-visualiser.component';
 import { GridComponent } from './components/grid/grid.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SolutionCardComponent } from './components/solution-card/solution-card.component';
@@ -44,6 +44,8 @@ import { PopUpDialogServiceService } from './services/pop-up-dialog-service.serv
 import { PopUpDialogComponent } from './shared/pop-up-dialog/pop-up-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
 import { GenericGlobeComponent } from './components/data-review/generic-globe/generic-globe.component';
+import { GlobeResultsVisualiserComponent } from './components/globe-results-visualiser/globe-results-visualiser.component';
+
 
 
 @NgModule({
@@ -54,7 +56,7 @@ import { GenericGlobeComponent } from './components/data-review/generic-globe/ge
     AngularAutofilterExampleComponent,
     UserIoComponent,
     MathsDemoComponent,
-    GlobeVisualiser,
+    GlobeMathsVisualiser,
     StatsTestingComponent,
     StatsTableComponent,
     StatsComponent,
@@ -67,6 +69,7 @@ import { GenericGlobeComponent } from './components/data-review/generic-globe/ge
     DataReviewComponent,
     PopUpDialogComponent,
     GenericGlobeComponent,
+    GlobeResultsVisualiserComponent,
   ],
   imports: [
     BrowserModule,

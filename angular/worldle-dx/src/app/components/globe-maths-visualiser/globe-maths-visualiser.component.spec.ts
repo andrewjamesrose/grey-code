@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MoreGlobeTestsComponent } from './globe-visualiser.component';
+import { MoreGlobeTestsComponent } from './globe-maths-visualiser.component';
 
 describe('MoreGlobeTestsComponent', () => {
   let component: MoreGlobeTestsComponent;
