@@ -10,6 +10,7 @@ import threeGlobe from 'three-globe';
 import { generateAxes, getVector3FromLatLong, greatCircleFromTwoPoints, markerAtLatLong, wedgeBetweenTwoPoints } from 'src/app/commonFunctions/threeSphereFunctions';
 import { degreesToRadians, getCentroidLatLong } from 'src/app/commonFunctions/geographyFunctions';
 import { IDisplayModeState } from '../globe-controls/globe-controls.component';
+import gsap from 'gsap';
 
 //############################ TO DO ###########################################
 // Add handler for when a country doesn't have a 3d map...add a dot
@@ -219,7 +220,7 @@ export class GlobeResultsVisualiserComponent implements OnInit {
         let radius: number = 300
         newCoords = getVector3FromLatLong(targetLatLong, radius)
 
-        this.camera.position.set(newCoords.x, newCoords.y, newCoords.z)
+        gsap.to(this.camera.position, {x: newCoords.x, y: newCoords.y, z: newCoords.z, duration: 2})
     }
 }
 
